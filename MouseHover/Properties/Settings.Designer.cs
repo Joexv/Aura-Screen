@@ -145,13 +145,133 @@ namespace MouseHover.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string b {
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int DPI_X_ADJ {
             get {
-                return ((string)(this["b"]));
+                return ((int)(this["DPI_X_ADJ"]));
             }
             set {
-                this["b"] = value;
+                this["DPI_X_ADJ"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int DPI_Y_ADJ {
+            get {
+                return ((int)(this["DPI_Y_ADJ"]));
+            }
+            set {
+                this["DPI_Y_ADJ"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("A")]
+        public string enableHK {
+            get {
+                return ((string)(this["enableHK"]));
+            }
+            set {
+                this["enableHK"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("D")]
+        public string disableHK {
+            get {
+                return ((string)(this["disableHK"]));
+            }
+            set {
+                this["disableHK"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("I")]
+        public string invertHK {
+            get {
+                return ((string)(this["invertHK"]));
+            }
+            set {
+                this["invertHK"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("W")]
+        public string enlargeHK {
+            get {
+                return ((string)(this["enlargeHK"]));
+            }
+            set {
+                this["enlargeHK"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("S")]
+        public string shirnkHK {
+            get {
+                return ((string)(this["shirnkHK"]));
+            }
+            set {
+                this["shirnkHK"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C")]
+        public string cycleHK {
+            get {
+                return ((string)(this["cycleHK"]));
+            }
+            set {
+                this["cycleHK"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int tileMode {
+            get {
+                return ((int)(this["tileMode"]));
+            }
+            set {
+                this["tileMode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool invertLock {
+            get {
+                return ((bool)(this["invertLock"]));
+            }
+            set {
+                this["invertLock"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.45")]
+        public decimal opacity {
+            get {
+                return ((decimal)(this["opacity"]));
+            }
+            set {
+                this["opacity"] = value;
             }
         }
     }

@@ -9,3 +9,15 @@ C:\Users\HPD\source\repos\MouseHover\MouseHover\obj\Debug\MouseHover.csproj.Gene
 C:\Users\HPD\source\repos\MouseHover\MouseHover\obj\Debug\MouseHover.csproj.CoreCompileInputs.cache
 C:\Users\HPD\source\repos\MouseHover\MouseHover\obj\Debug\MouseHover.exe
 C:\Users\HPD\source\repos\MouseHover\MouseHover\obj\Debug\MouseHover.pdb
+C:\Users\HPD\Documents\Github\MouseHover\MouseHover\bin\Debug\MouseHover.exe.config
+C:\Users\HPD\Documents\Github\MouseHover\MouseHover\bin\Debug\MouseHover.exe
+C:\Users\HPD\Documents\Github\MouseHover\MouseHover\bin\Debug\MouseHover.pdb
+C:\Users\HPD\Documents\Github\MouseHover\MouseHover\obj\Debug\MouseHover.csprojAssemblyReference.cache
+C:\Users\HPD\Documents\Github\MouseHover\MouseHover\obj\Debug\MouseHover.Properties.Resources.resources
+C:\Users\HPD\Documents\Github\MouseHover\MouseHover\obj\Debug\MouseHover.csproj.GenerateResource.cache
+C:\Users\HPD\Documents\Github\MouseHover\MouseHover\obj\Debug\MouseHover.csproj.CoreCompileInputs.cache
+C:\Users\HPD\Documents\Github\MouseHover\MouseHover\obj\Debug\MouseHover.exe
+C:\Users\HPD\Documents\Github\MouseHover\MouseHover\obj\Debug\MouseHover.pdb
+C:\Users\HPD\Documents\Github\MouseHover\MouseHover\obj\Debug\MouseHover.MainForm.resources
+C:\Users\HPD\Documents\Github\MouseHover\MouseHover\obj\Debug\MouseHover.MouseBox.resources
+C:\Users\HPD\Documents\Github\MouseHover\MouseHover\obj\Debug\MouseHover.Tiles.resources

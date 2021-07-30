@@ -32,8 +32,38 @@
     <Setting Name="keepInTray" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="b" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+    <Setting Name="DPI_X_ADJ" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="DPI_Y_ADJ" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="enableHK" Type="System.String" Scope="User">
+      <Value Profile="(Default)">A</Value>
+    </Setting>
+    <Setting Name="disableHK" Type="System.String" Scope="User">
+      <Value Profile="(Default)">D</Value>
+    </Setting>
+    <Setting Name="invertHK" Type="System.String" Scope="User">
+      <Value Profile="(Default)">I</Value>
+    </Setting>
+    <Setting Name="enlargeHK" Type="System.String" Scope="User">
+      <Value Profile="(Default)">W</Value>
+    </Setting>
+    <Setting Name="shirnkHK" Type="System.String" Scope="User">
+      <Value Profile="(Default)">S</Value>
+    </Setting>
+    <Setting Name="cycleHK" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C</Value>
+    </Setting>
+    <Setting Name="tileMode" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="invertLock" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="opacity" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">0.45</Value>
     </Setting>
   </Settings>
 </SettingsFile>

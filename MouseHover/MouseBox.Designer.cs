@@ -1,7 +1,7 @@
 ﻿
 namespace MouseHover
 {
-    partial class Form2
+    partial class MouseBox
     {
         /// <summary>
         /// Required designer variable.
@@ -32,6 +32,7 @@ namespace MouseHover
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.timer3 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // timer1
@@ -43,21 +44,33 @@ namespace MouseHover
             // timer2
             // 
             this.timer2.Enabled = true;
+            this.timer2.Interval = 1;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // Form2
+            // timer3
+            // 
+            this.timer3.Enabled = true;
+            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            // 
+            // MouseBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(909, 687);
-            this.Name = "Form2";
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(967, 834);
+            this.ControlBox = false;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "MouseBox";
             this.Opacity = 0.15D;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Form2";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.Form2_Load);
             this.LocationChanged += new System.EventHandler(this.Form2_LocationChanged);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form2_KeyPress);
+            this.MouseLeave += new System.EventHandler(this.Form2_MouseLeave);
             this.ResumeLayout(false);
 
         }
@@ -66,5 +79,6 @@ namespace MouseHover
 
         public System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Timer timer3;
     }
 }

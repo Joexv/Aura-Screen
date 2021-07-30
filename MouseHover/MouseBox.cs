@@ -14,21 +14,35 @@ using Microsoft.Win32;
 namespace MouseHover
 {
     using ps = Properties.Settings;
-    public partial class Form2 : Form
+    public partial class MouseBox : Form
     {
-        public Form2()
+        public MouseBox()
         {
             InitializeComponent();
+            CreateView();
+        }
 
+        const int WS_EX_TRANSPARENT = 0x20;
+        protected override System.Windows.Forms.CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle = cp.ExStyle | WS_EX_TRANSPARENT;
+                return cp;
+            }
+        }
+        private void CreateView()
+        {
             //Adjust Settings
             this.Width = ps.Default.width;
             this.Height = ps.Default.height;
-            this.BackColor = ps.Default.color;
-
-            this.Opacity = .5;
+            this.BackColor = ps.Default.color; 
+            this.ControlBox = false;
+            this.Opacity = (double)ps.Default.opacity;
             this.TopMost = true;
             this.BackColor = ps.Default.color;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            //this.FormBorderStyle = FormBorderStyle.None;
 
             // Makes the form circular:
             System.Drawing.Drawing2D.GraphicsPath GP = new System.Drawing.Drawing2D.GraphicsPath();
@@ -55,23 +69,16 @@ namespace MouseHover
                     return;
             }
         }
-
-        const int WS_EX_TRANSPARENT = 0x20;
-
-        protected override System.Windows.Forms.CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle = cp.ExStyle | WS_EX_TRANSPARENT;
-                return cp;
-            }
-        }
         private void timer1_Tick_1(object sender, EventArgs e)
         {
+            if (!ps.Default.invert)
+                AdjustLocation();
+        }
+
+        private void AdjustLocation()
+        {
             Point pt = Cursor.Position;
-            //Adjust Location
-            if(ps.Default.style == "Circle")
+            if (ps.Default.style == "Circle")
                 pt.Offset(-1 * this.Width / 2, -1 * this.Width / 2);
             else
                 pt.Offset(-1 * this.Width / 2, -1 * this.Height / 2);
@@ -97,16 +104,11 @@ namespace MouseHover
                     case "Ellipse":
                         e.Graphics.DrawEllipse(pen, rect);
                         return;
+                    case "Invert Rectangle":
+                        
+                        return;
                 }
             }
-        }
-
-        Image CaptureScreen(int sourceX, int sourceY, int destX, int destY, Size regionSize)
-        {
-            Bitmap bmp = new Bitmap(regionSize.Width, regionSize.Height);
-            Graphics g = Graphics.FromImage(bmp);
-            g.CopyFromScreen(sourceX, sourceY, destX, destY, regionSize);
-            return bmp;
         }
 
         public Bitmap Transform(Bitmap source)
@@ -137,42 +139,75 @@ namespace MouseHover
                         0, 0, source.Width, source.Height, GraphicsUnit.Pixel, attributes);
 
             //dispose the Graphics object
-            //g.Dispose();
+            g.Dispose();
 
             return newBitmap;
         }
-
+        bool ShiftHeld = false;
         private void timer2_Tick(object sender, EventArgs e)
         {
-            if (ps.Default.invert)
+            if (ps.Default.invert) 
             {
-                //Image image = CaptureScreen(Cursor.Position.X, Cursor.Position.Y, 0, 0, new Size(this.Width, this.Height));
-                //this.BackgroundImage = Transform((Bitmap)image);
-                //this.TransparencyKey = Color.Turquoise;
-                //this.BackColor = Color.Turquoise;
+                if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftShift))
+                    ShiftHeld = true;
+                if (InversionPositionCheck() && !ShiftHeld)
+                {
+                    ShiftHeld = false;
+                    DoInvert = true;
+                    AdjustLocation();
+                }
+                else if (ShiftHeld && !System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftShift))
+                {
+                    ShiftHeld = false;
+                    DoInvert = true;
+                    AdjustLocation();
+                    Invert();
+                }
             }
         }
+        bool DoInvert = false;
 
         public Bitmap CaptureScreen()
         {
-            Point pt = Cursor.Position;
-            pt.Offset(-1 * this.Width, -1 * this.Height);
-
-            this.BackgroundImage = null;
-            this.TransparencyKey = Color.Turquoise;
-            this.BackColor = Color.Turquoise;
-            this.Opacity = 0.75;
-            Bitmap b = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+            Bitmap b = new Bitmap(this.Width, this.Height);
             Graphics g = Graphics.FromImage(b);
-            
-            g.CopyFromScreen(this.Location.X * 2, (int)(this.Location.Y * 2.5), 0, 0, b.Size);
+            g.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, b.Size);
             g.Dispose();
             return b;
         }
-
+        Point inversionPT;
         private void Form2_LocationChanged(object sender, EventArgs e)
         {
-            //this.BackgroundImage = CaptureScreen(); //Transform(CaptureScreen());
+            if (DoInvert)
+                Invert();
+        }
+
+        private void Invert()
+        {
+            this.Opacity = 0.75;
+            inversionPT = Cursor.Position;
+            this.Hide();
+            this.BackgroundImage = Transform(CaptureScreen());
+            this.Show();
+            DoInvert = false;
+        }
+
+        private bool InversionPositionCheck()
+        {
+            int X = Cursor.Position.X;
+            int Y = Cursor.Position.Y;
+            if (X < inversionPT.X - this.Width / 2 || X > inversionPT.X + this.Width / 2)
+            {
+                inversionPT = Cursor.Position;
+                return true;
+            }
+            if (Y < inversionPT.Y - this.Height / 2 || Y > inversionPT.Y + this.Height / 2)
+            {
+                inversionPT = Cursor.Position;
+                return true;
+            }
+                
+            return false;
         }
 
         public static int GetWindowsScaling()
@@ -189,6 +224,17 @@ namespace MouseHover
         private void Form2_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void Form2_MouseLeave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            //if(!ps.Default.invert)
+                //CreateView();
         }
     }
 }
