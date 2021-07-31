@@ -33,3 +33,4 @@ C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\MouseHover\obj\Debug\MouseHov
 C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\MouseHover\obj\Debug\MouseHover.csproj.CoreCompileInputs.cache
 C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\MouseHover\obj\Debug\MouseHover.exe
 C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\MouseHover\obj\Debug\MouseHover.pdb
+C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\MouseHover\obj\Debug\MouseHover.AppOverlay.resources

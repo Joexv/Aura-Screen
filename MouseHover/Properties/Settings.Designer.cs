@@ -286,5 +286,53 @@ namespace MouseHover.Properties {
                 this["filterStartup"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.45")]
+        public decimal AO_Opacity {
+            get {
+                return ((decimal)(this["AO_Opacity"]));
+            }
+            set {
+                this["AO_Opacity"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("255, 192, 192")]
+        public global::System.Drawing.Color AO_Color {
+            get {
+                return ((global::System.Drawing.Color)(this["AO_Color"]));
+            }
+            set {
+                this["AO_Color"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AO_ProcessByName {
+            get {
+                return ((bool)(this["AO_ProcessByName"]));
+            }
+            set {
+                this["AO_ProcessByName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("explorer.exe")]
+        public string AO_SavedName {
+            get {
+                return ((string)(this["AO_SavedName"]));
+            }
+            set {
+                this["AO_SavedName"] = value;
+            }
+        }
     }
 }

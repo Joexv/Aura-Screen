@@ -68,5 +68,17 @@
     <Setting Name="filterStartup" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="AO_Opacity" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">0.45</Value>
+    </Setting>
+    <Setting Name="AO_Color" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">255, 192, 192</Value>
+    </Setting>
+    <Setting Name="AO_ProcessByName" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="AO_SavedName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">explorer.exe</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

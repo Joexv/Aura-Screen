@@ -87,6 +87,8 @@ namespace MouseHover
             this.button11 = new System.Windows.Forms.Button();
             this.tileSelect = new System.Windows.Forms.ComboBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.filterStartup = new System.Windows.Forms.CheckBox();
+            this.button15 = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -95,8 +97,20 @@ namespace MouseHover
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label18 = new System.Windows.Forms.Label();
             this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
-            this.filterStartup = new System.Windows.Forms.CheckBox();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.AO_TopMost = new System.Windows.Forms.RadioButton();
+            this.AO_ByName = new System.Windows.Forms.RadioButton();
+            this.AO_Apply = new System.Windows.Forms.Button();
+            this.AO_ComboBox = new System.Windows.Forms.ComboBox();
+            this.AO_Refresh = new System.Windows.Forms.Button();
+            this.AO_TextBox = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.AO_Select = new System.Windows.Forms.Button();
+            this.AO_Opacity = new System.Windows.Forms.NumericUpDown();
+            this.label22 = new System.Windows.Forms.Label();
+            this.AO_ColorChange = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.button16 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.borderThicccccc)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -109,6 +123,8 @@ namespace MouseHover
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AO_Opacity)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -454,6 +470,7 @@ namespace MouseHover
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Location = new System.Drawing.Point(8, 8);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
@@ -774,6 +791,27 @@ namespace MouseHover
             this.tabPage5.Text = "Screen Filters";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // filterStartup
+            // 
+            this.filterStartup.AutoSize = true;
+            this.filterStartup.Location = new System.Drawing.Point(9, 444);
+            this.filterStartup.Name = "filterStartup";
+            this.filterStartup.Size = new System.Drawing.Size(253, 21);
+            this.filterStartup.TabIndex = 9;
+            this.filterStartup.Text = "Enable filter when application starts";
+            this.filterStartup.UseVisualStyleBackColor = true;
+            this.filterStartup.CheckedChanged += new System.EventHandler(this.filterStartup_CheckedChanged);
+            // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(288, 118);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(127, 35);
+            this.button15.TabIndex = 8;
+            this.button15.Text = "Show Example";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
             // label20
             // 
             this.label20.AutoSize = true;
@@ -819,7 +857,6 @@ namespace MouseHover
             this.matrixBox.Size = new System.Drawing.Size(264, 24);
             this.matrixBox.TabIndex = 3;
             this.matrixBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            this.matrixBox.TextChanged += new System.EventHandler(this.matrixBox_TextChanged);
             // 
             // linkLabel1
             // 
@@ -852,26 +889,167 @@ namespace MouseHover
             this.button14.UseVisualStyleBackColor = true;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
-            // button15
+            // tabPage6
             // 
-            this.button15.Location = new System.Drawing.Point(288, 118);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(127, 35);
-            this.button15.TabIndex = 8;
-            this.button15.Text = "Show Example";
-            this.button15.UseVisualStyleBackColor = true;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
+            this.tabPage6.Controls.Add(this.button16);
+            this.tabPage6.Controls.Add(this.AO_ColorChange);
+            this.tabPage6.Controls.Add(this.AO_Opacity);
+            this.tabPage6.Controls.Add(this.label22);
+            this.tabPage6.Controls.Add(this.AO_Select);
+            this.tabPage6.Controls.Add(this.label21);
+            this.tabPage6.Controls.Add(this.AO_Refresh);
+            this.tabPage6.Controls.Add(this.AO_ComboBox);
+            this.tabPage6.Controls.Add(this.AO_TopMost);
+            this.tabPage6.Controls.Add(this.AO_ByName);
+            this.tabPage6.Controls.Add(this.AO_TextBox);
+            this.tabPage6.Controls.Add(this.AO_Apply);
+            this.tabPage6.Location = new System.Drawing.Point(4, 25);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(421, 499);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "App Overlay";
+            this.tabPage6.UseVisualStyleBackColor = true;
             // 
-            // filterStartup
+            // AO_TopMost
             // 
-            this.filterStartup.AutoSize = true;
-            this.filterStartup.Location = new System.Drawing.Point(9, 444);
-            this.filterStartup.Name = "filterStartup";
-            this.filterStartup.Size = new System.Drawing.Size(253, 21);
-            this.filterStartup.TabIndex = 9;
-            this.filterStartup.Text = "Enable filter when application starts";
-            this.filterStartup.UseVisualStyleBackColor = true;
-            this.filterStartup.CheckedChanged += new System.EventHandler(this.filterStartup_CheckedChanged);
+            this.AO_TopMost.AutoSize = true;
+            this.AO_TopMost.Checked = true;
+            this.AO_TopMost.Location = new System.Drawing.Point(238, 21);
+            this.AO_TopMost.Name = "AO_TopMost";
+            this.AO_TopMost.Size = new System.Drawing.Size(176, 21);
+            this.AO_TopMost.TabIndex = 4;
+            this.AO_TopMost.TabStop = true;
+            this.AO_TopMost.Text = "Attatch To Top Window";
+            this.AO_TopMost.UseVisualStyleBackColor = true;
+            // 
+            // AO_ByName
+            // 
+            this.AO_ByName.AutoSize = true;
+            this.AO_ByName.Location = new System.Drawing.Point(6, 21);
+            this.AO_ByName.Name = "AO_ByName";
+            this.AO_ByName.Size = new System.Drawing.Size(134, 21);
+            this.AO_ByName.TabIndex = 3;
+            this.AO_ByName.TabStop = true;
+            this.AO_ByName.Text = "Attatch By Name";
+            this.toolTip1.SetToolTip(this.AO_ByName, "Make sure you minimize the window when \r\nnot in use otherwise the box will still " +
+        "be visible");
+            this.AO_ByName.UseVisualStyleBackColor = true;
+            // 
+            // AO_Apply
+            // 
+            this.AO_Apply.Location = new System.Drawing.Point(6, 443);
+            this.AO_Apply.Name = "AO_Apply";
+            this.AO_Apply.Size = new System.Drawing.Size(409, 29);
+            this.AO_Apply.TabIndex = 0;
+            this.AO_Apply.Text = "Apply Changes";
+            this.AO_Apply.UseVisualStyleBackColor = true;
+            this.AO_Apply.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // AO_ComboBox
+            // 
+            this.AO_ComboBox.FormattingEnabled = true;
+            this.AO_ComboBox.Location = new System.Drawing.Point(6, 111);
+            this.AO_ComboBox.Name = "AO_ComboBox";
+            this.AO_ComboBox.Size = new System.Drawing.Size(194, 24);
+            this.AO_ComboBox.TabIndex = 5;
+            // 
+            // AO_Refresh
+            // 
+            this.AO_Refresh.Location = new System.Drawing.Point(206, 106);
+            this.AO_Refresh.Name = "AO_Refresh";
+            this.AO_Refresh.Size = new System.Drawing.Size(181, 32);
+            this.AO_Refresh.TabIndex = 6;
+            this.AO_Refresh.Text = "Refresh Apps";
+            this.AO_Refresh.UseVisualStyleBackColor = true;
+            this.AO_Refresh.Click += new System.EventHandler(this.AO_Refresh_Click);
+            // 
+            // AO_TextBox
+            // 
+            this.AO_TextBox.Location = new System.Drawing.Point(6, 48);
+            this.AO_TextBox.Name = "AO_TextBox";
+            this.AO_TextBox.Size = new System.Drawing.Size(194, 22);
+            this.AO_TextBox.TabIndex = 1;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(6, 88);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(184, 17);
+            this.label21.TabIndex = 7;
+            this.label21.Text = "Currently Open Applications";
+            // 
+            // AO_Select
+            // 
+            this.AO_Select.Location = new System.Drawing.Point(206, 144);
+            this.AO_Select.Name = "AO_Select";
+            this.AO_Select.Size = new System.Drawing.Size(181, 32);
+            this.AO_Select.TabIndex = 8;
+            this.AO_Select.Text = "Select Current App";
+            this.AO_Select.UseVisualStyleBackColor = true;
+            this.AO_Select.Click += new System.EventHandler(this.AO_Select_Click);
+            // 
+            // AO_Opacity
+            // 
+            this.AO_Opacity.DecimalPlaces = 2;
+            this.AO_Opacity.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            this.AO_Opacity.Location = new System.Drawing.Point(125, 190);
+            this.AO_Opacity.Margin = new System.Windows.Forms.Padding(2);
+            this.AO_Opacity.Maximum = new decimal(new int[] {
+            95,
+            0,
+            0,
+            131072});
+            this.AO_Opacity.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.AO_Opacity.Name = "AO_Opacity";
+            this.AO_Opacity.Size = new System.Drawing.Size(75, 22);
+            this.AO_Opacity.TabIndex = 38;
+            this.AO_Opacity.Value = new decimal(new int[] {
+            45,
+            0,
+            0,
+            131072});
+            this.AO_Opacity.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(6, 192);
+            this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(56, 17);
+            this.label22.TabIndex = 37;
+            this.label22.Text = "Opacity";
+            // 
+            // AO_ColorChange
+            // 
+            this.AO_ColorChange.Location = new System.Drawing.Point(206, 186);
+            this.AO_ColorChange.Margin = new System.Windows.Forms.Padding(2);
+            this.AO_ColorChange.Name = "AO_ColorChange";
+            this.AO_ColorChange.Size = new System.Drawing.Size(181, 29);
+            this.AO_ColorChange.TabIndex = 39;
+            this.AO_ColorChange.Text = "Change Fill Color";
+            this.AO_ColorChange.UseVisualStyleBackColor = true;
+            this.AO_ColorChange.Click += new System.EventHandler(this.AO_ColorChange_Click);
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(6, 408);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(409, 29);
+            this.button16.TabIndex = 40;
+            this.button16.Text = "Toggle Visibility";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click_1);
             // 
             // MainForm
             // 
@@ -882,6 +1060,7 @@ namespace MouseHover
             this.Controls.Add(this.disableHotKey);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -906,6 +1085,9 @@ namespace MouseHover
             this.tabPage5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tabPage6.ResumeLayout(false);
+            this.tabPage6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AO_Opacity)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -979,6 +1161,20 @@ namespace MouseHover
         private System.Windows.Forms.ComboBox matrixBox;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.CheckBox filterStartup;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.RadioButton AO_TopMost;
+        private System.Windows.Forms.RadioButton AO_ByName;
+        private System.Windows.Forms.Button AO_Apply;
+        private System.Windows.Forms.Button AO_Select;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Button AO_Refresh;
+        private System.Windows.Forms.ComboBox AO_ComboBox;
+        private System.Windows.Forms.TextBox AO_TextBox;
+        private System.Windows.Forms.Button AO_ColorChange;
+        private System.Windows.Forms.NumericUpDown AO_Opacity;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button button16;
     }
 }
 

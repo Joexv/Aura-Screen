@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
+using System.Management;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,27 +40,33 @@ namespace MouseHover
             if (ps.Default.onStartup)
                 Toggle();
 
+            #region MainPage
             width.Text = ps.Default.width.ToString();
             height.Text = ps.Default.height.ToString();
-
             styleBox.Text = ps.Default.style;
-
             checkBox1.Checked = ps.Default.onStartup;
-
             checkBox2.Checked = ps.Default.border;
             borderThicccccc.Value = ps.Default.borderThicc;
-
             checkBox3.Checked = ps.Default.keepInTray;
+            //This is only here because my config was stupid and I didn't want to find it and fix it :)
+            if (ps.Default.opacity > 1) ps.Default.opacity = 1;
+            opacityBar.Value = ps.Default.opacity;
+            #endregion
 
+            #region hotKeys
             enableHotKey.Text = ps.Default.enableHK;
-            //disableHotKey.Text = ps.Default.disableHK;
             invertHotKey.Text = ps.Default.invertHK;
             enlargeHotKey.Text = ps.Default.enlargeHK;
             shrinkHotKey.Text = ps.Default.shirnkHK;
             cylceHotKey.Text = ps.Default.cycleHK;
-            //This is only here because my config was stupid and I didn't want to find it and fix it :)
-            if (ps.Default.opacity > 1) ps.Default.opacity = 1;
-            opacityBar.Value = ps.Default.opacity;
+            #endregion
+
+            #region AppOverlay
+            AO_ByName.Checked = ps.Default.AO_ProcessByName;
+            AO_TopMost.Checked = !ps.Default.AO_ProcessByName;
+            AO_TextBox.Text = ps.Default.AO_SavedName;
+            AO_Opacity.Value = ps.Default.AO_Opacity;
+            #endregion
         }
 
         private void SaveHotkeys()
@@ -359,20 +366,93 @@ namespace MouseHover
             return newBmp;
         }
 
-        private void matrixBox_TextChanged(object sender, EventArgs e)
-        {
-             //pictureBox2.Image = Transform((Bitmap)pictureBox1.Image, Matrix[matrixBox.Text]);
-        }
-
         private void button15_Click(object sender, EventArgs e)
         {
-               pictureBox2.Image = Transform((Bitmap)pictureBox1.Image, Matrix[matrixBox.Text]);
+            pictureBox2.Image.Dispose();
+            pictureBox2.Image = Transform((Bitmap)pictureBox1.Image, Matrix[matrixBox.Text]);
         }
 
         private void filterStartup_CheckedChanged(object sender, EventArgs e)
         {
             ps.Default.filterStartup = filterStartup.Checked;
             ps.Default.Save();
+        }
+        AppOverlay appO = new AppOverlay();
+
+        public static string[] ListProcesses()
+        {
+            List<string> Results = new List<string>();
+            ManagementClass MgmtClass = new ManagementClass("Win32_Process");
+            foreach (ManagementObject mo in MgmtClass.GetInstances())
+            {
+                if (!BlacklistedApps.Contains(mo["Name"]) && !Results.Contains(mo["Name"]))
+                {
+                    Results.Add((string)mo["Name"]);
+                    Console.WriteLine(mo["Name"]);
+                }
+            }
+                
+            return Results.ToArray();
+        }
+
+        public static string[] BlacklistedApps = {"RuntimeBroker.exe", "LockApp.exe", "SettingSyncHost.exe", "ShellExperienceHost.exe", "RuntimeBroker.exe", "SearchApp.exe", "RuntimeBroker.exe", "StartMenuExperienceHost.exe", "ctfmon.exe", "asus_framework.exe", "AcPowerNotification.exe", "taskhostw.exe", "sihost.exe", "MsMpEng.exe", "SRService.exe", "ROGLiveService.exe", "sshd.exe", "SessionService.exe", "RtkAndUService64.exe", "SSUService.exe", "RefreshRateService.exe", "LightingService.exe", "taskhostw.exe", "Intel_PIE_Service.exe", "wlanext.exe", "spoolsv.exe", "WmiPrvSE.exe", "Memory Compression", "atieclxx.exe", "atiesrxx.exe", "amdlogsr.exe", "fontdrvhost.exe", "winlogon.exe", "lsass.exe", "wininit.exe", "csrss.exe", "smss.exe", "System Idle Process", "System", "svchost.exe", "system", "conhost.exe", "crss.exe", "dasHost.exe", "CompPkgSrv.exe", "dwm.exe", "dllhost.exe", "rundll32.exe" };
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            appO.Close();
+            appO = new AppOverlay();
+            if (AO_ByName.Checked && AO_TextBox.Text != string.Empty)
+            {
+                appO.AppName = AO_TextBox.Text;
+                ps.Default.AO_SavedName = AO_TextBox.Text;
+            }
+            else 
+            { 
+                appO.AppName = String.Empty; 
+            }
+            appO.Show();
+            appO.AO_AttatchTimer.Start();
+
+            ps.Default.AO_ProcessByName = AO_ByName.Checked;
+            ps.Default.Save();
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            ps.Default.AO_Opacity = AO_Opacity.Value;
+            ps.Default.Save();
+        }
+
+        private void AO_ColorChange_Click(object sender, EventArgs e)
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                ps.Default.AO_Color = colorDialog1.Color;
+                ps.Default.Save();
+            }
+        }
+
+        private void AO_Refresh_Click(object sender, EventArgs e)
+        {
+            AO_ComboBox.DataSource = ListProcesses();
+        }
+
+        private void AO_Select_Click(object sender, EventArgs e)
+        {
+            AO_TextBox.Text = AO_ComboBox.Text;
+        }
+
+        private void button16_Click_1(object sender, EventArgs e)
+        {
+            if (appO.AO_AttatchTimer.Enabled)
+            {
+                appO.AO_AttatchTimer.Stop();
+                appO.Hide();
+            }
+            else{
+                appO.AO_AttatchTimer.Start();
+                appO.Show();
+            }
         }
     }
     internal static class ExtensionMethods
