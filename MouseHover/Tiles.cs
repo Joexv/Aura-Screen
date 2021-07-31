@@ -34,6 +34,7 @@ namespace MouseHover
         public Tiles()
         {
             InitializeComponent();
+            this.Opacity = (double)ps.Default.tileOpacity;
         }
 
         private void Tiles_Load(object sender, EventArgs e)
@@ -49,28 +50,27 @@ namespace MouseHover
                     this.Hide();
                     return;
                 case 1: //Top
-                    CreateView(screenWidth, screenHeight / 2, 0, 0, Color.White, 0.75);
+                    CreateView(screenWidth, screenHeight / 2, 0, 0);
                     return;
                 case 2: //Bottom
-                    CreateView(screenWidth, screenHeight / 2, 0, screenHeight / 2, Color.White, 0.75);
+                    CreateView(screenWidth, screenHeight / 2, 0, screenHeight / 2);
                     return;
                 case 3: //Left
-                    CreateView(screenWidth / 2, screenHeight, 0, 0, Color.White, 0.75);
+                    CreateView(screenWidth / 2, screenHeight, 0, 0);
                     return;
                 case 4: //Right
-                    CreateView(screenWidth / 2, screenHeight, pt.X - screenWidth / 1.5, pt.Y, Color.White, 0.75);
+                    CreateView(screenWidth / 2, screenHeight, pt.X - (screenWidth / 2), pt.Y);
                     return;
             }
         }
 
-        private void CreateView(int Width, int Height, int X, int Y, Color color, double Opacity)
+        private void CreateView(int Width, int Height, int X, int Y)
         {
             this.Width = Width;
             this.Height = Height;
-            this.BackColor = color;
-            this.Opacity = Opacity;
+            this.BackColor = ps.Default.tileColor;
             this.TopMost = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = FormBorderStyle.None;
             this.Location = new Point(X, Y);
         }
 

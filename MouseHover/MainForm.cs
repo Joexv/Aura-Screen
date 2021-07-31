@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NegativeScreen;
 
 namespace MouseHover
 {
@@ -27,6 +30,8 @@ namespace MouseHover
         {
             ReloadHotKeys();
             PopulateControls();
+            foreach(string item in Matrix.Keys)
+                matrixBox.Items.Add(item);
         }
 
         private void PopulateControls()
@@ -47,11 +52,12 @@ namespace MouseHover
             checkBox3.Checked = ps.Default.keepInTray;
 
             enableHotKey.Text = ps.Default.enableHK;
-            disableHotKey.Text = ps.Default.disableHK;
+            //disableHotKey.Text = ps.Default.disableHK;
             invertHotKey.Text = ps.Default.invertHK;
             enlargeHotKey.Text = ps.Default.enlargeHK;
             shrinkHotKey.Text = ps.Default.shirnkHK;
             cylceHotKey.Text = ps.Default.cycleHK;
+            //This is only here because my config was stupid and I didn't want to find it and fix it :)
             if (ps.Default.opacity > 1) ps.Default.opacity = 1;
             opacityBar.Value = ps.Default.opacity;
         }
@@ -59,7 +65,7 @@ namespace MouseHover
         private void SaveHotkeys()
         {
             ps.Default.enableHK = enableHotKey.Text;
-            ps.Default.disableHK = disableHotKey.Text;
+            //ps.Default.disableHK = disableHotKey.Text;
             ps.Default.invertHK = invertHotKey.Text;
             ps.Default.enlargeHK = enlargeHotKey.Text;
             ps.Default.shirnkHK = shrinkHotKey.Text;
@@ -87,9 +93,9 @@ namespace MouseHover
             else
                 ps.Default.tileMode = 0;
             ps.Default.Save();
-            try{ tile.Close(); }
+            try { tile.Close(); }
             catch { }
-            
+
             tile = new Tiles();
             tile.Show();
         }
@@ -101,7 +107,7 @@ namespace MouseHover
 
             if (!ps.Default.invert)
                 Reload();
-                
+
         }
 
         private void Toggle()
@@ -258,6 +264,140 @@ namespace MouseHover
         {
             ps.Default.opacity = opacityBar.Value;
             ps.Default.Save();
+        }
+
+        private void tabPage4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            ps.Default.tileMode = tileSelect.SelectedIndex + 1;
+            ps.Default.Save();
+            try { tile.Close(); }
+            catch { }
+            tile = new Tiles();
+            tile.Show();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            if (tile.Visible)
+                tile.Hide();
+            else
+                tile.Show();
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                ps.Default.tileColor = colorDialog1.Color;
+                ps.Default.Save();
+            }
+        }
+
+        private void L_Opacity_ValueChanged(object sender, EventArgs e)
+        {
+            ps.Default.tileOpacity = L_Opacity.Value;
+            ps.Default.Save();
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        bool FilterUsed = false;
+        private void button14_Click(object sender, EventArgs e)
+        {
+            if (FilterUsed) 
+            {
+                FilterUsed = false;
+                BuiltinMatrices.ChangeColorEffect(BuiltinMatrices.Identity, FilterUsed);
+            }
+            else
+                FilterUsed = BuiltinMatrices.ChangeColorEffect(Matrix[matrixBox.Text], FilterUsed);
+
+            ps.Default.lastFiler = matrixBox.Text;
+            ps.Default.Save();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(@"https://zerowidthjoiner.net/negativescreen");
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        Dictionary<string, float[,]> Matrix = new Dictionary<string, float[,]> {
+            { "None", BuiltinMatrices.Identity },
+            { "Negative", BuiltinMatrices.Negative },
+            { "Negative Greyscale", BuiltinMatrices.NegativeGrayScale },
+            { "Negative Hue Shift 180", BuiltinMatrices.NegativeHueShift180 },
+            { "Negative Red", BuiltinMatrices.NegativeRed },
+            { "Negative Sepia", BuiltinMatrices.NegativeSepia },
+            { "Sepia", BuiltinMatrices.Sepia },
+            { "Red", BuiltinMatrices.Red },
+            { "Greyscale", BuiltinMatrices.GrayScale },
+            { "Hue Shift 180", BuiltinMatrices.HueShift180 }
+        };
+
+        public Bitmap Transform(Bitmap original, float[,] matrix)
+        {
+            Bitmap newBmp = new Bitmap(original.Width, original.Height);
+            Graphics g = Graphics.FromImage(newBmp);
+            ColorMatrix colorMatrix = new ColorMatrix(matrix.ToJaggedArray());
+            ImageAttributes img = new ImageAttributes();
+            img.SetColorMatrix(colorMatrix);
+            g.DrawImage(original, new Rectangle(0, 0, original.Width, original.Height), 0, 0, original.Width, original.Height, GraphicsUnit.Pixel, img);
+            g.Dispose();
+            return newBmp;
+        }
+
+        private void matrixBox_TextChanged(object sender, EventArgs e)
+        {
+             //pictureBox2.Image = Transform((Bitmap)pictureBox1.Image, Matrix[matrixBox.Text]);
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+               pictureBox2.Image = Transform((Bitmap)pictureBox1.Image, Matrix[matrixBox.Text]);
+        }
+
+        private void filterStartup_CheckedChanged(object sender, EventArgs e)
+        {
+            ps.Default.filterStartup = filterStartup.Checked;
+            ps.Default.Save();
+        }
+    }
+    internal static class ExtensionMethods
+    {
+        internal static T[][] ToJaggedArray<T>(this T[,] twoDimensionalArray)
+        {
+            int rowsFirstIndex = twoDimensionalArray.GetLowerBound(0);
+            int rowsLastIndex = twoDimensionalArray.GetUpperBound(0);
+            int numberOfRows = rowsLastIndex + 1;
+
+            int columnsFirstIndex = twoDimensionalArray.GetLowerBound(1);
+            int columnsLastIndex = twoDimensionalArray.GetUpperBound(1);
+            int numberOfColumns = columnsLastIndex + 1;
+
+            T[][] jaggedArray = new T[numberOfRows][];
+            for (int i = rowsFirstIndex; i <= rowsLastIndex; i++)
+            {
+                jaggedArray[i] = new T[numberOfColumns];
+
+                for (int j = columnsFirstIndex; j <= columnsLastIndex; j++)
+                {
+                    jaggedArray[i][j] = twoDimensionalArray[i, j];
+                }
+            }
+            return jaggedArray;
         }
     }
 }

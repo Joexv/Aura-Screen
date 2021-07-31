@@ -12,7 +12,7 @@ namespace MouseHover.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -145,30 +145,6 @@ namespace MouseHover.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int DPI_X_ADJ {
-            get {
-                return ((int)(this["DPI_X_ADJ"]));
-            }
-            set {
-                this["DPI_X_ADJ"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int DPI_Y_ADJ {
-            get {
-                return ((int)(this["DPI_Y_ADJ"]));
-            }
-            set {
-                this["DPI_Y_ADJ"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("A")]
         public string enableHK {
             get {
@@ -176,18 +152,6 @@ namespace MouseHover.Properties {
             }
             set {
                 this["enableHK"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("D")]
-        public string disableHK {
-            get {
-                return ((string)(this["disableHK"]));
-            }
-            set {
-                this["disableHK"] = value;
             }
         }
         
@@ -272,6 +236,54 @@ namespace MouseHover.Properties {
             }
             set {
                 this["opacity"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        public global::System.Drawing.Color tileColor {
+            get {
+                return ((global::System.Drawing.Color)(this["tileColor"]));
+            }
+            set {
+                this["tileColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.45")]
+        public decimal tileOpacity {
+            get {
+                return ((decimal)(this["tileOpacity"]));
+            }
+            set {
+                this["tileOpacity"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("None")]
+        public string lastFiler {
+            get {
+                return ((string)(this["lastFiler"]));
+            }
+            set {
+                this["lastFiler"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool filterStartup {
+            get {
+                return ((bool)(this["filterStartup"]));
+            }
+            set {
+                this["filterStartup"] = value;
             }
         }
     }

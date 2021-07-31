@@ -32,17 +32,8 @@
     <Setting Name="keepInTray" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="DPI_X_ADJ" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="DPI_Y_ADJ" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
-    </Setting>
     <Setting Name="enableHK" Type="System.String" Scope="User">
       <Value Profile="(Default)">A</Value>
-    </Setting>
-    <Setting Name="disableHK" Type="System.String" Scope="User">
-      <Value Profile="(Default)">D</Value>
     </Setting>
     <Setting Name="invertHK" Type="System.String" Scope="User">
       <Value Profile="(Default)">I</Value>
@@ -64,6 +55,18 @@
     </Setting>
     <Setting Name="opacity" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">0.45</Value>
+    </Setting>
+    <Setting Name="tileColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="tileOpacity" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">0.45</Value>
+    </Setting>
+    <Setting Name="lastFiler" Type="System.String" Scope="User">
+      <Value Profile="(Default)">None</Value>
+    </Setting>
+    <Setting Name="filterStartup" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

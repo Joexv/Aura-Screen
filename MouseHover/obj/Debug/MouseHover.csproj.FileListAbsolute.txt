@@ -21,3 +21,15 @@ C:\Users\HPD\Documents\Github\MouseHover\MouseHover\obj\Debug\MouseHover.pdb
 C:\Users\HPD\Documents\Github\MouseHover\MouseHover\obj\Debug\MouseHover.MainForm.resources
 C:\Users\HPD\Documents\Github\MouseHover\MouseHover\obj\Debug\MouseHover.MouseBox.resources
 C:\Users\HPD\Documents\Github\MouseHover\MouseHover\obj\Debug\MouseHover.Tiles.resources
+C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\MouseHover\bin\Debug\MouseHover.exe.config
+C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\MouseHover\bin\Debug\MouseHover.exe
+C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\MouseHover\bin\Debug\MouseHover.pdb
+C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\MouseHover\obj\Debug\MouseHover.csproj.AssemblyReference.cache
+C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\MouseHover\obj\Debug\MouseHover.MainForm.resources
+C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\MouseHover\obj\Debug\MouseHover.MouseBox.resources
+C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\MouseHover\obj\Debug\MouseHover.Properties.Resources.resources
+C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\MouseHover\obj\Debug\MouseHover.Tiles.resources
+C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\MouseHover\obj\Debug\MouseHover.csproj.GenerateResource.cache
+C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\MouseHover\obj\Debug\MouseHover.csproj.CoreCompileInputs.cache
+C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\MouseHover\obj\Debug\MouseHover.exe
+C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\MouseHover\obj\Debug\MouseHover.pdb

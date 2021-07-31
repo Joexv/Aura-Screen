@@ -65,6 +65,8 @@
     <Compile Include="MouseBox.Designer.cs">
       <DependentUpon>MouseBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="NegativeScreen Classes\BuiltinMatrices.cs" />
+    <Compile Include="NegativeScreen Classes\NativeStructures.cs" />
     <Compile Include="Tiles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +106,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="circle_rgb_color_mix.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
