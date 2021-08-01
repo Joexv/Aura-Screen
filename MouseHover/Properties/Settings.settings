@@ -62,12 +62,6 @@
     <Setting Name="tileOpacity" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">0.45</Value>
     </Setting>
-    <Setting Name="lastFiler" Type="System.String" Scope="User">
-      <Value Profile="(Default)">None</Value>
-    </Setting>
-    <Setting Name="filterStartup" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
     <Setting Name="AO_Opacity" Type="System.Decimal" Scope="User">
       <Value Profile="(Default)">0.45</Value>
     </Setting>
@@ -79,6 +73,18 @@
     </Setting>
     <Setting Name="AO_SavedName" Type="System.String" Scope="User">
       <Value Profile="(Default)">explorer.exe</Value>
+    </Setting>
+    <Setting Name="Filter_OnStartup" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Filter_Programs" Type="System.String" Scope="User">
+      <Value Profile="(Default)">explorer.exe;firefox.exe</Value>
+    </Setting>
+    <Setting Name="Filter_OnActive" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Filter_LastUsed" Type="System.String" Scope="User">
+      <Value Profile="(Default)">None</Value>
     </Setting>
   </Settings>
 </SettingsFile>

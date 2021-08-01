@@ -265,30 +265,6 @@ namespace MouseHover.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("None")]
-        public string lastFiler {
-            get {
-                return ((string)(this["lastFiler"]));
-            }
-            set {
-                this["lastFiler"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool filterStartup {
-            get {
-                return ((bool)(this["filterStartup"]));
-            }
-            set {
-                this["filterStartup"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0.45")]
         public decimal AO_Opacity {
             get {
@@ -332,6 +308,54 @@ namespace MouseHover.Properties {
             }
             set {
                 this["AO_SavedName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Filter_OnStartup {
+            get {
+                return ((bool)(this["Filter_OnStartup"]));
+            }
+            set {
+                this["Filter_OnStartup"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("explorer.exe;firefox.exe")]
+        public string Filter_Programs {
+            get {
+                return ((string)(this["Filter_Programs"]));
+            }
+            set {
+                this["Filter_Programs"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Filter_OnActive {
+            get {
+                return ((bool)(this["Filter_OnActive"]));
+            }
+            set {
+                this["Filter_OnActive"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("None")]
+        public string Filter_LastUsed {
+            get {
+                return ((string)(this["Filter_LastUsed"]));
+            }
+            set {
+                this["Filter_LastUsed"] = value;
             }
         }
     }

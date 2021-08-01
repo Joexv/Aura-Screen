@@ -100,7 +100,7 @@ namespace MouseHover
             return null;
         }
 
-        private string GetActiveProcessFileName()
+        public string GetActiveProcessFileName()
         {
             IntPtr hwnd = GetForegroundWindow();
             uint pid;

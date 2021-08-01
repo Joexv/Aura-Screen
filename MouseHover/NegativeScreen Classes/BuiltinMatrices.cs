@@ -208,8 +208,8 @@ namespace NegativeScreen
 		public static bool ChangeColorEffect(float[,] matrix, bool FilterUsed = false)
 		{
 			ColorEffect colorEffect = new ColorEffect(matrix);
-			if (FilterUsed)
-				NativeMethods.MagUninitialize();
+			//if (FilterUsed)
+			//	NativeMethods.MagUninitialize();
 			NativeMethods.MagInitialize();
 			NativeMethods.MagSetFullscreenColorEffect(ref colorEffect);
 			return true;

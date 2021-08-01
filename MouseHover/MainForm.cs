@@ -67,6 +67,21 @@ namespace MouseHover
             AO_TextBox.Text = ps.Default.AO_SavedName;
             AO_Opacity.Value = ps.Default.AO_Opacity;
             #endregion
+
+            #region Screen Filters
+            Filter_Programs.DataSource = ps.Default.Filter_Programs.Split(';');
+            filterStartup.Checked = ps.Default.Filter_OnStartup;
+            Filter_OnActive.Checked = ps.Default.Filter_OnActive;
+            matrixBox.Text = ps.Default.Filter_LastUsed;
+            if (Filter_OnActive.Checked)
+                Filter_Timer.Start();
+            else
+                Filter_Timer.Stop();
+
+            if (filterStartup.Checked)
+                ApplyFilter();
+                
+            #endregion
         }
 
         private void SaveHotkeys()
@@ -259,6 +274,7 @@ namespace MouseHover
             frm2.Dispose();
             tile.Dispose();
             notifyIcon1.Dispose();
+            NativeMethods.MagUninitialize();
         }
 
         private void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
@@ -319,16 +335,21 @@ namespace MouseHover
         bool FilterUsed = false;
         private void button14_Click(object sender, EventArgs e)
         {
-            if (FilterUsed) 
+            ApplyFilter();
+        }
+
+        private void ApplyFilter()
+        {
+            ps.Default.Filter_LastUsed = matrixBox.Text;
+            ps.Default.Save();
+
+            if (FilterUsed)
             {
                 FilterUsed = false;
                 BuiltinMatrices.ChangeColorEffect(BuiltinMatrices.Identity, FilterUsed);
             }
             else
-                FilterUsed = BuiltinMatrices.ChangeColorEffect(Matrix[matrixBox.Text], FilterUsed);
-
-            ps.Default.lastFiler = matrixBox.Text;
-            ps.Default.Save();
+                FilterUsed = BuiltinMatrices.ChangeColorEffect(Matrix[ps.Default.Filter_LastUsed], FilterUsed);
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -338,7 +359,8 @@ namespace MouseHover
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            ps.Default.Filter_LastUsed = matrixBox.Text;
+            ps.Default.Save();
         }
 
         Dictionary<string, float[,]> Matrix = new Dictionary<string, float[,]> {
@@ -368,13 +390,14 @@ namespace MouseHover
 
         private void button15_Click(object sender, EventArgs e)
         {
-            pictureBox2.Image.Dispose();
+            if(pictureBox2.Image != null)
+                pictureBox2.Image.Dispose();
             pictureBox2.Image = Transform((Bitmap)pictureBox1.Image, Matrix[matrixBox.Text]);
         }
 
         private void filterStartup_CheckedChanged(object sender, EventArgs e)
         {
-            ps.Default.filterStartup = filterStartup.Checked;
+            ps.Default.Filter_OnStartup = filterStartup.Checked;
             ps.Default.Save();
         }
         AppOverlay appO = new AppOverlay();
@@ -388,7 +411,6 @@ namespace MouseHover
                 if (!BlacklistedApps.Contains(mo["Name"]) && !Results.Contains(mo["Name"]))
                 {
                     Results.Add((string)mo["Name"]);
-                    Console.WriteLine(mo["Name"]);
                 }
             }
                 
@@ -453,6 +475,76 @@ namespace MouseHover
                 appO.AO_AttatchTimer.Start();
                 appO.Show();
             }
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            ps.Default.Filter_OnActive = Filter_OnActive.Checked;
+            ps.Default.Save();
+
+            if (ps.Default.Filter_OnActive)
+                Filter_Timer.Start();
+            else
+            {
+                Filter_Timer.Stop();
+                BuiltinMatrices.ChangeColorEffect(BuiltinMatrices.Identity, true);
+            }
+        }
+
+        private void button10_Click_1(object sender, EventArgs e)
+        {
+            Filter_ComboBox.DataSource = ListProcesses();
+        }
+
+        private void Filter_Timer_Tick(object sender, EventArgs e)
+        {
+            if (ps.Default.Filter_OnActive)
+            {
+                Process[] processes = null;
+                string AppName = appO.GetActiveProcessFileName() + ".exe";
+
+                processes = Process.GetProcessesByName(AppName.Substring(0, AppName.Length - 4));
+                Process p = processes.FirstOrDefault();
+
+                if (p != null && ps.Default.Filter_Programs.Split(';').Contains(AppName))
+                {
+                    if(!FilterUsed)
+                        FilterUsed = BuiltinMatrices.ChangeColorEffect(Matrix[ps.Default.Filter_LastUsed], false);
+                }
+                else
+                {
+                    BuiltinMatrices.ChangeColorEffect(BuiltinMatrices.Identity, true);
+                    FilterUsed = false;
+                }
+            }                
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            //Add to Program list
+            string joined = "";
+            foreach(string item in Filter_Programs.Items)
+            {
+                if ( !String.IsNullOrWhiteSpace(item))
+                    joined += item + ";";
+            }
+            ps.Default.Filter_Programs = joined + Filter_ComboBox.Text + ";";
+            ps.Default.Save();
+            Filter_Programs.DataSource = ps.Default.Filter_Programs.Split(';');
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            //Add to Program list
+            string joined = "";
+            foreach (string item in Filter_Programs.Items)
+            {
+                if(item != Filter_ComboBox.Text && !String.IsNullOrWhiteSpace(item))
+                    joined += item + ";";
+            }
+            ps.Default.Filter_Programs = joined;
+            ps.Default.Save();
+            Filter_Programs.DataSource = ps.Default.Filter_Programs.Split(';');
         }
     }
     internal static class ExtensionMethods
