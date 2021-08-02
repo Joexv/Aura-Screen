@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Management;
 using System.Runtime.InteropServices;
@@ -12,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NegativeScreen;
+using System.Security.Principal;
 
 namespace MouseHover
 {
@@ -57,7 +59,7 @@ namespace MouseHover
             enableHotKey.Text = ps.Default.enableHK;
             invertHotKey.Text = ps.Default.invertHK;
             enlargeHotKey.Text = ps.Default.enlargeHK;
-            shrinkHotKey.Text = ps.Default.shirnkHK;
+            shrinkHotKey.Text = ps.Default.shrinkHK;
             cylceHotKey.Text = ps.Default.cycleHK;
             #endregion
 
@@ -73,25 +75,38 @@ namespace MouseHover
             filterStartup.Checked = ps.Default.Filter_OnStartup;
             Filter_OnActive.Checked = ps.Default.Filter_OnActive;
             matrixBox.Text = ps.Default.Filter_LastUsed;
-            if (Filter_OnActive.Checked)
+            if (Filter_OnActive.Checked && filterStartup.Checked)
                 Filter_Timer.Start();
             else
                 Filter_Timer.Stop();
 
             if (filterStartup.Checked)
                 ApplyFilter();
-                
+
+            #endregion
+
+            #region Cursor
+
+            if (ps.Default.CursorIdle && ps.Default.CursorStartup)
+                CursorTimer.Start();
+
+            label30.Text = ps.Default.CursorFile;
+            cursorIdle.Value = ps.Default.CursorIdleTime;
+            cursorStartup.Checked = ps.Default.CursorStartup;
+            cursorChange.Checked = ps.Default.CursorIdle;
             #endregion
         }
 
         private void SaveHotkeys()
         {
             ps.Default.enableHK = enableHotKey.Text;
-            //ps.Default.disableHK = disableHotKey.Text;
             ps.Default.invertHK = invertHotKey.Text;
             ps.Default.enlargeHK = enlargeHotKey.Text;
-            ps.Default.shirnkHK = shrinkHotKey.Text;
+            ps.Default.shrinkHK = shrinkHotKey.Text;
+            ps.Default.cycleHK = cylceHotKey.Text;
+            ps.Default.cursorLockHK = cursorLock.Text;
             ps.Default.Save();
+            ReloadHotKeys();
         }
 
         private void ReloadHotKeys()
@@ -99,9 +114,10 @@ namespace MouseHover
             GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.enableHK, () => Toggle());
             //GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.disableHK, () => Disable());
             GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.invertHK, () => Invert());
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.cursorLockHK, () => { ps.Default.cursorLock = !ps.Default.cursorLock; ps.Default.Save(); });
 
             GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.enlargeHK, () => { ps.Default.width += 10; ps.Default.height += 10; ps.Default.Save(); });
-            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.shirnkHK, () => { ps.Default.width -= 10; ps.Default.height -= 10; ps.Default.Save(); });
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.shrinkHK, () => { ps.Default.width -= 10; ps.Default.height -= 10; ps.Default.Save(); });
 
             GlobalHotKey.RegisterHotKey("Control + Alt + " + ps.Default.cycleHK, () => CycleTiles());
         }
@@ -271,6 +287,8 @@ namespace MouseHover
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if(CursorHasChanged)
+                SystemParametersInfo(0x0057, 0, null, 0);
             frm2.Dispose();
             tile.Dispose();
             notifyIcon1.Dispose();
@@ -505,8 +523,8 @@ namespace MouseHover
 
                 processes = Process.GetProcessesByName(AppName.Substring(0, AppName.Length - 4));
                 Process p = processes.FirstOrDefault();
-
-                if (p != null && ps.Default.Filter_Programs.Split(';').Contains(AppName))
+                
+                if (p != null && ps.Default.Filter_Programs.Split(';').Contains(AppName, StringComparer.OrdinalIgnoreCase))
                 {
                     if(!FilterUsed)
                         FilterUsed = BuiltinMatrices.ChangeColorEffect(Matrix[ps.Default.Filter_LastUsed], false);
@@ -545,6 +563,114 @@ namespace MouseHover
             ps.Default.Filter_Programs = joined;
             ps.Default.Save();
             Filter_Programs.DataSource = ps.Default.Filter_Programs.Split(';');
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            SaveHotkeys();
+        }
+
+        private void cursorSelect_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog
+            {
+                InitialDirectory = Application.StartupPath,
+                Title = "Select cursor file",
+
+                CheckFileExists = true,
+                CheckPathExists = true,
+
+                DefaultExt = "cur",
+                Filter = "cur files (*.cur)|*.cur",
+                FilterIndex = 2,
+
+                ReadOnlyChecked = true,
+            };
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                label30.Text = openFileDialog1.FileName;
+                LoadCursor(openFileDialog1.FileName);
+            }
+        }
+
+        private Cursor IdleCursor;
+        public void LoadCursor(string filePath)
+        {
+            using (FileStream fs = new FileStream(filePath, FileMode.Open,FileAccess.Read))
+            {
+                Cursor result = new Cursor(fs);
+                cursorPreview.Cursor = result;
+            }
+        }
+
+        private void cursorChange_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        [DllImport("user32.dll")]
+        static extern bool SetSystemCursor(IntPtr hcur, uint id);
+        [DllImport("user32.dll")]
+        static extern IntPtr LoadCursor(IntPtr hInstance, int lpCursorName);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        private static extern Int32 SystemParametersInfo(UInt32 uiAction,
+            UInt32 uiParam, String pvParam, UInt32 fWinIni);
+
+        //Normal cursor
+        private static uint OCR_NORMAL = 32512;
+
+        [DllImport("user32.dll")]
+        static extern IntPtr LoadCursorFromFile(string lpFileName);
+        private void CursorTimer_Tick(object sender, EventArgs e)
+        {
+            if(ps.Default.CursorIdle && !String.IsNullOrEmpty(ps.Default.CursorFile))
+            {
+                if (!CursorHasChanged && CursorIdlePoint == Cursor.Position)
+                {
+                    CursorHasChanged = true;
+                    SetSystemCursor(LoadCursorFromFile(ps.Default.CursorFile), OCR_NORMAL); //(ps.Default.CursorFile);
+                }
+            }
+        }
+        private bool CursorHasChanged = true;
+        private Point CursorIdlePoint;
+
+        private void cursorApply_Click(object sender, EventArgs e)
+        {
+            IdleCursor = cursorPreview.Cursor;
+            ps.Default.CursorFile = label30.Text;
+            ps.Default.CursorIdleTime = (int)cursorIdle.Value;
+            ps.Default.CursorStartup = cursorStartup.Checked;
+            ps.Default.CursorIdle = cursorChange.Checked;
+            ps.Default.Save();
+
+            CursorTimer.Interval = ps.Default.CursorIdleTime * 1000;
+
+            if (ps.Default.CursorIdle)
+                CursorTimer.Start();
+            else
+                CursorTimer.Stop();
+        }
+
+        private void CursorTimer2_Tick(object sender, EventArgs e)
+        {
+            if (ps.Default.CursorIdle && !String.IsNullOrEmpty(ps.Default.CursorFile))
+            {
+                if (Cursor.Position != CursorIdlePoint)
+                {
+                    SystemParametersInfo(0x0057, 0, null, 0);
+                    //SetSystemCursor(LoadCursor(IntPtr.Zero, (int)OCR_NORMAL), OCR_CROSS);
+                    CursorIdlePoint = Cursor.Position;
+                    CursorHasChanged = false;
+                }
+            }
+        }
+
+        private void label30_TextChanged(object sender, EventArgs e)
+        {
+            LoadCursor(label30.Text);
         }
     }
     internal static class ExtensionMethods

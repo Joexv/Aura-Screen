@@ -71,7 +71,7 @@ namespace MouseHover
         }
         private void timer1_Tick_1(object sender, EventArgs e)
         {
-            if (!ps.Default.invert)
+            if (!ps.Default.invert && !ps.Default.cursorLock)
                 AdjustLocation();
         }
 
@@ -150,7 +150,7 @@ namespace MouseHover
             {
                 if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftShift))
                     ShiftHeld = true;
-                if (InversionPositionCheck() && !ShiftHeld)
+                if (InversionPositionCheck() && !ShiftHeld && !ps.Default.cursorLock)
                 {
                     ShiftHeld = false;
                     DoInvert = true;

@@ -41,7 +41,7 @@
     <Setting Name="enlargeHK" Type="System.String" Scope="User">
       <Value Profile="(Default)">W</Value>
     </Setting>
-    <Setting Name="shirnkHK" Type="System.String" Scope="User">
+    <Setting Name="shrinkHK" Type="System.String" Scope="User">
       <Value Profile="(Default)">S</Value>
     </Setting>
     <Setting Name="cycleHK" Type="System.String" Scope="User">
@@ -50,7 +50,7 @@
     <Setting Name="tileMode" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="invertLock" Type="System.Boolean" Scope="User">
+    <Setting Name="cursorLock" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="opacity" Type="System.Decimal" Scope="User">
@@ -85,6 +85,24 @@
     </Setting>
     <Setting Name="Filter_LastUsed" Type="System.String" Scope="User">
       <Value Profile="(Default)">None</Value>
+    </Setting>
+    <Setting Name="cursorLockHK" Type="System.String" Scope="User">
+      <Value Profile="(Default)">L</Value>
+    </Setting>
+    <Setting Name="CursorFile" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="CursorIdleTime" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="CursorIdle" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="CursorStartup" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="CursorBackup" Type="System.String" Scope="User">
+      <Value Profile="(Default)">%SystemRoot%\cursors\aero_arrow.cur</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -120,5 +120,10 @@
   <ItemGroup>
     <EmbeddedResource Include="circle_rgb_color_mix.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="cursor.cur">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

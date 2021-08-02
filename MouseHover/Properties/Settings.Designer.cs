@@ -12,7 +12,7 @@ namespace MouseHover.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.10.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -182,12 +182,12 @@ namespace MouseHover.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("S")]
-        public string shirnkHK {
+        public string shrinkHK {
             get {
-                return ((string)(this["shirnkHK"]));
+                return ((string)(this["shrinkHK"]));
             }
             set {
-                this["shirnkHK"] = value;
+                this["shrinkHK"] = value;
             }
         }
         
@@ -218,12 +218,12 @@ namespace MouseHover.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool invertLock {
+        public bool cursorLock {
             get {
-                return ((bool)(this["invertLock"]));
+                return ((bool)(this["cursorLock"]));
             }
             set {
-                this["invertLock"] = value;
+                this["cursorLock"] = value;
             }
         }
         
@@ -356,6 +356,78 @@ namespace MouseHover.Properties {
             }
             set {
                 this["Filter_LastUsed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("L")]
+        public string cursorLockHK {
+            get {
+                return ((string)(this["cursorLockHK"]));
+            }
+            set {
+                this["cursorLockHK"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CursorFile {
+            get {
+                return ((string)(this["CursorFile"]));
+            }
+            set {
+                this["CursorFile"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int CursorIdleTime {
+            get {
+                return ((int)(this["CursorIdleTime"]));
+            }
+            set {
+                this["CursorIdleTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CursorIdle {
+            get {
+                return ((bool)(this["CursorIdle"]));
+            }
+            set {
+                this["CursorIdle"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CursorStartup {
+            get {
+                return ((bool)(this["CursorStartup"]));
+            }
+            set {
+                this["CursorStartup"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("%SystemRoot%\\cursors\\aero_arrow.cur")]
+        public string CursorBackup {
+            get {
+                return ((string)(this["CursorBackup"]));
+            }
+            set {
+                this["CursorBackup"] = value;
             }
         }
     }

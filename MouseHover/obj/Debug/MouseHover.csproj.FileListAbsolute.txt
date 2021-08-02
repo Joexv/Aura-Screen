@@ -34,3 +34,5 @@ C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\MouseHover\obj\Debug\MouseHov
 C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\MouseHover\obj\Debug\MouseHover.exe
 C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\MouseHover\obj\Debug\MouseHover.pdb
 C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\MouseHover\obj\Debug\MouseHover.AppOverlay.resources
+C:\Users\HPD\Documents\Github\MouseHover\MouseHover\obj\Debug\MouseHover.AppOverlay.resources
+C:\Users\HPD\Documents\Github\MouseHover\MouseHover\bin\Debug\cursor.cur
