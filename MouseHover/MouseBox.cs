@@ -73,6 +73,9 @@ namespace MouseHover
         {
             if (!ps.Default.invert && !ps.Default.cursorLock)
                 AdjustLocation();
+
+            if(this.Width != ps.Default.width || this.Height != ps.Default.height)
+                CreateView();
         }
 
         private void AdjustLocation()
@@ -163,6 +166,12 @@ namespace MouseHover
                     AdjustLocation();
                     Invert();
                 }
+
+                if (this.Width != ps.Default.width || this.Height != ps.Default.height)
+                {
+                    CreateView();
+                    //Invert();
+                } 
             }
         }
         bool DoInvert = false;

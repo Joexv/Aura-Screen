@@ -421,13 +421,25 @@ namespace MouseHover.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("%SystemRoot%\\cursors\\aero_arrow.cur")]
-        public string CursorBackup {
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public decimal ESSize {
             get {
-                return ((string)(this["CursorBackup"]));
+                return ((decimal)(this["ESSize"]));
             }
             set {
-                this["CursorBackup"] = value;
+                this["ESSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool InversionToggle {
+            get {
+                return ((bool)(this["InversionToggle"]));
+            }
+            set {
+                this["InversionToggle"] = value;
             }
         }
     }

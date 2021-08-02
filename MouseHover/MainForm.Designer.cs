@@ -137,6 +137,10 @@ namespace MouseHover
             this.Filter_Timer = new System.Windows.Forms.Timer(this.components);
             this.CursorTimer = new System.Windows.Forms.Timer(this.components);
             this.CursorTimer2 = new System.Windows.Forms.Timer(this.components);
+            this.inversionBox = new System.Windows.Forms.CheckBox();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.label31 = new System.Windows.Forms.Label();
+            this.inversionToggle = new System.Windows.Forms.CheckBox();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AO_Opacity)).BeginInit();
             this.tabPage5.SuspendLayout();
@@ -157,6 +161,7 @@ namespace MouseHover
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cursorPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cursorIdle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // notifyIcon1
@@ -720,7 +725,7 @@ namespace MouseHover
             // 
             // label13
             // 
-            this.label13.Location = new System.Drawing.Point(24, 730);
+            this.label13.Location = new System.Drawing.Point(24, 707);
             this.label13.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(619, 72);
@@ -730,9 +735,9 @@ namespace MouseHover
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(29, 650);
+            this.button2.Location = new System.Drawing.Point(27, 782);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(614, 46);
+            this.button2.Size = new System.Drawing.Size(614, 76);
             this.button2.TabIndex = 38;
             this.button2.Text = "Apply Changes";
             this.button2.UseVisualStyleBackColor = true;
@@ -840,6 +845,8 @@ namespace MouseHover
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label31);
+            this.tabPage2.Controls.Add(this.numericUpDown1);
             this.tabPage2.Controls.Add(this.button13);
             this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Controls.Add(this.cylceHotKey);
@@ -1110,12 +1117,14 @@ namespace MouseHover
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.inversionToggle);
+            this.groupBox3.Controls.Add(this.inversionBox);
             this.groupBox3.Controls.Add(this.checkBox1);
             this.groupBox3.Location = new System.Drawing.Point(19, 459);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox3.Size = new System.Drawing.Size(627, 86);
+            this.groupBox3.Size = new System.Drawing.Size(627, 122);
             this.groupBox3.TabIndex = 25;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Settings";
@@ -1206,7 +1215,7 @@ namespace MouseHover
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(624, 59);
             this.button8.TabIndex = 9;
-            this.button8.Text = "Apply Changes";
+            this.button8.Text = "Reload View";
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
@@ -1344,6 +1353,45 @@ namespace MouseHover
             this.CursorTimer2.Enabled = true;
             this.CursorTimer2.Tick += new System.EventHandler(this.CursorTimer2_Tick);
             // 
+            // inversionBox
+            // 
+            this.inversionBox.AutoSize = true;
+            this.inversionBox.Location = new System.Drawing.Point(13, 67);
+            this.inversionBox.Name = "inversionBox";
+            this.inversionBox.Size = new System.Drawing.Size(131, 29);
+            this.inversionBox.TabIndex = 15;
+            this.inversionBox.Text = "Inversion";
+            this.inversionBox.UseVisualStyleBackColor = true;
+            this.inversionBox.CheckedChanged += new System.EventHandler(this.inversionBox_CheckedChanged);
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(352, 128);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(177, 31);
+            this.numericUpDown1.TabIndex = 16;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged_1);
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(347, 96);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(182, 25);
+            this.label31.TabIndex = 17;
+            this.label31.Text = "Enlarge/Shrink by";
+            // 
+            // inversionToggle
+            // 
+            this.inversionToggle.AutoSize = true;
+            this.inversionToggle.Location = new System.Drawing.Point(177, 67);
+            this.inversionToggle.Name = "inversionToggle";
+            this.inversionToggle.Size = new System.Drawing.Size(327, 29);
+            this.inversionToggle.TabIndex = 16;
+            this.inversionToggle.Text = "Toggle Overlay with Inversion";
+            this.inversionToggle.UseVisualStyleBackColor = true;
+            this.inversionToggle.CheckedChanged += new System.EventHandler(this.inversionToggle_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
@@ -1391,6 +1439,7 @@ namespace MouseHover
             this.tabPage7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cursorPreview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cursorIdle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1503,6 +1552,10 @@ namespace MouseHover
         private System.Windows.Forms.Timer CursorTimer;
         private System.Windows.Forms.CheckBox cursorStartup;
         private System.Windows.Forms.Timer CursorTimer2;
+        private System.Windows.Forms.CheckBox inversionBox;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.CheckBox inversionToggle;
     }
 }
 

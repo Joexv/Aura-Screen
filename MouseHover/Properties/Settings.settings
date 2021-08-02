@@ -101,8 +101,11 @@
     <Setting Name="CursorStartup" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="CursorBackup" Type="System.String" Scope="User">
-      <Value Profile="(Default)">%SystemRoot%\cursors\aero_arrow.cur</Value>
+    <Setting Name="ESSize" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">10</Value>
+    </Setting>
+    <Setting Name="InversionToggle" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

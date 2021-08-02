@@ -53,6 +53,9 @@ namespace MouseHover
             //This is only here because my config was stupid and I didn't want to find it and fix it :)
             if (ps.Default.opacity > 1) ps.Default.opacity = 1;
             opacityBar.Value = ps.Default.opacity;
+
+            inversionBox.Checked = ps.Default.invert;
+            inversionToggle.Checked = ps.Default.InversionToggle;
             #endregion
 
             #region hotKeys
@@ -61,6 +64,9 @@ namespace MouseHover
             enlargeHotKey.Text = ps.Default.enlargeHK;
             shrinkHotKey.Text = ps.Default.shrinkHK;
             cylceHotKey.Text = ps.Default.cycleHK;
+            cursorLock.Text = ps.Default.cursorLockHK;
+
+            numericUpDown1.Value = ps.Default.ESSize;
             #endregion
 
             #region AppOverlay
@@ -87,10 +93,11 @@ namespace MouseHover
 
             #region Cursor
 
-            if (ps.Default.CursorIdle && ps.Default.CursorStartup)
+            if (ps.Default.CursorIdle && ps.Default.CursorStartup && !String.IsNullOrEmpty(ps.Default.CursorFile))
                 CursorTimer.Start();
 
-            label30.Text = ps.Default.CursorFile;
+            if(!String.IsNullOrEmpty(ps.Default.CursorFile))
+                label30.Text = ps.Default.CursorFile;
             cursorIdle.Value = ps.Default.CursorIdleTime;
             cursorStartup.Checked = ps.Default.CursorStartup;
             cursorChange.Checked = ps.Default.CursorIdle;
@@ -105,6 +112,7 @@ namespace MouseHover
             ps.Default.shrinkHK = shrinkHotKey.Text;
             ps.Default.cycleHK = cylceHotKey.Text;
             ps.Default.cursorLockHK = cursorLock.Text;
+            ps.Default.ESSize = numericUpDown1.Value;
             ps.Default.Save();
             ReloadHotKeys();
         }
@@ -116,8 +124,14 @@ namespace MouseHover
             GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.invertHK, () => Invert());
             GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.cursorLockHK, () => { ps.Default.cursorLock = !ps.Default.cursorLock; ps.Default.Save(); });
 
-            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.enlargeHK, () => { ps.Default.width += 10; ps.Default.height += 10; ps.Default.Save(); });
-            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.shrinkHK, () => { ps.Default.width -= 10; ps.Default.height -= 10; ps.Default.Save(); });
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.enlargeHK, () => { 
+                ps.Default.width += (int)ps.Default.ESSize; 
+                ps.Default.height += (int)ps.Default.ESSize; 
+                ps.Default.Save();});
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.shrinkHK, () => { 
+                ps.Default.width -= (int)ps.Default.ESSize; 
+                ps.Default.height -= (int)ps.Default.ESSize; 
+                ps.Default.Save(); });
 
             GlobalHotKey.RegisterHotKey("Control + Alt + " + ps.Default.cycleHK, () => CycleTiles());
         }
@@ -143,9 +157,19 @@ namespace MouseHover
             ps.Default.invert = !ps.Default.invert;
             ps.Default.Save();
 
-            if (!ps.Default.invert)
-                Reload();
+            inversionBox.CheckedChanged -= new System.EventHandler(inversionBox_CheckedChanged);
+            inversionBox.Checked = ps.Default.invert;
+            inversionBox.CheckedChanged += new System.EventHandler(inversionBox_CheckedChanged);
 
+            if (ps.Default.invert && ps.Default.InversionToggle && !frm2.Visible)
+                Toggle();
+
+            if (!ps.Default.invert && !ps.Default.InversionToggle)
+                ReloadCursorOverlay();
+            else if (!ps.Default.invert && ps.Default.InversionToggle)
+            {
+                frm2.Hide();
+            }
         }
 
         private void Toggle()
@@ -204,14 +228,15 @@ namespace MouseHover
             ps.Default.height = ps.Default.height - 10;
             height.Text = ps.Default.height.ToString();
             ps.Default.Save();
+
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            Reload();
+            ReloadCursorOverlay();
         }
 
-        private void Reload()
+        private void ReloadCursorOverlay()
         {
             frm2.Close();
             frm2 = new MouseBox();
@@ -671,6 +696,32 @@ namespace MouseHover
         private void label30_TextChanged(object sender, EventArgs e)
         {
             LoadCursor(label30.Text);
+        }
+
+        private void numericUpDown1_ValueChanged_1(object sender, EventArgs e)
+        {
+        }
+
+        private void inversionBox_CheckedChanged(object sender, EventArgs e)
+        {
+            ps.Default.invert = inversionBox.Checked;
+            ps.Default.Save();
+
+
+            if (ps.Default.invert && ps.Default.InversionToggle && !frm2.Visible)
+                Toggle();
+            else if (!ps.Default.invert && !ps.Default.InversionToggle)
+                ReloadCursorOverlay();
+            else if (!ps.Default.invert && ps.Default.InversionToggle)
+            {
+                frm2.Hide();
+            }
+        }
+
+        private void inversionToggle_CheckedChanged(object sender, EventArgs e)
+        {
+            ps.Default.InversionToggle = inversionToggle.Checked;
+            ps.Default.Save();
         }
     }
     internal static class ExtensionMethods
