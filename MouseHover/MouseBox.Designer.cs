@@ -1,5 +1,5 @@
 ﻿
-namespace MouseHover
+namespace AirScreen
 {
     partial class MouseBox
     {

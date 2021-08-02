@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MouseHover.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AirScreen.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="onStartup" Type="System.Boolean" Scope="User">
@@ -102,10 +102,31 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="ESSize" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">10</Value>
+      <Value Profile="(Default)">250</Value>
     </Setting>
     <Setting Name="InversionToggle" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="SF_CycleHK" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="SF_ProgramHK" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2</Value>
+    </Setting>
+    <Setting Name="SF_ToggleHK" Type="System.String" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="AO_ToggleHK" Type="System.String" Scope="User">
+      <Value Profile="(Default)">4</Value>
+    </Setting>
+    <Setting Name="BF_ToggleHK" Type="System.String" Scope="User">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+    <Setting Name="SettingsHK" Type="System.String" Scope="User">
+      <Value Profile="(Default)">6</Value>
+    </Setting>
+    <Setting Name="KillHK" Type="System.String" Scope="User">
+      <Value Profile="(Default)">7</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -15,7 +15,7 @@ using System.Windows.Forms;
 using NegativeScreen;
 using System.Security.Principal;
 
-namespace MouseHover
+namespace AirScreen
 {
     using ps = Properties.Settings;
     public partial class MainForm : Form
@@ -56,6 +56,7 @@ namespace MouseHover
 
             inversionBox.Checked = ps.Default.invert;
             inversionToggle.Checked = ps.Default.InversionToggle;
+            checkBox4.Checked = ps.Default.cursorLock;
             #endregion
 
             #region hotKeys
@@ -67,6 +68,17 @@ namespace MouseHover
             cursorLock.Text = ps.Default.cursorLockHK;
 
             numericUpDown1.Value = ps.Default.ESSize;
+
+            SF_CycleHK.Text = ps.Default.SF_CycleHK;
+            SF_ProgramHK.Text = ps.Default.SF_ProgramHK;
+            SF_ToggleHK.Text = ps.Default.SF_ToggleHK;
+
+            AO_ToggleHK.Text = ps.Default.AO_ToggleHK;
+
+            BF_ToggleHK.Text = ps.Default.BF_ToggleHK;
+
+            SettingsHK.Text = ps.Default.SettingsHK;
+            killswitchHK.Text = ps.Default.KillHK;
             #endregion
 
             #region AppOverlay
@@ -81,13 +93,14 @@ namespace MouseHover
             filterStartup.Checked = ps.Default.Filter_OnStartup;
             Filter_OnActive.Checked = ps.Default.Filter_OnActive;
             matrixBox.Text = ps.Default.Filter_LastUsed;
+            groupBox1.Enabled = ps.Default.Filter_OnActive;
             if (Filter_OnActive.Checked && filterStartup.Checked)
                 Filter_Timer.Start();
             else
                 Filter_Timer.Stop();
 
             if (filterStartup.Checked)
-                ApplyFilter();
+                ToggleFilter();
 
             #endregion
 
@@ -113,6 +126,17 @@ namespace MouseHover
             ps.Default.cycleHK = cylceHotKey.Text;
             ps.Default.cursorLockHK = cursorLock.Text;
             ps.Default.ESSize = numericUpDown1.Value;
+
+            ps.Default.SF_CycleHK = SF_CycleHK.Text;
+            ps.Default.SF_ProgramHK = SF_ProgramHK.Text;
+            ps.Default.SF_ToggleHK = SF_ToggleHK.Text;
+
+            ps.Default.AO_ToggleHK = AO_ToggleHK.Text;
+
+            ps.Default.BF_ToggleHK = BF_ToggleHK.Text;
+
+            ps.Default.SettingsHK = SettingsHK.Text;
+            ps.Default.KillHK = killswitchHK.Text;
             ps.Default.Save();
             ReloadHotKeys();
         }
@@ -133,7 +157,33 @@ namespace MouseHover
                 ps.Default.height -= (int)ps.Default.ESSize; 
                 ps.Default.Save(); });
 
-            GlobalHotKey.RegisterHotKey("Control + Alt + " + ps.Default.cycleHK, () => CycleTiles());
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.cycleHK, () => CycleTiles());
+
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.SF_CycleHK, () => {
+                if (matrixBox.SelectedIndex < matrixBox.Items.Count - 1)
+                    matrixBox.SelectedIndex += 1;
+                else
+                    matrixBox.SelectedIndex = 0;
+                ps.Default.Filter_LastUsed = matrixBox.Text;
+                ps.Default.Save();
+                FilterUsed = BuiltinMatrices.ChangeColorEffect(Matrix[ps.Default.Filter_LastUsed], FilterUsed);
+            });
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.SF_ProgramHK, () =>
+            {
+                Filter_OnActive.Checked = true;
+            });
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.SF_ToggleHK, () => ToggleFilter());
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.AO_ToggleHK, () => ToggleAppOverlay());
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.BF_ToggleHK, () => ToggleBlockFilter());
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.SettingsHK, () => {
+                this.Show();
+                this.WindowState = FormWindowState.Normal;
+            });
+
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.KillHK, () => {
+                Application.Restart();
+                Environment.Exit(0);
+            });
         }
 
         public string[] TileModes = { "None", "Top", "Bottom", "Left", "Right" };
@@ -339,6 +389,11 @@ namespace MouseHover
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            ToggleBlockFilter();
+        }
+
+        private void ToggleBlockFilter()
+        {
             ps.Default.tileMode = tileSelect.SelectedIndex + 1;
             ps.Default.Save();
             try { tile.Close(); }
@@ -378,10 +433,10 @@ namespace MouseHover
         bool FilterUsed = false;
         private void button14_Click(object sender, EventArgs e)
         {
-            ApplyFilter();
+            ToggleFilter();
         }
 
-        private void ApplyFilter()
+        private void ToggleFilter()
         {
             ps.Default.Filter_LastUsed = matrixBox.Text;
             ps.Default.Save();
@@ -509,12 +564,18 @@ namespace MouseHover
 
         private void button16_Click_1(object sender, EventArgs e)
         {
+            ToggleAppOverlay();
+        }
+
+        private void ToggleAppOverlay()
+        {
             if (appO.AO_AttatchTimer.Enabled)
             {
                 appO.AO_AttatchTimer.Stop();
                 appO.Hide();
             }
-            else{
+            else
+            {
                 appO.AO_AttatchTimer.Start();
                 appO.Show();
             }
@@ -523,6 +584,7 @@ namespace MouseHover
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
             ps.Default.Filter_OnActive = Filter_OnActive.Checked;
+            groupBox1.Enabled = ps.Default.Filter_OnActive;
             ps.Default.Save();
 
             if (ps.Default.Filter_OnActive)
@@ -656,6 +718,8 @@ namespace MouseHover
                 {
                     CursorHasChanged = true;
                     SetSystemCursor(LoadCursorFromFile(ps.Default.CursorFile), OCR_NORMAL); //(ps.Default.CursorFile);
+                    if (filterHide.Checked)
+                        frm2.Hide();
                 }
             }
         }
@@ -689,6 +753,8 @@ namespace MouseHover
                     //SetSystemCursor(LoadCursor(IntPtr.Zero, (int)OCR_NORMAL), OCR_CROSS);
                     CursorIdlePoint = Cursor.Position;
                     CursorHasChanged = false;
+                    if(filterHide.Checked)
+                        frm2.Show();
                 }
             }
         }
@@ -704,6 +770,7 @@ namespace MouseHover
 
         private void inversionBox_CheckedChanged(object sender, EventArgs e)
         {
+            inversionBox.CheckedChanged -= new System.EventHandler(inversionBox_CheckedChanged);
             ps.Default.invert = inversionBox.Checked;
             ps.Default.Save();
 
@@ -716,12 +783,24 @@ namespace MouseHover
             {
                 frm2.Hide();
             }
+            inversionBox.CheckedChanged += new System.EventHandler(inversionBox_CheckedChanged);
         }
 
         private void inversionToggle_CheckedChanged(object sender, EventArgs e)
         {
             ps.Default.InversionToggle = inversionToggle.Checked;
             ps.Default.Save();
+        }
+
+        private void checkBox4_CheckedChanged_2(object sender, EventArgs e)
+        {
+            ps.Default.cursorLock = checkBox4.Checked; 
+            ps.Default.Save();
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
         }
     }
     internal static class ExtensionMethods

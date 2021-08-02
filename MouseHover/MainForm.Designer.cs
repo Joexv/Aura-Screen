@@ -1,5 +1,5 @@
 ﻿
-namespace MouseHover
+namespace AirScreen
 {
     partial class MainForm
     {
@@ -64,12 +64,12 @@ namespace MouseHover
             this.Filter_Programs = new System.Windows.Forms.ComboBox();
             this.label24 = new System.Windows.Forms.Label();
             this.button18 = new System.Windows.Forms.Button();
-            this.Filter_OnActive = new System.Windows.Forms.CheckBox();
             this.Filter_ComboBox = new System.Windows.Forms.ComboBox();
             this.button17 = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
             this.filterStartup = new System.Windows.Forms.CheckBox();
             this.button15 = new System.Windows.Forms.Button();
+            this.Filter_OnActive = new System.Windows.Forms.CheckBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -91,6 +91,8 @@ namespace MouseHover
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label31 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.button13 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.cylceHotKey = new System.Windows.Forms.TextBox();
@@ -115,6 +117,8 @@ namespace MouseHover
             this.styleBox = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.inversionToggle = new System.Windows.Forms.CheckBox();
+            this.inversionBox = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
@@ -137,10 +141,26 @@ namespace MouseHover
             this.Filter_Timer = new System.Windows.Forms.Timer(this.components);
             this.CursorTimer = new System.Windows.Forms.Timer(this.components);
             this.CursorTimer2 = new System.Windows.Forms.Timer(this.components);
-            this.inversionBox = new System.Windows.Forms.CheckBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.label31 = new System.Windows.Forms.Label();
-            this.inversionToggle = new System.Windows.Forms.CheckBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.BF_ToggleHK = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.SF_ProgramHK = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.SF_ToggleHK = new System.Windows.Forms.TextBox();
+            this.SF_CycleHK = new System.Windows.Forms.TextBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.AO_ToggleHK = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.SettingsHK = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.killswitchHK = new System.Windows.Forms.TextBox();
+            this.filterHide = new System.Windows.Forms.CheckBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AO_Opacity)).BeginInit();
             this.tabPage5.SuspendLayout();
@@ -151,6 +171,7 @@ namespace MouseHover
             ((System.ComponentModel.ISupportInitialize)(this.L_Opacity)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.opacityBar)).BeginInit();
@@ -161,7 +182,10 @@ namespace MouseHover
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cursorPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cursorIdle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // notifyIcon1
@@ -171,6 +195,7 @@ namespace MouseHover
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "MouseHover";
             this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
             // disableHotKey
             // 
@@ -447,6 +472,7 @@ namespace MouseHover
             this.tabPage5.Controls.Add(this.label25);
             this.tabPage5.Controls.Add(this.filterStartup);
             this.tabPage5.Controls.Add(this.button15);
+            this.tabPage5.Controls.Add(this.Filter_OnActive);
             this.tabPage5.Controls.Add(this.label20);
             this.tabPage5.Controls.Add(this.label19);
             this.tabPage5.Controls.Add(this.pictureBox2);
@@ -481,7 +507,6 @@ namespace MouseHover
             this.groupBox1.Controls.Add(this.Filter_Programs);
             this.groupBox1.Controls.Add(this.label24);
             this.groupBox1.Controls.Add(this.button18);
-            this.groupBox1.Controls.Add(this.Filter_OnActive);
             this.groupBox1.Controls.Add(this.Filter_ComboBox);
             this.groupBox1.Controls.Add(this.button17);
             this.groupBox1.Location = new System.Drawing.Point(14, 542);
@@ -544,18 +569,6 @@ namespace MouseHover
             this.button18.UseVisualStyleBackColor = true;
             this.button18.Click += new System.EventHandler(this.button18_Click);
             // 
-            // Filter_OnActive
-            // 
-            this.Filter_OnActive.AutoSize = true;
-            this.Filter_OnActive.Location = new System.Drawing.Point(21, 198);
-            this.Filter_OnActive.Margin = new System.Windows.Forms.Padding(5);
-            this.Filter_OnActive.Name = "Filter_OnActive";
-            this.Filter_OnActive.Size = new System.Drawing.Size(337, 29);
-            this.Filter_OnActive.TabIndex = 22;
-            this.Filter_OnActive.Text = "Filter when a program is active";
-            this.Filter_OnActive.UseVisualStyleBackColor = true;
-            this.Filter_OnActive.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
-            // 
             // Filter_ComboBox
             // 
             this.Filter_ComboBox.FormattingEnabled = true;
@@ -607,6 +620,18 @@ namespace MouseHover
             this.button15.Text = "Show Example";
             this.button15.UseVisualStyleBackColor = true;
             this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // Filter_OnActive
+            // 
+            this.Filter_OnActive.AutoSize = true;
+            this.Filter_OnActive.Location = new System.Drawing.Point(14, 500);
+            this.Filter_OnActive.Margin = new System.Windows.Forms.Padding(5);
+            this.Filter_OnActive.Name = "Filter_OnActive";
+            this.Filter_OnActive.Size = new System.Drawing.Size(337, 29);
+            this.Filter_OnActive.TabIndex = 22;
+            this.Filter_OnActive.Text = "Filter when a program is active";
+            this.Filter_OnActive.UseVisualStyleBackColor = true;
+            this.Filter_OnActive.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
             // label20
             // 
@@ -845,23 +870,16 @@ namespace MouseHover
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.label31);
-            this.tabPage2.Controls.Add(this.numericUpDown1);
+            this.tabPage2.Controls.Add(this.label38);
+            this.tabPage2.Controls.Add(this.killswitchHK);
+            this.tabPage2.Controls.Add(this.label37);
+            this.tabPage2.Controls.Add(this.groupBox8);
+            this.tabPage2.Controls.Add(this.SettingsHK);
+            this.tabPage2.Controls.Add(this.groupBox7);
+            this.tabPage2.Controls.Add(this.groupBox6);
+            this.tabPage2.Controls.Add(this.groupBox5);
             this.tabPage2.Controls.Add(this.button13);
-            this.tabPage2.Controls.Add(this.label9);
-            this.tabPage2.Controls.Add(this.cylceHotKey);
-            this.tabPage2.Controls.Add(this.cursorLock);
-            this.tabPage2.Controls.Add(this.enableHotKey);
-            this.tabPage2.Controls.Add(this.invertHotKey);
-            this.tabPage2.Controls.Add(this.enlargeHotKey);
-            this.tabPage2.Controls.Add(this.shrinkHotKey);
-            this.tabPage2.Controls.Add(this.label15);
-            this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.label11);
-            this.tabPage2.Controls.Add(this.label14);
-            this.tabPage2.Controls.Add(this.label5);
-            this.tabPage2.Controls.Add(this.label10);
-            this.tabPage2.Controls.Add(this.label8);
             this.tabPage2.Location = new System.Drawing.Point(8, 39);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -869,6 +887,28 @@ namespace MouseHover
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "HotKeys";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(339, 82);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(182, 25);
+            this.label31.TabIndex = 17;
+            this.label31.Text = "Enlarge/Shrink by";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(344, 114);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(177, 31);
+            this.numericUpDown1.TabIndex = 16;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged_1);
             // 
             // button13
             // 
@@ -884,50 +924,50 @@ namespace MouseHover
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(22, 288);
+            this.label9.Location = new System.Drawing.Point(20, 81);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(140, 25);
+            this.label9.Size = new System.Drawing.Size(154, 25);
             this.label9.TabIndex = 8;
-            this.label9.Text = "Cycle Screen";
+            this.label9.Text = "Cycle Location";
             // 
             // cylceHotKey
             // 
-            this.cylceHotKey.Location = new System.Drawing.Point(256, 285);
+            this.cylceHotKey.Location = new System.Drawing.Point(246, 78);
             this.cylceHotKey.Name = "cylceHotKey";
             this.cylceHotKey.Size = new System.Drawing.Size(71, 31);
             this.cylceHotKey.TabIndex = 9;
             // 
             // cursorLock
             // 
-            this.cursorLock.Location = new System.Drawing.Point(256, 248);
+            this.cursorLock.Location = new System.Drawing.Point(248, 192);
             this.cursorLock.Name = "cursorLock";
             this.cursorLock.Size = new System.Drawing.Size(71, 31);
             this.cursorLock.TabIndex = 13;
             // 
             // enableHotKey
             // 
-            this.enableHotKey.Location = new System.Drawing.Point(256, 51);
+            this.enableHotKey.Location = new System.Drawing.Point(248, 37);
             this.enableHotKey.Name = "enableHotKey";
             this.enableHotKey.Size = new System.Drawing.Size(71, 31);
             this.enableHotKey.TabIndex = 1;
             // 
             // invertHotKey
             // 
-            this.invertHotKey.Location = new System.Drawing.Point(256, 166);
+            this.invertHotKey.Location = new System.Drawing.Point(248, 152);
             this.invertHotKey.Name = "invertHotKey";
             this.invertHotKey.Size = new System.Drawing.Size(71, 31);
             this.invertHotKey.TabIndex = 11;
             // 
             // enlargeHotKey
             // 
-            this.enlargeHotKey.Location = new System.Drawing.Point(256, 90);
+            this.enlargeHotKey.Location = new System.Drawing.Point(248, 76);
             this.enlargeHotKey.Name = "enlargeHotKey";
             this.enlargeHotKey.Size = new System.Drawing.Size(71, 31);
             this.enlargeHotKey.TabIndex = 5;
             // 
             // shrinkHotKey
             // 
-            this.shrinkHotKey.Location = new System.Drawing.Point(256, 126);
+            this.shrinkHotKey.Location = new System.Drawing.Point(248, 112);
             this.shrinkHotKey.Name = "shrinkHotKey";
             this.shrinkHotKey.Size = new System.Drawing.Size(71, 31);
             this.shrinkHotKey.TabIndex = 7;
@@ -935,7 +975,7 @@ namespace MouseHover
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(22, 251);
+            this.label15.Location = new System.Drawing.Point(14, 195);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(229, 25);
             this.label15.TabIndex = 14;
@@ -944,7 +984,7 @@ namespace MouseHover
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(22, 94);
+            this.label6.Location = new System.Drawing.Point(14, 80);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(86, 25);
             this.label6.TabIndex = 13;
@@ -962,7 +1002,7 @@ namespace MouseHover
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(22, 211);
+            this.label14.Location = new System.Drawing.Point(14, 226);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(435, 25);
             this.label14.TabIndex = 12;
@@ -971,7 +1011,7 @@ namespace MouseHover
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(22, 54);
+            this.label5.Location = new System.Drawing.Point(14, 40);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(78, 25);
             this.label5.TabIndex = 0;
@@ -980,7 +1020,7 @@ namespace MouseHover
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(22, 166);
+            this.label10.Location = new System.Drawing.Point(14, 152);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(137, 25);
             this.label10.TabIndex = 10;
@@ -989,7 +1029,7 @@ namespace MouseHover
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(22, 130);
+            this.label8.Location = new System.Drawing.Point(14, 116);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(73, 25);
             this.label8.TabIndex = 6;
@@ -1117,6 +1157,7 @@ namespace MouseHover
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.checkBox4);
             this.groupBox3.Controls.Add(this.inversionToggle);
             this.groupBox3.Controls.Add(this.inversionBox);
             this.groupBox3.Controls.Add(this.checkBox1);
@@ -1124,19 +1165,41 @@ namespace MouseHover
             this.groupBox3.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox3.Size = new System.Drawing.Size(627, 122);
+            this.groupBox3.Size = new System.Drawing.Size(627, 156);
             this.groupBox3.TabIndex = 25;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Settings";
+            // 
+            // inversionToggle
+            // 
+            this.inversionToggle.AutoSize = true;
+            this.inversionToggle.Location = new System.Drawing.Point(270, 67);
+            this.inversionToggle.Name = "inversionToggle";
+            this.inversionToggle.Size = new System.Drawing.Size(323, 29);
+            this.inversionToggle.TabIndex = 16;
+            this.inversionToggle.Text = "Toggle overlay with inversion";
+            this.inversionToggle.UseVisualStyleBackColor = true;
+            this.inversionToggle.CheckedChanged += new System.EventHandler(this.inversionToggle_CheckedChanged);
+            // 
+            // inversionBox
+            // 
+            this.inversionBox.AutoSize = true;
+            this.inversionBox.Location = new System.Drawing.Point(13, 67);
+            this.inversionBox.Name = "inversionBox";
+            this.inversionBox.Size = new System.Drawing.Size(131, 29);
+            this.inversionBox.TabIndex = 15;
+            this.inversionBox.Text = "Inversion";
+            this.inversionBox.UseVisualStyleBackColor = true;
+            this.inversionBox.CheckedChanged += new System.EventHandler(this.inversionBox_CheckedChanged);
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(13, 32);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(325, 29);
+            this.checkBox1.Size = new System.Drawing.Size(183, 29);
             this.checkBox1.TabIndex = 14;
-            this.checkBox1.Text = "Enable on Application startup";
+            this.checkBox1.Text = "Enable startup";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
@@ -1239,6 +1302,7 @@ namespace MouseHover
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.filterHide);
             this.tabPage7.Controls.Add(this.cursorStartup);
             this.tabPage7.Controls.Add(this.label30);
             this.tabPage7.Controls.Add(this.cursorPreview);
@@ -1258,7 +1322,7 @@ namespace MouseHover
             // cursorStartup
             // 
             this.cursorStartup.AutoSize = true;
-            this.cursorStartup.Location = new System.Drawing.Point(310, 24);
+            this.cursorStartup.Location = new System.Drawing.Point(428, 24);
             this.cursorStartup.Name = "cursorStartup";
             this.cursorStartup.Size = new System.Drawing.Size(220, 29);
             this.cursorStartup.TabIndex = 18;
@@ -1287,9 +1351,9 @@ namespace MouseHover
             this.label29.AutoSize = true;
             this.label29.Location = new System.Drawing.Point(14, 331);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(634, 25);
+            this.label29.Size = new System.Drawing.Size(641, 25);
             this.label29.TabIndex = 15;
-            this.label29.Text = "Cursor Preview - Hover mouse ove the box to see the new cursor";
+            this.label29.Text = "Cursor Preview - Hover mouse over the box to see the new cursor";
             // 
             // cursorSelect
             // 
@@ -1353,44 +1417,199 @@ namespace MouseHover
             this.CursorTimer2.Enabled = true;
             this.CursorTimer2.Tick += new System.EventHandler(this.CursorTimer2_Tick);
             // 
-            // inversionBox
+            // groupBox5
             // 
-            this.inversionBox.AutoSize = true;
-            this.inversionBox.Location = new System.Drawing.Point(13, 67);
-            this.inversionBox.Name = "inversionBox";
-            this.inversionBox.Size = new System.Drawing.Size(131, 29);
-            this.inversionBox.TabIndex = 15;
-            this.inversionBox.Text = "Inversion";
-            this.inversionBox.UseVisualStyleBackColor = true;
-            this.inversionBox.CheckedChanged += new System.EventHandler(this.inversionBox_CheckedChanged);
+            this.groupBox5.Controls.Add(this.label5);
+            this.groupBox5.Controls.Add(this.label31);
+            this.groupBox5.Controls.Add(this.label8);
+            this.groupBox5.Controls.Add(this.numericUpDown1);
+            this.groupBox5.Controls.Add(this.cursorLock);
+            this.groupBox5.Controls.Add(this.label14);
+            this.groupBox5.Controls.Add(this.label10);
+            this.groupBox5.Controls.Add(this.label15);
+            this.groupBox5.Controls.Add(this.label6);
+            this.groupBox5.Controls.Add(this.shrinkHotKey);
+            this.groupBox5.Controls.Add(this.enlargeHotKey);
+            this.groupBox5.Controls.Add(this.invertHotKey);
+            this.groupBox5.Controls.Add(this.enableHotKey);
+            this.groupBox5.Location = new System.Drawing.Point(6, 42);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(656, 267);
+            this.groupBox5.TabIndex = 18;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Cursor Filter";
             // 
-            // numericUpDown1
+            // groupBox6
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(352, 128);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(177, 31);
-            this.numericUpDown1.TabIndex = 16;
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged_1);
+            this.groupBox6.Controls.Add(this.label33);
+            this.groupBox6.Controls.Add(this.label34);
+            this.groupBox6.Controls.Add(this.SF_ProgramHK);
+            this.groupBox6.Controls.Add(this.SF_CycleHK);
+            this.groupBox6.Controls.Add(this.SF_ToggleHK);
+            this.groupBox6.Controls.Add(this.label35);
+            this.groupBox6.Location = new System.Drawing.Point(6, 315);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(656, 173);
+            this.groupBox6.TabIndex = 19;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Screen Filters";
             // 
-            // label31
+            // groupBox7
             // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(347, 96);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(182, 25);
-            this.label31.TabIndex = 17;
-            this.label31.Text = "Enlarge/Shrink by";
+            this.groupBox7.Controls.Add(this.label36);
+            this.groupBox7.Controls.Add(this.AO_ToggleHK);
+            this.groupBox7.Location = new System.Drawing.Point(8, 494);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(654, 94);
+            this.groupBox7.TabIndex = 20;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "App Overlay";
             // 
-            // inversionToggle
+            // groupBox8
             // 
-            this.inversionToggle.AutoSize = true;
-            this.inversionToggle.Location = new System.Drawing.Point(177, 67);
-            this.inversionToggle.Name = "inversionToggle";
-            this.inversionToggle.Size = new System.Drawing.Size(327, 29);
-            this.inversionToggle.TabIndex = 16;
-            this.inversionToggle.Text = "Toggle Overlay with Inversion";
-            this.inversionToggle.UseVisualStyleBackColor = true;
-            this.inversionToggle.CheckedChanged += new System.EventHandler(this.inversionToggle_CheckedChanged);
+            this.groupBox8.Controls.Add(this.label32);
+            this.groupBox8.Controls.Add(this.BF_ToggleHK);
+            this.groupBox8.Controls.Add(this.label9);
+            this.groupBox8.Controls.Add(this.cylceHotKey);
+            this.groupBox8.Location = new System.Drawing.Point(8, 606);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(654, 122);
+            this.groupBox8.TabIndex = 21;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Block Filters";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(20, 44);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(78, 25);
+            this.label32.TabIndex = 10;
+            this.label32.Text = "Toggle";
+            // 
+            // BF_ToggleHK
+            // 
+            this.BF_ToggleHK.Location = new System.Drawing.Point(246, 41);
+            this.BF_ToggleHK.Name = "BF_ToggleHK";
+            this.BF_ToggleHK.Size = new System.Drawing.Size(71, 31);
+            this.BF_ToggleHK.TabIndex = 11;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(16, 43);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(78, 25);
+            this.label33.TabIndex = 18;
+            this.label33.Text = "Toggle";
+            // 
+            // SF_ProgramHK
+            // 
+            this.SF_ProgramHK.Location = new System.Drawing.Point(250, 120);
+            this.SF_ProgramHK.Name = "SF_ProgramHK";
+            this.SF_ProgramHK.Size = new System.Drawing.Size(71, 31);
+            this.SF_ProgramHK.TabIndex = 22;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(16, 83);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(131, 25);
+            this.label34.TabIndex = 20;
+            this.label34.Text = "Cycle Filters";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(16, 123);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(225, 25);
+            this.label35.TabIndex = 23;
+            this.label35.Text = "Toggle Program Mode";
+            // 
+            // SF_ToggleHK
+            // 
+            this.SF_ToggleHK.Location = new System.Drawing.Point(250, 40);
+            this.SF_ToggleHK.Name = "SF_ToggleHK";
+            this.SF_ToggleHK.Size = new System.Drawing.Size(71, 31);
+            this.SF_ToggleHK.TabIndex = 19;
+            // 
+            // SF_CycleHK
+            // 
+            this.SF_CycleHK.Location = new System.Drawing.Point(250, 80);
+            this.SF_CycleHK.Name = "SF_CycleHK";
+            this.SF_CycleHK.Size = new System.Drawing.Size(71, 31);
+            this.SF_CycleHK.TabIndex = 21;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(14, 38);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(78, 25);
+            this.label36.TabIndex = 12;
+            this.label36.Text = "Toggle";
+            // 
+            // AO_ToggleHK
+            // 
+            this.AO_ToggleHK.Location = new System.Drawing.Point(248, 35);
+            this.AO_ToggleHK.Name = "AO_ToggleHK";
+            this.AO_ToggleHK.Size = new System.Drawing.Size(71, 31);
+            this.AO_ToggleHK.TabIndex = 13;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(28, 742);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(167, 25);
+            this.label37.TabIndex = 12;
+            this.label37.Text = "Display Settings";
+            // 
+            // SettingsHK
+            // 
+            this.SettingsHK.Location = new System.Drawing.Point(254, 739);
+            this.SettingsHK.Name = "SettingsHK";
+            this.SettingsHK.Size = new System.Drawing.Size(71, 31);
+            this.SettingsHK.TabIndex = 13;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(28, 779);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(101, 25);
+            this.label38.TabIndex = 22;
+            this.label38.Text = "Killswitch";
+            // 
+            // killswitchHK
+            // 
+            this.killswitchHK.Location = new System.Drawing.Point(254, 776);
+            this.killswitchHK.Name = "killswitchHK";
+            this.killswitchHK.Size = new System.Drawing.Size(71, 31);
+            this.killswitchHK.TabIndex = 23;
+            // 
+            // filterHide
+            // 
+            this.filterHide.AutoSize = true;
+            this.filterHide.Location = new System.Drawing.Point(428, 71);
+            this.filterHide.Name = "filterHide";
+            this.filterHide.Size = new System.Drawing.Size(212, 29);
+            this.filterHide.TabIndex = 19;
+            this.filterHide.Text = "Hide Cursor Filter";
+            this.filterHide.UseVisualStyleBackColor = true;
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(13, 102);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(218, 29);
+            this.checkBox4.TabIndex = 17;
+            this.checkBox4.Text = "Lock filter in place";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged_2);
             // 
             // MainForm
             // 
@@ -1424,6 +1643,7 @@ namespace MouseHover
             this.tabPage3.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -1439,7 +1659,14 @@ namespace MouseHover
             this.tabPage7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cursorPreview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cursorIdle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1556,6 +1783,26 @@ namespace MouseHover
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.CheckBox inversionToggle;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.TextBox BF_ToggleHK;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.TextBox AO_ToggleHK;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.TextBox SF_ProgramHK;
+        private System.Windows.Forms.TextBox SF_CycleHK;
+        private System.Windows.Forms.TextBox SF_ToggleHK;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TextBox SettingsHK;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.TextBox killswitchHK;
+        private System.Windows.Forms.CheckBox filterHide;
+        private System.Windows.Forms.CheckBox checkBox4;
     }
 }
 

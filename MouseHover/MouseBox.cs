@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
-namespace MouseHover
+namespace AirScreen
 {
     using ps = Properties.Settings;
     public partial class MouseBox : Form

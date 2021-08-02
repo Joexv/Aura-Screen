@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MouseHover.Properties {
+namespace AirScreen.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -421,7 +421,7 @@ namespace MouseHover.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        [global::System.Configuration.DefaultSettingValueAttribute("250")]
         public decimal ESSize {
             get {
                 return ((decimal)(this["ESSize"]));
@@ -440,6 +440,90 @@ namespace MouseHover.Properties {
             }
             set {
                 this["InversionToggle"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public string SF_CycleHK {
+            get {
+                return ((string)(this["SF_CycleHK"]));
+            }
+            set {
+                this["SF_CycleHK"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2")]
+        public string SF_ProgramHK {
+            get {
+                return ((string)(this["SF_ProgramHK"]));
+            }
+            set {
+                this["SF_ProgramHK"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("3")]
+        public string SF_ToggleHK {
+            get {
+                return ((string)(this["SF_ToggleHK"]));
+            }
+            set {
+                this["SF_ToggleHK"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4")]
+        public string AO_ToggleHK {
+            get {
+                return ((string)(this["AO_ToggleHK"]));
+            }
+            set {
+                this["AO_ToggleHK"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public string BF_ToggleHK {
+            get {
+                return ((string)(this["BF_ToggleHK"]));
+            }
+            set {
+                this["BF_ToggleHK"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("6")]
+        public string SettingsHK {
+            get {
+                return ((string)(this["SettingsHK"]));
+            }
+            set {
+                this["SettingsHK"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("7")]
+        public string KillHK {
+            get {
+                return ((string)(this["KillHK"]));
+            }
+            set {
+                this["KillHK"] = value;
             }
         }
     }

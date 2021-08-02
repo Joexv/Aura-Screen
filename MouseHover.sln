@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MouseHover", "MouseHover\MouseHover.csproj", "{F2903A4B-BE9A-4A41-9171-4742749B08FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Air Screen", "MouseHover\Air Screen.csproj", "{F2903A4B-BE9A-4A41-9171-4742749B08FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
