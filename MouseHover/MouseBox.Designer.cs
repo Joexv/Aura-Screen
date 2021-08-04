@@ -59,6 +59,7 @@ namespace AirScreen
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(967, 834);
             this.ControlBox = false;
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MouseBox";
             this.Opacity = 0.15D;
@@ -68,6 +69,7 @@ namespace AirScreen
             this.Text = "Form2";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.Form2_Load);
+            this.Shown += new System.EventHandler(this.MouseBox_Shown);
             this.LocationChanged += new System.EventHandler(this.Form2_LocationChanged);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form2_KeyPress);
             this.MouseLeave += new System.EventHandler(this.Form2_MouseLeave);

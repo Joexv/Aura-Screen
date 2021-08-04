@@ -117,65 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="BF_Top_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BF_Top_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ScreenFilter_Cycle_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ScreenFilter_Cycle_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BoxFilter_Toggle_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BoxFilter_Toggle_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Cursor_Lock_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Cursor_Lock_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ScreenFilter_Toggle_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ScreenFilter_Toggle_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Cursor_UnLock_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Cursor_UnLock_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ScreenFilter_Active_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ScreenFilter_Active_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Mouse_Filter_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mouse_Filter_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BlockFilter_Cycle_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BlockFilter_Cycle_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ScreenFilter_Program_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ScreenFilter_Program_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Mouse_IOpacity_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mouse_IOpacity_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Mouse_Enlarge_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mouse_Enlarge_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AppOverlay_Toggle_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AppOverlay_Toggle_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Mouse_Shrink_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mouse_Shrink_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Mouse_Invert_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mouse_Invert_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BF_Bottom_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BF_Bottom_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AppOverlay_Active_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AppOverlay_Active_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Mouse_DOpacity_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mouse_DOpacity_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Mouse_Border_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mouse_Border_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BF_Right_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BF_Right_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="shrinkCursor.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        YII=
+</value>
   </data>
 </root>

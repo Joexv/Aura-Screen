@@ -33,6 +33,11 @@ namespace AirScreen
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.disableHotKey = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.AO_ByName = new System.Windows.Forms.RadioButton();
@@ -91,23 +96,41 @@ namespace AirScreen
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label31 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.button13 = new System.Windows.Forms.Button();
+            this.label38 = new System.Windows.Forms.Label();
+            this.killswitchHK = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.BF_ToggleHK = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cylceHotKey = new System.Windows.Forms.TextBox();
+            this.SettingsHK = new System.Windows.Forms.TextBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.label36 = new System.Windows.Forms.Label();
+            this.AO_ToggleHK = new System.Windows.Forms.TextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.SF_ProgramHK = new System.Windows.Forms.TextBox();
+            this.SF_CycleHK = new System.Windows.Forms.TextBox();
+            this.SF_ToggleHK = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.cursorLock = new System.Windows.Forms.TextBox();
-            this.enableHotKey = new System.Windows.Forms.TextBox();
-            this.invertHotKey = new System.Windows.Forms.TextBox();
-            this.enlargeHotKey = new System.Windows.Forms.TextBox();
-            this.shrinkHotKey = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.shrinkHotKey = new System.Windows.Forms.TextBox();
+            this.enlargeHotKey = new System.Windows.Forms.TextBox();
+            this.invertHotKey = new System.Windows.Forms.TextBox();
+            this.enableHotKey = new System.Windows.Forms.TextBox();
+            this.button13 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -117,6 +140,7 @@ namespace AirScreen
             this.styleBox = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
             this.inversionToggle = new System.Windows.Forms.CheckBox();
             this.inversionBox = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -129,6 +153,7 @@ namespace AirScreen
             this.button8 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.filterHide = new System.Windows.Forms.CheckBox();
             this.cursorStartup = new System.Windows.Forms.CheckBox();
             this.label30 = new System.Windows.Forms.Label();
             this.cursorPreview = new System.Windows.Forms.PictureBox();
@@ -141,26 +166,10 @@ namespace AirScreen
             this.Filter_Timer = new System.Windows.Forms.Timer(this.components);
             this.CursorTimer = new System.Windows.Forms.Timer(this.components);
             this.CursorTimer2 = new System.Windows.Forms.Timer(this.components);
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.BF_ToggleHK = new System.Windows.Forms.TextBox();
-            this.label33 = new System.Windows.Forms.Label();
-            this.SF_ProgramHK = new System.Windows.Forms.TextBox();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.SF_ToggleHK = new System.Windows.Forms.TextBox();
-            this.SF_CycleHK = new System.Windows.Forms.TextBox();
-            this.label36 = new System.Windows.Forms.Label();
-            this.AO_ToggleHK = new System.Windows.Forms.TextBox();
-            this.label37 = new System.Windows.Forms.Label();
-            this.SettingsHK = new System.Windows.Forms.TextBox();
-            this.label38 = new System.Windows.Forms.Label();
-            this.killswitchHK = new System.Windows.Forms.TextBox();
-            this.filterHide = new System.Windows.Forms.CheckBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1.SuspendLayout();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AO_Opacity)).BeginInit();
             this.tabPage5.SuspendLayout();
@@ -171,6 +180,10 @@ namespace AirScreen
             ((System.ComponentModel.ISupportInitialize)(this.L_Opacity)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -182,20 +195,59 @@ namespace AirScreen
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cursorPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cursorIdle)).BeginInit();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox8.SuspendLayout();
             this.SuspendLayout();
             // 
             // notifyIcon1
             // 
             this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.notifyIcon1.BalloonTipText = "MouseHover";
+            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "MouseHover";
             this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.toolStripMenuItem2,
+            this.toolStripSeparator1,
+            this.toolStripMenuItem3});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(267, 124);
+            this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
+            this.contextMenuStrip1.Click += new System.EventHandler(this.contextMenuStrip1_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(266, 38);
+            this.toolStripMenuItem1.Text = "Restore Program";
+            this.toolStripMenuItem1.ToolTipText = "Show Main Page";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(266, 38);
+            this.toolStripMenuItem2.Text = "Show Toolbox";
+            this.toolStripMenuItem2.ToolTipText = "Show Toolbox";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(263, 6);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(266, 38);
+            this.toolStripMenuItem3.Text = "Close Air Screen";
+            this.toolStripMenuItem3.ToolTipText = "Close Program";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // disableHotKey
             // 
@@ -204,10 +256,14 @@ namespace AirScreen
             this.disableHotKey.Size = new System.Drawing.Size(100, 31);
             this.disableHotKey.TabIndex = 3;
             // 
+            // toolTip1
+            // 
+            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
+            // 
             // AO_ByName
             // 
             this.AO_ByName.AutoSize = true;
-            this.AO_ByName.Location = new System.Drawing.Point(10, 34);
+            this.AO_ByName.Location = new System.Drawing.Point(10, 75);
             this.AO_ByName.Margin = new System.Windows.Forms.Padding(5);
             this.AO_ByName.Name = "AO_ByName";
             this.AO_ByName.Size = new System.Drawing.Size(203, 29);
@@ -312,6 +368,7 @@ namespace AirScreen
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.label40);
             this.tabPage6.Controls.Add(this.button16);
             this.tabPage6.Controls.Add(this.AO_ColorChange);
             this.tabPage6.Controls.Add(this.AO_Opacity);
@@ -346,7 +403,7 @@ namespace AirScreen
             // 
             // AO_ColorChange
             // 
-            this.AO_ColorChange.Location = new System.Drawing.Point(330, 298);
+            this.AO_ColorChange.Location = new System.Drawing.Point(330, 339);
             this.AO_ColorChange.Name = "AO_ColorChange";
             this.AO_ColorChange.Size = new System.Drawing.Size(290, 46);
             this.AO_ColorChange.TabIndex = 39;
@@ -362,7 +419,7 @@ namespace AirScreen
             0,
             0,
             131072});
-            this.AO_Opacity.Location = new System.Drawing.Point(200, 304);
+            this.AO_Opacity.Location = new System.Drawing.Point(200, 345);
             this.AO_Opacity.Maximum = new decimal(new int[] {
             95,
             0,
@@ -386,7 +443,7 @@ namespace AirScreen
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(10, 307);
+            this.label22.Location = new System.Drawing.Point(10, 348);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(85, 25);
             this.label22.TabIndex = 37;
@@ -394,7 +451,7 @@ namespace AirScreen
             // 
             // AO_Select
             // 
-            this.AO_Select.Location = new System.Drawing.Point(330, 230);
+            this.AO_Select.Location = new System.Drawing.Point(330, 271);
             this.AO_Select.Margin = new System.Windows.Forms.Padding(5);
             this.AO_Select.Name = "AO_Select";
             this.AO_Select.Size = new System.Drawing.Size(290, 51);
@@ -406,7 +463,7 @@ namespace AirScreen
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(10, 141);
+            this.label21.Location = new System.Drawing.Point(10, 182);
             this.label21.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(280, 25);
@@ -415,7 +472,7 @@ namespace AirScreen
             // 
             // AO_Refresh
             // 
-            this.AO_Refresh.Location = new System.Drawing.Point(330, 170);
+            this.AO_Refresh.Location = new System.Drawing.Point(330, 211);
             this.AO_Refresh.Margin = new System.Windows.Forms.Padding(5);
             this.AO_Refresh.Name = "AO_Refresh";
             this.AO_Refresh.Size = new System.Drawing.Size(290, 51);
@@ -427,7 +484,7 @@ namespace AirScreen
             // AO_ComboBox
             // 
             this.AO_ComboBox.FormattingEnabled = true;
-            this.AO_ComboBox.Location = new System.Drawing.Point(10, 178);
+            this.AO_ComboBox.Location = new System.Drawing.Point(10, 219);
             this.AO_ComboBox.Margin = new System.Windows.Forms.Padding(5);
             this.AO_ComboBox.Name = "AO_ComboBox";
             this.AO_ComboBox.Size = new System.Drawing.Size(308, 33);
@@ -437,7 +494,7 @@ namespace AirScreen
             // 
             this.AO_TopMost.AutoSize = true;
             this.AO_TopMost.Checked = true;
-            this.AO_TopMost.Location = new System.Drawing.Point(381, 34);
+            this.AO_TopMost.Location = new System.Drawing.Point(381, 75);
             this.AO_TopMost.Margin = new System.Windows.Forms.Padding(5);
             this.AO_TopMost.Name = "AO_TopMost";
             this.AO_TopMost.Size = new System.Drawing.Size(266, 29);
@@ -445,10 +502,11 @@ namespace AirScreen
             this.AO_TopMost.TabStop = true;
             this.AO_TopMost.Text = "Attatch To Top Window";
             this.AO_TopMost.UseVisualStyleBackColor = true;
+            this.AO_TopMost.CheckedChanged += new System.EventHandler(this.AO_TopMost_CheckedChanged);
             // 
             // AO_TextBox
             // 
-            this.AO_TextBox.Location = new System.Drawing.Point(10, 77);
+            this.AO_TextBox.Location = new System.Drawing.Point(10, 118);
             this.AO_TextBox.Margin = new System.Windows.Forms.Padding(5);
             this.AO_TextBox.Name = "AO_TextBox";
             this.AO_TextBox.Size = new System.Drawing.Size(308, 31);
@@ -630,6 +688,8 @@ namespace AirScreen
             this.Filter_OnActive.Size = new System.Drawing.Size(337, 29);
             this.Filter_OnActive.TabIndex = 22;
             this.Filter_OnActive.Text = "Filter when a program is active";
+            this.toolTip1.SetToolTip(this.Filter_OnActive, "Screen filter will only be enabled when the selected app is open,\r\nand currently " +
+        "active.");
             this.Filter_OnActive.UseVisualStyleBackColor = true;
             this.Filter_OnActive.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
@@ -680,14 +740,14 @@ namespace AirScreen
             this.matrixBox.Location = new System.Drawing.Point(107, 163);
             this.matrixBox.Margin = new System.Windows.Forms.Padding(5);
             this.matrixBox.Name = "matrixBox";
-            this.matrixBox.Size = new System.Drawing.Size(394, 33);
+            this.matrixBox.Size = new System.Drawing.Size(406, 33);
             this.matrixBox.TabIndex = 3;
             this.matrixBox.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(101, 122);
+            this.linkLabel1.Location = new System.Drawing.Point(102, 70);
             this.linkLabel1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(411, 25);
@@ -701,11 +761,12 @@ namespace AirScreen
             this.label18.Location = new System.Drawing.Point(10, 5);
             this.label18.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(654, 117);
+            this.label18.Size = new System.Drawing.Size(654, 65);
             this.label18.TabIndex = 1;
-            this.label18.Text = "Screen filtering provided by a modified/dumbed down version of NegativeScreen.\r\nI" +
-    " really liked the Color Matrix that they had made. For the full version get it f" +
-    "rom their website:\r\n";
+            this.label18.Text = "I really liked the Color Matrix that they NegativeScreen made. For the full versi" +
+    "on get it from their website:\r\n";
+            this.toolTip1.SetToolTip(this.label18, "For real they did an incredible job on some of these color filters. \r\nGo check th" +
+        "em out for some different functionality compared to Air Screen.");
             // 
             // button14
             // 
@@ -850,6 +911,7 @@ namespace AirScreen
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.checkBox5);
             this.tabPage3.Controls.Add(this.checkBox3);
             this.tabPage3.Location = new System.Drawing.Point(8, 39);
             this.tabPage3.Name = "tabPage3";
@@ -867,6 +929,7 @@ namespace AirScreen
             this.checkBox3.TabIndex = 20;
             this.checkBox3.Text = "Minimize application to system tray";
             this.checkBox3.UseVisualStyleBackColor = true;
+            this.checkBox3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged_1);
             // 
             // tabPage2
             // 
@@ -888,38 +951,59 @@ namespace AirScreen
             this.tabPage2.Text = "HotKeys";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label31
+            // label38
             // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(339, 82);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(182, 25);
-            this.label31.TabIndex = 17;
-            this.label31.Text = "Enlarge/Shrink by";
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(28, 779);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(101, 25);
+            this.label38.TabIndex = 22;
+            this.label38.Text = "Killswitch";
             // 
-            // numericUpDown1
+            // killswitchHK
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(344, 114);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(177, 31);
-            this.numericUpDown1.TabIndex = 16;
-            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged_1);
+            this.killswitchHK.Location = new System.Drawing.Point(254, 776);
+            this.killswitchHK.Name = "killswitchHK";
+            this.killswitchHK.Size = new System.Drawing.Size(71, 31);
+            this.killswitchHK.TabIndex = 23;
             // 
-            // button13
+            // label37
             // 
-            this.button13.Location = new System.Drawing.Point(8, 821);
-            this.button13.Margin = new System.Windows.Forms.Padding(5);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(654, 46);
-            this.button13.TabIndex = 15;
-            this.button13.Text = "Apply Changes";
-            this.button13.UseVisualStyleBackColor = true;
-            this.button13.Click += new System.EventHandler(this.button13_Click);
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(28, 742);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(167, 25);
+            this.label37.TabIndex = 12;
+            this.label37.Text = "Display Settings";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.label32);
+            this.groupBox8.Controls.Add(this.BF_ToggleHK);
+            this.groupBox8.Controls.Add(this.label9);
+            this.groupBox8.Controls.Add(this.cylceHotKey);
+            this.groupBox8.Location = new System.Drawing.Point(8, 606);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(654, 122);
+            this.groupBox8.TabIndex = 21;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Block Filters";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(20, 44);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(78, 25);
+            this.label32.TabIndex = 10;
+            this.label32.Text = "Toggle";
+            // 
+            // BF_ToggleHK
+            // 
+            this.BF_ToggleHK.Location = new System.Drawing.Point(246, 41);
+            this.BF_ToggleHK.Name = "BF_ToggleHK";
+            this.BF_ToggleHK.Size = new System.Drawing.Size(71, 31);
+            this.BF_ToggleHK.TabIndex = 11;
             // 
             // label9
             // 
@@ -937,6 +1021,166 @@ namespace AirScreen
             this.cylceHotKey.Size = new System.Drawing.Size(71, 31);
             this.cylceHotKey.TabIndex = 9;
             // 
+            // SettingsHK
+            // 
+            this.SettingsHK.Location = new System.Drawing.Point(254, 739);
+            this.SettingsHK.Name = "SettingsHK";
+            this.SettingsHK.Size = new System.Drawing.Size(71, 31);
+            this.SettingsHK.TabIndex = 13;
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.label36);
+            this.groupBox7.Controls.Add(this.AO_ToggleHK);
+            this.groupBox7.Location = new System.Drawing.Point(8, 494);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(654, 94);
+            this.groupBox7.TabIndex = 20;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "App Overlay";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(14, 38);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(78, 25);
+            this.label36.TabIndex = 12;
+            this.label36.Text = "Toggle";
+            // 
+            // AO_ToggleHK
+            // 
+            this.AO_ToggleHK.Location = new System.Drawing.Point(248, 35);
+            this.AO_ToggleHK.Name = "AO_ToggleHK";
+            this.AO_ToggleHK.Size = new System.Drawing.Size(71, 31);
+            this.AO_ToggleHK.TabIndex = 13;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.label33);
+            this.groupBox6.Controls.Add(this.label34);
+            this.groupBox6.Controls.Add(this.SF_ProgramHK);
+            this.groupBox6.Controls.Add(this.SF_CycleHK);
+            this.groupBox6.Controls.Add(this.SF_ToggleHK);
+            this.groupBox6.Controls.Add(this.label35);
+            this.groupBox6.Location = new System.Drawing.Point(6, 315);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(656, 173);
+            this.groupBox6.TabIndex = 19;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Screen Filters";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(16, 43);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(78, 25);
+            this.label33.TabIndex = 18;
+            this.label33.Text = "Toggle";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(16, 83);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(131, 25);
+            this.label34.TabIndex = 20;
+            this.label34.Text = "Cycle Filters";
+            // 
+            // SF_ProgramHK
+            // 
+            this.SF_ProgramHK.Location = new System.Drawing.Point(250, 120);
+            this.SF_ProgramHK.Name = "SF_ProgramHK";
+            this.SF_ProgramHK.Size = new System.Drawing.Size(71, 31);
+            this.SF_ProgramHK.TabIndex = 22;
+            // 
+            // SF_CycleHK
+            // 
+            this.SF_CycleHK.Location = new System.Drawing.Point(250, 80);
+            this.SF_CycleHK.Name = "SF_CycleHK";
+            this.SF_CycleHK.Size = new System.Drawing.Size(71, 31);
+            this.SF_CycleHK.TabIndex = 21;
+            // 
+            // SF_ToggleHK
+            // 
+            this.SF_ToggleHK.Location = new System.Drawing.Point(250, 40);
+            this.SF_ToggleHK.Name = "SF_ToggleHK";
+            this.SF_ToggleHK.Size = new System.Drawing.Size(71, 31);
+            this.SF_ToggleHK.TabIndex = 19;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(16, 123);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(225, 25);
+            this.label35.TabIndex = 23;
+            this.label35.Text = "Toggle Program Mode";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.label39);
+            this.groupBox5.Controls.Add(this.label5);
+            this.groupBox5.Controls.Add(this.label31);
+            this.groupBox5.Controls.Add(this.label8);
+            this.groupBox5.Controls.Add(this.numericUpDown1);
+            this.groupBox5.Controls.Add(this.cursorLock);
+            this.groupBox5.Controls.Add(this.label14);
+            this.groupBox5.Controls.Add(this.label10);
+            this.groupBox5.Controls.Add(this.label15);
+            this.groupBox5.Controls.Add(this.label6);
+            this.groupBox5.Controls.Add(this.shrinkHotKey);
+            this.groupBox5.Controls.Add(this.enlargeHotKey);
+            this.groupBox5.Controls.Add(this.invertHotKey);
+            this.groupBox5.Controls.Add(this.enableHotKey);
+            this.groupBox5.Location = new System.Drawing.Point(6, 42);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(656, 267);
+            this.groupBox5.TabIndex = 18;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Cursor Filter";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(14, 40);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(78, 25);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Toggle";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(339, 82);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(182, 25);
+            this.label31.TabIndex = 17;
+            this.label31.Text = "Enlarge/Shrink by";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(14, 116);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(73, 25);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "Shrink";
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.Location = new System.Drawing.Point(344, 114);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(177, 31);
+            this.numericUpDown1.TabIndex = 16;
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged_1);
+            // 
             // cursorLock
             // 
             this.cursorLock.Location = new System.Drawing.Point(248, 192);
@@ -944,33 +1188,23 @@ namespace AirScreen
             this.cursorLock.Size = new System.Drawing.Size(71, 31);
             this.cursorLock.TabIndex = 13;
             // 
-            // enableHotKey
+            // label14
             // 
-            this.enableHotKey.Location = new System.Drawing.Point(248, 37);
-            this.enableHotKey.Name = "enableHotKey";
-            this.enableHotKey.Size = new System.Drawing.Size(71, 31);
-            this.enableHotKey.TabIndex = 1;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(14, 226);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(435, 25);
+            this.label14.TabIndex = 12;
+            this.label14.Text = "To hold Invert in place temporarily Hold Shift";
             // 
-            // invertHotKey
+            // label10
             // 
-            this.invertHotKey.Location = new System.Drawing.Point(248, 152);
-            this.invertHotKey.Name = "invertHotKey";
-            this.invertHotKey.Size = new System.Drawing.Size(71, 31);
-            this.invertHotKey.TabIndex = 11;
-            // 
-            // enlargeHotKey
-            // 
-            this.enlargeHotKey.Location = new System.Drawing.Point(248, 76);
-            this.enlargeHotKey.Name = "enlargeHotKey";
-            this.enlargeHotKey.Size = new System.Drawing.Size(71, 31);
-            this.enlargeHotKey.TabIndex = 5;
-            // 
-            // shrinkHotKey
-            // 
-            this.shrinkHotKey.Location = new System.Drawing.Point(248, 112);
-            this.shrinkHotKey.Name = "shrinkHotKey";
-            this.shrinkHotKey.Size = new System.Drawing.Size(71, 31);
-            this.shrinkHotKey.TabIndex = 7;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(14, 152);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(137, 25);
+            this.label10.TabIndex = 10;
+            this.label10.Text = "Toggle Invert";
             // 
             // label15
             // 
@@ -990,6 +1224,45 @@ namespace AirScreen
             this.label6.TabIndex = 13;
             this.label6.Text = "Enlarge";
             // 
+            // shrinkHotKey
+            // 
+            this.shrinkHotKey.Location = new System.Drawing.Point(248, 112);
+            this.shrinkHotKey.Name = "shrinkHotKey";
+            this.shrinkHotKey.Size = new System.Drawing.Size(71, 31);
+            this.shrinkHotKey.TabIndex = 7;
+            // 
+            // enlargeHotKey
+            // 
+            this.enlargeHotKey.Location = new System.Drawing.Point(248, 76);
+            this.enlargeHotKey.Name = "enlargeHotKey";
+            this.enlargeHotKey.Size = new System.Drawing.Size(71, 31);
+            this.enlargeHotKey.TabIndex = 5;
+            // 
+            // invertHotKey
+            // 
+            this.invertHotKey.Location = new System.Drawing.Point(248, 152);
+            this.invertHotKey.Name = "invertHotKey";
+            this.invertHotKey.Size = new System.Drawing.Size(71, 31);
+            this.invertHotKey.TabIndex = 11;
+            // 
+            // enableHotKey
+            // 
+            this.enableHotKey.Location = new System.Drawing.Point(248, 37);
+            this.enableHotKey.Name = "enableHotKey";
+            this.enableHotKey.Size = new System.Drawing.Size(71, 31);
+            this.enableHotKey.TabIndex = 1;
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(8, 821);
+            this.button13.Margin = new System.Windows.Forms.Padding(5);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(654, 46);
+            this.button13.TabIndex = 15;
+            this.button13.Text = "Apply Changes";
+            this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -998,42 +1271,6 @@ namespace AirScreen
             this.label11.Size = new System.Drawing.Size(284, 25);
             this.label11.TabIndex = 12;
             this.label11.Text = "Function CRTL + Shift + Key";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(14, 226);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(435, 25);
-            this.label14.TabIndex = 12;
-            this.label14.Text = "To hold Invert in place temporarily Hold Shift";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 40);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(78, 25);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Toggle";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(14, 152);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(137, 25);
-            this.label10.TabIndex = 10;
-            this.label10.Text = "Toggle Invert";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(14, 116);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(73, 25);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "Shrink";
             // 
             // tabPage1
             // 
@@ -1170,6 +1407,18 @@ namespace AirScreen
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Settings";
             // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(13, 102);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(218, 29);
+            this.checkBox4.TabIndex = 17;
+            this.checkBox4.Text = "Lock filter in place";
+            this.toolTip1.SetToolTip(this.checkBox4, "Locks the cursor filter in place until disabled.");
+            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged_2);
+            // 
             // inversionToggle
             // 
             this.inversionToggle.AutoSize = true;
@@ -1178,6 +1427,7 @@ namespace AirScreen
             this.inversionToggle.Size = new System.Drawing.Size(323, 29);
             this.inversionToggle.TabIndex = 16;
             this.inversionToggle.Text = "Toggle overlay with inversion";
+            this.toolTip1.SetToolTip(this.inversionToggle, "Will turn the Cursor Filter on or off alongside Invertsion.");
             this.inversionToggle.UseVisualStyleBackColor = true;
             this.inversionToggle.CheckedChanged += new System.EventHandler(this.inversionToggle_CheckedChanged);
             // 
@@ -1189,6 +1439,8 @@ namespace AirScreen
             this.inversionBox.Size = new System.Drawing.Size(131, 29);
             this.inversionBox.TabIndex = 15;
             this.inversionBox.Text = "Inversion";
+            this.toolTip1.SetToolTip(this.inversionBox, "Creates a static iverted screenshot of the contents\r\nbelow the cursor filter. Ove" +
+        "rrides set color and opacity.");
             this.inversionBox.UseVisualStyleBackColor = true;
             this.inversionBox.CheckedChanged += new System.EventHandler(this.inversionBox_CheckedChanged);
             // 
@@ -1200,6 +1452,7 @@ namespace AirScreen
             this.checkBox1.Size = new System.Drawing.Size(183, 29);
             this.checkBox1.TabIndex = 14;
             this.checkBox1.Text = "Enable startup";
+            this.toolTip1.SetToolTip(this.checkBox1, "Enable Cursor Filter on startup of application");
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
@@ -1319,6 +1572,16 @@ namespace AirScreen
             this.tabPage7.Text = "Cursor Icon";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
+            // filterHide
+            // 
+            this.filterHide.AutoSize = true;
+            this.filterHide.Location = new System.Drawing.Point(428, 71);
+            this.filterHide.Name = "filterHide";
+            this.filterHide.Size = new System.Drawing.Size(212, 29);
+            this.filterHide.TabIndex = 19;
+            this.filterHide.Text = "Hide Cursor Filter";
+            this.filterHide.UseVisualStyleBackColor = true;
+            // 
             // cursorStartup
             // 
             this.cursorStartup.AutoSize = true;
@@ -1389,6 +1652,8 @@ namespace AirScreen
             this.cursorChange.Size = new System.Drawing.Size(259, 29);
             this.cursorChange.TabIndex = 11;
             this.cursorChange.Text = "Change Cursor on idle";
+            this.toolTip1.SetToolTip(this.cursorChange, "Changes the user\'s mouse cursor to supplied .cur file\r\nwhen cursor is idle for se" +
+        "t amount of time.");
             this.cursorChange.UseVisualStyleBackColor = true;
             this.cursorChange.CheckedChanged += new System.EventHandler(this.cursorChange_CheckedChanged);
             // 
@@ -1417,199 +1682,35 @@ namespace AirScreen
             this.CursorTimer2.Enabled = true;
             this.CursorTimer2.Tick += new System.EventHandler(this.CursorTimer2_Tick);
             // 
-            // groupBox5
+            // checkBox5
             // 
-            this.groupBox5.Controls.Add(this.label5);
-            this.groupBox5.Controls.Add(this.label31);
-            this.groupBox5.Controls.Add(this.label8);
-            this.groupBox5.Controls.Add(this.numericUpDown1);
-            this.groupBox5.Controls.Add(this.cursorLock);
-            this.groupBox5.Controls.Add(this.label14);
-            this.groupBox5.Controls.Add(this.label10);
-            this.groupBox5.Controls.Add(this.label15);
-            this.groupBox5.Controls.Add(this.label6);
-            this.groupBox5.Controls.Add(this.shrinkHotKey);
-            this.groupBox5.Controls.Add(this.enlargeHotKey);
-            this.groupBox5.Controls.Add(this.invertHotKey);
-            this.groupBox5.Controls.Add(this.enableHotKey);
-            this.groupBox5.Location = new System.Drawing.Point(6, 42);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(656, 267);
-            this.groupBox5.TabIndex = 18;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Cursor Filter";
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(18, 65);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(306, 29);
+            this.checkBox5.TabIndex = 21;
+            this.checkBox5.Text = "Manually minimize ToolBox";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
             // 
-            // groupBox6
+            // label39
             // 
-            this.groupBox6.Controls.Add(this.label33);
-            this.groupBox6.Controls.Add(this.label34);
-            this.groupBox6.Controls.Add(this.SF_ProgramHK);
-            this.groupBox6.Controls.Add(this.SF_CycleHK);
-            this.groupBox6.Controls.Add(this.SF_ToggleHK);
-            this.groupBox6.Controls.Add(this.label35);
-            this.groupBox6.Location = new System.Drawing.Point(6, 315);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(656, 173);
-            this.groupBox6.TabIndex = 19;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Screen Filters";
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(339, 152);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(238, 50);
+            this.label39.TabIndex = 18;
+            this.label39.Text = "Press Shift to manually \r\nrefresh inversion";
             // 
-            // groupBox7
+            // label40
             // 
-            this.groupBox7.Controls.Add(this.label36);
-            this.groupBox7.Controls.Add(this.AO_ToggleHK);
-            this.groupBox7.Location = new System.Drawing.Point(8, 494);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(654, 94);
-            this.groupBox7.TabIndex = 20;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "App Overlay";
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.label32);
-            this.groupBox8.Controls.Add(this.BF_ToggleHK);
-            this.groupBox8.Controls.Add(this.label9);
-            this.groupBox8.Controls.Add(this.cylceHotKey);
-            this.groupBox8.Location = new System.Drawing.Point(8, 606);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(654, 122);
-            this.groupBox8.TabIndex = 21;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Block Filters";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(20, 44);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(78, 25);
-            this.label32.TabIndex = 10;
-            this.label32.Text = "Toggle";
-            // 
-            // BF_ToggleHK
-            // 
-            this.BF_ToggleHK.Location = new System.Drawing.Point(246, 41);
-            this.BF_ToggleHK.Name = "BF_ToggleHK";
-            this.BF_ToggleHK.Size = new System.Drawing.Size(71, 31);
-            this.BF_ToggleHK.TabIndex = 11;
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(16, 43);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(78, 25);
-            this.label33.TabIndex = 18;
-            this.label33.Text = "Toggle";
-            // 
-            // SF_ProgramHK
-            // 
-            this.SF_ProgramHK.Location = new System.Drawing.Point(250, 120);
-            this.SF_ProgramHK.Name = "SF_ProgramHK";
-            this.SF_ProgramHK.Size = new System.Drawing.Size(71, 31);
-            this.SF_ProgramHK.TabIndex = 22;
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(16, 83);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(131, 25);
-            this.label34.TabIndex = 20;
-            this.label34.Text = "Cycle Filters";
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(16, 123);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(225, 25);
-            this.label35.TabIndex = 23;
-            this.label35.Text = "Toggle Program Mode";
-            // 
-            // SF_ToggleHK
-            // 
-            this.SF_ToggleHK.Location = new System.Drawing.Point(250, 40);
-            this.SF_ToggleHK.Name = "SF_ToggleHK";
-            this.SF_ToggleHK.Size = new System.Drawing.Size(71, 31);
-            this.SF_ToggleHK.TabIndex = 19;
-            // 
-            // SF_CycleHK
-            // 
-            this.SF_CycleHK.Location = new System.Drawing.Point(250, 80);
-            this.SF_CycleHK.Name = "SF_CycleHK";
-            this.SF_CycleHK.Size = new System.Drawing.Size(71, 31);
-            this.SF_CycleHK.TabIndex = 21;
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(14, 38);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(78, 25);
-            this.label36.TabIndex = 12;
-            this.label36.Text = "Toggle";
-            // 
-            // AO_ToggleHK
-            // 
-            this.AO_ToggleHK.Location = new System.Drawing.Point(248, 35);
-            this.AO_ToggleHK.Name = "AO_ToggleHK";
-            this.AO_ToggleHK.Size = new System.Drawing.Size(71, 31);
-            this.AO_ToggleHK.TabIndex = 13;
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(28, 742);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(167, 25);
-            this.label37.TabIndex = 12;
-            this.label37.Text = "Display Settings";
-            // 
-            // SettingsHK
-            // 
-            this.SettingsHK.Location = new System.Drawing.Point(254, 739);
-            this.SettingsHK.Name = "SettingsHK";
-            this.SettingsHK.Size = new System.Drawing.Size(71, 31);
-            this.SettingsHK.TabIndex = 13;
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(28, 779);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(101, 25);
-            this.label38.TabIndex = 22;
-            this.label38.Text = "Killswitch";
-            // 
-            // killswitchHK
-            // 
-            this.killswitchHK.Location = new System.Drawing.Point(254, 776);
-            this.killswitchHK.Name = "killswitchHK";
-            this.killswitchHK.Size = new System.Drawing.Size(71, 31);
-            this.killswitchHK.TabIndex = 23;
-            // 
-            // filterHide
-            // 
-            this.filterHide.AutoSize = true;
-            this.filterHide.Location = new System.Drawing.Point(428, 71);
-            this.filterHide.Name = "filterHide";
-            this.filterHide.Size = new System.Drawing.Size(212, 29);
-            this.filterHide.TabIndex = 19;
-            this.filterHide.Text = "Hide Cursor Filter";
-            this.filterHide.UseVisualStyleBackColor = true;
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(13, 102);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(218, 29);
-            this.checkBox4.TabIndex = 17;
-            this.checkBox4.Text = "Lock filter in place";
-            this.checkBox4.UseVisualStyleBackColor = true;
-            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged_2);
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(15, 9);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(509, 50);
+            this.label40.TabIndex = 41;
+            this.label40.Text = "Displays a semi-transperant color over the selected \r\napplication or current acti" +
+    "ve application.";
             // 
             // MainForm
             // 
@@ -1622,11 +1723,12 @@ namespace AirScreen
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Air Screen Configuration";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.Resize += new System.EventHandler(this.Form1_Resize);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AO_Opacity)).EndInit();
@@ -1643,6 +1745,14 @@ namespace AirScreen
             this.tabPage3.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -1659,14 +1769,6 @@ namespace AirScreen
             this.tabPage7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cursorPreview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cursorIdle)).EndInit();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1686,7 +1788,6 @@ namespace AirScreen
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Button AO_Refresh;
         private System.Windows.Forms.ComboBox AO_ComboBox;
-        private System.Windows.Forms.RadioButton AO_TopMost;
         private System.Windows.Forms.RadioButton AO_ByName;
         private System.Windows.Forms.TextBox AO_TextBox;
         private System.Windows.Forms.Button AO_Apply;
@@ -1697,7 +1798,6 @@ namespace AirScreen
         private System.Windows.Forms.ComboBox Filter_Programs;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Button button18;
-        private System.Windows.Forms.CheckBox Filter_OnActive;
         private System.Windows.Forms.ComboBox Filter_ComboBox;
         private System.Windows.Forms.Button button17;
         private System.Windows.Forms.Label label25;
@@ -1746,7 +1846,6 @@ namespace AirScreen
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button5;
@@ -1803,6 +1902,17 @@ namespace AirScreen
         private System.Windows.Forms.TextBox killswitchHK;
         private System.Windows.Forms.CheckBox filterHide;
         private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        public System.Windows.Forms.CheckBox checkBox2;
+        public System.Windows.Forms.RadioButton AO_TopMost;
+        public System.Windows.Forms.CheckBox Filter_OnActive;
+        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label40;
     }
 }
 

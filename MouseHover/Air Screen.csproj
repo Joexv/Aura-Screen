@@ -60,6 +60,17 @@
     <Compile Include="AppOverlay.Designer.cs">
       <DependentUpon>AppOverlay.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Toolbox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Toolbox.Designer.cs">
+      <DependentUpon>Toolbox.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +96,9 @@
     <EmbeddedResource Include="AppOverlay.resx">
       <DependentUpon>AppOverlay.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Toolbox.resx">
+      <DependentUpon>Toolbox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -93,14 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Tiles.resx">
       <DependentUpon>Tiles.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,6 +137,27 @@
     <Content Include="Pink_Crosshair_Cursor.cur">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\BF_Right_1.png" />
+    <None Include="Resources\BF_Top_1.png" />
+    <None Include="Resources\BF_Bottom_1.png" />
+    <None Include="Resources\BlockFilter_Cycle_1.png" />
+    <None Include="Resources\BoxFilter_Toggle_1.png" />
+    <None Include="Resources\ScreenFilter_Active_1.png" />
+    <None Include="Resources\ScreenFilter_Program_1.png" />
+    <None Include="Resources\ScreenFilter_Toggle_1.png" />
+    <None Include="Resources\ScreenFilter_Cycle_1.png" />
+    <None Include="Resources\AppOverlay_Active_1.png" />
+    <None Include="Resources\AppOverlay_Toggle_1.png" />
+    <None Include="Resources\Mouse_DOpacity_1.png" />
+    <None Include="Resources\Mouse_IOpacity_1.png" />
+    <None Include="Resources\Mouse_Shrink_1.png" />
+    <None Include="Resources\Mouse_Enlarge_1.png" />
+    <None Include="Resources\Cursor_Lock_1.png" />
+    <None Include="Resources\Mouse_Border_1.png" />
+    <None Include="Resources\Cursor_UnLock_1.png" />
+    <None Include="Resources\Mouse_Invert_1.png" />
+    <None Include="Resources\Mouse_Filter_1.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,3 +13,4 @@ C:\Users\HPD\Documents\Github\MouseHover\MouseHover\obj\Debug\AirScreen.exe
 C:\Users\HPD\Documents\Github\MouseHover\MouseHover\obj\Debug\AirScreen.pdb
 C:\Users\HPD\Documents\Github\MouseHover\MouseHover\bin\Debug\Invisible_Cursor.cur
 C:\Users\HPD\Documents\Github\MouseHover\MouseHover\bin\Debug\Pink_Crosshair_Cursor.cur
+C:\Users\HPD\Documents\Github\MouseHover\MouseHover\obj\Debug\AirScreen.Toolbox.resources

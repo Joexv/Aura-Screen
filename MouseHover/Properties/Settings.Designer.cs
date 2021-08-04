@@ -61,7 +61,7 @@ namespace AirScreen.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("SkyBlue")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
         public global::System.Drawing.Color color {
             get {
                 return ((global::System.Drawing.Color)(this["color"]));
@@ -85,7 +85,7 @@ namespace AirScreen.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Rectangle")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Circle")]
         public string style {
             get {
                 return ((string)(this["style"]));
@@ -229,7 +229,7 @@ namespace AirScreen.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.45")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.25")]
         public decimal opacity {
             get {
                 return ((decimal)(this["opacity"]));
@@ -301,7 +301,7 @@ namespace AirScreen.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("explorer.exe")]
+        [global::System.Configuration.DefaultSettingValueAttribute("firefox.exe")]
         public string AO_SavedName {
             get {
                 return ((string)(this["AO_SavedName"]));
@@ -325,7 +325,7 @@ namespace AirScreen.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("explorer.exe;firefox.exe")]
+        [global::System.Configuration.DefaultSettingValueAttribute("firefox.exe;chrome.exe")]
         public string Filter_Programs {
             get {
                 return ((string)(this["Filter_Programs"]));
@@ -524,6 +524,30 @@ namespace AirScreen.Properties {
             }
             set {
                 this["KillHK"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AppInvertLock {
+            get {
+                return ((bool)(this["AppInvertLock"]));
+            }
+            set {
+                this["AppInvertLock"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool HideToolBox {
+            get {
+                return ((bool)(this["HideToolBox"]));
+            }
+            set {
+                this["HideToolBox"] = value;
             }
         }
     }

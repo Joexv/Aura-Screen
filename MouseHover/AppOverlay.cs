@@ -12,6 +12,7 @@ using System.Windows.Forms;
 
 namespace AirScreen
 {
+    using ps = Properties.Settings;
     public partial class AppOverlay : Form
     {
         public string AppName { get; set; }
@@ -19,6 +20,32 @@ namespace AirScreen
         {
             InitializeComponent();
         }
+        public enum GWL
+        {
+            ExStyle = -20
+        }
+
+        public enum WS_EX
+        {
+            Transparent = 0x20,
+            Layered = 0x80000
+        }
+
+        public enum LWA
+        {
+            ColorKey = 0x1,
+            Alpha = 0x2
+        }
+
+        [DllImport("user32.dll", EntryPoint = "GetWindowLong")]
+        public static extern int GetWindowLong(IntPtr hWnd, GWL nIndex);
+
+        [DllImport("user32.dll", EntryPoint = "SetWindowLong")]
+        public static extern int SetWindowLong(IntPtr hWnd, GWL nIndex, int dwNewLong);
+
+        [DllImport("user32.dll", EntryPoint = "SetLayeredWindowAttributes")]
+        public static extern bool SetLayeredWindowAttributes(IntPtr hWnd, int crKey, byte alpha, LWA dwFlags);
+
         const int WS_EX_TRANSPARENT = 0x20;
         protected override System.Windows.Forms.CreateParams CreateParams
         {
@@ -50,30 +77,30 @@ namespace AirScreen
         private void Attatch()
         {
             Process[] processes = null;
-            if (String.IsNullOrEmpty(AppName))
-                processes = Process.GetProcessesByName(GetActiveProcessFileName());
-            else
-                processes = Process.GetProcessesByName(AppName.Substring(0, AppName.Length - 4)); //(AppName);//
+            string Name = ps.Default.AO_SavedName;
+            if (!ps.Default.AO_ProcessByName || String.IsNullOrEmpty(Name))
+                Name = GetActiveProcessFileName() + ".exe";
 
-            if (GetActiveProcessFileName() != Process.GetCurrentProcess().ProcessName)
+            processes = Process.GetProcessesByName(Name.Substring(0, Name.Length - 4));
+
+            Console.WriteLine(Name);
+            Process p = processes.FirstOrDefault();
+
+            if (p != null && GetActiveProcessFileName() != Process.GetCurrentProcess().ProcessName && (GetActiveProcessFileName() + ".exe" == Name))
             {
-                Process p = processes.FirstOrDefault();
                 IntPtr windowHandle;
-                if (p != null)
-                {
-                    this.Visible = true;
-                    windowHandle = p.MainWindowHandle;
-                    RECT rect = new RECT();
-                    _ = GetWindowRect(windowHandle, ref rect);
+                windowHandle = p.MainWindowHandle;
+                RECT rect = new RECT();
+                _ = GetWindowRect(windowHandle, ref rect);
 
-                    this.Location = new Point(rect.Left, rect.Top - 5);
-                    this.Size = new Size(rect.Right - rect.Left + 10, rect.Bottom - rect.Top);
+                this.Location = new Point(rect.Left, rect.Top - 5);
+                this.Size = new Size(rect.Right - rect.Left + 10, rect.Bottom - rect.Top);
 
-                    this.BackColor = Color.LimeGreen;
-                    this.Opacity = 0.45;
-                    this.TopMost = true;
-                    this.FormBorderStyle = FormBorderStyle.None;
-                }
+                this.BackColor = ps.Default.AO_Color;
+                this.Opacity = (double)ps.Default.AO_Opacity;
+                this.TopMost = true;
+                this.FormBorderStyle = FormBorderStyle.None;
+                this.Visible = true;
             }
             else
                 this.Visible = false;
@@ -112,6 +139,20 @@ namespace AirScreen
         private void timer1_Tick(object sender, EventArgs e)
         {
             Attatch();
+        }
+
+        private void AppOverlay_Shown(object sender, EventArgs e)
+        {
+
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            int wl = GetWindowLong(this.Handle, GWL.ExStyle);
+            wl = wl | 0x80000 | 0x20;
+            SetWindowLong(this.Handle, GWL.ExStyle, wl);
+            SetLayeredWindowAttributes(this.Handle, 0, 128, LWA.Alpha);
         }
     }
 }

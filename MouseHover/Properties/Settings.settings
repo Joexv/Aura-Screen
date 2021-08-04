@@ -12,13 +12,13 @@
       <Value Profile="(Default)">750</Value>
     </Setting>
     <Setting Name="color" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">SkyBlue</Value>
+      <Value Profile="(Default)">Black</Value>
     </Setting>
     <Setting Name="invert" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="style" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Rectangle</Value>
+      <Value Profile="(Default)">Circle</Value>
     </Setting>
     <Setting Name="border" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -54,7 +54,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="opacity" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">0.45</Value>
+      <Value Profile="(Default)">0.25</Value>
     </Setting>
     <Setting Name="tileColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">White</Value>
@@ -72,13 +72,13 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="AO_SavedName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">explorer.exe</Value>
+      <Value Profile="(Default)">firefox.exe</Value>
     </Setting>
     <Setting Name="Filter_OnStartup" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="Filter_Programs" Type="System.String" Scope="User">
-      <Value Profile="(Default)">explorer.exe;firefox.exe</Value>
+      <Value Profile="(Default)">firefox.exe;chrome.exe</Value>
     </Setting>
     <Setting Name="Filter_OnActive" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
@@ -127,6 +127,12 @@
     </Setting>
     <Setting Name="KillHK" Type="System.String" Scope="User">
       <Value Profile="(Default)">7</Value>
+    </Setting>
+    <Setting Name="AppInvertLock" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="HideToolBox" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -22,6 +22,32 @@ namespace AirScreen
             CreateView();
         }
 
+        public enum GWL
+        {
+            ExStyle = -20
+        }
+
+        public enum WS_EX
+        {
+            Transparent = 0x20,
+            Layered = 0x80000
+        }
+
+        public enum LWA
+        {
+            ColorKey = 0x1,
+            Alpha = 0x2
+        }
+
+        [DllImport("user32.dll", EntryPoint = "GetWindowLong")]
+        public static extern int GetWindowLong(IntPtr hWnd, GWL nIndex);
+
+        [DllImport("user32.dll", EntryPoint = "SetWindowLong")]
+        public static extern int SetWindowLong(IntPtr hWnd, GWL nIndex, int dwNewLong);
+
+        [DllImport("user32.dll", EntryPoint = "SetLayeredWindowAttributes")]
+        public static extern bool SetLayeredWindowAttributes(IntPtr hWnd, int crKey, byte alpha, LWA dwFlags);
+
         const int WS_EX_TRANSPARENT = 0x20;
         protected override System.Windows.Forms.CreateParams CreateParams
         {
@@ -76,6 +102,9 @@ namespace AirScreen
 
             if(this.Width != ps.Default.width || this.Height != ps.Default.height)
                 CreateView();
+
+            if (this.Opacity != (double)ps.Default.opacity && !ps.Default.invert)
+                this.Opacity = (double)ps.Default.opacity;
         }
 
         private void AdjustLocation()
@@ -169,8 +198,8 @@ namespace AirScreen
 
                 if (this.Width != ps.Default.width || this.Height != ps.Default.height)
                 {
-                    CreateView();
-                    //Invert();
+                    if(!ps.Default.AppInvertLock)
+                        CreateView();
                 } 
             }
         }
@@ -184,6 +213,15 @@ namespace AirScreen
             g.Dispose();
             return b;
         }
+
+        public Bitmap CaptureScreen(Point Location, int Height, int Width)
+        {
+            Bitmap b = new Bitmap(Width, Height);
+            Graphics g = Graphics.FromImage(b);
+            g.CopyFromScreen(Location.X, Location.Y, 0, 0, b.Size);
+            g.Dispose();
+            return b;
+        }
         Point inversionPT;
         private void Form2_LocationChanged(object sender, EventArgs e)
         {
@@ -193,12 +231,25 @@ namespace AirScreen
 
         private void Invert()
         {
-            this.Opacity = 0.75;
+            this.Opacity = 0.99; //Form must be even slightly opaque inorder to pass through inputs
             inversionPT = Cursor.Position;
             this.Hide();
             this.BackgroundImage = Transform(CaptureScreen());
             this.Show();
             DoInvert = false;
+        }
+
+        public void InvertApp(Point AppPosition, int Height, int Width)
+        {
+            Console.WriteLine("Inverting App");
+            this.Location = AppPosition;
+            this.Width = Width;
+            this.Height = Height;
+            this.Opacity = 0.99;
+            Application.DoEvents();
+            this.Hide();
+            this.BackgroundImage = Transform(CaptureScreen(AppPosition, Height, Width));
+            this.Show();
         }
 
         private bool InversionPositionCheck()
@@ -244,6 +295,16 @@ namespace AirScreen
         {
             //if(!ps.Default.invert)
                 //CreateView();
+        }
+        private void MouseBox_Shown(object sender, EventArgs e) { }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            int wl = GetWindowLong(this.Handle, GWL.ExStyle);
+            wl = wl | 0x80000 | 0x20;
+            SetWindowLong(this.Handle, GWL.ExStyle, wl);
+            SetLayeredWindowAttributes(this.Handle, 0, 128, LWA.Alpha);
         }
     }
 }
