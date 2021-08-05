@@ -251,16 +251,18 @@ namespace AirScreen
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (ps.Default.tileMode == 5 && this.Visible)
+            if (ps.Default.tileMode == 5 && tiles.Visible)
             {
                 if (tiles.FormBorderStyle == FormBorderStyle.None)
                 {
                     tiles.FormBorderStyle = FormBorderStyle.Sizable;
                     tiles.PreviewButton.Visible = true;
                     tiles.SaveButton.Visible = true;
+                    tiles.Opacity = 1;
                 }
                 else
                 {
+                    tiles.Opacity = (double)ps.Default.tileOpacity;
                     tiles.FormBorderStyle = FormBorderStyle.None;
                     tiles.PreviewButton.Visible = false;
                     tiles.SaveButton.Visible = false;

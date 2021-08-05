@@ -120,6 +120,8 @@ namespace AirScreen
 
             AO_Invert.Checked = false;
             AO_Time.Value = ps.Default.AO_InvertTime;
+
+            AO_Start.Checked = ps.Default.AO_OnStart;
             #endregion
 
             #region Screen Filters
@@ -233,7 +235,11 @@ namespace AirScreen
                 if (tb.Visible)
                     tb.Hide();
                 else
+                {
                     tb.Show();
+                    if (ps.Default.toolboxCursor)
+                        tb.Location = Cursor.Position;
+                } 
             });
 
             GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.tilesMHK, () => {
@@ -1034,6 +1040,12 @@ namespace AirScreen
         private void numericUpDown2_ValueChanged(object sender, EventArgs e)
         {
             ps.Default.AO_InvertTime = (int)AO_Time.Value;
+            ps.Default.Save();
+        }
+
+        private void AO_Start_CheckedChanged(object sender, EventArgs e)
+        {
+            ps.Default.AO_OnStart = AO_Start.Checked;
             ps.Default.Save();
         }
     }

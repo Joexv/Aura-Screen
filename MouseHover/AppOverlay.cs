@@ -72,11 +72,21 @@ namespace AirScreen
 
         private void AppOverlay_Load(object sender, EventArgs e)
         {
-            AO_InvertTimer.Interval = ps.Default.AO_InvertTime * 1000;
-            if (ps.Default.AO_Invert)
-                AO_InvertTimer.Start();
+            if (ps.Default.AO_OnStart)
+            {
+                AO_InvertTimer.Interval = ps.Default.AO_InvertTime * 1000;
+                if (ps.Default.AO_Invert)
+                    AO_InvertTimer.Start();
+                else
+                    AO_InvertTimer.Stop();
+
+                AO_AttatchTimer.Start();
+            }
             else
-                AO_InvertTimer.Stop();
+            {
+                AO_AttatchTimer.Stop();
+                this.Visible = false;
+            }
         }
         private Point OldLocation = new Point(0, 0);
         private bool MouseDown = false;
@@ -121,7 +131,7 @@ namespace AirScreen
             }
             else
                 this.Visible = false;
-            MouseDown = (Control.MouseButtons == MouseButtons.Left);
+            //MouseDown = (Control.MouseButtons == MouseButtons.Left);
         }
 
         private void Invert(Point Location, Size size)

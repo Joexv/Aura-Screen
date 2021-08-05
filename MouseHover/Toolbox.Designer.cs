@@ -96,6 +96,7 @@ namespace AirScreen
             this.cursorToggle.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cursorToggle.ForeColor = System.Drawing.Color.White;
             this.cursorToggle.Image = global::AirScreen.Properties.Resources.Mouse_Filter_1;
+            this.cursorToggle.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.cursorToggle.Location = new System.Drawing.Point(7, 7);
             this.cursorToggle.MinimumSize = new System.Drawing.Size(150, 190);
             this.cursorToggle.Name = "cursorToggle";
@@ -118,6 +119,7 @@ namespace AirScreen
             this.cursorInvert.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cursorInvert.ForeColor = System.Drawing.Color.White;
             this.cursorInvert.Image = global::AirScreen.Properties.Resources.Mouse_Invert_1;
+            this.cursorInvert.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.cursorInvert.Location = new System.Drawing.Point(203, 7);
             this.cursorInvert.MinimumSize = new System.Drawing.Size(150, 190);
             this.cursorInvert.Name = "cursorInvert";
@@ -140,6 +142,7 @@ namespace AirScreen
             this.borderToggle.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.borderToggle.ForeColor = System.Drawing.Color.White;
             this.borderToggle.Image = global::AirScreen.Properties.Resources.Mouse_Border_1;
+            this.borderToggle.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.borderToggle.Location = new System.Drawing.Point(399, 7);
             this.borderToggle.MinimumSize = new System.Drawing.Size(150, 190);
             this.borderToggle.Name = "borderToggle";
@@ -162,6 +165,7 @@ namespace AirScreen
             this.shrinkCursor.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shrinkCursor.ForeColor = System.Drawing.Color.White;
             this.shrinkCursor.Image = ((System.Drawing.Image)(resources.GetObject("shrinkCursor.Image")));
+            this.shrinkCursor.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.shrinkCursor.Location = new System.Drawing.Point(595, 7);
             this.shrinkCursor.MinimumSize = new System.Drawing.Size(150, 190);
             this.shrinkCursor.Name = "shrinkCursor";
@@ -184,6 +188,7 @@ namespace AirScreen
             this.enlargeCursor.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.enlargeCursor.ForeColor = System.Drawing.Color.White;
             this.enlargeCursor.Image = global::AirScreen.Properties.Resources.Mouse_Enlarge_1;
+            this.enlargeCursor.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.enlargeCursor.Location = new System.Drawing.Point(7, 203);
             this.enlargeCursor.MinimumSize = new System.Drawing.Size(150, 190);
             this.enlargeCursor.Name = "enlargeCursor";
@@ -206,6 +211,7 @@ namespace AirScreen
             this.lowerOpacity.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lowerOpacity.ForeColor = System.Drawing.Color.White;
             this.lowerOpacity.Image = global::AirScreen.Properties.Resources.Mouse_DOpacity_1;
+            this.lowerOpacity.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lowerOpacity.Location = new System.Drawing.Point(203, 203);
             this.lowerOpacity.MinimumSize = new System.Drawing.Size(150, 190);
             this.lowerOpacity.Name = "lowerOpacity";
@@ -228,6 +234,7 @@ namespace AirScreen
             this.raiseOpacity.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.raiseOpacity.ForeColor = System.Drawing.Color.White;
             this.raiseOpacity.Image = global::AirScreen.Properties.Resources.Mouse_Enlarge_1;
+            this.raiseOpacity.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.raiseOpacity.Location = new System.Drawing.Point(399, 203);
             this.raiseOpacity.MinimumSize = new System.Drawing.Size(150, 190);
             this.raiseOpacity.Name = "raiseOpacity";
@@ -250,6 +257,7 @@ namespace AirScreen
             this.AO_Toggle.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AO_Toggle.ForeColor = System.Drawing.Color.White;
             this.AO_Toggle.Image = global::AirScreen.Properties.Resources.AppOverlay_Toggle_1;
+            this.AO_Toggle.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.AO_Toggle.Location = new System.Drawing.Point(595, 203);
             this.AO_Toggle.MinimumSize = new System.Drawing.Size(150, 190);
             this.AO_Toggle.Name = "AO_Toggle";
@@ -272,6 +280,7 @@ namespace AirScreen
             this.AO_Active.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AO_Active.ForeColor = System.Drawing.Color.White;
             this.AO_Active.Image = global::AirScreen.Properties.Resources.AppOverlay_Active_1;
+            this.AO_Active.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.AO_Active.Location = new System.Drawing.Point(7, 399);
             this.AO_Active.MinimumSize = new System.Drawing.Size(150, 190);
             this.AO_Active.Name = "AO_Active";
@@ -294,6 +303,7 @@ namespace AirScreen
             this.SF_Toggle.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SF_Toggle.ForeColor = System.Drawing.Color.White;
             this.SF_Toggle.Image = global::AirScreen.Properties.Resources.ScreenFilter_Toggle_1;
+            this.SF_Toggle.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.SF_Toggle.Location = new System.Drawing.Point(203, 399);
             this.SF_Toggle.MinimumSize = new System.Drawing.Size(150, 190);
             this.SF_Toggle.Name = "SF_Toggle";
@@ -316,6 +326,7 @@ namespace AirScreen
             this.SF_Cycle.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SF_Cycle.ForeColor = System.Drawing.Color.White;
             this.SF_Cycle.Image = global::AirScreen.Properties.Resources.ScreenFilter_Cycle_1;
+            this.SF_Cycle.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.SF_Cycle.Location = new System.Drawing.Point(399, 399);
             this.SF_Cycle.MinimumSize = new System.Drawing.Size(150, 190);
             this.SF_Cycle.Name = "SF_Cycle";
@@ -338,6 +349,7 @@ namespace AirScreen
             this.SF_Program.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SF_Program.ForeColor = System.Drawing.Color.White;
             this.SF_Program.Image = global::AirScreen.Properties.Resources.ScreenFilter_Program_1;
+            this.SF_Program.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.SF_Program.Location = new System.Drawing.Point(595, 399);
             this.SF_Program.MinimumSize = new System.Drawing.Size(150, 190);
             this.SF_Program.Name = "SF_Program";
@@ -360,6 +372,7 @@ namespace AirScreen
             this.BF_Toggle.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BF_Toggle.ForeColor = System.Drawing.Color.White;
             this.BF_Toggle.Image = global::AirScreen.Properties.Resources.BoxFilter_Toggle_1;
+            this.BF_Toggle.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BF_Toggle.Location = new System.Drawing.Point(7, 595);
             this.BF_Toggle.MinimumSize = new System.Drawing.Size(150, 190);
             this.BF_Toggle.Name = "BF_Toggle";
@@ -382,6 +395,7 @@ namespace AirScreen
             this.BF_Cycle.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BF_Cycle.ForeColor = System.Drawing.Color.White;
             this.BF_Cycle.Image = global::AirScreen.Properties.Resources.BlockFilter_Cycle_1;
+            this.BF_Cycle.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BF_Cycle.Location = new System.Drawing.Point(203, 595);
             this.BF_Cycle.MinimumSize = new System.Drawing.Size(150, 190);
             this.BF_Cycle.Name = "BF_Cycle";
@@ -404,6 +418,7 @@ namespace AirScreen
             this.BF_Top.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BF_Top.ForeColor = System.Drawing.Color.White;
             this.BF_Top.Image = global::AirScreen.Properties.Resources.BoxFilter_Manual_1;
+            this.BF_Top.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BF_Top.Location = new System.Drawing.Point(399, 595);
             this.BF_Top.MinimumSize = new System.Drawing.Size(150, 190);
             this.BF_Top.Name = "BF_Top";
@@ -426,6 +441,7 @@ namespace AirScreen
             this.button2.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
             this.button2.Image = global::AirScreen.Properties.Resources.BoxFilter_Edit_1;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button2.Location = new System.Drawing.Point(595, 595);
             this.button2.MinimumSize = new System.Drawing.Size(150, 190);
             this.button2.Name = "button2";
@@ -448,6 +464,7 @@ namespace AirScreen
             this.button1.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
             this.button1.Image = global::AirScreen.Properties.Resources.BF_Top_1;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.button1.Location = new System.Drawing.Point(7, 791);
             this.button1.MinimumSize = new System.Drawing.Size(150, 190);
             this.button1.Name = "button1";
@@ -470,6 +487,7 @@ namespace AirScreen
             this.BF_Bottom.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BF_Bottom.ForeColor = System.Drawing.Color.White;
             this.BF_Bottom.Image = global::AirScreen.Properties.Resources.BF_Bottom_1;
+            this.BF_Bottom.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BF_Bottom.Location = new System.Drawing.Point(203, 791);
             this.BF_Bottom.MinimumSize = new System.Drawing.Size(150, 190);
             this.BF_Bottom.Name = "BF_Bottom";
@@ -492,6 +510,7 @@ namespace AirScreen
             this.BF_Left.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BF_Left.ForeColor = System.Drawing.Color.White;
             this.BF_Left.Image = global::AirScreen.Properties.Resources.BoxFilter_Toggle_1;
+            this.BF_Left.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BF_Left.Location = new System.Drawing.Point(399, 791);
             this.BF_Left.MinimumSize = new System.Drawing.Size(150, 190);
             this.BF_Left.Name = "BF_Left";
@@ -514,6 +533,7 @@ namespace AirScreen
             this.BF_Right.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BF_Right.ForeColor = System.Drawing.Color.White;
             this.BF_Right.Image = global::AirScreen.Properties.Resources.BF_Right_1;
+            this.BF_Right.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.BF_Right.Location = new System.Drawing.Point(595, 791);
             this.BF_Right.MinimumSize = new System.Drawing.Size(150, 190);
             this.BF_Right.Name = "BF_Right";

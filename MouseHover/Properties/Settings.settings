@@ -161,5 +161,8 @@
     <Setting Name="tilesMHK" Type="System.String" Scope="User">
       <Value Profile="(Default)">M</Value>
     </Setting>
+    <Setting Name="AO_OnStart" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -49,7 +49,22 @@ namespace AirScreen
             this.label1 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.Filter_OnActive = new System.Windows.Forms.CheckBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.inversionToggle = new System.Windows.Forms.CheckBox();
+            this.inversionBox = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.cursorChange = new System.Windows.Forms.CheckBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.label44 = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.label43 = new System.Windows.Forms.Label();
+            this.AO_Time = new System.Windows.Forms.NumericUpDown();
+            this.label42 = new System.Windows.Forms.Label();
+            this.AO_Invert = new System.Windows.Forms.CheckBox();
+            this.label40 = new System.Windows.Forms.Label();
             this.button16 = new System.Windows.Forms.Button();
             this.AO_ColorChange = new System.Windows.Forms.Button();
             this.AO_Opacity = new System.Windows.Forms.NumericUpDown();
@@ -74,14 +89,12 @@ namespace AirScreen
             this.label25 = new System.Windows.Forms.Label();
             this.filterStartup = new System.Windows.Forms.CheckBox();
             this.button15 = new System.Windows.Forms.Button();
-            this.Filter_OnActive = new System.Windows.Forms.CheckBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.matrixBox = new System.Windows.Forms.ComboBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.label18 = new System.Windows.Forms.Label();
             this.button14 = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.label16 = new System.Windows.Forms.Label();
@@ -94,13 +107,21 @@ namespace AirScreen
             this.button11 = new System.Windows.Forms.Button();
             this.tileSelect = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button19 = new System.Windows.Forms.Button();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label41 = new System.Windows.Forms.Label();
+            this.toolboxHK = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.killswitchHK = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.tilesManualHK = new System.Windows.Forms.TextBox();
             this.label32 = new System.Windows.Forms.Label();
             this.BF_ToggleHK = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cylceHotKey = new System.Windows.Forms.TextBox();
+            this.SettingsHK = new System.Windows.Forms.TextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label36 = new System.Windows.Forms.Label();
             this.AO_ToggleHK = new System.Windows.Forms.TextBox();
@@ -112,6 +133,7 @@ namespace AirScreen
             this.SF_ToggleHK = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label39 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -136,10 +158,6 @@ namespace AirScreen
             this.styleBox = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.checkBox4 = new System.Windows.Forms.CheckBox();
-            this.inversionToggle = new System.Windows.Forms.CheckBox();
-            this.inversionBox = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -157,30 +175,14 @@ namespace AirScreen
             this.cursorSelect = new System.Windows.Forms.Button();
             this.label28 = new System.Windows.Forms.Label();
             this.cursorIdle = new System.Windows.Forms.NumericUpDown();
-            this.cursorChange = new System.Windows.Forms.CheckBox();
             this.cursorApply = new System.Windows.Forms.Button();
             this.Filter_Timer = new System.Windows.Forms.Timer(this.components);
             this.CursorTimer = new System.Windows.Forms.Timer(this.components);
             this.CursorTimer2 = new System.Windows.Forms.Timer(this.components);
-            this.checkBox5 = new System.Windows.Forms.CheckBox();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label40 = new System.Windows.Forms.Label();
-            this.checkBox6 = new System.Windows.Forms.CheckBox();
-            this.button19 = new System.Windows.Forms.Button();
-            this.AO_Invert = new System.Windows.Forms.CheckBox();
-            this.label42 = new System.Windows.Forms.Label();
-            this.AO_Time = new System.Windows.Forms.NumericUpDown();
-            this.label43 = new System.Windows.Forms.Label();
-            this.SettingsHK = new System.Windows.Forms.TextBox();
-            this.label37 = new System.Windows.Forms.Label();
-            this.killswitchHK = new System.Windows.Forms.TextBox();
-            this.label38 = new System.Windows.Forms.Label();
-            this.toolboxHK = new System.Windows.Forms.TextBox();
-            this.label41 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.tilesManualHK = new System.Windows.Forms.TextBox();
+            this.AO_Start = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip1.SuspendLayout();
             this.tabPage6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AO_Time)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AO_Opacity)).BeginInit();
             this.tabPage5.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -205,7 +207,6 @@ namespace AirScreen
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cursorPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cursorIdle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AO_Time)).BeginInit();
             this.SuspendLayout();
             // 
             // notifyIcon1
@@ -377,8 +378,132 @@ namespace AirScreen
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // Filter_OnActive
+            // 
+            this.Filter_OnActive.AutoSize = true;
+            this.Filter_OnActive.Location = new System.Drawing.Point(14, 500);
+            this.Filter_OnActive.Margin = new System.Windows.Forms.Padding(5);
+            this.Filter_OnActive.Name = "Filter_OnActive";
+            this.Filter_OnActive.Size = new System.Drawing.Size(337, 29);
+            this.Filter_OnActive.TabIndex = 22;
+            this.Filter_OnActive.Text = "Filter when a program is active";
+            this.toolTip1.SetToolTip(this.Filter_OnActive, "Screen filter will only be enabled when the selected app is open,\r\nand currently " +
+        "active.");
+            this.Filter_OnActive.UseVisualStyleBackColor = true;
+            this.Filter_OnActive.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
+            // 
+            // label18
+            // 
+            this.label18.Location = new System.Drawing.Point(10, 5);
+            this.label18.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(654, 65);
+            this.label18.TabIndex = 1;
+            this.label18.Text = "I really liked the Color Matrix that they NegativeScreen made. For the full versi" +
+    "on get it from their website:\r\n";
+            this.toolTip1.SetToolTip(this.label18, "For real they did an incredible job on some of these color filters. \r\nGo check th" +
+        "em out for some different functionality compared to Air Screen.");
+            // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Location = new System.Drawing.Point(13, 102);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(218, 29);
+            this.checkBox4.TabIndex = 17;
+            this.checkBox4.Text = "Lock filter in place";
+            this.toolTip1.SetToolTip(this.checkBox4, "Locks the cursor filter in place until disabled.");
+            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged_2);
+            // 
+            // inversionToggle
+            // 
+            this.inversionToggle.AutoSize = true;
+            this.inversionToggle.Location = new System.Drawing.Point(270, 67);
+            this.inversionToggle.Name = "inversionToggle";
+            this.inversionToggle.Size = new System.Drawing.Size(323, 29);
+            this.inversionToggle.TabIndex = 16;
+            this.inversionToggle.Text = "Toggle overlay with inversion";
+            this.toolTip1.SetToolTip(this.inversionToggle, "Will turn the Cursor Filter on or off alongside Invertsion.");
+            this.inversionToggle.UseVisualStyleBackColor = true;
+            this.inversionToggle.CheckedChanged += new System.EventHandler(this.inversionToggle_CheckedChanged);
+            // 
+            // inversionBox
+            // 
+            this.inversionBox.AutoSize = true;
+            this.inversionBox.Location = new System.Drawing.Point(13, 67);
+            this.inversionBox.Name = "inversionBox";
+            this.inversionBox.Size = new System.Drawing.Size(131, 29);
+            this.inversionBox.TabIndex = 15;
+            this.inversionBox.Text = "Inversion";
+            this.toolTip1.SetToolTip(this.inversionBox, "Creates a static iverted screenshot of the contents\r\nbelow the cursor filter. Ove" +
+        "rrides set color and opacity.");
+            this.inversionBox.UseVisualStyleBackColor = true;
+            this.inversionBox.CheckedChanged += new System.EventHandler(this.inversionBox_CheckedChanged);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(13, 32);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(183, 29);
+            this.checkBox1.TabIndex = 14;
+            this.checkBox1.Text = "Enable startup";
+            this.toolTip1.SetToolTip(this.checkBox1, "Enable Cursor Filter on startup of application");
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // cursorChange
+            // 
+            this.cursorChange.AutoSize = true;
+            this.cursorChange.Location = new System.Drawing.Point(24, 24);
+            this.cursorChange.Name = "cursorChange";
+            this.cursorChange.Size = new System.Drawing.Size(259, 29);
+            this.cursorChange.TabIndex = 11;
+            this.cursorChange.Text = "Change Cursor on idle";
+            this.toolTip1.SetToolTip(this.cursorChange, "Changes the user\'s mouse cursor to supplied .cur file\r\nwhen cursor is idle for se" +
+        "t amount of time.");
+            this.cursorChange.UseVisualStyleBackColor = true;
+            this.cursorChange.CheckedChanged += new System.EventHandler(this.cursorChange_CheckedChanged);
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(18, 65);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(306, 29);
+            this.checkBox5.TabIndex = 21;
+            this.checkBox5.Text = "Manually minimize ToolBox";
+            this.toolTip1.SetToolTip(this.checkBox5, "If disabled, the Toolbox will automatically hide itself once your mouse leaves it" +
+        "s view.\r\nWhen enabled, you must manually minimize it.");
+            this.checkBox5.UseVisualStyleBackColor = true;
+            this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Location = new System.Drawing.Point(18, 101);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(441, 29);
+            this.checkBox6.TabIndex = 22;
+            this.checkBox6.Text = "Toolbox HotKey brings ToolBox to Cursor";
+            this.toolTip1.SetToolTip(this.checkBox6, "When enabled, the Toolbox will appear where ever your mouse cursor is located.\r\n");
+            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(20, 83);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(229, 25);
+            this.label44.TabIndex = 12;
+            this.label44.Text = "Set Manual On Screen";
+            this.toolTip1.SetToolTip(this.label44, "This will enable/disable the border\r\narouond the tile when using manual mode.");
+            // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.AO_Start);
             this.tabPage6.Controls.Add(this.label43);
             this.tabPage6.Controls.Add(this.AO_Time);
             this.tabPage6.Controls.Add(this.label42);
@@ -404,6 +529,67 @@ namespace AirScreen
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "App Overlay";
             this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Enabled = false;
+            this.label43.Location = new System.Drawing.Point(325, 515);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(325, 25);
+            this.label43.TabIndex = 45;
+            this.label43.Text = "Manually refresh by clicking shift";
+            // 
+            // AO_Time
+            // 
+            this.AO_Time.Enabled = false;
+            this.AO_Time.Location = new System.Drawing.Point(330, 481);
+            this.AO_Time.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.AO_Time.Name = "AO_Time";
+            this.AO_Time.Size = new System.Drawing.Size(120, 31);
+            this.AO_Time.TabIndex = 44;
+            this.AO_Time.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.AO_Time.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Enabled = false;
+            this.label42.Location = new System.Drawing.Point(325, 453);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(317, 25);
+            this.label42.TabIndex = 43;
+            this.label42.Text = "Refresh Invert Every X Seconds";
+            // 
+            // AO_Invert
+            // 
+            this.AO_Invert.AutoSize = true;
+            this.AO_Invert.Enabled = false;
+            this.AO_Invert.Location = new System.Drawing.Point(330, 403);
+            this.AO_Invert.Name = "AO_Invert";
+            this.AO_Invert.Size = new System.Drawing.Size(177, 29);
+            this.AO_Invert.TabIndex = 42;
+            this.AO_Invert.Text = "Invert Overlay";
+            this.AO_Invert.UseVisualStyleBackColor = true;
+            this.AO_Invert.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(15, 9);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(509, 50);
+            this.label40.TabIndex = 41;
+            this.label40.Text = "Displays a semi-transperant color over the selected \r\napplication or current acti" +
+    "ve application.";
             // 
             // button16
             // 
@@ -694,20 +880,6 @@ namespace AirScreen
             this.button15.UseVisualStyleBackColor = true;
             this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
-            // Filter_OnActive
-            // 
-            this.Filter_OnActive.AutoSize = true;
-            this.Filter_OnActive.Location = new System.Drawing.Point(14, 500);
-            this.Filter_OnActive.Margin = new System.Windows.Forms.Padding(5);
-            this.Filter_OnActive.Name = "Filter_OnActive";
-            this.Filter_OnActive.Size = new System.Drawing.Size(337, 29);
-            this.Filter_OnActive.TabIndex = 22;
-            this.Filter_OnActive.Text = "Filter when a program is active";
-            this.toolTip1.SetToolTip(this.Filter_OnActive, "Screen filter will only be enabled when the selected app is open,\r\nand currently " +
-        "active.");
-            this.Filter_OnActive.UseVisualStyleBackColor = true;
-            this.Filter_OnActive.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
-            // 
             // label20
             // 
             this.label20.AutoSize = true;
@@ -770,18 +942,6 @@ namespace AirScreen
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "https://zerowidthjoiner.net/negativescreen";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // label18
-            // 
-            this.label18.Location = new System.Drawing.Point(10, 5);
-            this.label18.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(654, 65);
-            this.label18.TabIndex = 1;
-            this.label18.Text = "I really liked the Color Matrix that they NegativeScreen made. For the full versi" +
-    "on get it from their website:\r\n";
-            this.toolTip1.SetToolTip(this.label18, "For real they did an incredible job on some of these color filters. \r\nGo check th" +
-        "em out for some different functionality compared to Air Screen.");
             // 
             // button14
             // 
@@ -938,6 +1098,16 @@ namespace AirScreen
             this.tabPage3.Text = "Config";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(18, 810);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(256, 52);
+            this.button19.TabIndex = 23;
+            this.button19.Text = "Restore Default Settings";
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
@@ -971,6 +1141,47 @@ namespace AirScreen
             this.tabPage2.Text = "HotKeys";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(28, 785);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(166, 25);
+            this.label41.TabIndex = 24;
+            this.label41.Text = "Dispaly Toolbox";
+            // 
+            // toolboxHK
+            // 
+            this.toolboxHK.Location = new System.Drawing.Point(254, 782);
+            this.toolboxHK.Name = "toolboxHK";
+            this.toolboxHK.Size = new System.Drawing.Size(71, 31);
+            this.toolboxHK.TabIndex = 25;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(28, 750);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(101, 25);
+            this.label38.TabIndex = 22;
+            this.label38.Text = "Killswitch";
+            // 
+            // killswitchHK
+            // 
+            this.killswitchHK.Location = new System.Drawing.Point(254, 747);
+            this.killswitchHK.Name = "killswitchHK";
+            this.killswitchHK.Size = new System.Drawing.Size(71, 31);
+            this.killswitchHK.TabIndex = 23;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(28, 713);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(167, 25);
+            this.label37.TabIndex = 12;
+            this.label37.Text = "Display Settings";
+            // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.tilesManualHK);
@@ -985,6 +1196,13 @@ namespace AirScreen
             this.groupBox8.TabIndex = 21;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Block Filters";
+            // 
+            // tilesManualHK
+            // 
+            this.tilesManualHK.Location = new System.Drawing.Point(255, 80);
+            this.tilesManualHK.Name = "tilesManualHK";
+            this.tilesManualHK.Size = new System.Drawing.Size(71, 31);
+            this.tilesManualHK.TabIndex = 13;
             // 
             // label32
             // 
@@ -1017,6 +1235,13 @@ namespace AirScreen
             this.cylceHotKey.Name = "cylceHotKey";
             this.cylceHotKey.Size = new System.Drawing.Size(71, 31);
             this.cylceHotKey.TabIndex = 9;
+            // 
+            // SettingsHK
+            // 
+            this.SettingsHK.Location = new System.Drawing.Point(254, 710);
+            this.SettingsHK.Name = "SettingsHK";
+            this.SettingsHK.Size = new System.Drawing.Size(71, 31);
+            this.SettingsHK.TabIndex = 13;
             // 
             // groupBox7
             // 
@@ -1130,6 +1355,15 @@ namespace AirScreen
             this.groupBox5.TabIndex = 18;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Cursor Filter";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(339, 152);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(238, 50);
+            this.label39.TabIndex = 18;
+            this.label39.Text = "Press Shift to manually \r\nrefresh inversion";
             // 
             // label5
             // 
@@ -1397,55 +1631,6 @@ namespace AirScreen
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Settings";
             // 
-            // checkBox4
-            // 
-            this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(13, 102);
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Size = new System.Drawing.Size(218, 29);
-            this.checkBox4.TabIndex = 17;
-            this.checkBox4.Text = "Lock filter in place";
-            this.toolTip1.SetToolTip(this.checkBox4, "Locks the cursor filter in place until disabled.");
-            this.checkBox4.UseVisualStyleBackColor = true;
-            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged_2);
-            // 
-            // inversionToggle
-            // 
-            this.inversionToggle.AutoSize = true;
-            this.inversionToggle.Location = new System.Drawing.Point(270, 67);
-            this.inversionToggle.Name = "inversionToggle";
-            this.inversionToggle.Size = new System.Drawing.Size(323, 29);
-            this.inversionToggle.TabIndex = 16;
-            this.inversionToggle.Text = "Toggle overlay with inversion";
-            this.toolTip1.SetToolTip(this.inversionToggle, "Will turn the Cursor Filter on or off alongside Invertsion.");
-            this.inversionToggle.UseVisualStyleBackColor = true;
-            this.inversionToggle.CheckedChanged += new System.EventHandler(this.inversionToggle_CheckedChanged);
-            // 
-            // inversionBox
-            // 
-            this.inversionBox.AutoSize = true;
-            this.inversionBox.Location = new System.Drawing.Point(13, 67);
-            this.inversionBox.Name = "inversionBox";
-            this.inversionBox.Size = new System.Drawing.Size(131, 29);
-            this.inversionBox.TabIndex = 15;
-            this.inversionBox.Text = "Inversion";
-            this.toolTip1.SetToolTip(this.inversionBox, "Creates a static iverted screenshot of the contents\r\nbelow the cursor filter. Ove" +
-        "rrides set color and opacity.");
-            this.inversionBox.UseVisualStyleBackColor = true;
-            this.inversionBox.CheckedChanged += new System.EventHandler(this.inversionBox_CheckedChanged);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(13, 32);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(183, 29);
-            this.checkBox1.TabIndex = 14;
-            this.checkBox1.Text = "Enable startup";
-            this.toolTip1.SetToolTip(this.checkBox1, "Enable Cursor Filter on startup of application");
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.checkBox2);
@@ -1634,19 +1819,6 @@ namespace AirScreen
             this.cursorIdle.Size = new System.Drawing.Size(120, 31);
             this.cursorIdle.TabIndex = 12;
             // 
-            // cursorChange
-            // 
-            this.cursorChange.AutoSize = true;
-            this.cursorChange.Location = new System.Drawing.Point(24, 24);
-            this.cursorChange.Name = "cursorChange";
-            this.cursorChange.Size = new System.Drawing.Size(259, 29);
-            this.cursorChange.TabIndex = 11;
-            this.cursorChange.Text = "Change Cursor on idle";
-            this.toolTip1.SetToolTip(this.cursorChange, "Changes the user\'s mouse cursor to supplied .cur file\r\nwhen cursor is idle for se" +
-        "t amount of time.");
-            this.cursorChange.UseVisualStyleBackColor = true;
-            this.cursorChange.CheckedChanged += new System.EventHandler(this.cursorChange_CheckedChanged);
-            // 
             // cursorApply
             // 
             this.cursorApply.Location = new System.Drawing.Point(19, 813);
@@ -1672,175 +1844,16 @@ namespace AirScreen
             this.CursorTimer2.Enabled = true;
             this.CursorTimer2.Tick += new System.EventHandler(this.CursorTimer2_Tick);
             // 
-            // checkBox5
+            // AO_Start
             // 
-            this.checkBox5.AutoSize = true;
-            this.checkBox5.Location = new System.Drawing.Point(18, 65);
-            this.checkBox5.Name = "checkBox5";
-            this.checkBox5.Size = new System.Drawing.Size(306, 29);
-            this.checkBox5.TabIndex = 21;
-            this.checkBox5.Text = "Manually minimize ToolBox";
-            this.toolTip1.SetToolTip(this.checkBox5, "If disabled, the Toolbox will automatically hide itself once your mouse leaves it" +
-        "s view.\r\nWhen enabled, you must manually minimize it.");
-            this.checkBox5.UseVisualStyleBackColor = true;
-            this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(339, 152);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(238, 50);
-            this.label39.TabIndex = 18;
-            this.label39.Text = "Press Shift to manually \r\nrefresh inversion";
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(15, 9);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(509, 50);
-            this.label40.TabIndex = 41;
-            this.label40.Text = "Displays a semi-transperant color over the selected \r\napplication or current acti" +
-    "ve application.";
-            // 
-            // checkBox6
-            // 
-            this.checkBox6.AutoSize = true;
-            this.checkBox6.Location = new System.Drawing.Point(18, 101);
-            this.checkBox6.Name = "checkBox6";
-            this.checkBox6.Size = new System.Drawing.Size(441, 29);
-            this.checkBox6.TabIndex = 22;
-            this.checkBox6.Text = "Toolbox HotKey brings ToolBox to Cursor";
-            this.toolTip1.SetToolTip(this.checkBox6, "When enabled, the Toolbox will appear where ever your mouse cursor is located.\r\n");
-            this.checkBox6.UseVisualStyleBackColor = true;
-            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
-            // 
-            // button19
-            // 
-            this.button19.Location = new System.Drawing.Point(18, 810);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(256, 52);
-            this.button19.TabIndex = 23;
-            this.button19.Text = "Restore Default Settings";
-            this.button19.UseVisualStyleBackColor = true;
-            this.button19.Click += new System.EventHandler(this.button19_Click);
-            // 
-            // AO_Invert
-            // 
-            this.AO_Invert.AutoSize = true;
-            this.AO_Invert.Enabled = false;
-            this.AO_Invert.Location = new System.Drawing.Point(330, 403);
-            this.AO_Invert.Name = "AO_Invert";
-            this.AO_Invert.Size = new System.Drawing.Size(177, 29);
-            this.AO_Invert.TabIndex = 42;
-            this.AO_Invert.Text = "Invert Overlay";
-            this.AO_Invert.UseVisualStyleBackColor = true;
-            this.AO_Invert.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
-            // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Enabled = false;
-            this.label42.Location = new System.Drawing.Point(325, 453);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(317, 25);
-            this.label42.TabIndex = 43;
-            this.label42.Text = "Refresh Invert Every X Seconds";
-            // 
-            // AO_Time
-            // 
-            this.AO_Time.Enabled = false;
-            this.AO_Time.Location = new System.Drawing.Point(330, 481);
-            this.AO_Time.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.AO_Time.Name = "AO_Time";
-            this.AO_Time.Size = new System.Drawing.Size(120, 31);
-            this.AO_Time.TabIndex = 44;
-            this.AO_Time.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.AO_Time.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
-            // 
-            // label43
-            // 
-            this.label43.AutoSize = true;
-            this.label43.Enabled = false;
-            this.label43.Location = new System.Drawing.Point(325, 515);
-            this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(325, 25);
-            this.label43.TabIndex = 45;
-            this.label43.Text = "Manually refresh by clicking shift";
-            // 
-            // SettingsHK
-            // 
-            this.SettingsHK.Location = new System.Drawing.Point(254, 710);
-            this.SettingsHK.Name = "SettingsHK";
-            this.SettingsHK.Size = new System.Drawing.Size(71, 31);
-            this.SettingsHK.TabIndex = 13;
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(28, 713);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(167, 25);
-            this.label37.TabIndex = 12;
-            this.label37.Text = "Display Settings";
-            // 
-            // killswitchHK
-            // 
-            this.killswitchHK.Location = new System.Drawing.Point(254, 747);
-            this.killswitchHK.Name = "killswitchHK";
-            this.killswitchHK.Size = new System.Drawing.Size(71, 31);
-            this.killswitchHK.TabIndex = 23;
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(28, 750);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(101, 25);
-            this.label38.TabIndex = 22;
-            this.label38.Text = "Killswitch";
-            // 
-            // toolboxHK
-            // 
-            this.toolboxHK.Location = new System.Drawing.Point(254, 782);
-            this.toolboxHK.Name = "toolboxHK";
-            this.toolboxHK.Size = new System.Drawing.Size(71, 31);
-            this.toolboxHK.TabIndex = 25;
-            // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(28, 785);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(166, 25);
-            this.label41.TabIndex = 24;
-            this.label41.Text = "Dispaly Toolbox";
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(20, 83);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(229, 25);
-            this.label44.TabIndex = 12;
-            this.label44.Text = "Set Manual On Screen";
-            this.toolTip1.SetToolTip(this.label44, "This will enable/disable the border\r\narouond the tile when using manual mode.");
-            // 
-            // tilesManualHK
-            // 
-            this.tilesManualHK.Location = new System.Drawing.Point(255, 80);
-            this.tilesManualHK.Name = "tilesManualHK";
-            this.tilesManualHK.Size = new System.Drawing.Size(71, 31);
-            this.tilesManualHK.TabIndex = 13;
+            this.AO_Start.AutoSize = true;
+            this.AO_Start.Location = new System.Drawing.Point(17, 581);
+            this.AO_Start.Name = "AO_Start";
+            this.AO_Start.Size = new System.Drawing.Size(196, 29);
+            this.AO_Start.TabIndex = 46;
+            this.AO_Start.Text = "Enable On Start";
+            this.AO_Start.UseVisualStyleBackColor = true;
+            this.AO_Start.CheckedChanged += new System.EventHandler(this.AO_Start_CheckedChanged);
             // 
             // MainForm
             // 
@@ -1861,6 +1874,7 @@ namespace AirScreen
             this.contextMenuStrip1.ResumeLayout(false);
             this.tabPage6.ResumeLayout(false);
             this.tabPage6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AO_Time)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AO_Opacity)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
@@ -1899,7 +1913,6 @@ namespace AirScreen
             this.tabPage7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cursorPreview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cursorIdle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AO_Time)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2054,6 +2067,7 @@ namespace AirScreen
         private System.Windows.Forms.TextBox tilesManualHK;
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.TextBox SettingsHK;
+        private System.Windows.Forms.CheckBox AO_Start;
     }
 }
 

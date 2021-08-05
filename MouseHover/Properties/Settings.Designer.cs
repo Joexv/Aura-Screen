@@ -658,5 +658,17 @@ namespace AirScreen.Properties {
                 this["tilesMHK"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AO_OnStart {
+            get {
+                return ((bool)(this["AO_OnStart"]));
+            }
+            set {
+                this["AO_OnStart"] = value;
+            }
+        }
     }
 }
