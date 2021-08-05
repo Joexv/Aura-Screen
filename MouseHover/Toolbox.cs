@@ -14,6 +14,7 @@ namespace AirScreen
     public partial class Toolbox : Form
     {
         public MainForm MF { get; set; }
+        public Tiles tiles { get; set; }
         public Toolbox()
         {
             InitializeComponent();
@@ -49,18 +50,6 @@ namespace AirScreen
 
         private void Toolbox_Load(object sender, EventArgs e)
         {
-            if (ps.Default.toolboxCursor)
-            {
-                this.Location = Cursor.Position;
-            }
-            else
-            {
-                Rectangle workingArea = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea;
-                int left = workingArea.Width - this.Width;
-                int top = workingArea.Height - this.Height - 15;
-                this.Location = new Point(left, top);
-            }
-
             if (ps.Default.invert && ps.Default.HideToolBox)
             {
                 wasInverted = true;
@@ -243,6 +232,40 @@ namespace AirScreen
         private void BF_Manual_Click(object sender, EventArgs e)
         {
             MF.CycleTiles(5);
+        }
+
+        private void Toolbox_Shown(object sender, EventArgs e)
+        {
+            if (ps.Default.toolboxCursor)
+            {
+                this.Location = Cursor.Position;
+            }
+            else
+            {
+                Rectangle workingArea = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea;
+                int left = workingArea.Width - this.Width;
+                int top = workingArea.Height - this.Height - 15;
+                this.Location = new Point(left, top);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (ps.Default.tileMode == 5 && this.Visible)
+            {
+                if (tiles.FormBorderStyle == FormBorderStyle.None)
+                {
+                    tiles.FormBorderStyle = FormBorderStyle.Sizable;
+                    tiles.PreviewButton.Visible = true;
+                    tiles.SaveButton.Visible = true;
+                }
+                else
+                {
+                    tiles.FormBorderStyle = FormBorderStyle.None;
+                    tiles.PreviewButton.Visible = false;
+                    tiles.SaveButton.Visible = false;
+                }
+            }
         }
     }
 }

@@ -123,6 +123,26 @@ namespace AirScreen.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BoxFilter_Edit_1 {
+            get {
+                object obj = ResourceManager.GetObject("BoxFilter_Edit_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap BoxFilter_Manual_1 {
+            get {
+                object obj = ResourceManager.GetObject("BoxFilter_Manual_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BoxFilter_Toggle_1 {
             get {
                 object obj = ResourceManager.GetObject("BoxFilter_Toggle_1", resourceCulture);

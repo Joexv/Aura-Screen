@@ -51,6 +51,7 @@ namespace AirScreen
             notifyIcon1.Visible = true;
 
             tb.MF = this;
+            tb.tiles = tile;
         }
 
         public void PopulateControls()
@@ -249,8 +250,7 @@ namespace AirScreen
                         tile.FormBorderStyle = FormBorderStyle.None;
                         tile.PreviewButton.Visible = false;
                         tile.SaveButton.Visible = false;
-                    }
-                        
+                    }  
                 }
             });
         }

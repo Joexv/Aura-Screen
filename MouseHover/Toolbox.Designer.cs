@@ -33,7 +33,6 @@ namespace AirScreen
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.cursorToggle = new System.Windows.Forms.Button();
             this.cursorInvert = new System.Windows.Forms.Button();
-            this.lockCursor = new System.Windows.Forms.Button();
             this.borderToggle = new System.Windows.Forms.Button();
             this.shrinkCursor = new System.Windows.Forms.Button();
             this.enlargeCursor = new System.Windows.Forms.Button();
@@ -47,6 +46,7 @@ namespace AirScreen
             this.BF_Toggle = new System.Windows.Forms.Button();
             this.BF_Cycle = new System.Windows.Forms.Button();
             this.BF_Top = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.BF_Bottom = new System.Windows.Forms.Button();
             this.BF_Left = new System.Windows.Forms.Button();
@@ -58,7 +58,6 @@ namespace AirScreen
             // 
             this.flowLayoutPanel1.Controls.Add(this.cursorToggle);
             this.flowLayoutPanel1.Controls.Add(this.cursorInvert);
-            this.flowLayoutPanel1.Controls.Add(this.lockCursor);
             this.flowLayoutPanel1.Controls.Add(this.borderToggle);
             this.flowLayoutPanel1.Controls.Add(this.shrinkCursor);
             this.flowLayoutPanel1.Controls.Add(this.enlargeCursor);
@@ -72,6 +71,7 @@ namespace AirScreen
             this.flowLayoutPanel1.Controls.Add(this.BF_Toggle);
             this.flowLayoutPanel1.Controls.Add(this.BF_Cycle);
             this.flowLayoutPanel1.Controls.Add(this.BF_Top);
+            this.flowLayoutPanel1.Controls.Add(this.button2);
             this.flowLayoutPanel1.Controls.Add(this.button1);
             this.flowLayoutPanel1.Controls.Add(this.BF_Bottom);
             this.flowLayoutPanel1.Controls.Add(this.BF_Left);
@@ -129,28 +129,6 @@ namespace AirScreen
             this.cursorInvert.UseVisualStyleBackColor = false;
             this.cursorInvert.Click += new System.EventHandler(this.cursorInvert_Click);
             // 
-            // lockCursor
-            // 
-            this.lockCursor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(150)))), ((int)(((byte)(170)))));
-            this.lockCursor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lockCursor.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.lockCursor.FlatAppearance.BorderSize = 0;
-            this.lockCursor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(183)))));
-            this.lockCursor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lockCursor.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lockCursor.ForeColor = System.Drawing.Color.White;
-            this.lockCursor.Image = global::AirScreen.Properties.Resources.Cursor_Lock_1;
-            this.lockCursor.Location = new System.Drawing.Point(399, 7);
-            this.lockCursor.MinimumSize = new System.Drawing.Size(150, 190);
-            this.lockCursor.Name = "lockCursor";
-            this.lockCursor.Padding = new System.Windows.Forms.Padding(10);
-            this.lockCursor.Size = new System.Drawing.Size(190, 190);
-            this.lockCursor.TabIndex = 2;
-            this.lockCursor.Text = "Lock Cursor";
-            this.lockCursor.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.lockCursor.UseVisualStyleBackColor = false;
-            this.lockCursor.Click += new System.EventHandler(this.lockCursor_Click);
-            // 
             // borderToggle
             // 
             this.borderToggle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(150)))), ((int)(((byte)(170)))));
@@ -162,7 +140,7 @@ namespace AirScreen
             this.borderToggle.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.borderToggle.ForeColor = System.Drawing.Color.White;
             this.borderToggle.Image = global::AirScreen.Properties.Resources.Mouse_Border_1;
-            this.borderToggle.Location = new System.Drawing.Point(595, 7);
+            this.borderToggle.Location = new System.Drawing.Point(399, 7);
             this.borderToggle.MinimumSize = new System.Drawing.Size(150, 190);
             this.borderToggle.Name = "borderToggle";
             this.borderToggle.Padding = new System.Windows.Forms.Padding(10);
@@ -184,7 +162,7 @@ namespace AirScreen
             this.shrinkCursor.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.shrinkCursor.ForeColor = System.Drawing.Color.White;
             this.shrinkCursor.Image = ((System.Drawing.Image)(resources.GetObject("shrinkCursor.Image")));
-            this.shrinkCursor.Location = new System.Drawing.Point(7, 203);
+            this.shrinkCursor.Location = new System.Drawing.Point(595, 7);
             this.shrinkCursor.MinimumSize = new System.Drawing.Size(150, 190);
             this.shrinkCursor.Name = "shrinkCursor";
             this.shrinkCursor.Padding = new System.Windows.Forms.Padding(10);
@@ -206,7 +184,7 @@ namespace AirScreen
             this.enlargeCursor.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.enlargeCursor.ForeColor = System.Drawing.Color.White;
             this.enlargeCursor.Image = global::AirScreen.Properties.Resources.Mouse_Enlarge_1;
-            this.enlargeCursor.Location = new System.Drawing.Point(203, 203);
+            this.enlargeCursor.Location = new System.Drawing.Point(7, 203);
             this.enlargeCursor.MinimumSize = new System.Drawing.Size(150, 190);
             this.enlargeCursor.Name = "enlargeCursor";
             this.enlargeCursor.Padding = new System.Windows.Forms.Padding(10);
@@ -228,7 +206,7 @@ namespace AirScreen
             this.lowerOpacity.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lowerOpacity.ForeColor = System.Drawing.Color.White;
             this.lowerOpacity.Image = global::AirScreen.Properties.Resources.Mouse_DOpacity_1;
-            this.lowerOpacity.Location = new System.Drawing.Point(399, 203);
+            this.lowerOpacity.Location = new System.Drawing.Point(203, 203);
             this.lowerOpacity.MinimumSize = new System.Drawing.Size(150, 190);
             this.lowerOpacity.Name = "lowerOpacity";
             this.lowerOpacity.Padding = new System.Windows.Forms.Padding(10);
@@ -250,7 +228,7 @@ namespace AirScreen
             this.raiseOpacity.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.raiseOpacity.ForeColor = System.Drawing.Color.White;
             this.raiseOpacity.Image = global::AirScreen.Properties.Resources.Mouse_Enlarge_1;
-            this.raiseOpacity.Location = new System.Drawing.Point(595, 203);
+            this.raiseOpacity.Location = new System.Drawing.Point(399, 203);
             this.raiseOpacity.MinimumSize = new System.Drawing.Size(150, 190);
             this.raiseOpacity.Name = "raiseOpacity";
             this.raiseOpacity.Padding = new System.Windows.Forms.Padding(10);
@@ -272,7 +250,7 @@ namespace AirScreen
             this.AO_Toggle.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AO_Toggle.ForeColor = System.Drawing.Color.White;
             this.AO_Toggle.Image = global::AirScreen.Properties.Resources.AppOverlay_Toggle_1;
-            this.AO_Toggle.Location = new System.Drawing.Point(7, 399);
+            this.AO_Toggle.Location = new System.Drawing.Point(595, 203);
             this.AO_Toggle.MinimumSize = new System.Drawing.Size(150, 190);
             this.AO_Toggle.Name = "AO_Toggle";
             this.AO_Toggle.Padding = new System.Windows.Forms.Padding(10);
@@ -294,7 +272,7 @@ namespace AirScreen
             this.AO_Active.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AO_Active.ForeColor = System.Drawing.Color.White;
             this.AO_Active.Image = global::AirScreen.Properties.Resources.AppOverlay_Active_1;
-            this.AO_Active.Location = new System.Drawing.Point(203, 399);
+            this.AO_Active.Location = new System.Drawing.Point(7, 399);
             this.AO_Active.MinimumSize = new System.Drawing.Size(150, 190);
             this.AO_Active.Name = "AO_Active";
             this.AO_Active.Padding = new System.Windows.Forms.Padding(10);
@@ -316,7 +294,7 @@ namespace AirScreen
             this.SF_Toggle.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SF_Toggle.ForeColor = System.Drawing.Color.White;
             this.SF_Toggle.Image = global::AirScreen.Properties.Resources.ScreenFilter_Toggle_1;
-            this.SF_Toggle.Location = new System.Drawing.Point(399, 399);
+            this.SF_Toggle.Location = new System.Drawing.Point(203, 399);
             this.SF_Toggle.MinimumSize = new System.Drawing.Size(150, 190);
             this.SF_Toggle.Name = "SF_Toggle";
             this.SF_Toggle.Padding = new System.Windows.Forms.Padding(10);
@@ -338,7 +316,7 @@ namespace AirScreen
             this.SF_Cycle.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SF_Cycle.ForeColor = System.Drawing.Color.White;
             this.SF_Cycle.Image = global::AirScreen.Properties.Resources.ScreenFilter_Cycle_1;
-            this.SF_Cycle.Location = new System.Drawing.Point(595, 399);
+            this.SF_Cycle.Location = new System.Drawing.Point(399, 399);
             this.SF_Cycle.MinimumSize = new System.Drawing.Size(150, 190);
             this.SF_Cycle.Name = "SF_Cycle";
             this.SF_Cycle.Padding = new System.Windows.Forms.Padding(10);
@@ -360,7 +338,7 @@ namespace AirScreen
             this.SF_Program.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SF_Program.ForeColor = System.Drawing.Color.White;
             this.SF_Program.Image = global::AirScreen.Properties.Resources.ScreenFilter_Program_1;
-            this.SF_Program.Location = new System.Drawing.Point(7, 595);
+            this.SF_Program.Location = new System.Drawing.Point(595, 399);
             this.SF_Program.MinimumSize = new System.Drawing.Size(150, 190);
             this.SF_Program.Name = "SF_Program";
             this.SF_Program.Padding = new System.Windows.Forms.Padding(10);
@@ -382,7 +360,7 @@ namespace AirScreen
             this.BF_Toggle.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BF_Toggle.ForeColor = System.Drawing.Color.White;
             this.BF_Toggle.Image = global::AirScreen.Properties.Resources.BoxFilter_Toggle_1;
-            this.BF_Toggle.Location = new System.Drawing.Point(203, 595);
+            this.BF_Toggle.Location = new System.Drawing.Point(7, 595);
             this.BF_Toggle.MinimumSize = new System.Drawing.Size(150, 190);
             this.BF_Toggle.Name = "BF_Toggle";
             this.BF_Toggle.Padding = new System.Windows.Forms.Padding(10);
@@ -404,7 +382,7 @@ namespace AirScreen
             this.BF_Cycle.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BF_Cycle.ForeColor = System.Drawing.Color.White;
             this.BF_Cycle.Image = global::AirScreen.Properties.Resources.BlockFilter_Cycle_1;
-            this.BF_Cycle.Location = new System.Drawing.Point(399, 595);
+            this.BF_Cycle.Location = new System.Drawing.Point(203, 595);
             this.BF_Cycle.MinimumSize = new System.Drawing.Size(150, 190);
             this.BF_Cycle.Name = "BF_Cycle";
             this.BF_Cycle.Padding = new System.Windows.Forms.Padding(10);
@@ -425,8 +403,8 @@ namespace AirScreen
             this.BF_Top.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BF_Top.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BF_Top.ForeColor = System.Drawing.Color.White;
-            this.BF_Top.Image = global::AirScreen.Properties.Resources.BF_Top_1;
-            this.BF_Top.Location = new System.Drawing.Point(595, 595);
+            this.BF_Top.Image = global::AirScreen.Properties.Resources.BoxFilter_Manual_1;
+            this.BF_Top.Location = new System.Drawing.Point(399, 595);
             this.BF_Top.MinimumSize = new System.Drawing.Size(150, 190);
             this.BF_Top.Name = "BF_Top";
             this.BF_Top.Padding = new System.Windows.Forms.Padding(10);
@@ -436,6 +414,28 @@ namespace AirScreen
             this.BF_Top.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BF_Top.UseVisualStyleBackColor = false;
             this.BF_Top.Click += new System.EventHandler(this.BF_Manual_Click);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(150)))), ((int)(((byte)(170)))));
+            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(183)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Image = global::AirScreen.Properties.Resources.BoxFilter_Edit_1;
+            this.button2.Location = new System.Drawing.Point(595, 595);
+            this.button2.MinimumSize = new System.Drawing.Size(150, 190);
+            this.button2.Name = "button2";
+            this.button2.Padding = new System.Windows.Forms.Padding(10);
+            this.button2.Size = new System.Drawing.Size(190, 190);
+            this.button2.TabIndex = 63;
+            this.button2.Text = "Block Filter Edit Mode";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -453,7 +453,7 @@ namespace AirScreen
             this.button1.Name = "button1";
             this.button1.Padding = new System.Windows.Forms.Padding(10);
             this.button1.Size = new System.Drawing.Size(190, 190);
-            this.button1.TabIndex = 59;
+            this.button1.TabIndex = 64;
             this.button1.Text = "Block Filter Top";
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = false;
@@ -475,7 +475,7 @@ namespace AirScreen
             this.BF_Bottom.Name = "BF_Bottom";
             this.BF_Bottom.Padding = new System.Windows.Forms.Padding(10);
             this.BF_Bottom.Size = new System.Drawing.Size(190, 190);
-            this.BF_Bottom.TabIndex = 60;
+            this.BF_Bottom.TabIndex = 65;
             this.BF_Bottom.Text = "Block Filter Bottom";
             this.BF_Bottom.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BF_Bottom.UseVisualStyleBackColor = false;
@@ -497,7 +497,7 @@ namespace AirScreen
             this.BF_Left.Name = "BF_Left";
             this.BF_Left.Padding = new System.Windows.Forms.Padding(10);
             this.BF_Left.Size = new System.Drawing.Size(190, 190);
-            this.BF_Left.TabIndex = 61;
+            this.BF_Left.TabIndex = 66;
             this.BF_Left.Text = "Block Filter Left";
             this.BF_Left.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BF_Left.UseVisualStyleBackColor = false;
@@ -519,7 +519,7 @@ namespace AirScreen
             this.BF_Right.Name = "BF_Right";
             this.BF_Right.Padding = new System.Windows.Forms.Padding(10);
             this.BF_Right.Size = new System.Drawing.Size(190, 190);
-            this.BF_Right.TabIndex = 62;
+            this.BF_Right.TabIndex = 67;
             this.BF_Right.Text = "Block Filter Right";
             this.BF_Right.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BF_Right.UseVisualStyleBackColor = false;
@@ -543,6 +543,7 @@ namespace AirScreen
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Air Screen Toolbox";
             this.Load += new System.EventHandler(this.Toolbox_Load);
+            this.Shown += new System.EventHandler(this.Toolbox_Shown);
             this.Leave += new System.EventHandler(this.Toolbox_Leave);
             this.MouseEnter += new System.EventHandler(this.Toolbox_MouseEnter);
             this.Resize += new System.EventHandler(this.Toolbox_Resize);
@@ -555,7 +556,6 @@ namespace AirScreen
 
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button cursorInvert;
-        private System.Windows.Forms.Button lockCursor;
         private System.Windows.Forms.Button borderToggle;
         private System.Windows.Forms.Button shrinkCursor;
         private System.Windows.Forms.Button enlargeCursor;
@@ -570,6 +570,7 @@ namespace AirScreen
         private System.Windows.Forms.Button BF_Cycle;
         private System.Windows.Forms.Button BF_Top;
         private System.Windows.Forms.Button cursorToggle;
+        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button BF_Bottom;
         private System.Windows.Forms.Button BF_Left;
