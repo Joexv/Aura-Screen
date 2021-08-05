@@ -47,6 +47,7 @@ namespace AirScreen
             this.BF_Toggle = new System.Windows.Forms.Button();
             this.BF_Cycle = new System.Windows.Forms.Button();
             this.BF_Top = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.BF_Bottom = new System.Windows.Forms.Button();
             this.BF_Left = new System.Windows.Forms.Button();
             this.BF_Right = new System.Windows.Forms.Button();
@@ -71,6 +72,7 @@ namespace AirScreen
             this.flowLayoutPanel1.Controls.Add(this.BF_Toggle);
             this.flowLayoutPanel1.Controls.Add(this.BF_Cycle);
             this.flowLayoutPanel1.Controls.Add(this.BF_Top);
+            this.flowLayoutPanel1.Controls.Add(this.button1);
             this.flowLayoutPanel1.Controls.Add(this.BF_Bottom);
             this.flowLayoutPanel1.Controls.Add(this.BF_Left);
             this.flowLayoutPanel1.Controls.Add(this.BF_Right);
@@ -430,10 +432,32 @@ namespace AirScreen
             this.BF_Top.Padding = new System.Windows.Forms.Padding(10);
             this.BF_Top.Size = new System.Drawing.Size(190, 190);
             this.BF_Top.TabIndex = 55;
-            this.BF_Top.Text = "Block Filter Top";
+            this.BF_Top.Text = "Block Filter Manual Mode";
             this.BF_Top.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BF_Top.UseVisualStyleBackColor = false;
-            this.BF_Top.Click += new System.EventHandler(this.BF_Top_Click);
+            this.BF_Top.Click += new System.EventHandler(this.BF_Manual_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(150)))), ((int)(((byte)(170)))));
+            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(183)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Image = global::AirScreen.Properties.Resources.BF_Top_1;
+            this.button1.Location = new System.Drawing.Point(7, 791);
+            this.button1.MinimumSize = new System.Drawing.Size(150, 190);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(10);
+            this.button1.Size = new System.Drawing.Size(190, 190);
+            this.button1.TabIndex = 59;
+            this.button1.Text = "Block Filter Top";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.BF_Top_Click);
             // 
             // BF_Bottom
             // 
@@ -446,12 +470,12 @@ namespace AirScreen
             this.BF_Bottom.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BF_Bottom.ForeColor = System.Drawing.Color.White;
             this.BF_Bottom.Image = global::AirScreen.Properties.Resources.BF_Bottom_1;
-            this.BF_Bottom.Location = new System.Drawing.Point(7, 791);
+            this.BF_Bottom.Location = new System.Drawing.Point(203, 791);
             this.BF_Bottom.MinimumSize = new System.Drawing.Size(150, 190);
             this.BF_Bottom.Name = "BF_Bottom";
             this.BF_Bottom.Padding = new System.Windows.Forms.Padding(10);
             this.BF_Bottom.Size = new System.Drawing.Size(190, 190);
-            this.BF_Bottom.TabIndex = 56;
+            this.BF_Bottom.TabIndex = 60;
             this.BF_Bottom.Text = "Block Filter Bottom";
             this.BF_Bottom.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BF_Bottom.UseVisualStyleBackColor = false;
@@ -468,12 +492,12 @@ namespace AirScreen
             this.BF_Left.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BF_Left.ForeColor = System.Drawing.Color.White;
             this.BF_Left.Image = global::AirScreen.Properties.Resources.BoxFilter_Toggle_1;
-            this.BF_Left.Location = new System.Drawing.Point(203, 791);
+            this.BF_Left.Location = new System.Drawing.Point(399, 791);
             this.BF_Left.MinimumSize = new System.Drawing.Size(150, 190);
             this.BF_Left.Name = "BF_Left";
             this.BF_Left.Padding = new System.Windows.Forms.Padding(10);
             this.BF_Left.Size = new System.Drawing.Size(190, 190);
-            this.BF_Left.TabIndex = 57;
+            this.BF_Left.TabIndex = 61;
             this.BF_Left.Text = "Block Filter Left";
             this.BF_Left.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BF_Left.UseVisualStyleBackColor = false;
@@ -490,12 +514,12 @@ namespace AirScreen
             this.BF_Right.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BF_Right.ForeColor = System.Drawing.Color.White;
             this.BF_Right.Image = global::AirScreen.Properties.Resources.BF_Right_1;
-            this.BF_Right.Location = new System.Drawing.Point(399, 791);
+            this.BF_Right.Location = new System.Drawing.Point(595, 791);
             this.BF_Right.MinimumSize = new System.Drawing.Size(150, 190);
             this.BF_Right.Name = "BF_Right";
             this.BF_Right.Padding = new System.Windows.Forms.Padding(10);
             this.BF_Right.Size = new System.Drawing.Size(190, 190);
-            this.BF_Right.TabIndex = 58;
+            this.BF_Right.TabIndex = 62;
             this.BF_Right.Text = "Block Filter Right";
             this.BF_Right.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.BF_Right.UseVisualStyleBackColor = false;
@@ -545,9 +569,10 @@ namespace AirScreen
         private System.Windows.Forms.Button BF_Toggle;
         private System.Windows.Forms.Button BF_Cycle;
         private System.Windows.Forms.Button BF_Top;
+        private System.Windows.Forms.Button cursorToggle;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button BF_Bottom;
         private System.Windows.Forms.Button BF_Left;
         private System.Windows.Forms.Button BF_Right;
-        private System.Windows.Forms.Button cursorToggle;
     }
 }

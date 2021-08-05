@@ -68,6 +68,8 @@ namespace AirScreen
             this.Opacity = (double)ps.Default.opacity;
             this.TopMost = true;
             this.BackColor = ps.Default.color;
+
+            Application.DoEvents();
             //this.FormBorderStyle = FormBorderStyle.None;
 
             // Makes the form circular:
@@ -104,7 +106,7 @@ namespace AirScreen
                 CreateView();
 
             if (this.Opacity != (double)ps.Default.opacity && !ps.Default.invert)
-                this.Opacity = (double)ps.Default.opacity;
+                CreateView();
         }
 
         private void AdjustLocation()
@@ -234,7 +236,9 @@ namespace AirScreen
             this.Opacity = 0.99; //Form must be even slightly opaque inorder to pass through inputs
             inversionPT = Cursor.Position;
             this.Hide();
+            Application.DoEvents();
             this.BackgroundImage = Transform(CaptureScreen());
+            Application.DoEvents();
             this.Show();
             DoInvert = false;
         }
@@ -245,10 +249,12 @@ namespace AirScreen
             this.Location = AppPosition;
             this.Width = Width;
             this.Height = Height;
-            this.Opacity = 0.99;
+            this.Opacity = 0.99; //Form must be even slightly opaque inorder to pass through inputs
             Application.DoEvents();
             this.Hide();
+            Application.DoEvents();
             this.BackgroundImage = Transform(CaptureScreen(AppPosition, Height, Width));
+            Application.DoEvents();
             this.Show();
         }
 
@@ -283,7 +289,8 @@ namespace AirScreen
 
         private void Form2_Load(object sender, EventArgs e)
         {
-
+            if (!ps.Default.invert)
+                CreateView();
         }
 
         private void Form2_MouseLeave(object sender, EventArgs e)
@@ -296,7 +303,10 @@ namespace AirScreen
             //if(!ps.Default.invert)
                 //CreateView();
         }
-        private void MouseBox_Shown(object sender, EventArgs e) { }
+        private void MouseBox_Shown(object sender, EventArgs e) 
+        {
+            
+        }
 
         protected override void OnShown(EventArgs e)
         {
@@ -305,6 +315,7 @@ namespace AirScreen
             wl = wl | 0x80000 | 0x20;
             SetWindowLong(this.Handle, GWL.ExStyle, wl);
             SetLayeredWindowAttributes(this.Handle, 0, 128, LWA.Alpha);
+            this.Opacity = (double)ps.Default.opacity;
         }
     }
 }

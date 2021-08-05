@@ -49,10 +49,17 @@ namespace AirScreen
 
         private void Toolbox_Load(object sender, EventArgs e)
         {
-            Rectangle workingArea = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea;
-            int left = workingArea.Width - this.Width;
-            int top = workingArea.Height - this.Height - 15;
-            this.Location = new Point(left, top);
+            if (ps.Default.toolboxCursor)
+            {
+                this.Location = Cursor.Position;
+            }
+            else
+            {
+                Rectangle workingArea = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea;
+                int left = workingArea.Width - this.Width;
+                int top = workingArea.Height - this.Height - 15;
+                this.Location = new Point(left, top);
+            }
 
             if (ps.Default.invert && ps.Default.HideToolBox)
             {
@@ -121,10 +128,11 @@ namespace AirScreen
 
         private void raiseOpacity_Click(object sender, EventArgs e)
         {
-            if (ps.Default.opacity > (decimal)1)
+            if (ps.Default.opacity < (decimal)1)
                 ps.Default.opacity += (decimal)0.10;
+            if (ps.Default.opacity == 1)
+                ps.Default.opacity = (decimal)0.99;
             ps.Default.Save();
-
         }
 
         private void AO_Toggle_Click(object sender, EventArgs e)
@@ -230,6 +238,11 @@ namespace AirScreen
             //it would just show a grey box over half of the Toolbox screen
             if (ps.Default.HideToolBox)
                 this.MouseLeave += new EventHandler(Form_LostFocus);
+        }
+
+        private void BF_Manual_Click(object sender, EventArgs e)
+        {
+            MF.CycleTiles(5);
         }
     }
 }

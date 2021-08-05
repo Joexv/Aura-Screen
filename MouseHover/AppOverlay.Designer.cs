@@ -31,12 +31,19 @@ namespace AirScreen
         {
             this.components = new System.ComponentModel.Container();
             this.AO_AttatchTimer = new System.Windows.Forms.Timer(this.components);
+            this.AO_InvertTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // AO_AttatchTimer
             // 
             this.AO_AttatchTimer.Interval = 1;
             this.AO_AttatchTimer.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // AO_InvertTimer
+            // 
+            this.AO_InvertTimer.Enabled = true;
+            this.AO_InvertTimer.Interval = 5000;
+            this.AO_InvertTimer.Tick += new System.EventHandler(this.AO_InvertTimer_Tick);
             // 
             // AppOverlay
             // 
@@ -58,5 +65,6 @@ namespace AirScreen
         #endregion
 
         public System.Windows.Forms.Timer AO_AttatchTimer;
+        private System.Windows.Forms.Timer AO_InvertTimer;
     }
 }

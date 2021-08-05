@@ -241,7 +241,7 @@ namespace AirScreen.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
         public global::System.Drawing.Color tileColor {
             get {
                 return ((global::System.Drawing.Color)(this["tileColor"]));
@@ -253,7 +253,7 @@ namespace AirScreen.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.45")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.25")]
         public decimal tileOpacity {
             get {
                 return ((decimal)(this["tileOpacity"]));
@@ -265,7 +265,7 @@ namespace AirScreen.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0.45")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0.25")]
         public decimal AO_Opacity {
             get {
                 return ((decimal)(this["AO_Opacity"]));
@@ -277,7 +277,7 @@ namespace AirScreen.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("255, 192, 192")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
         public global::System.Drawing.Color AO_Color {
             get {
                 return ((global::System.Drawing.Color)(this["AO_Color"]));
@@ -548,6 +548,114 @@ namespace AirScreen.Properties {
             }
             set {
                 this["HideToolBox"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("B")]
+        public string toolboxHK {
+            get {
+                return ((string)(this["toolboxHK"]));
+            }
+            set {
+                this["toolboxHK"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool toolboxCursor {
+            get {
+                return ((bool)(this["toolboxCursor"]));
+            }
+            set {
+                this["toolboxCursor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AO_Invert {
+            get {
+                return ((bool)(this["AO_Invert"]));
+            }
+            set {
+                this["AO_Invert"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int AO_InvertTime {
+            get {
+                return ((int)(this["AO_InvertTime"]));
+            }
+            set {
+                this["AO_InvertTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("400")]
+        public int tilesMW {
+            get {
+                return ((int)(this["tilesMW"]));
+            }
+            set {
+                this["tilesMW"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int tilesMX {
+            get {
+                return ((int)(this["tilesMX"]));
+            }
+            set {
+                this["tilesMX"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("400")]
+        public int tilesMH {
+            get {
+                return ((int)(this["tilesMH"]));
+            }
+            set {
+                this["tilesMH"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int tilesMY {
+            get {
+                return ((int)(this["tilesMY"]));
+            }
+            set {
+                this["tilesMY"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("M")]
+        public string tilesMHK {
+            get {
+                return ((string)(this["tilesMHK"]));
+            }
+            set {
+                this["tilesMHK"] = value;
             }
         }
     }

@@ -88,7 +88,7 @@ namespace AirScreen
             this.label13 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
-            this.L_Opacity = new System.Windows.Forms.NumericUpDown();
+            this.tileOpacity = new System.Windows.Forms.NumericUpDown();
             this.label12 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.button11 = new System.Windows.Forms.Button();
@@ -96,15 +96,11 @@ namespace AirScreen
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label38 = new System.Windows.Forms.Label();
-            this.killswitchHK = new System.Windows.Forms.TextBox();
-            this.label37 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.label32 = new System.Windows.Forms.Label();
             this.BF_ToggleHK = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.cylceHotKey = new System.Windows.Forms.TextBox();
-            this.SettingsHK = new System.Windows.Forms.TextBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label36 = new System.Windows.Forms.Label();
             this.AO_ToggleHK = new System.Windows.Forms.TextBox();
@@ -169,6 +165,20 @@ namespace AirScreen
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.label39 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.button19 = new System.Windows.Forms.Button();
+            this.AO_Invert = new System.Windows.Forms.CheckBox();
+            this.label42 = new System.Windows.Forms.Label();
+            this.AO_Time = new System.Windows.Forms.NumericUpDown();
+            this.label43 = new System.Windows.Forms.Label();
+            this.SettingsHK = new System.Windows.Forms.TextBox();
+            this.label37 = new System.Windows.Forms.Label();
+            this.killswitchHK = new System.Windows.Forms.TextBox();
+            this.label38 = new System.Windows.Forms.Label();
+            this.toolboxHK = new System.Windows.Forms.TextBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
+            this.tilesManualHK = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1.SuspendLayout();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AO_Opacity)).BeginInit();
@@ -177,7 +187,7 @@ namespace AirScreen
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.L_Opacity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tileOpacity)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -195,6 +205,7 @@ namespace AirScreen
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cursorPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cursorIdle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AO_Time)).BeginInit();
             this.SuspendLayout();
             // 
             // notifyIcon1
@@ -368,6 +379,10 @@ namespace AirScreen
             // 
             // tabPage6
             // 
+            this.tabPage6.Controls.Add(this.label43);
+            this.tabPage6.Controls.Add(this.AO_Time);
+            this.tabPage6.Controls.Add(this.label42);
+            this.tabPage6.Controls.Add(this.AO_Invert);
             this.tabPage6.Controls.Add(this.label40);
             this.tabPage6.Controls.Add(this.button16);
             this.tabPage6.Controls.Add(this.AO_ColorChange);
@@ -785,7 +800,7 @@ namespace AirScreen
             this.tabPage4.Controls.Add(this.label13);
             this.tabPage4.Controls.Add(this.button2);
             this.tabPage4.Controls.Add(this.button12);
-            this.tabPage4.Controls.Add(this.L_Opacity);
+            this.tabPage4.Controls.Add(this.tileOpacity);
             this.tabPage4.Controls.Add(this.label12);
             this.tabPage4.Controls.Add(this.label17);
             this.tabPage4.Controls.Add(this.button11);
@@ -839,34 +854,34 @@ namespace AirScreen
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
-            // L_Opacity
+            // tileOpacity
             // 
-            this.L_Opacity.DecimalPlaces = 2;
-            this.L_Opacity.Increment = new decimal(new int[] {
+            this.tileOpacity.DecimalPlaces = 2;
+            this.tileOpacity.Increment = new decimal(new int[] {
             5,
             0,
             0,
             131072});
-            this.L_Opacity.Location = new System.Drawing.Point(523, 102);
-            this.L_Opacity.Maximum = new decimal(new int[] {
+            this.tileOpacity.Location = new System.Drawing.Point(523, 102);
+            this.tileOpacity.Maximum = new decimal(new int[] {
             95,
             0,
             0,
             131072});
-            this.L_Opacity.Minimum = new decimal(new int[] {
+            this.tileOpacity.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             131072});
-            this.L_Opacity.Name = "L_Opacity";
-            this.L_Opacity.Size = new System.Drawing.Size(120, 31);
-            this.L_Opacity.TabIndex = 36;
-            this.L_Opacity.Value = new decimal(new int[] {
+            this.tileOpacity.Name = "tileOpacity";
+            this.tileOpacity.Size = new System.Drawing.Size(120, 31);
+            this.tileOpacity.TabIndex = 36;
+            this.tileOpacity.Value = new decimal(new int[] {
             45,
             0,
             0,
             131072});
-            this.L_Opacity.ValueChanged += new System.EventHandler(this.L_Opacity_ValueChanged);
+            this.tileOpacity.ValueChanged += new System.EventHandler(this.L_Opacity_ValueChanged);
             // 
             // label12
             // 
@@ -903,7 +918,8 @@ namespace AirScreen
             "Top",
             "Bottom",
             "Left",
-            "Right"});
+            "Right",
+            "Manual"});
             this.tileSelect.Location = new System.Drawing.Point(344, 174);
             this.tileSelect.Name = "tileSelect";
             this.tileSelect.Size = new System.Drawing.Size(297, 33);
@@ -911,6 +927,8 @@ namespace AirScreen
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.button19);
+            this.tabPage3.Controls.Add(this.checkBox6);
             this.tabPage3.Controls.Add(this.checkBox5);
             this.tabPage3.Controls.Add(this.checkBox3);
             this.tabPage3.Location = new System.Drawing.Point(8, 39);
@@ -933,6 +951,8 @@ namespace AirScreen
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.label41);
+            this.tabPage2.Controls.Add(this.toolboxHK);
             this.tabPage2.Controls.Add(this.label38);
             this.tabPage2.Controls.Add(this.killswitchHK);
             this.tabPage2.Controls.Add(this.label37);
@@ -951,38 +971,15 @@ namespace AirScreen
             this.tabPage2.Text = "HotKeys";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(28, 779);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(101, 25);
-            this.label38.TabIndex = 22;
-            this.label38.Text = "Killswitch";
-            // 
-            // killswitchHK
-            // 
-            this.killswitchHK.Location = new System.Drawing.Point(254, 776);
-            this.killswitchHK.Name = "killswitchHK";
-            this.killswitchHK.Size = new System.Drawing.Size(71, 31);
-            this.killswitchHK.TabIndex = 23;
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(28, 742);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(167, 25);
-            this.label37.TabIndex = 12;
-            this.label37.Text = "Display Settings";
-            // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.tilesManualHK);
+            this.groupBox8.Controls.Add(this.label44);
             this.groupBox8.Controls.Add(this.label32);
             this.groupBox8.Controls.Add(this.BF_ToggleHK);
             this.groupBox8.Controls.Add(this.label9);
             this.groupBox8.Controls.Add(this.cylceHotKey);
-            this.groupBox8.Location = new System.Drawing.Point(8, 606);
+            this.groupBox8.Location = new System.Drawing.Point(8, 579);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(654, 122);
             this.groupBox8.TabIndex = 21;
@@ -1000,7 +997,7 @@ namespace AirScreen
             // 
             // BF_ToggleHK
             // 
-            this.BF_ToggleHK.Location = new System.Drawing.Point(246, 41);
+            this.BF_ToggleHK.Location = new System.Drawing.Point(115, 41);
             this.BF_ToggleHK.Name = "BF_ToggleHK";
             this.BF_ToggleHK.Size = new System.Drawing.Size(71, 31);
             this.BF_ToggleHK.TabIndex = 11;
@@ -1008,7 +1005,7 @@ namespace AirScreen
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(20, 81);
+            this.label9.Location = new System.Drawing.Point(241, 44);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(154, 25);
             this.label9.TabIndex = 8;
@@ -1016,17 +1013,10 @@ namespace AirScreen
             // 
             // cylceHotKey
             // 
-            this.cylceHotKey.Location = new System.Drawing.Point(246, 78);
+            this.cylceHotKey.Location = new System.Drawing.Point(401, 41);
             this.cylceHotKey.Name = "cylceHotKey";
             this.cylceHotKey.Size = new System.Drawing.Size(71, 31);
             this.cylceHotKey.TabIndex = 9;
-            // 
-            // SettingsHK
-            // 
-            this.SettingsHK.Location = new System.Drawing.Point(254, 739);
-            this.SettingsHK.Name = "SettingsHK";
-            this.SettingsHK.Size = new System.Drawing.Size(71, 31);
-            this.SettingsHK.TabIndex = 13;
             // 
             // groupBox7
             // 
@@ -1034,7 +1024,7 @@ namespace AirScreen
             this.groupBox7.Controls.Add(this.AO_ToggleHK);
             this.groupBox7.Location = new System.Drawing.Point(8, 494);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(654, 94);
+            this.groupBox7.Size = new System.Drawing.Size(654, 79);
             this.groupBox7.TabIndex = 20;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "App Overlay";
@@ -1690,6 +1680,8 @@ namespace AirScreen
             this.checkBox5.Size = new System.Drawing.Size(306, 29);
             this.checkBox5.TabIndex = 21;
             this.checkBox5.Text = "Manually minimize ToolBox";
+            this.toolTip1.SetToolTip(this.checkBox5, "If disabled, the Toolbox will automatically hide itself once your mouse leaves it" +
+        "s view.\r\nWhen enabled, you must manually minimize it.");
             this.checkBox5.UseVisualStyleBackColor = true;
             this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
             // 
@@ -1711,6 +1703,144 @@ namespace AirScreen
             this.label40.TabIndex = 41;
             this.label40.Text = "Displays a semi-transperant color over the selected \r\napplication or current acti" +
     "ve application.";
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Location = new System.Drawing.Point(18, 101);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(441, 29);
+            this.checkBox6.TabIndex = 22;
+            this.checkBox6.Text = "Toolbox HotKey brings ToolBox to Cursor";
+            this.toolTip1.SetToolTip(this.checkBox6, "When enabled, the Toolbox will appear where ever your mouse cursor is located.\r\n");
+            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(18, 810);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(256, 52);
+            this.button19.TabIndex = 23;
+            this.button19.Text = "Restore Default Settings";
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
+            // AO_Invert
+            // 
+            this.AO_Invert.AutoSize = true;
+            this.AO_Invert.Enabled = false;
+            this.AO_Invert.Location = new System.Drawing.Point(330, 403);
+            this.AO_Invert.Name = "AO_Invert";
+            this.AO_Invert.Size = new System.Drawing.Size(177, 29);
+            this.AO_Invert.TabIndex = 42;
+            this.AO_Invert.Text = "Invert Overlay";
+            this.AO_Invert.UseVisualStyleBackColor = true;
+            this.AO_Invert.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged);
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Enabled = false;
+            this.label42.Location = new System.Drawing.Point(325, 453);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(317, 25);
+            this.label42.TabIndex = 43;
+            this.label42.Text = "Refresh Invert Every X Seconds";
+            // 
+            // AO_Time
+            // 
+            this.AO_Time.Enabled = false;
+            this.AO_Time.Location = new System.Drawing.Point(330, 481);
+            this.AO_Time.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.AO_Time.Name = "AO_Time";
+            this.AO_Time.Size = new System.Drawing.Size(120, 31);
+            this.AO_Time.TabIndex = 44;
+            this.AO_Time.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.AO_Time.ValueChanged += new System.EventHandler(this.numericUpDown2_ValueChanged);
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Enabled = false;
+            this.label43.Location = new System.Drawing.Point(325, 515);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(325, 25);
+            this.label43.TabIndex = 45;
+            this.label43.Text = "Manually refresh by clicking shift";
+            // 
+            // SettingsHK
+            // 
+            this.SettingsHK.Location = new System.Drawing.Point(254, 710);
+            this.SettingsHK.Name = "SettingsHK";
+            this.SettingsHK.Size = new System.Drawing.Size(71, 31);
+            this.SettingsHK.TabIndex = 13;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(28, 713);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(167, 25);
+            this.label37.TabIndex = 12;
+            this.label37.Text = "Display Settings";
+            // 
+            // killswitchHK
+            // 
+            this.killswitchHK.Location = new System.Drawing.Point(254, 747);
+            this.killswitchHK.Name = "killswitchHK";
+            this.killswitchHK.Size = new System.Drawing.Size(71, 31);
+            this.killswitchHK.TabIndex = 23;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(28, 750);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(101, 25);
+            this.label38.TabIndex = 22;
+            this.label38.Text = "Killswitch";
+            // 
+            // toolboxHK
+            // 
+            this.toolboxHK.Location = new System.Drawing.Point(254, 782);
+            this.toolboxHK.Name = "toolboxHK";
+            this.toolboxHK.Size = new System.Drawing.Size(71, 31);
+            this.toolboxHK.TabIndex = 25;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(28, 785);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(166, 25);
+            this.label41.TabIndex = 24;
+            this.label41.Text = "Dispaly Toolbox";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(20, 83);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(229, 25);
+            this.label44.TabIndex = 12;
+            this.label44.Text = "Set Manual On Screen";
+            this.toolTip1.SetToolTip(this.label44, "This will enable/disable the border\r\narouond the tile when using manual mode.");
+            // 
+            // tilesManualHK
+            // 
+            this.tilesManualHK.Location = new System.Drawing.Point(255, 80);
+            this.tilesManualHK.Name = "tilesManualHK";
+            this.tilesManualHK.Size = new System.Drawing.Size(71, 31);
+            this.tilesManualHK.TabIndex = 13;
             // 
             // MainForm
             // 
@@ -1740,7 +1870,7 @@ namespace AirScreen
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.L_Opacity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tileOpacity)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -1769,6 +1899,7 @@ namespace AirScreen
             this.tabPage7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cursorPreview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cursorIdle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AO_Time)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1815,7 +1946,7 @@ namespace AirScreen
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.NumericUpDown L_Opacity;
+        private System.Windows.Forms.NumericUpDown tileOpacity;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button button11;
@@ -1896,10 +2027,6 @@ namespace AirScreen
         private System.Windows.Forms.TextBox SF_ToggleHK;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Label label37;
-        private System.Windows.Forms.TextBox SettingsHK;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.TextBox killswitchHK;
         private System.Windows.Forms.CheckBox filterHide;
         private System.Windows.Forms.CheckBox checkBox4;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
@@ -1913,6 +2040,20 @@ namespace AirScreen
         private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.CheckBox AO_Invert;
+        private System.Windows.Forms.NumericUpDown AO_Time;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.TextBox toolboxHK;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.TextBox killswitchHK;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TextBox tilesManualHK;
+        private System.Windows.Forms.Label label44;
+        private System.Windows.Forms.TextBox SettingsHK;
     }
 }
 

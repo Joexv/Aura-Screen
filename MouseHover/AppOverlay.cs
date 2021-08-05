@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -71,10 +72,15 @@ namespace AirScreen
 
         private void AppOverlay_Load(object sender, EventArgs e)
         {
-
+            AO_InvertTimer.Interval = ps.Default.AO_InvertTime * 1000;
+            if (ps.Default.AO_Invert)
+                AO_InvertTimer.Start();
+            else
+                AO_InvertTimer.Stop();
         }
-
-        private void Attatch()
+        private Point OldLocation = new Point(0, 0);
+        private bool MouseDown = false;
+        private void Attatch(bool ForceInvert = false)
         {
             Process[] processes = null;
             string Name = ps.Default.AO_SavedName;
@@ -83,27 +89,54 @@ namespace AirScreen
 
             processes = Process.GetProcessesByName(Name.Substring(0, Name.Length - 4));
 
-            Console.WriteLine(Name);
             Process p = processes.FirstOrDefault();
-
+            OldLocation = this.Location;
             if (p != null && GetActiveProcessFileName() != Process.GetCurrentProcess().ProcessName && (GetActiveProcessFileName() + ".exe" == Name))
             {
                 IntPtr windowHandle;
                 windowHandle = p.MainWindowHandle;
                 RECT rect = new RECT();
                 _ = GetWindowRect(windowHandle, ref rect);
-
-                this.Location = new Point(rect.Left, rect.Top - 5);
-                this.Size = new Size(rect.Right - rect.Left + 10, rect.Bottom - rect.Top);
-
-                this.BackColor = ps.Default.AO_Color;
-                this.Opacity = (double)ps.Default.AO_Opacity;
-                this.TopMost = true;
-                this.FormBorderStyle = FormBorderStyle.None;
-                this.Visible = true;
+                if (!ps.Default.AO_Invert)
+                {
+                    this.Location = new Point(rect.Left, rect.Top);
+                    this.Size = new Size(rect.Right - rect.Left, rect.Bottom - rect.Top);
+                    this.TopMost = true;
+                    this.FormBorderStyle = FormBorderStyle.None;
+                    this.BackColor = ps.Default.AO_Color;
+                    this.Opacity = (double)ps.Default.AO_Opacity;
+                    this.Show();
+                }
+                /*
+                else if(this.Location != OldLocation || ForceInvert)
+                {
+                    Console.WriteLine($"Old: {OldLocation}\nNew: {this.Location}");
+                    this.Location = new Point(rect.Left, rect.Top);
+                    this.Size = new Size(rect.Right - rect.Left, rect.Bottom - rect.Top);
+                    this.TopMost = true;
+                    this.FormBorderStyle = FormBorderStyle.None;
+                    Invert(new Point(rect.Left, rect.Top), new Size(rect.Right - rect.Left, rect.Bottom - rect.Top));
+                }
+                */
             }
             else
                 this.Visible = false;
+            MouseDown = (Control.MouseButtons == MouseButtons.Left);
+        }
+
+        private void Invert(Point Location, Size size)
+        {
+            this.Hide();
+            Console.WriteLine("Inverting AO");
+            this.Opacity = 0.99; //Form must be even slightly opaque inorder to pass through inputs
+            this.BackgroundImage = Transform(CaptureScreen(Location, Size));
+            Application.DoEvents();
+            this.Show();
+        }
+
+        private void AO_InvertTimer_Tick(object sender, EventArgs e)
+        {
+            Attatch(true);
         }
 
         [DllImport("user32.dll")]
@@ -125,6 +158,36 @@ namespace AirScreen
                 return Buff.ToString();
             }
             return null;
+        }
+
+        private Bitmap CaptureScreen(Point Location, Size size)
+        {
+            Bitmap b = new Bitmap(size.Width, size.Height);
+            Graphics g = Graphics.FromImage(b);
+            g.CopyFromScreen(Location.X, Location.Y, 0, 0, b.Size);
+            g.Dispose();
+            return b;
+        }
+
+        private Bitmap Transform(Bitmap source)
+        {
+            Bitmap newBitmap = new Bitmap(source.Width, source.Height);
+            Graphics g = Graphics.FromImage(newBitmap);
+            ColorMatrix colorMatrix = new ColorMatrix(
+            new float[][]
+            {
+                new float[] {-1, 0, 0, 0, 0},
+                new float[] {0, -1, 0, 0, 0},
+                new float[] {0, 0, -1, 0, 0},
+                new float[] {0, 0, 0, 1, 0},
+                new float[] {1, 1, 1, 0, 1}
+             });
+            ImageAttributes attributes = new ImageAttributes();
+            attributes.SetColorMatrix(colorMatrix);
+            g.DrawImage(source, new Rectangle(0, 0, source.Width, source.Height),
+                        0, 0, source.Width, source.Height, GraphicsUnit.Pixel, attributes);
+            g.Dispose();
+            return newBitmap;
         }
 
         public string GetActiveProcessFileName()
@@ -153,6 +216,7 @@ namespace AirScreen
             wl = wl | 0x80000 | 0x20;
             SetWindowLong(this.Handle, GWL.ExStyle, wl);
             SetLayeredWindowAttributes(this.Handle, 0, 128, LWA.Alpha);
+            this.Opacity = (double)ps.Default.AO_Opacity;
         }
     }
 }

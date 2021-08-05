@@ -27,6 +27,18 @@ namespace AirScreen
         public MainForm()
         {
             InitializeComponent();
+            if (Process.GetProcessesByName(Path.GetFileNameWithoutExtension(System.Reflection.Assembly.GetEntryAssembly().Location)).Count() > 1) 
+                Process.GetCurrentProcess().Kill();
+            AppDomain currentDomain = AppDomain.CurrentDomain;
+            currentDomain.UnhandledException += new UnhandledExceptionEventHandler(ExceptionHandler);
+        }
+
+        private void ExceptionHandler(object sender, UnhandledExceptionEventArgs args)
+        {
+            Exception e = (Exception)args.ExceptionObject;
+            File.WriteAllText("Error.txt", e.ToString());
+            SystemCleanup();
+            MessageBox.Show("Ooofie, ouchie! Looks like we made a fuckie wuckie. Please give the code monekys back at daddy's HQ the Error.txt file so they can better help you with this UwU!");
         }
 
         public void Form1_Load(object sender, EventArgs e)
@@ -55,7 +67,13 @@ namespace AirScreen
             borderThicccccc.Value = ps.Default.borderThicc;
             checkBox3.Checked = ps.Default.keepInTray;
             //This is only here because my config was stupid and I didn't want to find it and fix it :)
-            if (ps.Default.opacity > 1) ps.Default.opacity = 1;
+            if (ps.Default.opacity > (decimal)0.99)
+            {
+                ps.Default.opacity = (decimal)0.99;
+                ps.Default.Save();
+            }
+                
+
             opacityBar.Value = ps.Default.opacity;
 
             inversionBox.Checked = ps.Default.invert;
@@ -83,6 +101,11 @@ namespace AirScreen
 
             SettingsHK.Text = ps.Default.SettingsHK;
             killswitchHK.Text = ps.Default.KillHK;
+            toolboxHK.Text = ps.Default.toolboxHK;
+
+            checkBox6.Checked = ps.Default.toolboxCursor;
+
+            tilesManualHK.Text = ps.Default.tilesMHK;
             #endregion
 
             #region AppOverlay
@@ -90,6 +113,12 @@ namespace AirScreen
             AO_TopMost.Checked = !ps.Default.AO_ProcessByName;
             AO_TextBox.Text = ps.Default.AO_SavedName;
             AO_Opacity.Value = ps.Default.AO_Opacity;
+
+            //AO_Invert.Checked = ps.Default.AO_Invert;
+            //AO_Time.Value = ps.Default.AO_InvertTime;
+
+            AO_Invert.Checked = false;
+            AO_Time.Value = ps.Default.AO_InvertTime;
             #endregion
 
             #region Screen Filters
@@ -123,6 +152,9 @@ namespace AirScreen
             #region Other
             checkBox3.Checked = ps.Default.keepInTray;
             checkBox5.Checked = !ps.Default.HideToolBox;
+
+            if(ps.Default.tileMode != 0)
+                tileSelect.SelectedIndex = ps.Default.tileMode - 1;
             #endregion
         }
 
@@ -146,6 +178,8 @@ namespace AirScreen
 
             ps.Default.SettingsHK = SettingsHK.Text;
             ps.Default.KillHK = killswitchHK.Text;
+            ps.Default.toolboxHK = toolboxHK.Text;
+            ps.Default.tilesMHK = tilesManualHK.Text;
             ps.Default.Save();
             ReloadHotKeys();
         }
@@ -193,6 +227,32 @@ namespace AirScreen
                 Application.Restart();
                 Environment.Exit(0);
             });
+
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.toolboxHK, () => {
+                if (tb.Visible)
+                    tb.Hide();
+                else
+                    tb.Show();
+            });
+
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.tilesMHK, () => {
+                if (ps.Default.tileMode == 5 && tile.Visible)
+                {
+                    if (tile.FormBorderStyle == FormBorderStyle.None)
+                    {
+                        tile.FormBorderStyle = FormBorderStyle.Sizable;
+                        tile.PreviewButton.Visible = true;
+                        tile.SaveButton.Visible = true;
+                    }
+                    else
+                    {
+                        tile.FormBorderStyle = FormBorderStyle.None;
+                        tile.PreviewButton.Visible = false;
+                        tile.SaveButton.Visible = false;
+                    }
+                        
+                }
+            });
         }
 
         public void CycleFilter()
@@ -216,7 +276,7 @@ namespace AirScreen
             }
             else
             {
-                if (ps.Default.tileMode < 4)
+                if (ps.Default.tileMode < 5)
                     ps.Default.tileMode += 1;
                 else
                     ps.Default.tileMode = 0;
@@ -342,6 +402,8 @@ namespace AirScreen
             frm2.Close();
             frm2 = new MouseBox();
             frm2.Show();
+
+            PopulateControls();
             SaveHotkeys();
         }
 
@@ -401,17 +463,23 @@ namespace AirScreen
             ps.Default.Save();
         }
 
-        public void Form1_Shown(object sender, EventArgs e)
+        private void Form1_Shown(object sender, EventArgs e)
         {
             PopulateControls();
         }
 
-        public void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(CursorHasChanged)
+            SystemCleanup();
+        }
+
+        public void SystemCleanup()
+        {
+            if (CursorHasChanged)
                 SystemParametersInfo(0x0057, 0, null, 0);
             frm2.Dispose();
             tile.Dispose();
+            notifyIcon1.Visible = false;
             notifyIcon1.Dispose();
             NativeMethods.MagUninitialize();
         }
@@ -467,11 +535,17 @@ namespace AirScreen
         public void ToggleBlockFilter()
         {
             ps.Default.tileMode = tileSelect.SelectedIndex + 1;
+            ps.Default.tileOpacity = tileOpacity.Value;
             ps.Default.Save();
-            try { tile.Close(); }
-            catch { }
-            tile = new Tiles();
-            tile.Show();
+
+            //try { tile.Close(); }
+            //catch { }
+            //tile = new Tiles();
+
+            if (tile.Visible)
+                tile.Hide();
+            else
+                tile.Show();
         }
 
         public void button12_Click(object sender, EventArgs e)
@@ -493,7 +567,7 @@ namespace AirScreen
 
         public void L_Opacity_ValueChanged(object sender, EventArgs e)
         {
-            ps.Default.tileOpacity = L_Opacity.Value;
+            ps.Default.tileOpacity = tileOpacity.Value;
             ps.Default.Save();
         }
 
@@ -596,6 +670,12 @@ namespace AirScreen
 
         private void ReloadAO()
         {
+            ps.Default.AO_ProcessByName = AO_ByName.Checked; 
+            ps.Default.AO_Opacity = AO_Opacity.Value;
+            ps.Default.AO_Invert = AO_Invert.Checked;
+            ps.Default.AO_InvertTime = (int)AO_Time.Value;
+            ps.Default.Save();
+
             appO.Close();
             appO = new AppOverlay();
             if (AO_ByName.Checked && AO_TextBox.Text != string.Empty)
@@ -609,9 +689,6 @@ namespace AirScreen
             }
             appO.Show();
             appO.AO_AttatchTimer.Start();
-
-            ps.Default.AO_ProcessByName = AO_ByName.Checked;
-            ps.Default.Save();
         }
 
         public void numericUpDown1_ValueChanged(object sender, EventArgs e)
@@ -934,7 +1011,33 @@ namespace AirScreen
             ps.Default.keepInTray = checkBox3.Checked;
             ps.Default.Save();
         }
+
+        private void checkBox6_CheckedChanged(object sender, EventArgs e)
+        {
+            ps.Default.toolboxCursor = checkBox6.Checked;
+            ps.Default.Save();
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Are you sure you want to restore default settings for Air Screen? This cannot be undone.", "Warning", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+                ps.Default.Reset();
+        }
+
+        private void checkBox7_CheckedChanged(object sender, EventArgs e)
+        {
+            ps.Default.AO_Invert = AO_Invert.Checked;
+            ps.Default.Save();
+        }
+
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+            ps.Default.AO_InvertTime = (int)AO_Time.Value;
+            ps.Default.Save();
+        }
     }
+    //This is no longer used as I swapped from my poorly implemented color matricies to the ones used by NegativeScreen
     internal static class ExtensionMethods
     {
         internal static T[][] ToJaggedArray<T>(this T[,] twoDimensionalArray)
