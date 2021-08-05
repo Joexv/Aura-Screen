@@ -20,6 +20,22 @@ namespace AirScreen
         public AppOverlay()
         {
             InitializeComponent();
+            if (ps.Default.AO_OnStart)
+            {
+                AO_InvertTimer.Interval = ps.Default.AO_InvertTime * 1000;
+                if (ps.Default.AO_Invert)
+                    AO_InvertTimer.Start();
+                else
+                    AO_InvertTimer.Stop();
+
+                AO_AttatchTimer.Start();
+            }
+            else
+            {
+                AO_AttatchTimer.Stop();
+                AO_InvertTimer.Stop();
+                this.Visible = false;
+            }
         }
         public enum GWL
         {
@@ -72,21 +88,7 @@ namespace AirScreen
 
         private void AppOverlay_Load(object sender, EventArgs e)
         {
-            if (ps.Default.AO_OnStart)
-            {
-                AO_InvertTimer.Interval = ps.Default.AO_InvertTime * 1000;
-                if (ps.Default.AO_Invert)
-                    AO_InvertTimer.Start();
-                else
-                    AO_InvertTimer.Stop();
 
-                AO_AttatchTimer.Start();
-            }
-            else
-            {
-                AO_AttatchTimer.Stop();
-                this.Visible = false;
-            }
         }
         private Point OldLocation = new Point(0, 0);
         private bool MouseDown = false;

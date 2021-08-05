@@ -236,38 +236,22 @@ namespace AirScreen
 
         private void Toolbox_Shown(object sender, EventArgs e)
         {
+            Rectangle workingArea = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea;
+            int left = workingArea.Width - this.Width;
+            int top = workingArea.Height - this.Height - 15;
             if (ps.Default.toolboxCursor)
             {
                 this.Location = Cursor.Position;
+                if(this.Location.X > left || this.Location.Y > top)
+                    this.Location = new Point(left, top);
             }
             else
-            {
-                Rectangle workingArea = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea;
-                int left = workingArea.Width - this.Width;
-                int top = workingArea.Height - this.Height - 15;
                 this.Location = new Point(left, top);
-            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (ps.Default.tileMode == 5 && tiles.Visible)
-            {
-                if (tiles.FormBorderStyle == FormBorderStyle.None)
-                {
-                    tiles.FormBorderStyle = FormBorderStyle.Sizable;
-                    tiles.PreviewButton.Visible = true;
-                    tiles.SaveButton.Visible = true;
-                    tiles.Opacity = 1;
-                }
-                else
-                {
-                    tiles.Opacity = (double)ps.Default.tileOpacity;
-                    tiles.FormBorderStyle = FormBorderStyle.None;
-                    tiles.PreviewButton.Visible = false;
-                    tiles.SaveButton.Visible = false;
-                }
-            }
+            MF.EditTiles();
         }
     }
 }

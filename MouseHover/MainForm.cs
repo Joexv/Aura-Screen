@@ -51,7 +51,7 @@ namespace AirScreen
             notifyIcon1.Visible = true;
 
             tb.MF = this;
-            tb.tiles = tile;
+            //tb.tiles = tile;
         }
 
         public void PopulateControls()
@@ -237,27 +237,14 @@ namespace AirScreen
                 else
                 {
                     tb.Show();
+                    tb.WindowState = FormWindowState.Normal;
                     if (ps.Default.toolboxCursor)
                         tb.Location = Cursor.Position;
                 } 
             });
 
             GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.tilesMHK, () => {
-                if (ps.Default.tileMode == 5 && tile.Visible)
-                {
-                    if (tile.FormBorderStyle == FormBorderStyle.None)
-                    {
-                        tile.FormBorderStyle = FormBorderStyle.Sizable;
-                        tile.PreviewButton.Visible = true;
-                        tile.SaveButton.Visible = true;
-                    }
-                    else
-                    {
-                        tile.FormBorderStyle = FormBorderStyle.None;
-                        tile.PreviewButton.Visible = false;
-                        tile.SaveButton.Visible = false;
-                    }  
-                }
+                EditTiles();
             });
         }
 
@@ -276,8 +263,7 @@ namespace AirScreen
         Tiles tile = new Tiles();
         public void CycleTiles(int Mode = 0)
         {
-            if(Mode != 0)
-            {
+            if(Mode != 0){
                 ps.Default.tileMode = Mode;
             }
             else
@@ -411,6 +397,27 @@ namespace AirScreen
 
             PopulateControls();
             SaveHotkeys();
+        }
+
+        public void EditTiles()
+        {
+            if (ps.Default.tileMode == 5 && tile.Visible)
+            {
+                if (tile.FormBorderStyle == FormBorderStyle.None)
+                {
+                    tile.FormBorderStyle = FormBorderStyle.Sizable;
+                    tile.PreviewButton.Visible = true;
+                    tile.SaveButton.Visible = true;
+                    tile.Opacity = 1;
+                }
+                else
+                {
+                    tile.FormBorderStyle = FormBorderStyle.None;
+                    tile.PreviewButton.Visible = false;
+                    tile.SaveButton.Visible = false;
+                    tile.Opacity = (double)ps.Default.tileOpacity;
+                }
+            }
         }
 
         public void styleBox_SelectedIndexChanged(object sender, EventArgs e)
