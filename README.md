@@ -1,4 +1,4 @@
-### Air Screen
+# Air Screen
 
 This repo is setup to keep track of code, 
 ideas and the like during the initial development.
@@ -19,9 +19,9 @@ Current Features
 - And probably other things! Yay!
 
 
-### Setup
+## Setup
 
-## Windows
+### Windows
 - Goto the (Releases Tab)[https://github.com/Joexv/Air-Screen/releases] and download the latest release of Air Screen. 
 You will only need the first ZIP file.
 - Once downloaded, extract the ZIP anywhere on your computer. It's recommended to extract it somewhere easy to access, like your Desktop.
@@ -38,24 +38,24 @@ You will only need the first ZIP file.
 If you experiance any issues or simply want to backup your configuration for any reason, the program's configuration file is located in %localappdata%\AirScreen\
 
 
-## MacOS
+### MacOS
 Since Air Screen is developed in C# .Net, it only works natively in Windows. This is nice for Windows users as they
 don't have to worry about compatability at all. They run it and it will jsut work. Because of this the MacOS setup is a bit tricker. 
 There are a few options, some cost money, some are free. Choose the method you are comfortable with.
 
-# MacOS Parallels - The most robust, but costs $$
+#### MacOS Parallels - The most robust, but costs $$
 Using Prallels gives you some added functionality via the Comprehensive mode which will overlay a Windows Program ontop of your MacOSX desktop.
 Parallels, does cost money. If you already have it great! Setup is easy!
 - Download Parallels from https://www.parallels.com/
 - Follow the Prallels setup instructions (HERE)[https://download.parallels.com/desktop/v16/docs/en_US/Parallels%20Desktop%20User's%20Guide.pdf]
 Once Parallels is installed and setup, simply follow the same instructions for the Windows Section!
 
-# MacOS Bootcamp - Identical to the Windows Use case as you just boot windows. Technically free
+#### MacOS Bootcamp - Identical to the Windows Use case as you just boot windows. Technically free
 - Follow the Bootcamp setup from Apple https://support.apple.com/en-us/HT201468
 - Boot into the new Windows Partition, and then follow the Windows instructions
 You can migrate from Bootcamp to Paralles in the future for ease of use without having to reinstall Windows!
 
-# MacOS VMWare - Identical to running in Windows - free for personal use
+#### MacOS VMWare - Identical to running in Windows - free for personal use
 Using VMWare is not recommended as it will require your computer to run a full version of Windows alongside your already running MacOS.
 - Install your Windows VM following the instructions form VMWare https://kb.vmware.com/s/article/2128765
 - Setup AirScreen in the Guest OS as you would normally in Windows.
