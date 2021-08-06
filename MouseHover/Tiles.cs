@@ -66,10 +66,7 @@ namespace AirScreen
             wl = wl | 0x80000 | 0x20;
             SetWindowLong(this.Handle, GWL.ExStyle, wl);
             SetLayeredWindowAttributes(this.Handle, 0, 128, LWA.Alpha);
-            if (ps.Default.tileMode != 5)
-                this.Opacity = (double)ps.Default.tileOpacity;
-            else
-                this.Opacity = 1;
+            this.Opacity = (double)ps.Default.tileOpacity;
         }
 
         public Tiles()

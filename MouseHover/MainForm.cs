@@ -38,7 +38,7 @@ namespace AirScreen
             Exception e = (Exception)args.ExceptionObject;
             File.WriteAllText("Error.txt", e.ToString());
             SystemCleanup();
-            MessageBox.Show("Ooofie, ouchie! Looks like we made a fuckie wuckie. Please give the code monekys back at daddy's HQ the Error.txt file so they can better help you with this UwU!");
+            MessageBox.Show("You bafoon, you absolute ignoramous. You broke it. Now what? Gonna cry? Send that error.txt over to the devs and they will take a look.");
         }
 
         public void Form1_Load(object sender, EventArgs e)
@@ -542,7 +542,14 @@ namespace AirScreen
 
         public void button2_Click_1(object sender, EventArgs e)
         {
-            ToggleBlockFilter();
+            //ToggleBlockFilter();
+            ps.Default.tileMode = tileSelect.SelectedIndex + 1;
+            ps.Default.tileOpacity = tileOpacity.Value;
+            ps.Default.Save();
+            try { tile.Close(); }
+            catch { }
+            tile = new Tiles();
+            tile.Show();
         }
 
         public void ToggleBlockFilter()

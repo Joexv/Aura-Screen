@@ -562,6 +562,7 @@ namespace AirScreen
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Air Screen Toolbox";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.Toolbox_Load);
             this.Shown += new System.EventHandler(this.Toolbox_Shown);
             this.Leave += new System.EventHandler(this.Toolbox_Leave);
