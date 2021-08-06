@@ -195,7 +195,7 @@ namespace AirScreen
                     {
                         ShiftHeld = false;
                         DoInvert = true;
-                        AdjustLocation();
+                        //AdjustLocation();
                         Invert();
                     }
 

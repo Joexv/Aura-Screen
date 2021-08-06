@@ -180,6 +180,16 @@ namespace AirScreen
             this.Filter_Timer = new System.Windows.Forms.Timer(this.components);
             this.CursorTimer = new System.Windows.Forms.Timer(this.components);
             this.CursorTimer2 = new System.Windows.Forms.Timer(this.components);
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.squwiggly = new System.Windows.Forms.RadioButton();
+            this.label45 = new System.Windows.Forms.Label();
+            this.f1 = new System.Windows.Forms.RadioButton();
+            this.r = new System.Windows.Forms.RadioButton();
+            this.shift = new System.Windows.Forms.RadioButton();
+            this.time = new System.Windows.Forms.NumericUpDown();
+            this.label46 = new System.Windows.Forms.Label();
+            this.tileScrollDisable = new System.Windows.Forms.CheckBox();
+            this.tileInvert = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip1.SuspendLayout();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AO_Time)).BeginInit();
@@ -207,6 +217,8 @@ namespace AirScreen
             this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cursorPreview)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cursorIdle)).BeginInit();
+            this.groupBox9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.time)).BeginInit();
             this.SuspendLayout();
             // 
             // notifyIcon1
@@ -967,6 +979,7 @@ namespace AirScreen
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.groupBox9);
             this.tabPage4.Controls.Add(this.label16);
             this.tabPage4.Controls.Add(this.label13);
             this.tabPage4.Controls.Add(this.button2);
@@ -1855,6 +1868,127 @@ namespace AirScreen
             this.CursorTimer2.Enabled = true;
             this.CursorTimer2.Tick += new System.EventHandler(this.CursorTimer2_Tick);
             // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.tileInvert);
+            this.groupBox9.Controls.Add(this.tileScrollDisable);
+            this.groupBox9.Controls.Add(this.squwiggly);
+            this.groupBox9.Controls.Add(this.label45);
+            this.groupBox9.Controls.Add(this.f1);
+            this.groupBox9.Controls.Add(this.r);
+            this.groupBox9.Controls.Add(this.shift);
+            this.groupBox9.Controls.Add(this.time);
+            this.groupBox9.Controls.Add(this.label46);
+            this.groupBox9.Location = new System.Drawing.Point(29, 230);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(614, 261);
+            this.groupBox9.TabIndex = 41;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Inversion In Manual Mode";
+            // 
+            // squwiggly
+            // 
+            this.squwiggly.AutoSize = true;
+            this.squwiggly.Location = new System.Drawing.Point(154, 206);
+            this.squwiggly.Name = "squwiggly";
+            this.squwiggly.Size = new System.Drawing.Size(55, 29);
+            this.squwiggly.TabIndex = 7;
+            this.squwiggly.Text = "~";
+            this.squwiggly.UseVisualStyleBackColor = true;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Location = new System.Drawing.Point(35, 140);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(214, 25);
+            this.label45.TabIndex = 6;
+            this.label45.Text = "Manually Refresh On";
+            // 
+            // f1
+            // 
+            this.f1.AutoSize = true;
+            this.f1.Location = new System.Drawing.Point(35, 206);
+            this.f1.Name = "f1";
+            this.f1.Size = new System.Drawing.Size(68, 29);
+            this.f1.TabIndex = 5;
+            this.f1.Text = "F1";
+            this.f1.UseVisualStyleBackColor = true;
+            // 
+            // r
+            // 
+            this.r.AutoSize = true;
+            this.r.Location = new System.Drawing.Point(154, 171);
+            this.r.Name = "r";
+            this.r.Size = new System.Drawing.Size(58, 29);
+            this.r.TabIndex = 4;
+            this.r.Text = "R";
+            this.r.UseVisualStyleBackColor = true;
+            // 
+            // shift
+            // 
+            this.shift.AutoSize = true;
+            this.shift.Checked = true;
+            this.shift.Location = new System.Drawing.Point(35, 171);
+            this.shift.Name = "shift";
+            this.shift.Size = new System.Drawing.Size(86, 29);
+            this.shift.TabIndex = 3;
+            this.shift.TabStop = true;
+            this.shift.Text = "Shift";
+            this.shift.UseVisualStyleBackColor = true;
+            // 
+            // time
+            // 
+            this.time.Location = new System.Drawing.Point(184, 79);
+            this.time.Maximum = new decimal(new int[] {
+            600,
+            0,
+            0,
+            0});
+            this.time.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.time.Name = "time";
+            this.time.Size = new System.Drawing.Size(120, 31);
+            this.time.TabIndex = 2;
+            this.time.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(30, 81);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(148, 25);
+            this.label46.TabIndex = 1;
+            this.label46.Text = "Refresh Every";
+            // 
+            // tileScrollDisable
+            // 
+            this.tileScrollDisable.AutoSize = true;
+            this.tileScrollDisable.Location = new System.Drawing.Point(198, 43);
+            this.tileScrollDisable.Name = "tileScrollDisable";
+            this.tileScrollDisable.Size = new System.Drawing.Size(257, 29);
+            this.tileScrollDisable.TabIndex = 8;
+            this.tileScrollDisable.Text = "Disable while scrolling";
+            this.tileScrollDisable.UseVisualStyleBackColor = true;
+            this.tileScrollDisable.CheckedChanged += new System.EventHandler(this.tileScrollDisable_CheckedChanged);
+            // 
+            // tileInvert
+            // 
+            this.tileInvert.AutoSize = true;
+            this.tileInvert.Location = new System.Drawing.Point(35, 43);
+            this.tileInvert.Name = "tileInvert";
+            this.tileInvert.Size = new System.Drawing.Size(97, 29);
+            this.tileInvert.TabIndex = 9;
+            this.tileInvert.Text = "Invert";
+            this.tileInvert.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
@@ -1913,6 +2047,9 @@ namespace AirScreen
             this.tabPage7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cursorPreview)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cursorIdle)).EndInit();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.time)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2068,6 +2205,16 @@ namespace AirScreen
         private System.Windows.Forms.TextBox SettingsHK;
         private System.Windows.Forms.CheckBox AO_Start;
         public System.Windows.Forms.ComboBox styleBox;
+        public System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.CheckBox tileScrollDisable;
+        private System.Windows.Forms.RadioButton squwiggly;
+        private System.Windows.Forms.Label label45;
+        private System.Windows.Forms.RadioButton f1;
+        private System.Windows.Forms.RadioButton r;
+        private System.Windows.Forms.RadioButton shift;
+        private System.Windows.Forms.NumericUpDown time;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.CheckBox tileInvert;
     }
 }
 

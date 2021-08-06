@@ -670,5 +670,53 @@ namespace AirScreen.Properties {
                 this["AO_OnStart"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool tileInvert {
+            get {
+                return ((bool)(this["tileInvert"]));
+            }
+            set {
+                this["tileInvert"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
+        public int tileTimer {
+            get {
+                return ((int)(this["tileTimer"]));
+            }
+            set {
+                this["tileTimer"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int tileKey {
+            get {
+                return ((int)(this["tileKey"]));
+            }
+            set {
+                this["tileKey"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool tileScroll {
+            get {
+                return ((bool)(this["tileScroll"]));
+            }
+            set {
+                this["tileScroll"] = value;
+            }
+        }
     }
 }

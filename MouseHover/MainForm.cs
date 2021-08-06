@@ -80,6 +80,25 @@ namespace AirScreen
             inversionBox.Checked = ps.Default.invert;
             inversionToggle.Checked = ps.Default.InversionToggle;
             checkBox4.Checked = ps.Default.cursorLock;
+
+            tileInvert.Checked = ps.Default.tileInvert;
+            time.Value = ps.Default.tileTimer;
+            tileScrollDisable.Checked = ps.Default.tileScroll;
+            switch (ps.Default.tileKey)
+            {
+                case 0:
+                    shift.Checked = true;
+                    return;
+                case 1:
+                    r.Checked = true;
+                    return;
+                case 2:
+                    squwiggly.Checked = true;
+                    return;
+                case 3:
+                    f1.Checked = true;
+                    return;
+            }
             #endregion
 
             #region hotKeys
@@ -411,7 +430,9 @@ namespace AirScreen
                     tile.label1.Visible = true;
                     tile.button1.Visible = true;
                     tile.numericUpDown1.Visible = true;
+                    tile.groupBox1.Visible = true;
                     tile.Opacity = 1;
+                    tile.BackgroundImage = null;
                 }
                 else
                 {
@@ -421,6 +442,7 @@ namespace AirScreen
                     tile.label1.Visible = false;
                     tile.button1.Visible = false;
                     tile.numericUpDown1.Visible = false;
+                    tile.groupBox1.Visible = false;
                     tile.Opacity = (double)ps.Default.tileOpacity;
                 }
             }
@@ -494,13 +516,23 @@ namespace AirScreen
 
         public void SystemCleanup()
         {
-            if (CursorHasChanged)
-                SystemParametersInfo(0x0057, 0, null, 0);
-            frm2.Dispose();
-            tile.Dispose();
-            notifyIcon1.Visible = false;
-            notifyIcon1.Dispose();
-            NativeMethods.MagUninitialize();
+            //The disposals like to crash sometimes. It all gets cleaned by the system anyways thankfully
+            try
+            {
+                if (CursorHasChanged)
+                    SystemParametersInfo(0x0057, 0, null, 0);
+                frm2.Dispose();
+                tile.Dispose();
+            }
+            catch { }
+
+            try
+            {
+                notifyIcon1.Visible = false;
+                notifyIcon1.Dispose();
+                NativeMethods.MagUninitialize();
+            }
+            catch { }
         }
         Toolbox tb = new Toolbox();
         public void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
@@ -1066,6 +1098,12 @@ namespace AirScreen
         private void AO_Start_CheckedChanged(object sender, EventArgs e)
         {
             ps.Default.AO_OnStart = AO_Start.Checked;
+            ps.Default.Save();
+        }
+
+        private void tileScrollDisable_CheckedChanged(object sender, EventArgs e)
+        {
+            ps.Default.tileScroll = tileScrollDisable.Checked;
             ps.Default.Save();
         }
     }
