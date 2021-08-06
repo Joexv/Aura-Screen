@@ -137,6 +137,7 @@
     <Content Include="Pink_Crosshair_Cursor.cur">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Mouse_Shape_1.png" />
     <None Include="Resources\BoxFilter_Edit_1.png" />
     <None Include="Resources\BoxFilter_Manual_1.png" />
     <None Include="Resources\BF_Right_1.png" />

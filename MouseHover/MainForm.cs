@@ -408,6 +408,9 @@ namespace AirScreen
                     tile.FormBorderStyle = FormBorderStyle.Sizable;
                     tile.PreviewButton.Visible = true;
                     tile.SaveButton.Visible = true;
+                    tile.label1.Visible = true;
+                    tile.button1.Visible = true;
+                    tile.numericUpDown1.Visible = true;
                     tile.Opacity = 1;
                 }
                 else
@@ -415,6 +418,9 @@ namespace AirScreen
                     tile.FormBorderStyle = FormBorderStyle.None;
                     tile.PreviewButton.Visible = false;
                     tile.SaveButton.Visible = false;
+                    tile.label1.Visible = false;
+                    tile.button1.Visible = false;
+                    tile.numericUpDown1.Visible = false;
                     tile.Opacity = (double)ps.Default.tileOpacity;
                 }
             }

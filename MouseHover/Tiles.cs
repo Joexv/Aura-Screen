@@ -91,6 +91,7 @@ namespace AirScreen
 
         private void Tiles_Shown(object sender, EventArgs e)
         {
+            numericUpDown1.Value = ps.Default.tileOpacity;
             Screen scr = Screen.FromPoint(this.Location);
             Point pt = new Point(scr.Bounds.Right, scr.Bounds.Top);
 
@@ -160,6 +161,9 @@ namespace AirScreen
             this.FormBorderStyle = FormBorderStyle.None;
             PreviewButton.Visible = false;
             SaveButton.Visible = false;
+            label1.Visible = false;
+            button1.Visible = false;
+            numericUpDown1.Visible = false;
         }
 
         private void previewTimer_Tick(object sender, EventArgs e)
@@ -167,6 +171,23 @@ namespace AirScreen
             this.Opacity = 1;
             this.FormBorderStyle = FormBorderStyle.Sizable;
             previewTimer.Stop();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (colorDialog1.ShowDialog() == DialogResult.OK)
+            {
+                ps.Default.tileColor = colorDialog1.Color;
+                ps.Default.Save();
+
+                this.BackColor = colorDialog1.Color;
+            }
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            ps.Default.tileOpacity = numericUpDown1.Value;
+            ps.Default.Save();
         }
     }
 }

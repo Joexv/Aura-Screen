@@ -139,7 +139,6 @@ namespace AirScreen
                         e.Graphics.DrawEllipse(pen, rect);
                         return;
                     case "Invert Rectangle":
-                        
                         return;
                 }
             }
@@ -180,29 +179,32 @@ namespace AirScreen
         bool ShiftHeld = false;
         private void timer2_Tick(object sender, EventArgs e)
         {
-            if (ps.Default.invert) 
+            if (this.Visible)
             {
-                if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftShift))
-                    ShiftHeld = true;
-                if (InversionPositionCheck() && !ShiftHeld && !ps.Default.cursorLock)
+                if (ps.Default.invert)
                 {
-                    ShiftHeld = false;
-                    DoInvert = true;
-                    AdjustLocation();
-                }
-                else if (ShiftHeld && !System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftShift))
-                {
-                    ShiftHeld = false;
-                    DoInvert = true;
-                    AdjustLocation();
-                    Invert();
-                }
+                    if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftShift))
+                        ShiftHeld = true;
+                    if (InversionPositionCheck() && !ShiftHeld && !ps.Default.cursorLock)
+                    {
+                        ShiftHeld = false;
+                        DoInvert = true;
+                        AdjustLocation();
+                    }
+                    else if (ShiftHeld && !System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftShift))
+                    {
+                        ShiftHeld = false;
+                        DoInvert = true;
+                        AdjustLocation();
+                        Invert();
+                    }
 
-                if (this.Width != ps.Default.width || this.Height != ps.Default.height)
-                {
-                    if(!ps.Default.AppInvertLock)
-                        CreateView();
-                } 
+                    if (this.Width != ps.Default.width || this.Height != ps.Default.height)
+                    {
+                        if (!ps.Default.AppInvertLock)
+                            CreateView();
+                    }
+                }
             }
         }
         bool DoInvert = false;

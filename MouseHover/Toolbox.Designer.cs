@@ -51,6 +51,7 @@ namespace AirScreen
             this.BF_Bottom = new System.Windows.Forms.Button();
             this.BF_Left = new System.Windows.Forms.Button();
             this.BF_Right = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,11 +77,12 @@ namespace AirScreen
             this.flowLayoutPanel1.Controls.Add(this.BF_Bottom);
             this.flowLayoutPanel1.Controls.Add(this.BF_Left);
             this.flowLayoutPanel1.Controls.Add(this.BF_Right);
+            this.flowLayoutPanel1.Controls.Add(this.button3);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(4);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(795, 992);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(795, 1184);
             this.flowLayoutPanel1.TabIndex = 0;
             this.flowLayoutPanel1.MouseEnter += new System.EventHandler(this.flowLayoutPanel1_MouseEnter);
             // 
@@ -545,13 +547,36 @@ namespace AirScreen
             this.BF_Right.UseVisualStyleBackColor = false;
             this.BF_Right.Click += new System.EventHandler(this.BF_Right_Click);
             // 
+            // button3
+            // 
+            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(150)))), ((int)(((byte)(170)))));
+            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.button3.FlatAppearance.BorderSize = 0;
+            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(183)))));
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("Constantia", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.ForeColor = System.Drawing.Color.White;
+            this.button3.Image = global::AirScreen.Properties.Resources.Mouse_Shape_1;
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button3.Location = new System.Drawing.Point(7, 987);
+            this.button3.MinimumSize = new System.Drawing.Size(150, 190);
+            this.button3.Name = "button3";
+            this.button3.Padding = new System.Windows.Forms.Padding(10);
+            this.button3.Size = new System.Drawing.Size(190, 190);
+            this.button3.TabIndex = 68;
+            this.button3.Text = "Cycle Cursor Shapes";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Toolbox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.CancelButton = this.cursorToggle;
-            this.ClientSize = new System.Drawing.Size(795, 992);
+            this.ClientSize = new System.Drawing.Size(795, 1184);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -596,5 +621,6 @@ namespace AirScreen
         private System.Windows.Forms.Button BF_Bottom;
         private System.Windows.Forms.Button BF_Left;
         private System.Windows.Forms.Button BF_Right;
+        private System.Windows.Forms.Button button3;
     }
 }

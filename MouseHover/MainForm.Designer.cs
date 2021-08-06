@@ -60,6 +60,7 @@ namespace AirScreen
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.label44 = new System.Windows.Forms.Label();
             this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.AO_Start = new System.Windows.Forms.CheckBox();
             this.label43 = new System.Windows.Forms.Label();
             this.AO_Time = new System.Windows.Forms.NumericUpDown();
             this.label42 = new System.Windows.Forms.Label();
@@ -179,7 +180,6 @@ namespace AirScreen
             this.Filter_Timer = new System.Windows.Forms.Timer(this.components);
             this.CursorTimer = new System.Windows.Forms.Timer(this.components);
             this.CursorTimer2 = new System.Windows.Forms.Timer(this.components);
-            this.AO_Start = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip1.SuspendLayout();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AO_Time)).BeginInit();
@@ -530,6 +530,17 @@ namespace AirScreen
             this.tabPage6.Text = "App Overlay";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
+            // AO_Start
+            // 
+            this.AO_Start.AutoSize = true;
+            this.AO_Start.Location = new System.Drawing.Point(17, 581);
+            this.AO_Start.Name = "AO_Start";
+            this.AO_Start.Size = new System.Drawing.Size(196, 29);
+            this.AO_Start.TabIndex = 46;
+            this.AO_Start.Text = "Enable On Start";
+            this.AO_Start.UseVisualStyleBackColor = true;
+            this.AO_Start.CheckedChanged += new System.EventHandler(this.AO_Start_CheckedChanged);
+            // 
             // label43
             // 
             this.label43.AutoSize = true;
@@ -622,7 +633,7 @@ namespace AirScreen
             131072});
             this.AO_Opacity.Location = new System.Drawing.Point(200, 345);
             this.AO_Opacity.Maximum = new decimal(new int[] {
-            95,
+            99,
             0,
             0,
             131072});
@@ -1024,12 +1035,12 @@ namespace AirScreen
             131072});
             this.tileOpacity.Location = new System.Drawing.Point(523, 102);
             this.tileOpacity.Maximum = new decimal(new int[] {
-            95,
+            99,
             0,
             0,
             131072});
             this.tileOpacity.Minimum = new decimal(new int[] {
-            1,
+            10,
             0,
             0,
             131072});
@@ -1555,7 +1566,7 @@ namespace AirScreen
             131072});
             this.opacityBar.Location = new System.Drawing.Point(106, 38);
             this.opacityBar.Maximum = new decimal(new int[] {
-            95,
+            99,
             0,
             0,
             131072});
@@ -1844,17 +1855,6 @@ namespace AirScreen
             this.CursorTimer2.Enabled = true;
             this.CursorTimer2.Tick += new System.EventHandler(this.CursorTimer2_Tick);
             // 
-            // AO_Start
-            // 
-            this.AO_Start.AutoSize = true;
-            this.AO_Start.Location = new System.Drawing.Point(17, 581);
-            this.AO_Start.Name = "AO_Start";
-            this.AO_Start.Size = new System.Drawing.Size(196, 29);
-            this.AO_Start.TabIndex = 46;
-            this.AO_Start.Text = "Enable On Start";
-            this.AO_Start.UseVisualStyleBackColor = true;
-            this.AO_Start.CheckedChanged += new System.EventHandler(this.AO_Start_CheckedChanged);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
@@ -1997,7 +1997,6 @@ namespace AirScreen
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.ComboBox styleBox;
         private System.Windows.Forms.Label width;
         private System.Windows.Forms.Label height;
         private System.Windows.Forms.TabControl tabControl1;
@@ -2068,6 +2067,7 @@ namespace AirScreen
         private System.Windows.Forms.Label label44;
         private System.Windows.Forms.TextBox SettingsHK;
         private System.Windows.Forms.CheckBox AO_Start;
+        public System.Windows.Forms.ComboBox styleBox;
     }
 }
 

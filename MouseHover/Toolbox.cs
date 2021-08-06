@@ -71,6 +71,10 @@ namespace AirScreen
                     button.FlatAppearance.BorderColor = Color.FromArgb(41, 53, 65);
                 }
             }
+
+            //Adjust button locations
+            FlowLayoutPanel p = flowLayoutPanel1;
+            p.Controls.SetChildIndex(button3, 7);
         }
 
         private void cursorToggle_Click(object sender, EventArgs e)
@@ -112,6 +116,8 @@ namespace AirScreen
         {
             if(ps.Default.opacity > (decimal)0.10)
                 ps.Default.opacity -= (decimal)0.10;
+            if (ps.Default.opacity < (decimal)0.10)
+                ps.Default.opacity = (decimal)0.10;
             ps.Default.Save();
         }
 
@@ -119,8 +125,8 @@ namespace AirScreen
         {
             if (ps.Default.opacity < (decimal)1)
                 ps.Default.opacity += (decimal)0.10;
-            if (ps.Default.opacity == 1)
-                ps.Default.opacity = (decimal)0.99;
+            if (ps.Default.opacity >= 1)
+                ps.Default.opacity = (decimal)0.90;
             ps.Default.Save();
         }
 
@@ -252,6 +258,16 @@ namespace AirScreen
         private void button2_Click(object sender, EventArgs e)
         {
             MF.EditTiles();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (MF.styleBox.SelectedIndex < 2)
+                MF.styleBox.SelectedIndex += 1;
+            else
+                MF.styleBox.SelectedIndex = 0;
+
+            MF.ReloadCursorOverlay();
         }
     }
 }
