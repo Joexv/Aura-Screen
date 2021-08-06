@@ -41,7 +41,7 @@ If you experiance any issues or simply want to backup your configuration for any
 ### MacOS
 Since Air Screen is developed in C# .Net, it only works natively in Windows. This is nice for Windows users as they
 don't have to worry about compatability at all. They run it and it will jsut work. Because of this the MacOS setup is a bit tricker. 
-There are a few options, some cost money, some are free. Choose the method you are comfortable with.
+Until a native MacOS port is made, there are a few options, some cost money, some are free. Choose the method you are comfortable with.
 
 #### MacOS Parallels - The most robust, but costs $$
 Using Prallels gives you some added functionality via the Comprehensive mode which will overlay a Windows Program ontop of your MacOSX desktop.
