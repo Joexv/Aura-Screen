@@ -1024,6 +1024,7 @@ namespace AirScreen
             this.tileInvert.TabIndex = 9;
             this.tileInvert.Text = "Invert";
             this.tileInvert.UseVisualStyleBackColor = true;
+            this.tileInvert.CheckedChanged += new System.EventHandler(this.tileInvert_CheckedChanged);
             // 
             // tileScrollDisable
             // 
@@ -1045,6 +1046,7 @@ namespace AirScreen
             this.squwiggly.TabIndex = 7;
             this.squwiggly.Text = "~";
             this.squwiggly.UseVisualStyleBackColor = true;
+            this.squwiggly.CheckedChanged += new System.EventHandler(this.squwiggly_CheckedChanged);
             // 
             // label45
             // 
@@ -1064,6 +1066,7 @@ namespace AirScreen
             this.f1.TabIndex = 5;
             this.f1.Text = "F1";
             this.f1.UseVisualStyleBackColor = true;
+            this.f1.CheckedChanged += new System.EventHandler(this.f1_CheckedChanged);
             // 
             // r
             // 
@@ -1074,6 +1077,7 @@ namespace AirScreen
             this.r.TabIndex = 4;
             this.r.Text = "R";
             this.r.UseVisualStyleBackColor = true;
+            this.r.CheckedChanged += new System.EventHandler(this.r_CheckedChanged);
             // 
             // shift
             // 
@@ -1086,6 +1090,7 @@ namespace AirScreen
             this.shift.TabStop = true;
             this.shift.Text = "Shift";
             this.shift.UseVisualStyleBackColor = true;
+            this.shift.CheckedChanged += new System.EventHandler(this.shift_CheckedChanged);
             // 
             // time
             // 
@@ -1108,6 +1113,7 @@ namespace AirScreen
             0,
             0,
             0});
+            this.time.ValueChanged += new System.EventHandler(this.time_ValueChanged);
             // 
             // label46
             // 
@@ -1145,7 +1151,7 @@ namespace AirScreen
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(614, 76);
             this.button2.TabIndex = 38;
-            this.button2.Text = "Apply Changes";
+            this.button2.Text = "Reload View";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
@@ -1229,6 +1235,7 @@ namespace AirScreen
             this.tileSelect.Name = "tileSelect";
             this.tileSelect.Size = new System.Drawing.Size(297, 33);
             this.tileSelect.TabIndex = 28;
+            this.tileSelect.SelectedIndexChanged += new System.EventHandler(this.tileSelect_SelectedIndexChanged);
             // 
             // tabPage3
             // 

@@ -3,6 +3,7 @@ using System;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace AirScreen
@@ -243,28 +244,29 @@ namespace AirScreen
 
         private void Invert()
         {
+            if(this.BackgroundImage != null)
+                this.BackgroundImage.Dispose();
+
             this.Opacity = 0.99; //Form must be even slightly opaque inorder to pass through inputs
             inversionPT = Cursor.Position;
             this.Hide();
-            Application.DoEvents();
             this.BackgroundImage = Transform(CaptureScreen());
-            Application.DoEvents();
             this.Show();
             DoInvert = false;
         }
 
         public void InvertApp(Point AppPosition, int Height, int Width)
         {
+            if (this.BackgroundImage != null)
+                this.BackgroundImage.Dispose();
+
             Console.WriteLine("Inverting App");
             this.Location = AppPosition;
             this.Width = Width;
             this.Height = Height;
             this.Opacity = 0.99; //Form must be even slightly opaque inorder to pass through inputs
-            Application.DoEvents();
             this.Hide();
-            Application.DoEvents();
             this.BackgroundImage = Transform(CaptureScreen(AppPosition, Height, Width));
-            Application.DoEvents();
             this.Show();
         }
 

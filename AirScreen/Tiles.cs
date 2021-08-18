@@ -272,8 +272,10 @@ namespace AirScreen
         {
             isHeld = false;
             //Cheap way of checking if in edit mode
-            if (!SaveButton.Visible && ps.Default.tileMode == 5)
+            if (!SaveButton.Visible && this.Visible)
             {
+                if(this.BackgroundImage != null)
+                    this.BackgroundImage.Dispose();
                 InvertTimer.Stop();
                 this.Opacity = 0.99;
                 this.Hide();
@@ -281,6 +283,7 @@ namespace AirScreen
                 this.BackgroundImage = Transform(CaptureScreen());
                 Application.DoEvents();
                 this.Show();
+                InvertTimer.Interval = ps.Default.tileTimer * 1000;
                 InvertTimer.Start();
             }
         }

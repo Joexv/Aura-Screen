@@ -332,7 +332,7 @@ namespace AirScreen
                 inversionBox.CheckedChanged += new System.EventHandler(inversionBox_CheckedChanged);
             }
 
-            if (ps.Default.invert && ps.Default.InversionToggle && !frm2.Visible)
+            if (!frm2.Visible)
                 Toggle();
 
             if (!ps.Default.invert && !ps.Default.InversionToggle)
@@ -1131,6 +1131,47 @@ namespace AirScreen
         {
             ps.Default.tileScroll = tileScrollDisable.Checked;
             ps.Default.Save();
+        }
+
+        private void tileInvert_CheckedChanged(object sender, EventArgs e)
+        {
+            ps.Default.tileInvert = tileInvert.Checked;
+            ps.Default.Save();
+        }
+
+        private void time_ValueChanged(object sender, EventArgs e)
+        {
+            ps.Default.tileTimer = (int)time.Value;
+            ps.Default.Save();
+        }
+
+        private void shift_CheckedChanged(object sender, EventArgs e)
+        {
+            ps.Default.tileKey = 0;
+            ps.Default.Save();
+        }
+
+        private void r_CheckedChanged(object sender, EventArgs e)
+        {
+            ps.Default.tileKey = 1;
+            ps.Default.Save();
+        }
+
+        private void f1_CheckedChanged(object sender, EventArgs e)
+        {
+            ps.Default.tileKey = 3;
+            ps.Default.Save();
+        }
+
+        private void squwiggly_CheckedChanged(object sender, EventArgs e)
+        {
+            ps.Default.tileKey = 2;
+            ps.Default.Save();
+        }
+
+        private void tileSelect_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

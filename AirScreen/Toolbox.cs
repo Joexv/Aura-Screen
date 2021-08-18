@@ -75,9 +75,9 @@ namespace AirScreen
             //Adjust button locations
             FlowLayoutPanel p = flowLayoutPanel1;
             p.Controls.SetChildIndex(button3, 7);
-
+            int ControlHeight = flowLayoutPanel1.Controls.Count / 4 + 1;
             this.Width = button1.Width * 4 + button1.Padding.Left * 6;
-            this.Height = button1.Height * 6 + button1.Padding.Top * 12;
+            this.Height = button1.Height * ControlHeight + button1.Padding.Top * (ControlHeight * 2);
         }
 
         private void cursorToggle_Click(object sender, EventArgs e)
