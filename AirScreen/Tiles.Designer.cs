@@ -67,7 +67,7 @@ namespace AirScreen
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(12, 98);
+            this.SaveButton.Location = new System.Drawing.Point(282, 12);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(264, 80);
             this.SaveButton.TabIndex = 1;
@@ -89,7 +89,7 @@ namespace AirScreen
             0,
             0,
             131072});
-            this.numericUpDown1.Location = new System.Drawing.Point(288, 40);
+            this.numericUpDown1.Location = new System.Drawing.Point(405, 77);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             99,
             0,
@@ -114,7 +114,7 @@ namespace AirScreen
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(282, 12);
+            this.label1.Location = new System.Drawing.Point(399, 49);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 25);
             this.label1.TabIndex = 3;
@@ -123,7 +123,7 @@ namespace AirScreen
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(282, 98);
+            this.button1.Location = new System.Drawing.Point(404, 140);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(264, 80);
             this.button1.TabIndex = 4;
@@ -134,20 +134,24 @@ namespace AirScreen
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.squwiggly);
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.numericUpDown1);
             this.groupBox1.Controls.Add(this.f1);
             this.groupBox1.Controls.Add(this.r);
             this.groupBox1.Controls.Add(this.shift);
             this.groupBox1.Controls.Add(this.time);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.invert);
-            this.groupBox1.Location = new System.Drawing.Point(12, 196);
+            this.groupBox1.Location = new System.Drawing.Point(12, 98);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(689, 261);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Inversion";
+            this.groupBox1.Text = "Settings";
             this.groupBox1.Visible = false;
             this.groupBox1.VisibleChanged += new System.EventHandler(this.groupBox1_VisibleChanged);
             // 
@@ -272,9 +276,6 @@ namespace AirScreen
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(815, 689);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.PreviewButton);
             this.DoubleBuffered = true;
@@ -290,7 +291,6 @@ namespace AirScreen
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.time)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
