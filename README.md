@@ -56,6 +56,6 @@ Once Parallels is installed and setup, simply follow the same instructions for t
 You can migrate from Bootcamp to Paralles in the future for ease of use without having to reinstall Windows!
 
 #### MacOS VMWare - Identical to running in Windows - free for personal use
-Using VMWare is not recommended as it will require your computer to run a full version of Windows alongside your already running MacOS.
+Using VMWare works exactly like Parallels, but simply does not have the comprehensive mode.
 - Install your Windows VM following the instructions form VMWare https://kb.vmware.com/s/article/2128765
 - Setup Aura Screen in the Guest OS as you would normally in Windows.
