@@ -1,4 +1,4 @@
-# Air Screen
+# Air Screen ![AuraScreen logo](https://picc.io/7aVyJE3.png "AuraScreen logo")
 
 This repo is setup to keep track of code, 
 ideas and the like during the initial development.
