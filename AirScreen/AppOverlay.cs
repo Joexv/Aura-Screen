@@ -89,6 +89,9 @@ namespace AirScreen
 
         private void AppOverlay_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.BackColor = ps.Default.AO_Color;
+            this.Opacity = (double)ps.Default.AO_Opacity;
         }
 
         private Point OldLocation = new Point(0, 0);
@@ -110,31 +113,17 @@ namespace AirScreen
                 windowHandle = p.MainWindowHandle;
                 RECT rect = new RECT();
                 _ = GetWindowRect(windowHandle, ref rect);
+
                 if (!ps.Default.AO_Invert)
                 {
                     this.Location = new Point(rect.Left, rect.Top);
                     this.Size = new Size(rect.Right - rect.Left, rect.Bottom - rect.Top);
                     this.TopMost = true;
-                    this.FormBorderStyle = FormBorderStyle.None;
-                    this.BackColor = ps.Default.AO_Color;
-                    this.Opacity = (double)ps.Default.AO_Opacity;
                     this.Show();
                 }
-                /*
-                else if(this.Location != OldLocation || ForceInvert)
-                {
-                    Console.WriteLine($"Old: {OldLocation}\nNew: {this.Location}");
-                    this.Location = new Point(rect.Left, rect.Top);
-                    this.Size = new Size(rect.Right - rect.Left, rect.Bottom - rect.Top);
-                    this.TopMost = true;
-                    this.FormBorderStyle = FormBorderStyle.None;
-                    Invert(new Point(rect.Left, rect.Top), new Size(rect.Right - rect.Left, rect.Bottom - rect.Top));
-                }
-                */
             }
             else
                 this.Visible = false;
-            //MouseDown = (Control.MouseButtons == MouseButtons.Left);
         }
 
         private void Invert(Point Location, Size size)

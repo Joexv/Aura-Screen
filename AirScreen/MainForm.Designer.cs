@@ -118,6 +118,16 @@ namespace AirScreen
             this.button11 = new System.Windows.Forms.Button();
             this.tileSelect = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.tbRows = new System.Windows.Forms.NumericUpDown();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label47 = new System.Windows.Forms.Label();
+            this.tbWidth = new System.Windows.Forms.NumericUpDown();
+            this.tbHeight = new System.Windows.Forms.NumericUpDown();
+            this.button20 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -190,6 +200,7 @@ namespace AirScreen
             this.Filter_Timer = new System.Windows.Forms.Timer(this.components);
             this.CursorTimer = new System.Windows.Forms.Timer(this.components);
             this.CursorTimer2 = new System.Windows.Forms.Timer(this.components);
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.contextMenuStrip1.SuspendLayout();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AO_Time)).BeginInit();
@@ -203,6 +214,10 @@ namespace AirScreen
             ((System.ComponentModel.ISupportInitialize)(this.time)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tileOpacity)).BeginInit();
             this.tabPage3.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbRows)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbWidth)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbHeight)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -287,7 +302,7 @@ namespace AirScreen
             // AO_ByName
             // 
             this.AO_ByName.AutoSize = true;
-            this.AO_ByName.Location = new System.Drawing.Point(10, 75);
+            this.AO_ByName.Location = new System.Drawing.Point(10, 133);
             this.AO_ByName.Margin = new System.Windows.Forms.Padding(5);
             this.AO_ByName.Name = "AO_ByName";
             this.AO_ByName.Size = new System.Drawing.Size(203, 29);
@@ -545,11 +560,11 @@ namespace AirScreen
             // AO_Start
             // 
             this.AO_Start.AutoSize = true;
-            this.AO_Start.Location = new System.Drawing.Point(17, 581);
+            this.AO_Start.Location = new System.Drawing.Point(13, 616);
             this.AO_Start.Name = "AO_Start";
-            this.AO_Start.Size = new System.Drawing.Size(196, 29);
+            this.AO_Start.Size = new System.Drawing.Size(345, 29);
             this.AO_Start.TabIndex = 46;
-            this.AO_Start.Text = "Enable On Start";
+            this.AO_Start.Text = "Enable On Start of Aura Screen";
             this.AO_Start.UseVisualStyleBackColor = true;
             this.AO_Start.CheckedChanged += new System.EventHandler(this.AO_Start_CheckedChanged);
             // 
@@ -609,10 +624,11 @@ namespace AirScreen
             this.label40.AutoSize = true;
             this.label40.Location = new System.Drawing.Point(15, 9);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(509, 50);
+            this.label40.Size = new System.Drawing.Size(538, 100);
             this.label40.TabIndex = 41;
             this.label40.Text = "Displays a semi-transperant color over the selected \r\napplication or current acti" +
-    "ve application.";
+    "ve application. \r\nSome programs can be picky and not always work.\r\nExperimental." +
+    " Can potentially cause slow down on PCs";
             // 
             // button16
             // 
@@ -643,7 +659,7 @@ namespace AirScreen
             0,
             0,
             131072});
-            this.AO_Opacity.Location = new System.Drawing.Point(200, 345);
+            this.AO_Opacity.Location = new System.Drawing.Point(170, 401);
             this.AO_Opacity.Maximum = new decimal(new int[] {
             99,
             0,
@@ -667,7 +683,7 @@ namespace AirScreen
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(10, 348);
+            this.label22.Location = new System.Drawing.Point(8, 407);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(85, 25);
             this.label22.TabIndex = 37;
@@ -687,7 +703,7 @@ namespace AirScreen
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(10, 182);
+            this.label21.Location = new System.Drawing.Point(5, 271);
             this.label21.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(280, 25);
@@ -708,7 +724,7 @@ namespace AirScreen
             // AO_ComboBox
             // 
             this.AO_ComboBox.FormattingEnabled = true;
-            this.AO_ComboBox.Location = new System.Drawing.Point(10, 219);
+            this.AO_ComboBox.Location = new System.Drawing.Point(5, 308);
             this.AO_ComboBox.Margin = new System.Windows.Forms.Padding(5);
             this.AO_ComboBox.Name = "AO_ComboBox";
             this.AO_ComboBox.Size = new System.Drawing.Size(308, 33);
@@ -718,7 +734,7 @@ namespace AirScreen
             // 
             this.AO_TopMost.AutoSize = true;
             this.AO_TopMost.Checked = true;
-            this.AO_TopMost.Location = new System.Drawing.Point(381, 75);
+            this.AO_TopMost.Location = new System.Drawing.Point(376, 133);
             this.AO_TopMost.Margin = new System.Windows.Forms.Padding(5);
             this.AO_TopMost.Name = "AO_TopMost";
             this.AO_TopMost.Size = new System.Drawing.Size(266, 29);
@@ -730,7 +746,7 @@ namespace AirScreen
             // 
             // AO_TextBox
             // 
-            this.AO_TextBox.Location = new System.Drawing.Point(10, 118);
+            this.AO_TextBox.Location = new System.Drawing.Point(5, 172);
             this.AO_TextBox.Margin = new System.Windows.Forms.Padding(5);
             this.AO_TextBox.Name = "AO_TextBox";
             this.AO_TextBox.Size = new System.Drawing.Size(308, 31);
@@ -743,7 +759,7 @@ namespace AirScreen
             this.AO_Apply.Name = "AO_Apply";
             this.AO_Apply.Size = new System.Drawing.Size(654, 46);
             this.AO_Apply.TabIndex = 0;
-            this.AO_Apply.Text = "Apply Changes";
+            this.AO_Apply.Text = "Reload View";
             this.AO_Apply.UseVisualStyleBackColor = true;
             this.AO_Apply.Click += new System.EventHandler(this.button16_Click);
             // 
@@ -1239,6 +1255,9 @@ namespace AirScreen
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.linkLabel2);
+            this.tabPage3.Controls.Add(this.checkBox7);
+            this.tabPage3.Controls.Add(this.groupBox10);
             this.tabPage3.Controls.Add(this.button19);
             this.tabPage3.Controls.Add(this.checkBox6);
             this.tabPage3.Controls.Add(this.checkBox5);
@@ -1247,8 +1266,148 @@ namespace AirScreen
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(670, 875);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Config";
+            this.tabPage3.Text = "Settings";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Location = new System.Drawing.Point(18, 136);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(274, 29);
+            this.checkBox7.TabIndex = 25;
+            this.checkBox7.Text = "Override Toolbox Sizing";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            this.checkBox7.CheckedChanged += new System.EventHandler(this.checkBox7_CheckedChanged_1);
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.tbRows);
+            this.groupBox10.Controls.Add(this.label50);
+            this.groupBox10.Controls.Add(this.label49);
+            this.groupBox10.Controls.Add(this.label48);
+            this.groupBox10.Controls.Add(this.label47);
+            this.groupBox10.Controls.Add(this.tbWidth);
+            this.groupBox10.Controls.Add(this.tbHeight);
+            this.groupBox10.Controls.Add(this.button20);
+            this.groupBox10.Location = new System.Drawing.Point(18, 171);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(640, 191);
+            this.groupBox10.TabIndex = 24;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "ToolBox Overrides";
+            // 
+            // tbRows
+            // 
+            this.tbRows.Location = new System.Drawing.Point(300, 94);
+            this.tbRows.Maximum = new decimal(new int[] {
+            12,
+            0,
+            0,
+            0});
+            this.tbRows.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.tbRows.Name = "tbRows";
+            this.tbRows.Size = new System.Drawing.Size(120, 31);
+            this.tbRows.TabIndex = 8;
+            this.tbRows.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(295, 63);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(102, 25);
+            this.label50.TabIndex = 7;
+            this.label50.Text = "Row Size";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(29, 35);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(74, 25);
+            this.label49.TabIndex = 6;
+            this.label49.Text = "Button";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(160, 63);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(67, 25);
+            this.label48.TabIndex = 5;
+            this.label48.Text = "Width";
+            // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(29, 63);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(74, 25);
+            this.label47.TabIndex = 4;
+            this.label47.Text = "Height";
+            // 
+            // tbWidth
+            // 
+            this.tbWidth.Location = new System.Drawing.Point(155, 94);
+            this.tbWidth.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.tbWidth.Minimum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.tbWidth.Name = "tbWidth";
+            this.tbWidth.Size = new System.Drawing.Size(120, 31);
+            this.tbWidth.TabIndex = 2;
+            this.tbWidth.Value = new decimal(new int[] {
+            180,
+            0,
+            0,
+            0});
+            // 
+            // tbHeight
+            // 
+            this.tbHeight.Location = new System.Drawing.Point(29, 94);
+            this.tbHeight.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.tbHeight.Minimum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.tbHeight.Name = "tbHeight";
+            this.tbHeight.Size = new System.Drawing.Size(120, 31);
+            this.tbHeight.TabIndex = 1;
+            this.tbHeight.Value = new decimal(new int[] {
+            190,
+            0,
+            0,
+            0});
+            // 
+            // button20
+            // 
+            this.button20.Location = new System.Drawing.Point(388, 131);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(246, 39);
+            this.button20.TabIndex = 0;
+            this.button20.Text = "Apply";
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
             // button19
             // 
@@ -2011,6 +2170,16 @@ namespace AirScreen
             this.CursorTimer2.Enabled = true;
             this.CursorTimer2.Tick += new System.EventHandler(this.CursorTimer2_Tick);
             // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Location = new System.Drawing.Point(422, 824);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(236, 25);
+            this.linkLabel2.TabIndex = 26;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "Video Guides & Tutorials";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
@@ -2022,7 +2191,7 @@ namespace AirScreen
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Air Screen Configuration";
+            this.Text = "Aura Screen Configurator";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
@@ -2046,6 +2215,11 @@ namespace AirScreen
             ((System.ComponentModel.ISupportInitialize)(this.tileOpacity)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbRows)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbWidth)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tbHeight)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             this.groupBox8.ResumeLayout(false);
@@ -2091,7 +2265,6 @@ namespace AirScreen
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Button AO_Refresh;
         private System.Windows.Forms.ComboBox AO_ComboBox;
-        private System.Windows.Forms.RadioButton AO_ByName;
         private System.Windows.Forms.TextBox AO_TextBox;
         private System.Windows.Forms.Button AO_Apply;
         private System.Windows.Forms.TabPage tabPage5;
@@ -2237,6 +2410,18 @@ namespace AirScreen
         private System.Windows.Forms.NumericUpDown time;
         private System.Windows.Forms.Label label46;
         private System.Windows.Forms.CheckBox tileInvert;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.Label label48;
+        private System.Windows.Forms.Label label47;
+        private System.Windows.Forms.NumericUpDown tbWidth;
+        private System.Windows.Forms.NumericUpDown tbHeight;
+        private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.CheckBox checkBox7;
+        private System.Windows.Forms.NumericUpDown tbRows;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.LinkLabel linkLabel2;
+        public System.Windows.Forms.RadioButton AO_ByName;
     }
 }
 

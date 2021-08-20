@@ -316,6 +316,7 @@ namespace AirScreen
 
         private void MouseBox_Shown(object sender, EventArgs e)
         {
+
         }
 
         protected override void OnShown(EventArgs e)
@@ -325,6 +326,7 @@ namespace AirScreen
             wl = wl | 0x80000 | 0x20;
             SetWindowLong(this.Handle, GWL.ExStyle, wl);
             SetLayeredWindowAttributes(this.Handle, 0, 128, LWA.Alpha);
+
             this.Opacity = (double)ps.Default.opacity;
         }
     }

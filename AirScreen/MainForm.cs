@@ -17,7 +17,7 @@ namespace AirScreen
 
     public partial class MainForm : Form
     {
-        private MouseBox frm2 = new MouseBox();
+        public MouseBox frm2 = new MouseBox();
 
         [DllImport("user32.dll", SetLastError = true)]
         private static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
@@ -164,6 +164,12 @@ namespace AirScreen
 
             #region Other
 
+            checkBox7.Checked = ps.Default.doAdjust;
+            tbWidth.Value = ps.Default.tbWidth;
+            tbHeight.Value = ps.Default.tbHeight;
+            tbRows.Value = ps.Default.tbPad;
+            groupBox10.Enabled = ps.Default.doAdjust;
+
             checkBox3.Checked = ps.Default.keepInTray;
             checkBox5.Checked = !ps.Default.HideToolBox;
 
@@ -297,7 +303,7 @@ namespace AirScreen
         }
 
         public string[] TileModes = { "None", "Top", "Bottom", "Left", "Right" };
-        private Tiles tile = new Tiles();
+        public Tiles tile = new Tiles();
 
         public void CycleTiles(int Mode = 0)
         {
@@ -728,7 +734,7 @@ namespace AirScreen
             ps.Default.Save();
         }
 
-        private AppOverlay appO = new AppOverlay();
+        public AppOverlay appO = new AppOverlay();
 
         public static string[] ListProcesses()
         {
@@ -807,7 +813,7 @@ namespace AirScreen
 
         public void ToggleAppOverlay()
         {
-            if (appO.AO_AttatchTimer.Enabled)
+            if (appO.AO_AttatchTimer.Enabled || appO.Visible)
             {
                 appO.AO_AttatchTimer.Stop();
                 appO.Hide();
@@ -1172,6 +1178,34 @@ namespace AirScreen
         private void tileSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            ps.Default.tbWidth = (int)tbWidth.Value;
+            ps.Default.tbHeight = (int)tbHeight.Value;
+            ps.Default.tbPad = (int)tbRows.Value;
+            ps.Default.Save();
+
+            tb.Close();
+            tb = new Toolbox();
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            ps.Default.doAdjust = !ps.Default.doAdjust;
+            ps.Default.Save();
+        }
+
+        private void checkBox7_CheckedChanged_1(object sender, EventArgs e)
+        {
+            ps.Default.doAdjust = checkBox7.Checked;
+            ps.Default.Save();
+
+            groupBox10.Enabled = checkBox7.Checked;
+
+            tb.Close();
+            tb = new Toolbox();
         }
     }
 

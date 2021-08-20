@@ -739,5 +739,53 @@ namespace AirScreen.Properties {
                 this["test2"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("180")]
+        public int tbHeight {
+            get {
+                return ((int)(this["tbHeight"]));
+            }
+            set {
+                this["tbHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("180")]
+        public int tbWidth {
+            get {
+                return ((int)(this["tbWidth"]));
+            }
+            set {
+                this["tbWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4")]
+        public int tbPad {
+            get {
+                return ((int)(this["tbPad"]));
+            }
+            set {
+                this["tbPad"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool doAdjust {
+            get {
+                return ((bool)(this["doAdjust"]));
+            }
+            set {
+                this["doAdjust"] = value;
+            }
+        }
     }
 }
