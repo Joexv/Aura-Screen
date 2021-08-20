@@ -22,7 +22,7 @@ Current Features
 ## Setup
 
 ### Windows
-- Goto the (Releases Tab)[https://github.com/Joexv/Aura-Screen/releases] and download the latest release of Aura Screen. 
+- Goto the https://github.com/Joexv/Aura-Screen/releases and download the latest release of Aura Screen. 
 You will only need the first ZIP file.
 - Once downloaded, extract the ZIP anywhere on your computer. It's recommended to extract it somewhere easy to access, like your Desktop.
 - Inside the newly created folder, simply open the AuraScreen.exe.
@@ -47,7 +47,7 @@ Until a native MacOS port is made, there are a few options, some cost money, som
 Using Prallels gives you some added functionality via the Comprehensive mode which will overlay a Windows Program ontop of your MacOSX desktop.
 Parallels, does cost money. If you already have it great! Setup is easy!
 - Download Parallels from https://www.parallels.com/
-- Follow the Prallels setup instructions (HERE)[https://download.parallels.com/desktop/v16/docs/en_US/Parallels%20Desktop%20User's%20Guide.pdf]
+- Follow the Prallels setup instructions https://download.parallels.com/desktop/v16/docs/en_US/Parallels%20Desktop%20User's%20Guide.pdf
 Once Parallels is installed and setup, simply follow the same instructions for the Windows Section!
 
 #### MacOS Bootcamp - Identical to the Windows Use case as you just boot windows. Technically free
