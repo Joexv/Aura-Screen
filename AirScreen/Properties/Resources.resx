@@ -187,4 +187,7 @@
   <data name="Mouse_Shape_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Mouse_Shape_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Aura_Screen_Icon_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Aura_Screen_Icon_1.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AirScreen.Properties {
+namespace AuraScreen.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace AirScreen.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AirScreen.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AuraScreen.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -77,6 +77,16 @@ namespace AirScreen.Properties {
             get {
                 object obj = ResourceManager.GetObject("AppOverlay_Toggle_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon Aura_Screen_Icon_1 {
+            get {
+                object obj = ResourceManager.GetObject("Aura_Screen_Icon_1", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         

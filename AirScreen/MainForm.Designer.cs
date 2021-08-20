@@ -1,5 +1,5 @@
 ﻿
-namespace AirScreen
+namespace AuraScreen
 {
     partial class MainForm
     {
@@ -118,6 +118,9 @@ namespace AirScreen
             this.button11 = new System.Windows.Forms.Button();
             this.tileSelect = new System.Windows.Forms.ComboBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.tbRows = new System.Windows.Forms.NumericUpDown();
@@ -200,7 +203,6 @@ namespace AirScreen
             this.Filter_Timer = new System.Windows.Forms.Timer(this.components);
             this.CursorTimer = new System.Windows.Forms.Timer(this.components);
             this.CursorTimer2 = new System.Windows.Forms.Timer(this.components);
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.contextMenuStrip1.SuspendLayout();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AO_Time)).BeginInit();
@@ -242,7 +244,7 @@ namespace AirScreen
             this.notifyIcon1.BalloonTipText = "AirScree";
             this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "AirScreen";
+            this.notifyIcon1.Text = "AuraScreen";
             this.notifyIcon1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseClick);
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
@@ -548,11 +550,11 @@ namespace AirScreen
             this.tabPage6.Controls.Add(this.AO_ByName);
             this.tabPage6.Controls.Add(this.AO_TextBox);
             this.tabPage6.Controls.Add(this.AO_Apply);
-            this.tabPage6.Location = new System.Drawing.Point(8, 39);
+            this.tabPage6.Location = new System.Drawing.Point(8, 43);
             this.tabPage6.Margin = new System.Windows.Forms.Padding(5);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(5);
-            this.tabPage6.Size = new System.Drawing.Size(670, 875);
+            this.tabPage6.Size = new System.Drawing.Size(670, 871);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "App Overlay";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -779,11 +781,11 @@ namespace AirScreen
             this.tabPage5.Controls.Add(this.linkLabel1);
             this.tabPage5.Controls.Add(this.label18);
             this.tabPage5.Controls.Add(this.button14);
-            this.tabPage5.Location = new System.Drawing.Point(8, 39);
+            this.tabPage5.Location = new System.Drawing.Point(8, 43);
             this.tabPage5.Margin = new System.Windows.Forms.Padding(5);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(5);
-            this.tabPage5.Size = new System.Drawing.Size(670, 875);
+            this.tabPage5.Size = new System.Drawing.Size(670, 871);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Screen Filters";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1005,11 +1007,11 @@ namespace AirScreen
             this.tabPage4.Controls.Add(this.label17);
             this.tabPage4.Controls.Add(this.button11);
             this.tabPage4.Controls.Add(this.tileSelect);
-            this.tabPage4.Location = new System.Drawing.Point(8, 39);
+            this.tabPage4.Location = new System.Drawing.Point(8, 43);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(670, 875);
+            this.tabPage4.Size = new System.Drawing.Size(670, 871);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Block Filter";
+            this.tabPage4.Text = "Tile Filter";
             this.tabPage4.UseVisualStyleBackColor = true;
             this.tabPage4.Click += new System.EventHandler(this.tabPage4_Click);
             // 
@@ -1255,6 +1257,8 @@ namespace AirScreen
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.linkLabel4);
+            this.tabPage3.Controls.Add(this.linkLabel3);
             this.tabPage3.Controls.Add(this.linkLabel2);
             this.tabPage3.Controls.Add(this.checkBox7);
             this.tabPage3.Controls.Add(this.groupBox10);
@@ -1262,12 +1266,45 @@ namespace AirScreen
             this.tabPage3.Controls.Add(this.checkBox6);
             this.tabPage3.Controls.Add(this.checkBox5);
             this.tabPage3.Controls.Add(this.checkBox3);
-            this.tabPage3.Location = new System.Drawing.Point(8, 39);
+            this.tabPage3.Location = new System.Drawing.Point(8, 43);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(670, 875);
+            this.tabPage3.Size = new System.Drawing.Size(670, 871);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Settings";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // linkLabel4
+            // 
+            this.linkLabel4.AutoSize = true;
+            this.linkLabel4.Location = new System.Drawing.Point(422, 780);
+            this.linkLabel4.Name = "linkLabel4";
+            this.linkLabel4.Size = new System.Drawing.Size(201, 25);
+            this.linkLabel4.TabIndex = 28;
+            this.linkLabel4.TabStop = true;
+            this.linkLabel4.Text = "Donation Campaign";
+            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
+            // 
+            // linkLabel3
+            // 
+            this.linkLabel3.AutoSize = true;
+            this.linkLabel3.Location = new System.Drawing.Point(422, 742);
+            this.linkLabel3.Name = "linkLabel3";
+            this.linkLabel3.Size = new System.Drawing.Size(242, 25);
+            this.linkLabel3.TabIndex = 27;
+            this.linkLabel3.TabStop = true;
+            this.linkLabel3.Text = "https://AuraScreen.com/";
+            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Location = new System.Drawing.Point(422, 824);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(236, 25);
+            this.linkLabel2.TabIndex = 26;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "Video Guides & Tutorials";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
             // checkBox7
             // 
@@ -1444,10 +1481,10 @@ namespace AirScreen
             this.tabPage2.Controls.Add(this.groupBox5);
             this.tabPage2.Controls.Add(this.button13);
             this.tabPage2.Controls.Add(this.label11);
-            this.tabPage2.Location = new System.Drawing.Point(8, 39);
+            this.tabPage2.Location = new System.Drawing.Point(8, 43);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(670, 875);
+            this.tabPage2.Size = new System.Drawing.Size(670, 871);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "HotKeys";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1830,10 +1867,10 @@ namespace AirScreen
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.label27);
             this.tabPage1.Controls.Add(this.button8);
-            this.tabPage1.Location = new System.Drawing.Point(8, 39);
+            this.tabPage1.Location = new System.Drawing.Point(8, 43);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(670, 875);
+            this.tabPage1.Size = new System.Drawing.Size(670, 871);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cursor Filter";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -2048,6 +2085,7 @@ namespace AirScreen
             this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.ItemSize = new System.Drawing.Size(130, 35);
             this.tabControl1.Location = new System.Drawing.Point(14, 14);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -2066,11 +2104,11 @@ namespace AirScreen
             this.tabPage7.Controls.Add(this.cursorIdle);
             this.tabPage7.Controls.Add(this.cursorChange);
             this.tabPage7.Controls.Add(this.cursorApply);
-            this.tabPage7.Location = new System.Drawing.Point(8, 39);
+            this.tabPage7.Location = new System.Drawing.Point(8, 43);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(670, 875);
+            this.tabPage7.Size = new System.Drawing.Size(670, 871);
             this.tabPage7.TabIndex = 6;
-            this.tabPage7.Text = "Cursor Icon";
+            this.tabPage7.Text = "Idle Cursor";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
             // filterHide
@@ -2170,16 +2208,6 @@ namespace AirScreen
             this.CursorTimer2.Enabled = true;
             this.CursorTimer2.Tick += new System.EventHandler(this.CursorTimer2_Tick);
             // 
-            // linkLabel2
-            // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(422, 824);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(236, 25);
-            this.linkLabel2.TabIndex = 26;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "Video Guides & Tutorials";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
@@ -2188,6 +2216,7 @@ namespace AirScreen
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.disableHotKey);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -2422,6 +2451,8 @@ namespace AirScreen
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.LinkLabel linkLabel2;
         public System.Windows.Forms.RadioButton AO_ByName;
+        private System.Windows.Forms.LinkLabel linkLabel4;
+        private System.Windows.Forms.LinkLabel linkLabel3;
     }
 }
 

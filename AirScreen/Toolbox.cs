@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AirScreen
+namespace AuraScreen
 {
     using ps = Properties.Settings;
     public partial class Toolbox : Form

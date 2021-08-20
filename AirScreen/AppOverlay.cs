@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
-namespace AirScreen
+namespace AuraScreen
 {
     using ps = Properties.Settings;
 

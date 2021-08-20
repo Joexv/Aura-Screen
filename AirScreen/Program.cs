@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace AirScreen
+namespace AuraScreen
 {
     internal static class Program
     {

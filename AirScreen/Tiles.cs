@@ -5,7 +5,7 @@ using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace AirScreen
+namespace AuraScreen
 {
     using keyboard = System.Windows.Input.Keyboard;
     using ps = Properties.Settings;

@@ -11,9 +11,9 @@ using System.Management;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
-namespace AirScreen
+namespace AuraScreen
 {
-    using ps = AirScreen.Properties.Settings;
+    using ps = AuraScreen.Properties.Settings;
 
     public partial class MainForm : Form
     {
@@ -1206,6 +1206,21 @@ namespace AirScreen
 
             tb.Close();
             tb = new Toolbox();
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(@"https://aurascreen.com");
+        }
+
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(@"https://aurascreen.com");
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(@"https://youtube.com");
         }
     }
 

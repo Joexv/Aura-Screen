@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F2903A4B-BE9A-4A41-9171-4742749B08FF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>AirScreen</RootNamespace>
-    <AssemblyName>AirScreen</AssemblyName>
+    <RootNamespace>AuraScreen</RootNamespace>
+    <AssemblyName>AuraScreen</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -49,6 +49,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Aura_Screen_Icon_1.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EventHook, Version=1.4.113.0, Culture=neutral, PublicKeyToken=2c14189d5ed28bd7, processorArchitecture=MSIL">
@@ -157,6 +160,7 @@
     <Content Include="Pink_Crosshair_Cursor.cur">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Aura_Screen_Icon_1.ico" />
     <None Include="Resources\Mouse_Shape_1.png" />
     <None Include="Resources\BoxFilter_Edit_1.png" />
     <None Include="Resources\BoxFilter_Manual_1.png" />

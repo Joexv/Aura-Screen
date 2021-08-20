@@ -1,5 +1,5 @@
 ﻿
-namespace AirScreen
+namespace AuraScreen
 {
     partial class Tiles
     {
