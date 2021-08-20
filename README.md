@@ -1,4 +1,5 @@
-# Air Screen ![AuraScreen logo](https://picc.io/7aVyJE3.png "AuraScreen logo")
+![AuraScreen logo](https://picc.io/7aVyJE3.png "AuraScreen logo" =250x)
+# Air Screen
 
 This repo is setup to keep track of code, 
 ideas and the like during the initial development.
