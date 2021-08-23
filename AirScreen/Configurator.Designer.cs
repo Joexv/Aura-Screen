@@ -1,7 +1,7 @@
 ﻿
 namespace AuraScreen
 {
-    partial class MainForm
+    partial class Configurator
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace AuraScreen
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Configurator));
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -203,6 +203,7 @@ namespace AuraScreen
             this.Filter_Timer = new System.Windows.Forms.Timer(this.components);
             this.CursorTimer = new System.Windows.Forms.Timer(this.components);
             this.CursorTimer2 = new System.Windows.Forms.Timer(this.components);
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip1.SuspendLayout();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AO_Time)).BeginInit();
@@ -1257,6 +1258,7 @@ namespace AuraScreen
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.checkBox8);
             this.tabPage3.Controls.Add(this.linkLabel4);
             this.tabPage3.Controls.Add(this.linkLabel3);
             this.tabPage3.Controls.Add(this.linkLabel2);
@@ -2208,6 +2210,17 @@ namespace AuraScreen
             this.CursorTimer2.Enabled = true;
             this.CursorTimer2.Tick += new System.EventHandler(this.CursorTimer2_Tick);
             // 
+            // checkBox8
+            // 
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.Location = new System.Drawing.Point(18, 369);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(374, 29);
+            this.checkBox8.TabIndex = 29;
+            this.checkBox8.Text = "Enable Alternate Inversion Method";
+            this.toolTip1.SetToolTip(this.checkBox8, resources.GetString("checkBox8.ToolTip"));
+            this.checkBox8.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
@@ -2453,6 +2466,7 @@ namespace AuraScreen
         public System.Windows.Forms.RadioButton AO_ByName;
         private System.Windows.Forms.LinkLabel linkLabel4;
         private System.Windows.Forms.LinkLabel linkLabel3;
+        private System.Windows.Forms.CheckBox checkBox8;
     }
 }
 

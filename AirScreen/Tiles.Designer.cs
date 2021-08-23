@@ -275,11 +275,14 @@ namespace AuraScreen
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(815, 689);
+            this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.PreviewButton);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Tiles";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tile Overlay";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Tiles_FormClosing);
             this.Load += new System.EventHandler(this.Tiles_Load);

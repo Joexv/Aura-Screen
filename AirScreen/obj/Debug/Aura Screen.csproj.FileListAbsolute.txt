@@ -15,3 +15,4 @@ C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\Aura Screen.csproj.
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\Aura Screen.csproj.CopyComplete
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.exe
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.pdb
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\Aura Screen.csprojAssemblyReference.cache

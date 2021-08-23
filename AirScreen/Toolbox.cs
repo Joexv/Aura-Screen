@@ -13,7 +13,7 @@ namespace AuraScreen
     using ps = Properties.Settings;
     public partial class Toolbox : Form
     {
-        public MainForm MF { get; set; }
+        public Configurator MF { get; set; }
         public Tiles tiles { get; set; }
         public Toolbox()
         {
@@ -50,7 +50,7 @@ namespace AuraScreen
 
         private void Toolbox_Load(object sender, EventArgs e)
         {
-            if (ps.Default.invert && ps.Default.HideToolBox)
+            if (ps.Default.CF_DoInvert && ps.Default.TB_AutoHide)
             {
                 wasInverted = true;
                 MF.DisableInvert();
@@ -81,7 +81,7 @@ namespace AuraScreen
 
         private void cursorToggle_Click(object sender, EventArgs e)
         {
-            MF.Toggle();
+            MF.ToggleCF();
             ButtonPopulation();
         }
 
@@ -93,7 +93,7 @@ namespace AuraScreen
 
         private void lockCursor_Click(object sender, EventArgs e)
         {
-            ps.Default.cursorLock = !ps.Default.cursorLock; 
+            ps.Default.CF_Lock = !ps.Default.CF_Lock; 
             ps.Default.Save();
             ButtonPopulation();
         }
@@ -106,33 +106,33 @@ namespace AuraScreen
 
         private void shrinkCursor_Click(object sender, EventArgs e)
         {
-            ps.Default.width -= (int)ps.Default.ESSize;
-            ps.Default.height -= (int)ps.Default.ESSize;
+            ps.Default.CF_Width -= (int)ps.Default.CF_SizeIncrement;
+            ps.Default.CF_Height -= (int)ps.Default.CF_SizeIncrement;
             ps.Default.Save();
         }
 
         private void enlargeCursor_Click(object sender, EventArgs e)
         {
-            ps.Default.width += (int)ps.Default.ESSize;
-            ps.Default.height += (int)ps.Default.ESSize;
+            ps.Default.CF_Width += (int)ps.Default.CF_SizeIncrement;
+            ps.Default.CF_Height += (int)ps.Default.CF_SizeIncrement;
             ps.Default.Save();
         }
 
         private void lowerOpacity_Click(object sender, EventArgs e)
         {
-            if(ps.Default.opacity > (decimal)0.10)
-                ps.Default.opacity -= (decimal)0.10;
-            if (ps.Default.opacity < (decimal)0.10)
-                ps.Default.opacity = (decimal)0.10;
+            if(ps.Default.CF_Opacity > (decimal)0.10)
+                ps.Default.CF_Opacity -= (decimal)0.10;
+            if (ps.Default.CF_Opacity < (decimal)0.10)
+                ps.Default.CF_Opacity = (decimal)0.10;
             ps.Default.Save();
         }
 
         private void raiseOpacity_Click(object sender, EventArgs e)
         {
-            if (ps.Default.opacity < (decimal)1)
-                ps.Default.opacity += (decimal)0.10;
-            if (ps.Default.opacity >= 1)
-                ps.Default.opacity = (decimal)0.90;
+            if (ps.Default.CF_Opacity < (decimal)1)
+                ps.Default.CF_Opacity += (decimal)0.10;
+            if (ps.Default.CF_Opacity >= 1)
+                ps.Default.CF_Opacity = (decimal)0.90;
             ps.Default.Save();
         }
 
@@ -144,10 +144,10 @@ namespace AuraScreen
 
         private void AO_Active_Click(object sender, EventArgs e)
         {
-            ps.Default.AO_ProcessByName = !ps.Default.AO_ProcessByName;
+            ps.Default.AO_ByName = !ps.Default.AO_ByName;
             ps.Default.Save();
-            MF.AO_ByName.Checked = ps.Default.AO_ProcessByName;
-            MF.AO_TopMost.Checked = !ps.Default.AO_ProcessByName;
+            MF.AO_ByName.Checked = ps.Default.AO_ByName;
+            MF.AO_TopMost.Checked = !ps.Default.AO_ByName;
             ButtonPopulation();
         }
 
@@ -227,7 +227,7 @@ namespace AuraScreen
         private bool DoneOnce = false;
         private void flowLayoutPanel1_MouseEnter(object sender, EventArgs e)
         {
-            if (ps.Default.HideToolBox)
+            if (ps.Default.TB_AutoHide)
                 this.MouseLeave += new EventHandler(Form_LostFocus);
         }
 
@@ -267,7 +267,7 @@ namespace AuraScreen
             Rectangle workingArea = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea;
             int left = workingArea.Width - this.Width;
             int top = workingArea.Height - this.Height - 15;
-            if (ps.Default.toolboxCursor)
+            if (ps.Default.TB_Cursor)
             {
                 this.Location = Cursor.Position;
                 if(this.Location.X > left || this.Location.Y > top)
@@ -283,12 +283,12 @@ namespace AuraScreen
         Color Default = Color.FromArgb(10, 150, 170);
         private void ButtonPopulation()
         {
-            if (MF.frm2 != null &&  MF.frm2.Visible)
+            if (MF.mousebox != null &&  MF.mousebox.Visible)
                 cursorToggle.BackColor = Clicked;
             else
                 cursorToggle.BackColor = Default;
 
-            if(ps.Default.invert)
+            if(ps.Default.CF_DoInvert)
                 cursorInvert.BackColor = Clicked;
             else
                 cursorInvert.BackColor = Default;
@@ -298,22 +298,22 @@ namespace AuraScreen
             else
                 AO_Toggle.BackColor = Default;
 
-            if(ps.Default.AO_ProcessByName)
+            if(ps.Default.AO_ByName)
                 AO_Active.BackColor = Clicked;
             else
                 AO_Active.BackColor = Default;
 
-            if(ps.Default.Filter_OnActive)
+            if(ps.Default.SF_OnActive)
                 SF_Program.BackColor = Clicked;
             else
                 SF_Program.BackColor = Default;
 
-            if(MF.tile != null && MF.tile.Visible)
+            if(MF.blockfilter != null && MF.blockfilter.Visible)
                 BF_Toggle.BackColor = Clicked;
             else
                 BF_Toggle.BackColor = Default;
 
-            switch (ps.Default.tileMode)
+            switch (ps.Default.BF_Location)
             {
                 default:
                     break;
@@ -381,7 +381,7 @@ namespace AuraScreen
             else
                 MF.styleBox.SelectedIndex = 0;
 
-            MF.ReloadCursorOverlay();
+            MF.ReloadCF();
         }
     }
 }

@@ -81,6 +81,8 @@
     <Compile Include="AppOverlay.Designer.cs">
       <DependentUpon>AppOverlay.cs</DependentUpon>
     </Compile>
+    <Compile Include="Magnifier Wrapper\Magnifier.cs" />
+    <Compile Include="Magnifier Wrapper\NativeMethods.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -93,11 +95,11 @@
     <Compile Include="Toolbox.Designer.cs">
       <DependentUpon>Toolbox.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainForm.cs">
+    <Compile Include="Configurator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="Configurator.Designer.cs">
+      <DependentUpon>Configurator.cs</DependentUpon>
     </Compile>
     <Compile Include="MouseBox.cs">
       <SubType>Form</SubType>
@@ -105,8 +107,8 @@
     <Compile Include="MouseBox.Designer.cs">
       <DependentUpon>MouseBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="NegativeScreen Classes\BuiltinMatrices.cs" />
-    <Compile Include="NegativeScreen Classes\NativeStructures.cs" />
+    <Compile Include="Magnifier Wrapper\ColorMatrix.cs" />
+    <Compile Include="Magnifier Wrapper\NativeStructures.cs" />
     <Compile Include="Tiles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,8 +123,8 @@
     <EmbeddedResource Include="Toolbox.resx">
       <DependentUpon>Toolbox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <EmbeddedResource Include="Configurator.resx">
+      <DependentUpon>Configurator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MouseBox.resx">
       <DependentUpon>MouseBox.cs</DependentUpon>

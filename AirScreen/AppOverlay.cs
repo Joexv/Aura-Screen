@@ -100,7 +100,7 @@ namespace AuraScreen
         {
             Process[] processes = null;
             string Name = ps.Default.AO_SavedName;
-            if (!ps.Default.AO_ProcessByName || String.IsNullOrEmpty(Name))
+            if (!ps.Default.AO_ByName || String.IsNullOrEmpty(Name))
                 Name = GetActiveProcessFileName() + ".exe";
 
             processes = Process.GetProcessesByName(Name.Substring(0, Name.Length - 4));
@@ -176,7 +176,7 @@ namespace AuraScreen
         {
             Bitmap newBitmap = new Bitmap(source.Width, source.Height);
             Graphics g = Graphics.FromImage(newBitmap);
-            ColorMatrix colorMatrix = new ColorMatrix(
+            System.Drawing.Imaging.ColorMatrix colorMatrix = new System.Drawing.Imaging.ColorMatrix(
             new float[][]
             {
                 new float[] {-1, 0, 0, 0, 0},

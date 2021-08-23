@@ -1,4 +1,4 @@
-﻿using NegativeScreen;
+﻿using AuraScreen.Magnification;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,14 +15,14 @@ namespace AuraScreen
 {
     using ps = AuraScreen.Properties.Settings;
 
-    public partial class MainForm : Form
+    public partial class Configurator : Form
     {
-        public MouseBox frm2 = new MouseBox();
+        public MouseBox mousebox = new MouseBox();
 
         [DllImport("user32.dll", SetLastError = true)]
         private static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
 
-        public MainForm()
+        public Configurator()
         {
             InitializeComponent();
             if (Process.GetProcessesByName(Path.GetFileNameWithoutExtension(System.Reflection.Assembly.GetEntryAssembly().Location)).Count() > 1)
@@ -43,82 +43,80 @@ namespace AuraScreen
         {
             PopulateControls();
             ReloadHotKeys();
-            foreach (string item in Matrix.Keys)
+            foreach (string item in ColorMatrix.Matrix.Keys)
                 matrixBox.Items.Add(item);
 
             notifyIcon1.Visible = true;
 
-            //ps.Default.Reset();
-            tb.MF = this;
-            //tb.tiles = tile;
+            toolbox.MF = this;
         }
 
         public void PopulateControls()
         {
-            if (ps.Default.onStartup)
-                Toggle();
+            if (ps.Default.CF_OnStartup)
+                ToggleCF();
 
             #region MainPage
 
-            width.Text = ps.Default.width.ToString();
-            height.Text = ps.Default.height.ToString();
-            styleBox.Text = ps.Default.style;
-            checkBox1.Checked = ps.Default.onStartup;
-            checkBox2.Checked = ps.Default.border;
-            borderThicccccc.Value = ps.Default.borderThicc;
+            width.Text = ps.Default.CF_Width.ToString();
+            height.Text = ps.Default.CF_Height.ToString();
+            styleBox.Text = ps.Default.CF_Style;
+            checkBox1.Checked = ps.Default.CF_OnStartup;
+            checkBox2.Checked = ps.Default.CF_DoBorder;
+            borderThicccccc.Value = ps.Default.CF_BorderSize;
             checkBox3.Checked = ps.Default.keepInTray;
             //This is only here because my config was stupid and I didn't want to find it and fix it :)
-            if (ps.Default.opacity > (decimal)0.99)
+            if (ps.Default.CF_Opacity > (decimal)0.99)
             {
-                ps.Default.opacity = (decimal)0.99;
+                ps.Default.CF_Opacity = (decimal)0.99;
                 ps.Default.Save();
             }
 
-            opacityBar.Value = ps.Default.opacity;
+            opacityBar.Value = ps.Default.CF_Opacity;
 
-            inversionBox.Checked = ps.Default.invert;
-            inversionToggle.Checked = ps.Default.InversionToggle;
-            checkBox4.Checked = ps.Default.cursorLock;
+            inversionBox.Checked = ps.Default.CF_DoInvert;
+            inversionToggle.Checked = ps.Default.CF_InversionToggle;
+            checkBox4.Checked = ps.Default.CF_Lock;
 
-            tileInvert.Checked = ps.Default.tileInvert;
-            time.Value = ps.Default.tileTimer;
-            tileScrollDisable.Checked = ps.Default.tileScroll;
+            tileInvert.Checked = ps.Default.BF_Invert;
+            time.Value = ps.Default.BF_InvertTime;
+            tileScrollDisable.Checked = ps.Default.BF_Scroll;
 
             #endregion MainPage
 
             #region hotKeys
 
-            enableHotKey.Text = ps.Default.enableHK;
-            invertHotKey.Text = ps.Default.invertHK;
-            enlargeHotKey.Text = ps.Default.enlargeHK;
-            shrinkHotKey.Text = ps.Default.shrinkHK;
-            cylceHotKey.Text = ps.Default.cycleHK;
-            cursorLock.Text = ps.Default.cursorLockHK;
+            enableHotKey.Text = ps.Default.HK_ToggleCF;
+            invertHotKey.Text = ps.Default.HK_InvertCF;
+            enlargeHotKey.Text = ps.Default.HK_EnlargeCF;
+            shrinkHotKey.Text = ps.Default.HK_ShrinkCF;
+            cylceHotKey.Text = ps.Default.HK_CycleBF;
+            cursorLock.Text = ps.Default.HK_LockCF;
 
-            numericUpDown1.Value = ps.Default.ESSize;
+            numericUpDown1.Value = ps.Default.CF_SizeIncrement;
 
-            SF_CycleHK.Text = ps.Default.SF_CycleHK;
-            SF_ProgramHK.Text = ps.Default.SF_ProgramHK;
-            SF_ToggleHK.Text = ps.Default.SF_ToggleHK;
+            SF_CycleHK.Text = ps.Default.HK_CycleSF;
+            SF_ProgramHK.Text = ps.Default.HK_SFOnActive;
+            SF_ToggleHK.Text = ps.Default.HK_ToggleSF;
 
-            AO_ToggleHK.Text = ps.Default.AO_ToggleHK;
+            AO_ToggleHK.Text = ps.Default.HK_ToggleAO;
 
-            BF_ToggleHK.Text = ps.Default.BF_ToggleHK;
+            BF_ToggleHK.Text = ps.Default.HK_ToggleBF;
 
-            SettingsHK.Text = ps.Default.SettingsHK;
-            killswitchHK.Text = ps.Default.KillHK;
-            toolboxHK.Text = ps.Default.toolboxHK;
+            SettingsHK.Text = ps.Default.HK_ShowConfig;
+            killswitchHK.Text = ps.Default.HK_KillSwitch;
+            toolboxHK.Text = ps.Default.HK_ShowTB;
 
-            checkBox6.Checked = ps.Default.toolboxCursor;
+            checkBox6.Checked = ps.Default.TB_Cursor;
 
-            tilesManualHK.Text = ps.Default.tilesMHK;
+            tilesManualHK.Text = ps.Default.HK_EditBF;
 
             #endregion hotKeys
 
             #region AppOverlay
 
-            AO_ByName.Checked = ps.Default.AO_ProcessByName;
-            AO_TopMost.Checked = !ps.Default.AO_ProcessByName;
+            AO_ByName.Checked = ps.Default.AO_ByName;
+            AO_TopMost.Checked = !ps.Default.AO_ByName;
             AO_TextBox.Text = ps.Default.AO_SavedName;
             AO_Opacity.Value = ps.Default.AO_Opacity;
 
@@ -134,11 +132,11 @@ namespace AuraScreen
 
             #region Screen Filters
 
-            Filter_Programs.DataSource = ps.Default.Filter_Programs.Split(';');
-            filterStartup.Checked = ps.Default.Filter_OnStartup;
-            Filter_OnActive.Checked = ps.Default.Filter_OnActive;
-            matrixBox.Text = ps.Default.Filter_LastUsed;
-            groupBox1.Enabled = ps.Default.Filter_OnActive;
+            Filter_Programs.DataSource = ps.Default.SF_Programs.Split(';');
+            filterStartup.Checked = ps.Default.SF_OnStartup;
+            Filter_OnActive.Checked = ps.Default.SF_OnActive;
+            matrixBox.Text = ps.Default.SF_LastUsed;
+            groupBox1.Enabled = ps.Default.SF_OnActive;
             if (Filter_OnActive.Checked && filterStartup.Checked)
                 Filter_Timer.Start();
             else
@@ -151,14 +149,14 @@ namespace AuraScreen
 
             #region Cursor
 
-            if (ps.Default.CursorIdle && ps.Default.CursorStartup && !String.IsNullOrEmpty(ps.Default.CursorFile))
+            if (ps.Default.CI_Enabled && ps.Default.CI_OnStartup && !String.IsNullOrEmpty(ps.Default.CI_File))
                 CursorTimer.Start();
 
-            if (!String.IsNullOrEmpty(ps.Default.CursorFile))
-                label30.Text = ps.Default.CursorFile;
-            cursorIdle.Value = ps.Default.CursorIdleTime;
-            cursorStartup.Checked = ps.Default.CursorStartup;
-            cursorChange.Checked = ps.Default.CursorIdle;
+            if (!String.IsNullOrEmpty(ps.Default.CI_File))
+                label30.Text = ps.Default.CI_File;
+            cursorIdle.Value = ps.Default.CI_Interval;
+            cursorStartup.Checked = ps.Default.CI_OnStartup;
+            cursorChange.Checked = ps.Default.CI_Enabled;
 
             #endregion Cursor
 
@@ -171,10 +169,10 @@ namespace AuraScreen
             groupBox10.Enabled = ps.Default.doAdjust;
 
             checkBox3.Checked = ps.Default.keepInTray;
-            checkBox5.Checked = !ps.Default.HideToolBox;
+            checkBox5.Checked = !ps.Default.TB_AutoHide;
 
-            if (ps.Default.tileMode != 0)
-                tileSelect.SelectedIndex = ps.Default.tileMode - 1;
+            if (ps.Default.BF_Location != 0)
+                tileSelect.SelectedIndex = ps.Default.BF_Location - 1;
 
             switch (ps.Default.tileKey)
             {
@@ -200,92 +198,91 @@ namespace AuraScreen
 
         public void SaveHotkeys()
         {
-            ps.Default.enableHK = enableHotKey.Text;
-            ps.Default.invertHK = invertHotKey.Text;
-            ps.Default.enlargeHK = enlargeHotKey.Text;
-            ps.Default.shrinkHK = shrinkHotKey.Text;
-            ps.Default.cycleHK = cylceHotKey.Text;
-            ps.Default.cursorLockHK = cursorLock.Text;
-            ps.Default.ESSize = numericUpDown1.Value;
+            ps.Default.HK_ToggleCF = enableHotKey.Text;
+            ps.Default.HK_InvertCF = invertHotKey.Text;
+            ps.Default.HK_EnlargeCF = enlargeHotKey.Text;
+            ps.Default.HK_ShrinkCF = shrinkHotKey.Text;
+            ps.Default.HK_CycleBF = cylceHotKey.Text;
+            ps.Default.HK_LockCF = cursorLock.Text;
+            ps.Default.CF_SizeIncrement = numericUpDown1.Value;
 
-            ps.Default.SF_CycleHK = SF_CycleHK.Text;
-            ps.Default.SF_ProgramHK = SF_ProgramHK.Text;
-            ps.Default.SF_ToggleHK = SF_ToggleHK.Text;
+            ps.Default.HK_CycleSF = SF_CycleHK.Text;
+            ps.Default.HK_SFOnActive = SF_ProgramHK.Text;
+            ps.Default.HK_ToggleSF = SF_ToggleHK.Text;
 
-            ps.Default.AO_ToggleHK = AO_ToggleHK.Text;
+            ps.Default.HK_ToggleAO = AO_ToggleHK.Text;
 
-            ps.Default.BF_ToggleHK = BF_ToggleHK.Text;
+            ps.Default.HK_ToggleBF = BF_ToggleHK.Text;
 
-            ps.Default.SettingsHK = SettingsHK.Text;
-            ps.Default.KillHK = killswitchHK.Text;
-            ps.Default.toolboxHK = toolboxHK.Text;
-            ps.Default.tilesMHK = tilesManualHK.Text;
+            ps.Default.HK_ShowConfig = SettingsHK.Text;
+            ps.Default.HK_KillSwitch = killswitchHK.Text;
+            ps.Default.HK_ShowTB = toolboxHK.Text;
+            ps.Default.HK_EditBF = tilesManualHK.Text;
             ps.Default.Save();
             ReloadHotKeys();
         }
 
         public void ReloadHotKeys()
         {
-            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.enableHK, () => Toggle());
-            //GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.disableHK, () => Disable());
-            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.invertHK, () => Invert());
-            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.cursorLockHK, () => { ps.Default.cursorLock = !ps.Default.cursorLock; ps.Default.Save(); });
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.HK_ToggleCF, () => ToggleCF());
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.HK_InvertCF, () => Invert());
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.HK_LockCF, () => { ps.Default.CF_Lock = !ps.Default.CF_Lock; ps.Default.Save(); });
 
-            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.enlargeHK, () =>
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.HK_EnlargeCF, () =>
             {
-                if (ps.Default.height < 10001)
+                if (ps.Default.CF_Height < 10001)
                 {
-                    ps.Default.width += (int)ps.Default.ESSize;
-                    ps.Default.height += (int)ps.Default.ESSize;
+                    ps.Default.CF_Width += (int)ps.Default.CF_SizeIncrement;
+                    ps.Default.CF_Height += (int)ps.Default.CF_SizeIncrement;
                     ps.Default.Save();
                 }
             });
-            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.shrinkHK, () =>
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.HK_ShrinkCF, () =>
             {
-                if (ps.Default.width > 30)
+                if (ps.Default.CF_Width > 30)
                 {
-                    ps.Default.width -= (int)ps.Default.ESSize;
-                    ps.Default.height -= (int)ps.Default.ESSize;
+                    ps.Default.CF_Width -= (int)ps.Default.CF_SizeIncrement;
+                    ps.Default.CF_Height -= (int)ps.Default.CF_SizeIncrement;
                     ps.Default.Save();
                 }
             });
 
-            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.cycleHK, () => CycleTiles());
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.HK_CycleBF, () => CycleTiles());
 
-            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.SF_CycleHK, () => CycleFilter());
-            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.SF_ProgramHK, () =>
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.HK_CycleSF, () => CycleFilter());
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.HK_SFOnActive, () =>
             {
                 Filter_OnActive.Checked = true;
             });
-            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.SF_ToggleHK, () => ToggleFilter());
-            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.AO_ToggleHK, () => ToggleAppOverlay());
-            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.BF_ToggleHK, () => ToggleBlockFilter());
-            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.SettingsHK, () =>
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.HK_ToggleSF, () => ToggleFilter());
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.HK_ToggleAO, () => ToggleAppOverlay());
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.HK_ToggleBF, () => ToggleBlockFilter());
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.HK_ShowConfig, () =>
             {
                 this.Show();
                 this.WindowState = FormWindowState.Normal;
             });
 
-            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.KillHK, () =>
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.HK_KillSwitch, () =>
             {
                 Application.Restart();
                 Environment.Exit(0);
             });
 
-            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.toolboxHK, () =>
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.HK_ShowTB, () =>
             {
-                if (tb.Visible)
-                    tb.Hide();
+                if (toolbox.Visible)
+                    toolbox.Hide();
                 else
                 {
-                    tb.Show();
-                    tb.WindowState = FormWindowState.Normal;
-                    if (ps.Default.toolboxCursor)
-                        tb.Location = Cursor.Position;
+                    toolbox.Show();
+                    toolbox.WindowState = FormWindowState.Normal;
+                    if (ps.Default.TB_Cursor)
+                        toolbox.Location = Cursor.Position;
                 }
             });
 
-            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.tilesMHK, () =>
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.HK_EditBF, () =>
             {
                 EditTiles();
             });
@@ -297,107 +294,111 @@ namespace AuraScreen
                 matrixBox.SelectedIndex += 1;
             else
                 matrixBox.SelectedIndex = 0;
-            ps.Default.Filter_LastUsed = matrixBox.Text;
+            ps.Default.SF_LastUsed = matrixBox.Text;
             ps.Default.Save();
-            FilterUsed = BuiltinMatrices.ChangeColorEffect(Matrix[ps.Default.Filter_LastUsed], FilterUsed);
+            SF_FilterInUse = ColorMatrix.ChangeColorEffect(ColorMatrix.Matrix[ps.Default.SF_LastUsed]);
         }
 
         public string[] TileModes = { "None", "Top", "Bottom", "Left", "Right" };
-        public Tiles tile = new Tiles();
+        public Tiles blockfilter = new Tiles();
 
         public void CycleTiles(int Mode = 0)
         {
             if (Mode != 0)
             {
-                ps.Default.tileMode = Mode;
+                ps.Default.BF_Location = Mode;
             }
             else
             {
-                if (ps.Default.tileMode < 5)
-                    ps.Default.tileMode += 1;
+                if (ps.Default.BF_Location < 5)
+                    ps.Default.BF_Location += 1;
                 else
-                    ps.Default.tileMode = 0;
+                    ps.Default.BF_Location = 0;
             }
             ps.Default.Save();
-            try { tile.Close(); }
+
+            try { blockfilter.Close(); }
             catch { }
 
-            tile = new Tiles();
-            tile.Show();
+            blockfilter = new Tiles();
+            blockfilter.Show();
         }
 
         public void Invert(bool AdjustCheckBox = true)
         {
-            ps.Default.invert = !ps.Default.invert;
+            ps.Default.CF_DoInvert = !ps.Default.CF_DoInvert;
             ps.Default.Save();
 
             if (AdjustCheckBox)
             {
                 inversionBox.CheckedChanged -= new System.EventHandler(inversionBox_CheckedChanged);
-                inversionBox.Checked = ps.Default.invert;
+                inversionBox.Checked = ps.Default.CF_DoInvert;
                 inversionBox.CheckedChanged += new System.EventHandler(inversionBox_CheckedChanged);
             }
 
-            if (!frm2.Visible)
-                Toggle();
+            if (!mousebox.Visible)
+                ToggleCF();
 
-            if (!ps.Default.invert && !ps.Default.InversionToggle)
-                ReloadCursorOverlay();
-            else if (!ps.Default.invert && ps.Default.InversionToggle)
+            if (!ps.Default.CF_DoInvert && !ps.Default.CF_InversionToggle)
+                ReloadCF();
+            else if (!ps.Default.CF_DoInvert && ps.Default.CF_InversionToggle)
             {
-                frm2.Hide();
+                mousebox.Hide();
             }
         }
 
         public void DisableInvert()
         {
-            ps.Default.invert = false;
+            ps.Default.CF_DoInvert = false;
             ps.Default.Save();
-            frm2.Hide();
+            mousebox.Hide();
         }
 
         public void EnableInvert()
         {
-            ps.Default.invert = true;
+            ps.Default.CF_DoInvert = true;
             ps.Default.Save();
-            frm2.Show();
+            mousebox.Show();
         }
 
         public void HideCursor()
         {
-            frm2.Hide();
+            mousebox.Hide();
         }
 
         public void ShowCursor()
         {
-            frm2.Show();
+            mousebox.Show();
         }
 
-        public void Toggle()
+        public void ToggleCF()
         {
-            if (frm2.Visible)
-                frm2.Hide();
+            if (mousebox == null)
+                mousebox = new MouseBox();
+
+            if (mousebox.Visible)
+                mousebox.Hide();
             else
-                frm2.Show();
+                mousebox.Show();
         }
 
         //Enable
         public void button1_Click(object sender, EventArgs e)
         {
-            Toggle();
+            ToggleCF();
         }
 
         //Disable
         public void button2_Click(object sender, EventArgs e)
         {
-            frm2.Hide();
+            mousebox.Hide();
         }
 
         public void button7_Click(object sender, EventArgs e)
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                ps.Default.color = colorDialog1.Color;
+                ps.Default.CF_Color = colorDialog1.Color;
                 ps.Default.Save();
             }
         }
@@ -405,47 +406,47 @@ namespace AuraScreen
         //Width
         public void button3_Click(object sender, EventArgs e)
         {
-            if (ps.Default.width < 10001)
-                ps.Default.width = ps.Default.width + 10;
-            width.Text = ps.Default.width.ToString();
+            if (ps.Default.CF_Width < 10001)
+                ps.Default.CF_Width = ps.Default.CF_Width + 10;
+            width.Text = ps.Default.CF_Width.ToString();
             ps.Default.Save();
         }
 
         public void button4_Click(object sender, EventArgs e)
         {
-            if (ps.Default.width > 30)
-                ps.Default.width = ps.Default.width - 10;
-            width.Text = ps.Default.width.ToString();
+            if (ps.Default.CF_Width > 30)
+                ps.Default.CF_Width = ps.Default.CF_Width - 10;
+            width.Text = ps.Default.CF_Width.ToString();
             ps.Default.Save();
         }
 
         //Height
         public void button6_Click(object sender, EventArgs e)
         {
-            if (ps.Default.height < 10001)
-                ps.Default.height = ps.Default.height + 10;
-            height.Text = ps.Default.height.ToString();
+            if (ps.Default.CF_Height < 10001)
+                ps.Default.CF_Height = ps.Default.CF_Height + 10;
+            height.Text = ps.Default.CF_Height.ToString();
             ps.Default.Save();
         }
 
         public void button5_Click(object sender, EventArgs e)
         {
-            if (ps.Default.height > 30)
-                ps.Default.height = ps.Default.height - 10;
-            height.Text = ps.Default.height.ToString();
+            if (ps.Default.CF_Height > 30)
+                ps.Default.CF_Height = ps.Default.CF_Height - 10;
+            height.Text = ps.Default.CF_Height.ToString();
             ps.Default.Save();
         }
 
         public void button8_Click(object sender, EventArgs e)
         {
-            ReloadCursorOverlay();
+            ReloadCF();
         }
 
-        public void ReloadCursorOverlay()
+        public void ReloadCF()
         {
-            frm2.Close();
-            frm2 = new MouseBox();
-            frm2.Show();
+            mousebox.Close();
+            mousebox = new MouseBox();
+            mousebox.Show();
 
             PopulateControls();
             SaveHotkeys();
@@ -453,56 +454,56 @@ namespace AuraScreen
 
         public void EditTiles()
         {
-            if (ps.Default.tileMode == 5 && tile.Visible)
+            if (ps.Default.BF_Location == 5 && blockfilter.Visible)
             {
-                if (tile.FormBorderStyle == FormBorderStyle.None)
+                if (blockfilter.FormBorderStyle == FormBorderStyle.None)
                 {
-                    tile.FormBorderStyle = FormBorderStyle.Sizable;
-                    tile.PreviewButton.Visible = true;
-                    tile.SaveButton.Visible = true;
-                    tile.label1.Visible = true;
-                    tile.button1.Visible = true;
-                    tile.numericUpDown1.Visible = true;
-                    tile.groupBox1.Visible = true;
-                    tile.Opacity = 1;
-                    tile.BackgroundImage = null;
+                    blockfilter.FormBorderStyle = FormBorderStyle.Sizable;
+                    blockfilter.PreviewButton.Visible = true;
+                    blockfilter.SaveButton.Visible = true;
+                    blockfilter.label1.Visible = true;
+                    blockfilter.button1.Visible = true;
+                    blockfilter.numericUpDown1.Visible = true;
+                    blockfilter.groupBox1.Visible = true;
+                    blockfilter.Opacity = 1;
+                    blockfilter.BackgroundImage = null;
                 }
                 else
                 {
-                    tile.FormBorderStyle = FormBorderStyle.None;
-                    tile.PreviewButton.Visible = false;
-                    tile.SaveButton.Visible = false;
-                    tile.label1.Visible = false;
-                    tile.button1.Visible = false;
-                    tile.numericUpDown1.Visible = false;
-                    tile.groupBox1.Visible = false;
-                    tile.Opacity = (double)ps.Default.tileOpacity;
+                    blockfilter.FormBorderStyle = FormBorderStyle.None;
+                    blockfilter.PreviewButton.Visible = false;
+                    blockfilter.SaveButton.Visible = false;
+                    blockfilter.label1.Visible = false;
+                    blockfilter.button1.Visible = false;
+                    blockfilter.numericUpDown1.Visible = false;
+                    blockfilter.groupBox1.Visible = false;
+                    blockfilter.Opacity = (double)ps.Default.BF_Opacity;
                 }
             }
         }
 
         public void styleBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ps.Default.style = styleBox.Text;
+            ps.Default.CF_Style = styleBox.Text;
             ps.Default.Save();
         }
 
         public void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            ps.Default.onStartup = checkBox1.Checked;
+            ps.Default.CF_OnStartup = checkBox1.Checked;
             ps.Default.Save();
         }
 
         //Border
         public void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            ps.Default.border = checkBox2.Checked;
+            ps.Default.CF_DoBorder = checkBox2.Checked;
             ps.Default.Save();
         }
 
         public void borderThicccccc_ValueChanged(object sender, EventArgs e)
         {
-            ps.Default.borderThicc = (int)borderThicccccc.Value;
+            ps.Default.CF_BorderSize = (int)borderThicccccc.Value;
             ps.Default.Save();
         }
 
@@ -510,7 +511,7 @@ namespace AuraScreen
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                ps.Default.borderColor = colorDialog1.Color;
+                ps.Default.CF_BorderColor = colorDialog1.Color;
                 ps.Default.Save();
             }
         }
@@ -533,7 +534,7 @@ namespace AuraScreen
 
         public void button10_Click(object sender, EventArgs e)
         {
-            ps.Default.invert = false;
+            ps.Default.CF_DoInvert = false;
             ps.Default.Save();
         }
 
@@ -548,15 +549,14 @@ namespace AuraScreen
 
         public void SystemCleanup()
         {
-            //The disposals like to crash sometimes. It all gets cleaned by the system anyways thankfully
             try
             {
                 if (CursorHasChanged)
                     SystemParametersInfo(0x0057, 0, null, 0);
-                frm2.Dispose();
-                tile.Dispose();
+                mousebox.Dispose();
+                blockfilter.Dispose();
             }
-            catch { }
+            catch { Console.WriteLine("Something happened! Shit!"); }
 
             try
             {
@@ -567,7 +567,7 @@ namespace AuraScreen
             catch { }
         }
 
-        private Toolbox tb = new Toolbox();
+        private Toolbox toolbox = new Toolbox();
 
         public void notifyIcon1_MouseClick(object sender, MouseEventArgs e)
         {
@@ -575,33 +575,30 @@ namespace AuraScreen
             switch (e.Button)
             {
                 case MouseButtons.Left:
-                    if (!tb.Visible || tb.WindowState == FormWindowState.Minimized)
+                    if (!toolbox.Visible || toolbox.WindowState == FormWindowState.Minimized)
                     {
-                        tb.Show();
-                        tb.WindowState = FormWindowState.Normal;
+                        toolbox.Show();
+                        toolbox.WindowState = FormWindowState.Normal;
                         Rectangle workingArea = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea;
-                        int left = workingArea.Width - tb.Width;
-                        int top = workingArea.Height - tb.Height;
-                        tb.Location = new Point(left, top);
-                        tb.Activate();
-                        //tb.TopMost = true;
-                        //tb.TopMost = false;
+                        int left = workingArea.Width - toolbox.Width;
+                        int top = workingArea.Height - toolbox.Height;
+                        toolbox.Location = new Point(left, top);
+                        toolbox.Activate();
                     }
                     else
                     {
-                        tb.Hide();
+                        toolbox.Hide();
                     }
                     break;
 
                 case MouseButtons.Right:
-                    // Context Menu is shown
                     break;
             }
         }
 
         public void opacityBar_ValueChanged(object sender, EventArgs e)
         {
-            ps.Default.opacity = opacityBar.Value;
+            ps.Default.CF_Opacity = opacityBar.Value;
             ps.Default.Save();
         }
 
@@ -612,51 +609,51 @@ namespace AuraScreen
         public void button2_Click_1(object sender, EventArgs e)
         {
             //ToggleBlockFilter();
-            ps.Default.tileMode = tileSelect.SelectedIndex + 1;
-            ps.Default.tileOpacity = tileOpacity.Value;
+            ps.Default.BF_Location = tileSelect.SelectedIndex + 1;
+            ps.Default.BF_Opacity = tileOpacity.Value;
             ps.Default.Save();
-            try { tile.Close(); }
+            try { blockfilter.Close(); }
             catch { }
-            tile = new Tiles();
-            tile.Show();
+            blockfilter = new Tiles();
+            blockfilter.Show();
         }
 
         public void ToggleBlockFilter()
         {
-            ps.Default.tileMode = tileSelect.SelectedIndex + 1;
-            ps.Default.tileOpacity = tileOpacity.Value;
+            ps.Default.BF_Location = tileSelect.SelectedIndex + 1;
+            ps.Default.BF_Opacity = tileOpacity.Value;
             ps.Default.Save();
 
             //try { tile.Close(); }
             //catch { }
             //tile = new Tiles();
 
-            if (tile.Visible)
-                tile.Hide();
+            if (blockfilter.Visible)
+                blockfilter.Hide();
             else
-                tile.Show();
+                blockfilter.Show();
         }
 
         public void button12_Click(object sender, EventArgs e)
         {
-            if (tile.Visible)
-                tile.Hide();
+            if (blockfilter.Visible)
+                blockfilter.Hide();
             else
-                tile.Show();
+                blockfilter.Show();
         }
 
         public void button11_Click(object sender, EventArgs e)
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                ps.Default.tileColor = colorDialog1.Color;
+                ps.Default.BF_Color = colorDialog1.Color;
                 ps.Default.Save();
             }
         }
 
         public void L_Opacity_ValueChanged(object sender, EventArgs e)
         {
-            ps.Default.tileOpacity = tileOpacity.Value;
+            ps.Default.BF_Opacity = tileOpacity.Value;
             ps.Default.Save();
         }
 
@@ -664,7 +661,7 @@ namespace AuraScreen
         {
         }
 
-        private bool FilterUsed = false;
+        private bool SF_FilterInUse = false;
 
         public void button14_Click(object sender, EventArgs e)
         {
@@ -673,16 +670,16 @@ namespace AuraScreen
 
         public void ToggleFilter()
         {
-            ps.Default.Filter_LastUsed = matrixBox.Text;
+            ps.Default.SF_LastUsed = matrixBox.Text;
             ps.Default.Save();
 
-            if (FilterUsed)
+            if (SF_FilterInUse)
             {
-                FilterUsed = false;
-                BuiltinMatrices.ChangeColorEffect(BuiltinMatrices.Identity, FilterUsed);
+                SF_FilterInUse = false;
+                ColorMatrix.ChangeColorEffect(ColorMatrix.Identity);
             }
             else
-                FilterUsed = BuiltinMatrices.ChangeColorEffect(Matrix[ps.Default.Filter_LastUsed], FilterUsed);
+                SF_FilterInUse = ColorMatrix.ChangeColorEffect(ColorMatrix.Matrix[ps.Default.SF_LastUsed]);
         }
 
         public void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -692,28 +689,15 @@ namespace AuraScreen
 
         public void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ps.Default.Filter_LastUsed = matrixBox.Text;
+            ps.Default.SF_LastUsed = matrixBox.Text;
             ps.Default.Save();
         }
-
-        private Dictionary<string, float[,]> Matrix = new Dictionary<string, float[,]> {
-            { "None", BuiltinMatrices.Identity },
-            { "Negative", BuiltinMatrices.Negative },
-            { "Negative Greyscale", BuiltinMatrices.NegativeGrayScale },
-            { "Negative Hue Shift 180", BuiltinMatrices.NegativeHueShift180 },
-            { "Negative Red", BuiltinMatrices.NegativeRed },
-            { "Negative Sepia", BuiltinMatrices.NegativeSepia },
-            { "Sepia", BuiltinMatrices.Sepia },
-            { "Red", BuiltinMatrices.Red },
-            { "Greyscale", BuiltinMatrices.GrayScale },
-            { "Hue Shift 180", BuiltinMatrices.HueShift180 }
-        };
 
         public Bitmap Transform(Bitmap original, float[,] matrix)
         {
             Bitmap newBmp = new Bitmap(original.Width, original.Height);
             Graphics g = Graphics.FromImage(newBmp);
-            ColorMatrix colorMatrix = new ColorMatrix(matrix.ToJaggedArray());
+            System.Drawing.Imaging.ColorMatrix colorMatrix = new System.Drawing.Imaging.ColorMatrix(matrix.ToJaggedArray());
             ImageAttributes img = new ImageAttributes();
             img.SetColorMatrix(colorMatrix);
             g.DrawImage(original, new Rectangle(0, 0, original.Width, original.Height), 0, 0, original.Width, original.Height, GraphicsUnit.Pixel, img);
@@ -725,12 +709,12 @@ namespace AuraScreen
         {
             if (pictureBox2.Image != null)
                 pictureBox2.Image.Dispose();
-            pictureBox2.Image = Transform((Bitmap)pictureBox1.Image, Matrix[matrixBox.Text]);
+            pictureBox2.Image = Transform((Bitmap)pictureBox1.Image, ColorMatrix.Matrix[matrixBox.Text]);
         }
 
         public void filterStartup_CheckedChanged(object sender, EventArgs e)
         {
-            ps.Default.Filter_OnStartup = filterStartup.Checked;
+            ps.Default.SF_OnStartup = filterStartup.Checked;
             ps.Default.Save();
         }
 
@@ -760,7 +744,7 @@ namespace AuraScreen
 
         private void ReloadAO()
         {
-            ps.Default.AO_ProcessByName = AO_ByName.Checked;
+            ps.Default.AO_ByName = AO_ByName.Checked;
             ps.Default.AO_Opacity = AO_Opacity.Value;
             ps.Default.AO_Invert = AO_Invert.Checked;
             ps.Default.AO_InvertTime = (int)AO_Time.Value;
@@ -826,16 +810,16 @@ namespace AuraScreen
 
         public void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
-            ps.Default.Filter_OnActive = Filter_OnActive.Checked;
-            groupBox1.Enabled = ps.Default.Filter_OnActive;
+            ps.Default.SF_OnActive = Filter_OnActive.Checked;
+            groupBox1.Enabled = ps.Default.SF_OnActive;
             ps.Default.Save();
 
-            if (ps.Default.Filter_OnActive)
+            if (ps.Default.SF_OnActive)
                 Filter_Timer.Start();
             else
             {
                 Filter_Timer.Stop();
-                BuiltinMatrices.ChangeColorEffect(BuiltinMatrices.Identity, true);
+                ColorMatrix.ChangeColorEffect(ColorMatrix.Identity);
             }
         }
 
@@ -846,7 +830,7 @@ namespace AuraScreen
 
         public void Filter_Timer_Tick(object sender, EventArgs e)
         {
-            if (ps.Default.Filter_OnActive)
+            if (ps.Default.SF_OnActive)
             {
                 Process[] processes = null;
                 string AppName = appO.GetActiveProcessFileName() + ".exe";
@@ -854,15 +838,15 @@ namespace AuraScreen
                 processes = Process.GetProcessesByName(AppName.Substring(0, AppName.Length - 4));
                 Process p = processes.FirstOrDefault();
 
-                if (p != null && ps.Default.Filter_Programs.Split(';').Contains(AppName, StringComparer.OrdinalIgnoreCase))
+                if (p != null && ps.Default.SF_Programs.Split(';').Contains(AppName, StringComparer.OrdinalIgnoreCase))
                 {
-                    if (!FilterUsed)
-                        FilterUsed = BuiltinMatrices.ChangeColorEffect(Matrix[ps.Default.Filter_LastUsed], false);
+                    if (!SF_FilterInUse)
+                        SF_FilterInUse = ColorMatrix.ChangeColorEffect(ColorMatrix.Matrix[ps.Default.SF_LastUsed]);
                 }
                 else
                 {
-                    BuiltinMatrices.ChangeColorEffect(BuiltinMatrices.Identity, true);
-                    FilterUsed = false;
+                    ColorMatrix.ChangeColorEffect(ColorMatrix.Identity);
+                    SF_FilterInUse = false;
                 }
             }
         }
@@ -876,9 +860,9 @@ namespace AuraScreen
                 if (!String.IsNullOrWhiteSpace(item))
                     joined += item + ";";
             }
-            ps.Default.Filter_Programs = joined + Filter_ComboBox.Text + ";";
+            ps.Default.SF_Programs = joined + Filter_ComboBox.Text + ";";
             ps.Default.Save();
-            Filter_Programs.DataSource = ps.Default.Filter_Programs.Split(';');
+            Filter_Programs.DataSource = ps.Default.SF_Programs.Split(';');
         }
 
         public void button18_Click(object sender, EventArgs e)
@@ -890,9 +874,9 @@ namespace AuraScreen
                 if (item != Filter_ComboBox.Text && !String.IsNullOrWhiteSpace(item))
                     joined += item + ";";
             }
-            ps.Default.Filter_Programs = joined;
+            ps.Default.SF_Programs = joined;
             ps.Default.Save();
-            Filter_Programs.DataSource = ps.Default.Filter_Programs.Split(';');
+            Filter_Programs.DataSource = ps.Default.SF_Programs.Split(';');
         }
 
         public void button13_Click(object sender, EventArgs e)
@@ -957,14 +941,14 @@ namespace AuraScreen
 
         public void CursorTimer_Tick(object sender, EventArgs e)
         {
-            if (ps.Default.CursorIdle && !String.IsNullOrEmpty(ps.Default.CursorFile))
+            if (ps.Default.CI_Enabled && !String.IsNullOrEmpty(ps.Default.CI_File))
             {
                 if (!CursorHasChanged && CursorIdlePoint == Cursor.Position)
                 {
                     CursorHasChanged = true;
-                    SetSystemCursor(LoadCursorFromFile(ps.Default.CursorFile), OCR_NORMAL); //(ps.Default.CursorFile);
+                    SetSystemCursor(LoadCursorFromFile(ps.Default.CI_File), OCR_NORMAL); //(ps.Default.CursorFile);
                     if (filterHide.Checked)
-                        frm2.Hide();
+                        mousebox.Hide();
                 }
             }
         }
@@ -975,15 +959,15 @@ namespace AuraScreen
         public void cursorApply_Click(object sender, EventArgs e)
         {
             IdleCursor = cursorPreview.Cursor;
-            ps.Default.CursorFile = label30.Text;
-            ps.Default.CursorIdleTime = (int)cursorIdle.Value;
-            ps.Default.CursorStartup = cursorStartup.Checked;
-            ps.Default.CursorIdle = cursorChange.Checked;
+            ps.Default.CI_File = label30.Text;
+            ps.Default.CI_Interval = (int)cursorIdle.Value;
+            ps.Default.CI_OnStartup = cursorStartup.Checked;
+            ps.Default.CI_Enabled = cursorChange.Checked;
             ps.Default.Save();
 
-            CursorTimer.Interval = ps.Default.CursorIdleTime * 1000;
+            CursorTimer.Interval = ps.Default.CI_Interval * 1000;
 
-            if (ps.Default.CursorIdle)
+            if (ps.Default.CI_Enabled)
                 CursorTimer.Start();
             else
                 CursorTimer.Stop();
@@ -991,7 +975,7 @@ namespace AuraScreen
 
         public void CursorTimer2_Tick(object sender, EventArgs e)
         {
-            if (ps.Default.CursorIdle && !String.IsNullOrEmpty(ps.Default.CursorFile))
+            if (ps.Default.CI_Enabled && !String.IsNullOrEmpty(ps.Default.CI_File))
             {
                 if (Cursor.Position != CursorIdlePoint)
                 {
@@ -1000,7 +984,7 @@ namespace AuraScreen
                     CursorIdlePoint = Cursor.Position;
                     CursorHasChanged = false;
                     if (filterHide.Checked)
-                        frm2.Show();
+                        mousebox.Show();
                 }
             }
         }
@@ -1017,29 +1001,29 @@ namespace AuraScreen
         public void inversionBox_CheckedChanged(object sender, EventArgs e)
         {
             inversionBox.CheckedChanged -= new System.EventHandler(inversionBox_CheckedChanged);
-            ps.Default.invert = inversionBox.Checked;
+            ps.Default.CF_DoInvert = inversionBox.Checked;
             ps.Default.Save();
 
-            if (ps.Default.invert && ps.Default.InversionToggle && !frm2.Visible)
-                Toggle();
-            else if (!ps.Default.invert && !ps.Default.InversionToggle)
-                ReloadCursorOverlay();
-            else if (!ps.Default.invert && ps.Default.InversionToggle)
+            if (ps.Default.CF_DoInvert && ps.Default.CF_InversionToggle && !mousebox.Visible)
+                ToggleCF();
+            else if (!ps.Default.CF_DoInvert && !ps.Default.CF_InversionToggle)
+                ReloadCF();
+            else if (!ps.Default.CF_DoInvert && ps.Default.CF_InversionToggle)
             {
-                frm2.Hide();
+                mousebox.Hide();
             }
             inversionBox.CheckedChanged += new System.EventHandler(inversionBox_CheckedChanged);
         }
 
         public void inversionToggle_CheckedChanged(object sender, EventArgs e)
         {
-            ps.Default.InversionToggle = inversionToggle.Checked;
+            ps.Default.CF_InversionToggle = inversionToggle.Checked;
             ps.Default.Save();
         }
 
         public void checkBox4_CheckedChanged_2(object sender, EventArgs e)
         {
-            ps.Default.cursorLock = checkBox4.Checked;
+            ps.Default.CF_Lock = checkBox4.Checked;
             ps.Default.Save();
         }
 
@@ -1069,8 +1053,8 @@ namespace AuraScreen
         //Show Toolbox
         public void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            tb.Show();
-            tb.WindowState = FormWindowState.Normal;
+            toolbox.Show();
+            toolbox.WindowState = FormWindowState.Normal;
         }
 
         //Close
@@ -1081,18 +1065,18 @@ namespace AuraScreen
 
         private void AO_TopMost_CheckedChanged(object sender, EventArgs e)
         {
-            ps.Default.AO_ProcessByName = !AO_TopMost.Checked;
+            ps.Default.AO_ByName = !AO_TopMost.Checked;
             ps.Default.Save();
         }
 
         public void AppInvert(Point AppPosition, int Height, int Width)
         {
-            frm2.InvertApp(AppPosition, Height, Width);
+            mousebox.InvertApp(AppPosition, Height, Width);
         }
 
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
         {
-            ps.Default.HideToolBox = !checkBox5.Checked;
+            ps.Default.TB_AutoHide = !checkBox5.Checked;
             ps.Default.Save();
         }
 
@@ -1104,7 +1088,7 @@ namespace AuraScreen
 
         private void checkBox6_CheckedChanged(object sender, EventArgs e)
         {
-            ps.Default.toolboxCursor = checkBox6.Checked;
+            ps.Default.TB_Cursor = checkBox6.Checked;
             ps.Default.Save();
         }
 
@@ -1135,19 +1119,19 @@ namespace AuraScreen
 
         private void tileScrollDisable_CheckedChanged(object sender, EventArgs e)
         {
-            ps.Default.tileScroll = tileScrollDisable.Checked;
+            ps.Default.BF_Scroll = tileScrollDisable.Checked;
             ps.Default.Save();
         }
 
         private void tileInvert_CheckedChanged(object sender, EventArgs e)
         {
-            ps.Default.tileInvert = tileInvert.Checked;
+            ps.Default.BF_Invert = tileInvert.Checked;
             ps.Default.Save();
         }
 
         private void time_ValueChanged(object sender, EventArgs e)
         {
-            ps.Default.tileTimer = (int)time.Value;
+            ps.Default.BF_InvertTime = (int)time.Value;
             ps.Default.Save();
         }
 
@@ -1187,8 +1171,8 @@ namespace AuraScreen
             ps.Default.tbPad = (int)tbRows.Value;
             ps.Default.Save();
 
-            tb.Close();
-            tb = new Toolbox();
+            toolbox.Close();
+            toolbox = new Toolbox();
         }
 
         private void button21_Click(object sender, EventArgs e)
@@ -1204,8 +1188,8 @@ namespace AuraScreen
 
             groupBox10.Enabled = checkBox7.Checked;
 
-            tb.Close();
-            tb = new Toolbox();
+            toolbox.Close();
+            toolbox = new Toolbox();
         }
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

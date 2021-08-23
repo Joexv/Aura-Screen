@@ -26,108 +26,108 @@ namespace AuraScreen.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool onStartup {
+        public bool CF_OnStartup {
             get {
-                return ((bool)(this["onStartup"]));
+                return ((bool)(this["CF_OnStartup"]));
             }
             set {
-                this["onStartup"] = value;
+                this["CF_OnStartup"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("930")]
-        public int width {
+        public int CF_Width {
             get {
-                return ((int)(this["width"]));
+                return ((int)(this["CF_Width"]));
             }
             set {
-                this["width"] = value;
+                this["CF_Width"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("750")]
-        public int height {
+        public int CF_Height {
             get {
-                return ((int)(this["height"]));
+                return ((int)(this["CF_Height"]));
             }
             set {
-                this["height"] = value;
+                this["CF_Height"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Black")]
-        public global::System.Drawing.Color color {
+        public global::System.Drawing.Color CF_Color {
             get {
-                return ((global::System.Drawing.Color)(this["color"]));
+                return ((global::System.Drawing.Color)(this["CF_Color"]));
             }
             set {
-                this["color"] = value;
+                this["CF_Color"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool invert {
+        public bool CF_DoInvert {
             get {
-                return ((bool)(this["invert"]));
+                return ((bool)(this["CF_DoInvert"]));
             }
             set {
-                this["invert"] = value;
+                this["CF_DoInvert"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Circle")]
-        public string style {
+        public string CF_Style {
             get {
-                return ((string)(this["style"]));
+                return ((string)(this["CF_Style"]));
             }
             set {
-                this["style"] = value;
+                this["CF_Style"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool border {
+        public bool CF_DoBorder {
             get {
-                return ((bool)(this["border"]));
+                return ((bool)(this["CF_DoBorder"]));
             }
             set {
-                this["border"] = value;
+                this["CF_DoBorder"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("5")]
-        public int borderThicc {
+        public int CF_BorderSize {
             get {
-                return ((int)(this["borderThicc"]));
+                return ((int)(this["CF_BorderSize"]));
             }
             set {
-                this["borderThicc"] = value;
+                this["CF_BorderSize"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Black")]
-        public global::System.Drawing.Color borderColor {
+        public global::System.Drawing.Color CF_BorderColor {
             get {
-                return ((global::System.Drawing.Color)(this["borderColor"]));
+                return ((global::System.Drawing.Color)(this["CF_BorderColor"]));
             }
             set {
-                this["borderColor"] = value;
+                this["CF_BorderColor"] = value;
             }
         }
         
@@ -146,120 +146,120 @@ namespace AuraScreen.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("A")]
-        public string enableHK {
+        public string HK_ToggleCF {
             get {
-                return ((string)(this["enableHK"]));
+                return ((string)(this["HK_ToggleCF"]));
             }
             set {
-                this["enableHK"] = value;
+                this["HK_ToggleCF"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("I")]
-        public string invertHK {
+        public string HK_InvertCF {
             get {
-                return ((string)(this["invertHK"]));
+                return ((string)(this["HK_InvertCF"]));
             }
             set {
-                this["invertHK"] = value;
+                this["HK_InvertCF"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("W")]
-        public string enlargeHK {
+        public string HK_EnlargeCF {
             get {
-                return ((string)(this["enlargeHK"]));
+                return ((string)(this["HK_EnlargeCF"]));
             }
             set {
-                this["enlargeHK"] = value;
+                this["HK_EnlargeCF"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("S")]
-        public string shrinkHK {
+        public string HK_ShrinkCF {
             get {
-                return ((string)(this["shrinkHK"]));
+                return ((string)(this["HK_ShrinkCF"]));
             }
             set {
-                this["shrinkHK"] = value;
+                this["HK_ShrinkCF"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C")]
-        public string cycleHK {
+        public string HK_CycleBF {
             get {
-                return ((string)(this["cycleHK"]));
+                return ((string)(this["HK_CycleBF"]));
             }
             set {
-                this["cycleHK"] = value;
+                this["HK_CycleBF"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int tileMode {
+        public int BF_Location {
             get {
-                return ((int)(this["tileMode"]));
+                return ((int)(this["BF_Location"]));
             }
             set {
-                this["tileMode"] = value;
+                this["BF_Location"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool cursorLock {
+        public bool CF_Lock {
             get {
-                return ((bool)(this["cursorLock"]));
+                return ((bool)(this["CF_Lock"]));
             }
             set {
-                this["cursorLock"] = value;
+                this["CF_Lock"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0.25")]
-        public decimal opacity {
+        public decimal CF_Opacity {
             get {
-                return ((decimal)(this["opacity"]));
+                return ((decimal)(this["CF_Opacity"]));
             }
             set {
-                this["opacity"] = value;
+                this["CF_Opacity"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Black")]
-        public global::System.Drawing.Color tileColor {
+        public global::System.Drawing.Color BF_Color {
             get {
-                return ((global::System.Drawing.Color)(this["tileColor"]));
+                return ((global::System.Drawing.Color)(this["BF_Color"]));
             }
             set {
-                this["tileColor"] = value;
+                this["BF_Color"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0.25")]
-        public decimal tileOpacity {
+        public decimal BF_Opacity {
             get {
-                return ((decimal)(this["tileOpacity"]));
+                return ((decimal)(this["BF_Opacity"]));
             }
             set {
-                this["tileOpacity"] = value;
+                this["BF_Opacity"] = value;
             }
         }
         
@@ -290,12 +290,12 @@ namespace AuraScreen.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool AO_ProcessByName {
+        public bool AO_ByName {
             get {
-                return ((bool)(this["AO_ProcessByName"]));
+                return ((bool)(this["AO_ByName"]));
             }
             set {
-                this["AO_ProcessByName"] = value;
+                this["AO_ByName"] = value;
             }
         }
         
@@ -314,216 +314,216 @@ namespace AuraScreen.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool Filter_OnStartup {
+        public bool SF_OnStartup {
             get {
-                return ((bool)(this["Filter_OnStartup"]));
+                return ((bool)(this["SF_OnStartup"]));
             }
             set {
-                this["Filter_OnStartup"] = value;
+                this["SF_OnStartup"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("firefox.exe;chrome.exe")]
-        public string Filter_Programs {
+        public string SF_Programs {
             get {
-                return ((string)(this["Filter_Programs"]));
+                return ((string)(this["SF_Programs"]));
             }
             set {
-                this["Filter_Programs"] = value;
+                this["SF_Programs"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool Filter_OnActive {
+        public bool SF_OnActive {
             get {
-                return ((bool)(this["Filter_OnActive"]));
+                return ((bool)(this["SF_OnActive"]));
             }
             set {
-                this["Filter_OnActive"] = value;
+                this["SF_OnActive"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("None")]
-        public string Filter_LastUsed {
+        public string SF_LastUsed {
             get {
-                return ((string)(this["Filter_LastUsed"]));
+                return ((string)(this["SF_LastUsed"]));
             }
             set {
-                this["Filter_LastUsed"] = value;
+                this["SF_LastUsed"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("L")]
-        public string cursorLockHK {
+        public string HK_LockCF {
             get {
-                return ((string)(this["cursorLockHK"]));
+                return ((string)(this["HK_LockCF"]));
             }
             set {
-                this["cursorLockHK"] = value;
+                this["HK_LockCF"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string CursorFile {
+        public string CI_File {
             get {
-                return ((string)(this["CursorFile"]));
+                return ((string)(this["CI_File"]));
             }
             set {
-                this["CursorFile"] = value;
+                this["CI_File"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public int CursorIdleTime {
+        public int CI_Interval {
             get {
-                return ((int)(this["CursorIdleTime"]));
+                return ((int)(this["CI_Interval"]));
             }
             set {
-                this["CursorIdleTime"] = value;
+                this["CI_Interval"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool CursorIdle {
+        public bool CI_Enabled {
             get {
-                return ((bool)(this["CursorIdle"]));
+                return ((bool)(this["CI_Enabled"]));
             }
             set {
-                this["CursorIdle"] = value;
+                this["CI_Enabled"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool CursorStartup {
+        public bool CI_OnStartup {
             get {
-                return ((bool)(this["CursorStartup"]));
+                return ((bool)(this["CI_OnStartup"]));
             }
             set {
-                this["CursorStartup"] = value;
+                this["CI_OnStartup"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("250")]
-        public decimal ESSize {
+        public decimal CF_SizeIncrement {
             get {
-                return ((decimal)(this["ESSize"]));
+                return ((decimal)(this["CF_SizeIncrement"]));
             }
             set {
-                this["ESSize"] = value;
+                this["CF_SizeIncrement"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool InversionToggle {
+        public bool CF_InversionToggle {
             get {
-                return ((bool)(this["InversionToggle"]));
+                return ((bool)(this["CF_InversionToggle"]));
             }
             set {
-                this["InversionToggle"] = value;
+                this["CF_InversionToggle"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
-        public string SF_CycleHK {
+        public string HK_CycleSF {
             get {
-                return ((string)(this["SF_CycleHK"]));
+                return ((string)(this["HK_CycleSF"]));
             }
             set {
-                this["SF_CycleHK"] = value;
+                this["HK_CycleSF"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("2")]
-        public string SF_ProgramHK {
+        public string HK_SFOnActive {
             get {
-                return ((string)(this["SF_ProgramHK"]));
+                return ((string)(this["HK_SFOnActive"]));
             }
             set {
-                this["SF_ProgramHK"] = value;
+                this["HK_SFOnActive"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("3")]
-        public string SF_ToggleHK {
+        public string HK_ToggleSF {
             get {
-                return ((string)(this["SF_ToggleHK"]));
+                return ((string)(this["HK_ToggleSF"]));
             }
             set {
-                this["SF_ToggleHK"] = value;
+                this["HK_ToggleSF"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("4")]
-        public string AO_ToggleHK {
+        public string HK_ToggleAO {
             get {
-                return ((string)(this["AO_ToggleHK"]));
+                return ((string)(this["HK_ToggleAO"]));
             }
             set {
-                this["AO_ToggleHK"] = value;
+                this["HK_ToggleAO"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("5")]
-        public string BF_ToggleHK {
+        public string HK_ToggleBF {
             get {
-                return ((string)(this["BF_ToggleHK"]));
+                return ((string)(this["HK_ToggleBF"]));
             }
             set {
-                this["BF_ToggleHK"] = value;
+                this["HK_ToggleBF"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("6")]
-        public string SettingsHK {
+        public string HK_ShowConfig {
             get {
-                return ((string)(this["SettingsHK"]));
+                return ((string)(this["HK_ShowConfig"]));
             }
             set {
-                this["SettingsHK"] = value;
+                this["HK_ShowConfig"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("7")]
-        public string KillHK {
+        public string HK_KillSwitch {
             get {
-                return ((string)(this["KillHK"]));
+                return ((string)(this["HK_KillSwitch"]));
             }
             set {
-                this["KillHK"] = value;
+                this["HK_KillSwitch"] = value;
             }
         }
         
@@ -542,36 +542,36 @@ namespace AuraScreen.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool HideToolBox {
+        public bool TB_AutoHide {
             get {
-                return ((bool)(this["HideToolBox"]));
+                return ((bool)(this["TB_AutoHide"]));
             }
             set {
-                this["HideToolBox"] = value;
+                this["TB_AutoHide"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("B")]
-        public string toolboxHK {
+        public string HK_ShowTB {
             get {
-                return ((string)(this["toolboxHK"]));
+                return ((string)(this["HK_ShowTB"]));
             }
             set {
-                this["toolboxHK"] = value;
+                this["HK_ShowTB"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool toolboxCursor {
+        public bool TB_Cursor {
             get {
-                return ((bool)(this["toolboxCursor"]));
+                return ((bool)(this["TB_Cursor"]));
             }
             set {
-                this["toolboxCursor"] = value;
+                this["TB_Cursor"] = value;
             }
         }
         
@@ -602,60 +602,60 @@ namespace AuraScreen.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("400")]
-        public int tilesMW {
+        public int BF_Width {
             get {
-                return ((int)(this["tilesMW"]));
+                return ((int)(this["BF_Width"]));
             }
             set {
-                this["tilesMW"] = value;
+                this["BF_Width"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int tilesMX {
+        public int BF_X {
             get {
-                return ((int)(this["tilesMX"]));
+                return ((int)(this["BF_X"]));
             }
             set {
-                this["tilesMX"] = value;
+                this["BF_X"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("400")]
-        public int tilesMH {
+        public int BF_Height {
             get {
-                return ((int)(this["tilesMH"]));
+                return ((int)(this["BF_Height"]));
             }
             set {
-                this["tilesMH"] = value;
+                this["BF_Height"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int tilesMY {
+        public int BF_Y {
             get {
-                return ((int)(this["tilesMY"]));
+                return ((int)(this["BF_Y"]));
             }
             set {
-                this["tilesMY"] = value;
+                this["BF_Y"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("M")]
-        public string tilesMHK {
+        public string HK_EditBF {
             get {
-                return ((string)(this["tilesMHK"]));
+                return ((string)(this["HK_EditBF"]));
             }
             set {
-                this["tilesMHK"] = value;
+                this["HK_EditBF"] = value;
             }
         }
         
@@ -674,24 +674,24 @@ namespace AuraScreen.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool tileInvert {
+        public bool BF_Invert {
             get {
-                return ((bool)(this["tileInvert"]));
+                return ((bool)(this["BF_Invert"]));
             }
             set {
-                this["tileInvert"] = value;
+                this["BF_Invert"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("30")]
-        public int tileTimer {
+        public int BF_InvertTime {
             get {
-                return ((int)(this["tileTimer"]));
+                return ((int)(this["BF_InvertTime"]));
             }
             set {
-                this["tileTimer"] = value;
+                this["BF_InvertTime"] = value;
             }
         }
         
@@ -710,12 +710,12 @@ namespace AuraScreen.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool tileScroll {
+        public bool BF_Scroll {
             get {
-                return ((bool)(this["tileScroll"]));
+                return ((bool)(this["BF_Scroll"]));
             }
             set {
-                this["tileScroll"] = value;
+                this["BF_Scroll"] = value;
             }
         }
         
@@ -785,6 +785,18 @@ namespace AuraScreen.Properties {
             }
             set {
                 this["doAdjust"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool useAltInvert {
+            get {
+                return ((bool)(this["useAltInvert"]));
+            }
+            set {
+                this["useAltInvert"] = value;
             }
         }
     }

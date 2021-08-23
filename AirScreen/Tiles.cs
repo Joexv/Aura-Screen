@@ -63,7 +63,7 @@ namespace AuraScreen
             wl = wl | 0x80000 | 0x20;
             SetWindowLong(this.Handle, GWL.ExStyle, wl);
             SetLayeredWindowAttributes(this.Handle, 0, 128, LWA.Alpha);
-            this.Opacity = (double)ps.Default.tileOpacity;
+            this.Opacity = (double)ps.Default.BF_Opacity;
 
             if (invert.Checked)
             {
@@ -79,7 +79,7 @@ namespace AuraScreen
 
         private void MouseEvent(object sender, EventHook.MouseEventArgs f)
         {
-            if (ps.Default.tileInvert && !SaveButton.Visible && this.Visible)
+            if (ps.Default.BF_Invert && !SaveButton.Visible && this.Visible)
             {
                 if (f.Message == EventHook.Hooks.MouseMessages.WM_MOUSEWHEEL)
                     Invoke((MethodInvoker)delegate { Scrollin(); });
@@ -90,8 +90,8 @@ namespace AuraScreen
         {
             ScrollingTimer.Stop();
             wasScrolling = true;
-            this.Opacity = (double)ps.Default.tileOpacity;
-            this.BackColor = ps.Default.tileColor;
+            this.Opacity = (double)ps.Default.BF_Opacity;
+            this.BackColor = ps.Default.BF_Color;
             this.BackgroundImage = null;
             ScrollingTimer.Start();
         }
@@ -110,7 +110,7 @@ namespace AuraScreen
         {
             this.Width = Width;
             this.Height = Height;
-            this.BackColor = ps.Default.tileColor;
+            this.BackColor = ps.Default.BF_Color;
             this.TopMost = true;
             this.FormBorderStyle = FormBorderStyle.None;
             this.Location = new Point(X, Y);
@@ -118,12 +118,12 @@ namespace AuraScreen
 
         private void Tiles_Shown(object sender, EventArgs e)
         {
-            numericUpDown1.Value = ps.Default.tileOpacity;
+            numericUpDown1.Value = ps.Default.BF_Opacity;
             Screen scr = Screen.FromPoint(this.Location);
             Point pt = new Point(scr.Bounds.Right, scr.Bounds.Top);
 
-            Console.WriteLine(ps.Default.tileMode);
-            switch (ps.Default.tileMode)
+            Console.WriteLine(ps.Default.BF_Location);
+            switch (ps.Default.BF_Location)
             {
                 default:
                     this.Hide();
@@ -146,13 +146,13 @@ namespace AuraScreen
                     break;
 
                 case 5: //Manual
-                    CreateView(ps.Default.tilesMW, ps.Default.tilesMH, ps.Default.tilesMX, ps.Default.tilesMY);
+                    CreateView(ps.Default.BF_Width, ps.Default.BF_Height, ps.Default.BF_X, ps.Default.BF_Y);
                     break;
             }
 
             //Inversion Settings
-            invert.Checked = ps.Default.tileInvert;
-            time.Value = ps.Default.tileTimer;
+            invert.Checked = ps.Default.BF_Invert;
+            time.Value = ps.Default.BF_InvertTime;
             switch (ps.Default.tileKey)
             {
                 case 0:
@@ -177,17 +177,17 @@ namespace AuraScreen
         {
             if (!this.Visible)
             {
-                ps.Default.tilesMW = this.Width;
-                ps.Default.tilesMH = this.Height;
-                ps.Default.tilesMX = this.Location.X;
-                ps.Default.tilesMY = this.Location.Y;
+                ps.Default.BF_Width = this.Width;
+                ps.Default.BF_Height = this.Height;
+                ps.Default.BF_X = this.Location.X;
+                ps.Default.BF_Y = this.Location.Y;
                 ps.Default.Save();
-                if (ps.Default.tileInvert && ps.Default.tileScroll)
+                if (ps.Default.BF_Invert && ps.Default.BF_Scroll)
                     mouseWatcher.Start();
             }
             else
             {
-                if (ps.Default.tileInvert && !SaveButton.Visible && ps.Default.tileScroll)
+                if (ps.Default.BF_Invert && !SaveButton.Visible && ps.Default.BF_Scroll)
                     mouseWatcher.Start();
                 else
                     mouseWatcher.Stop();
@@ -202,25 +202,25 @@ namespace AuraScreen
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ps.Default.tilesMW = this.Width;
-            ps.Default.tilesMH = this.Height;
-            ps.Default.tilesMX = this.Location.X;
-            ps.Default.tilesMY = this.Location.Y;
+            ps.Default.BF_Width = this.Width;
+            ps.Default.BF_Height = this.Height;
+            ps.Default.BF_X = this.Location.X;
+            ps.Default.BF_Y = this.Location.Y;
             ps.Default.Save();
 
-            this.Opacity = (double)ps.Default.tileOpacity;
+            this.Opacity = (double)ps.Default.BF_Opacity;
             previewTimer.Start();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ps.Default.tilesMW = this.Width;
-            ps.Default.tilesMH = this.Height;
-            ps.Default.tilesMX = this.Location.X;
-            ps.Default.tilesMY = this.Location.Y;
+            ps.Default.BF_Width = this.Width;
+            ps.Default.BF_Height = this.Height;
+            ps.Default.BF_X = this.Location.X;
+            ps.Default.BF_Y = this.Location.Y;
             ps.Default.Save();
 
-            this.Opacity = (double)ps.Default.tileOpacity;
+            this.Opacity = (double)ps.Default.BF_Opacity;
             this.FormBorderStyle = FormBorderStyle.None;
             PreviewButton.Visible = false;
             SaveButton.Visible = false;
@@ -248,7 +248,7 @@ namespace AuraScreen
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
-                ps.Default.tileColor = colorDialog1.Color;
+                ps.Default.BF_Color = colorDialog1.Color;
                 ps.Default.Save();
 
                 this.BackColor = colorDialog1.Color;
@@ -257,14 +257,14 @@ namespace AuraScreen
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
-            ps.Default.tileOpacity = numericUpDown1.Value;
+            ps.Default.BF_Opacity = numericUpDown1.Value;
             ps.Default.Save();
         }
 
         private void time_ValueChanged(object sender, EventArgs e)
         {
             InvertTimer.Interval = (int)(time.Value * 1000);
-            ps.Default.tileTimer = (int)time.Value;
+            ps.Default.BF_InvertTime = (int)time.Value;
             ps.Default.Save();
         }
 
@@ -283,7 +283,7 @@ namespace AuraScreen
                 this.BackgroundImage = Transform(CaptureScreen());
                 Application.DoEvents();
                 this.Show();
-                InvertTimer.Interval = ps.Default.tileTimer * 1000;
+                InvertTimer.Interval = ps.Default.BF_InvertTime * 1000;
                 InvertTimer.Start();
             }
         }
@@ -306,7 +306,7 @@ namespace AuraScreen
             Graphics g = Graphics.FromImage(newBitmap);
 
             // create the negative color matrix
-            ColorMatrix colorMatrix = new ColorMatrix(
+            System.Drawing.Imaging.ColorMatrix colorMatrix = new System.Drawing.Imaging.ColorMatrix(
             new float[][]
             {
                 new float[] {-1, 0, 0, 0, 0},
@@ -398,7 +398,7 @@ namespace AuraScreen
                 InvertTimer.Stop();
             }
 
-            ps.Default.tileInvert = invert.Checked;
+            ps.Default.BF_Invert = invert.Checked;
             ps.Default.Save();
         }
 
