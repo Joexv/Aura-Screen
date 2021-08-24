@@ -238,6 +238,7 @@ namespace AuraScreen
 
         private void Toolbox_Shown(object sender, EventArgs e)
         {
+            
             if (ps.Default.doAdjust)
             {
                 foreach (var button in flowLayoutPanel1.Controls.OfType<Button>())
@@ -262,6 +263,25 @@ namespace AuraScreen
                 this.Width = BF_Top.Width * ps.Default.tbPad + (BF_Top.Margin.All * (ps.Default.tbPad + 20));
                 Console.WriteLine($"{BF_Top.Height} * {ControlHeight} + ({BF_Top.Margin.All} * ({(ControlHeight - 1)} * 9))");
                 this.Height = BF_Top.Height * ControlHeight + (BF_Top.Margin.All * (ControlHeight + 60));
+            }
+            else if (BF_Top.Image.Height > BF_Top.Height || BF_Top.Image.Width > BF_Top.Width)
+            {
+                double HPercent;
+                double WPercent;
+                double FPercent;
+
+                HPercent = Convert.ToDouble(BF_Top.Height) / Convert.ToDouble(BF_Top.Image.Height);
+                WPercent = Convert.ToDouble(BF_Top.Width) / Convert.ToDouble(BF_Top.Image.Width);
+
+                FPercent = ((HPercent > WPercent) ? WPercent : HPercent) - 0.4;
+                foreach (var button in flowLayoutPanel1.Controls.OfType<Button>())
+                {
+                    Size newSize = new Size((int)(button.Image.Width * FPercent), (int)(button.Image.Height * FPercent));
+                    if (button.Image != null)
+                        button.Image = (Image)(new Bitmap(button.Image, newSize));
+                    float FontSize = (float)(button.Font.Size - 0.5);
+                    button.Font = new Font(button.Font.FontFamily, FontSize);
+                }
             }
 
             Rectangle workingArea = System.Windows.Forms.Screen.PrimaryScreen.WorkingArea;

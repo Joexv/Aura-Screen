@@ -16,3 +16,21 @@ C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.exe
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.pdb
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\Aura Screen.csprojAssemblyReference.cache
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.Configurator.resources
+C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\obj\Debug\Aura Screen.csprojAssemblyReference.cache
+C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\obj\Debug\AuraScreen.AppOverlay.resources
+C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\obj\Debug\AuraScreen.Toolbox.resources
+C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\obj\Debug\AuraScreen.Configurator.resources
+C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\obj\Debug\AuraScreen.MouseBox.resources
+C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\obj\Debug\AuraScreen.Properties.Resources.resources
+C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\obj\Debug\AuraScreen.Tiles.resources
+C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\obj\Debug\Aura Screen.csproj.GenerateResource.cache
+C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\obj\Debug\Aura Screen.csproj.CoreCompileInputs.cache
+C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\obj\Debug\AuraScreen.exe
+C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\obj\Debug\AuraScreen.pdb
+C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\bin\Debug\Invisible_Cursor.cur
+C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\bin\Debug\Pink_Crosshair_Cursor.cur
+C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\bin\Debug\AuraScreen.exe.config
+C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\bin\Debug\AuraScreen.exe
+C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\bin\Debug\AuraScreen.pdb
+C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\bin\Debug\EventHook.dll
+C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\obj\Debug\Aura Screen.csproj.CopyComplete

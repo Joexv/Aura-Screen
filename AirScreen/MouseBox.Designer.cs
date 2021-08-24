@@ -43,7 +43,6 @@ namespace AuraScreen
             // 
             // InvertTimer
             // 
-            this.InvertTimer.Enabled = true;
             this.InvertTimer.Interval = 1;
             this.InvertTimer.Tick += new System.EventHandler(this.timer2_Tick);
             // 
@@ -54,13 +53,14 @@ namespace AuraScreen
             // 
             // MouseBox
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(967, 834);
+            this.ClientSize = new System.Drawing.Size(484, 417);
             this.ControlBox = false;
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MouseBox";
             this.Opacity = 0.15D;
             this.ShowIcon = false;
@@ -73,6 +73,7 @@ namespace AuraScreen
             this.LocationChanged += new System.EventHandler(this.Form2_LocationChanged);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form2_KeyPress);
             this.MouseLeave += new System.EventHandler(this.Form2_MouseLeave);
+            this.Resize += new System.EventHandler(this.MouseBox_Resize);
             this.ResumeLayout(false);
 
         }

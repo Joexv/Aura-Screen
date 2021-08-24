@@ -1,4 +1,4 @@
-﻿using AuraScreen.Magnification;
+﻿using NegativeScreen;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +18,18 @@ namespace AuraScreen
     public partial class Configurator : Form
     {
         public MouseBox mousebox = new MouseBox();
+        public Dictionary<string, float[,]> Matrix = new Dictionary<string, float[,]> {
+            { "None", BuiltinMatrices.Identity },
+            { "Negative", BuiltinMatrices.Negative },
+            { "Negative Greyscale", BuiltinMatrices.NegativeGrayScale },
+            { "Negative Hue Shift 180", BuiltinMatrices.NegativeHueShift180 },
+            { "Negative Red", BuiltinMatrices.NegativeRed },
+            { "Negative Sepia", BuiltinMatrices.NegativeSepia },
+            { "Sepia", BuiltinMatrices.Sepia },
+            { "Red", BuiltinMatrices.Red },
+            { "Greyscale", BuiltinMatrices.GrayScale },
+            { "Hue Shift 180", BuiltinMatrices.HueShift180 }
+        };
 
         [DllImport("user32.dll", SetLastError = true)]
         private static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
@@ -43,12 +55,13 @@ namespace AuraScreen
         {
             PopulateControls();
             ReloadHotKeys();
-            foreach (string item in ColorMatrix.Matrix.Keys)
+            foreach (string item in Matrix.Keys)
                 matrixBox.Items.Add(item);
 
             notifyIcon1.Visible = true;
 
             toolbox.MF = this;
+
         }
 
         public void PopulateControls()
@@ -298,7 +311,7 @@ namespace AuraScreen
                 matrixBox.SelectedIndex = 0;
             ps.Default.SF_LastUsed = matrixBox.Text;
             ps.Default.Save();
-            SF_FilterInUse = ColorMatrix.ChangeColorEffect(ColorMatrix.Matrix[ps.Default.SF_LastUsed]);
+            SF_FilterInUse = BuiltinMatrices.ChangeColorEffect(Matrix[ps.Default.SF_LastUsed]);
         }
 
         public string[] TileModes = { "None", "Top", "Bottom", "Left", "Right" };
@@ -672,16 +685,18 @@ namespace AuraScreen
 
         public void ToggleFilter()
         {
+            Console.WriteLine(ps.Default.SF_LastUsed);
             ps.Default.SF_LastUsed = matrixBox.Text;
             ps.Default.Save();
-
-            if (SF_FilterInUse)
+            Console.WriteLine($"Identity {BuiltinMatrices.MatrixToString(BuiltinMatrices.Identity)}" +
+                $"{ps.Default.SF_LastUsed} {BuiltinMatrices.MatrixToString(Matrix[ps.Default.SF_LastUsed])}");
+            if (SF_FilterInUse || matrixBox.Text == "None")
             {
                 SF_FilterInUse = false;
-                ColorMatrix.ChangeColorEffect(ColorMatrix.Identity);
+                BuiltinMatrices.ChangeColorEffect(BuiltinMatrices.Identity);
             }
             else
-                SF_FilterInUse = ColorMatrix.ChangeColorEffect(ColorMatrix.Matrix[ps.Default.SF_LastUsed]);
+                SF_FilterInUse = BuiltinMatrices.ChangeColorEffect(Matrix[ps.Default.SF_LastUsed]);
         }
 
         public void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -695,23 +710,11 @@ namespace AuraScreen
             ps.Default.Save();
         }
 
-        public Bitmap Transform(Bitmap original, float[,] matrix)
-        {
-            Bitmap newBmp = new Bitmap(original.Width, original.Height);
-            Graphics g = Graphics.FromImage(newBmp);
-            System.Drawing.Imaging.ColorMatrix colorMatrix = new System.Drawing.Imaging.ColorMatrix(ColorMatrix.ToJaggedArray(matrix));
-            ImageAttributes img = new ImageAttributes();
-            img.SetColorMatrix(colorMatrix);
-            g.DrawImage(original, new Rectangle(0, 0, original.Width, original.Height), 0, 0, original.Width, original.Height, GraphicsUnit.Pixel, img);
-            g.Dispose();
-            return newBmp;
-        }
-
         public void button15_Click(object sender, EventArgs e)
         {
             if (pictureBox2.Image != null)
                 pictureBox2.Image.Dispose();
-            pictureBox2.Image = Transform((Bitmap)pictureBox1.Image, ColorMatrix.Matrix[matrixBox.Text]);
+            pictureBox2.Image = BuiltinMatrices.Transform((Bitmap)pictureBox1.Image, Matrix[matrixBox.Text]);
         }
 
         public void filterStartup_CheckedChanged(object sender, EventArgs e)
@@ -821,7 +824,7 @@ namespace AuraScreen
             else
             {
                 Filter_Timer.Stop();
-                ColorMatrix.ChangeColorEffect(ColorMatrix.Identity);
+                BuiltinMatrices.ChangeColorEffect(BuiltinMatrices.Identity);
             }
         }
 
@@ -843,11 +846,11 @@ namespace AuraScreen
                 if (p != null && ps.Default.SF_Programs.Split(';').Contains(AppName, StringComparer.OrdinalIgnoreCase))
                 {
                     if (!SF_FilterInUse)
-                        SF_FilterInUse = ColorMatrix.ChangeColorEffect(ColorMatrix.Matrix[ps.Default.SF_LastUsed]);
+                        SF_FilterInUse = BuiltinMatrices.ChangeColorEffect(Matrix[ps.Default.SF_LastUsed]);
                 }
                 else
                 {
-                    ColorMatrix.ChangeColorEffect(ColorMatrix.Identity);
+                    BuiltinMatrices.ChangeColorEffect(BuiltinMatrices.Identity);
                     SF_FilterInUse = false;
                 }
             }
@@ -1217,7 +1220,7 @@ namespace AuraScreen
 
         private void button21_Click_1(object sender, EventArgs e)
         {
-            mousebox.StartMag();
+            
         }
     }
 }

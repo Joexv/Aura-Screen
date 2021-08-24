@@ -81,8 +81,6 @@
     <Compile Include="AppOverlay.Designer.cs">
       <DependentUpon>AppOverlay.cs</DependentUpon>
     </Compile>
-    <Compile Include="Magnifier Wrapper\Magnifier.cs" />
-    <Compile Include="Magnifier Wrapper\NativeMethods.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

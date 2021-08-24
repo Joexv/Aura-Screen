@@ -3043,6 +3043,7 @@
 refreshes it.  The default method uses the Windows 10 Magnifier API. Because of this if 
 you for whatever reason want to use the inversion alongside any other features of the API, 
 such as screen filters or magnification, you must use the alternate method.
+Or if you use more than one monitor the alternate method will work better.
 </value>
   </data>
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
