@@ -1,4 +1,4 @@
-﻿using NegativeScreen;
+﻿using Magnifier;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -179,7 +179,7 @@ namespace AuraScreen
             this.Hide();
             Console.WriteLine("Inverting AO");
             this.Opacity = 0.99; //Form must be even slightly opaque inorder to pass through inputs
-            this.BackgroundImage = BuiltinMatrices.Transform(CaptureScreen(Location, size), BuiltinMatrices.Negative); ;
+            this.BackgroundImage = Matrices.Transform(CaptureScreen(Location, size), Matrices.Negative); ;
             Application.DoEvents();
             this.Show();
         }

@@ -1,45 +1,15 @@
-// Copyright 2011-2017 Melvyn Laïly
-// https://zerowidthjoiner.net
-
-// This file is part of NegativeScreen.
-
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-//using AuraScreen.Magnification;
 using System;
 using System.Collections.Generic;
-//using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace NegativeScreen
+namespace Magnifier
 {
-    /// <summary>
-    /// Store various built in ColorMatrix
-    /// </summary>
-    public static class BuiltinMatrices
+    //Credit to the creator of Negative screen for these default Matricies. Its a fucking life saver
+    public static class Matrices
     {
-        /// <summary>
-        /// no color transformation
-        /// </summary>
         public static float[,] Identity { get; }
-
-        /// <summary>
-        /// simple colors transformations
-        /// </summary>
         public static float[,] Negative { get; }
-
         public static float[,] GrayScale { get; }
         public static float[,] Sepia { get; }
         public static float[,] Red { get; }
@@ -49,33 +19,13 @@ namespace NegativeScreen
         public static float[,] NegativeSepia { get; }
         public static float[,] NegativeRed { get; }
 
-        /// <summary>
-        /// theoretical optimal transfomation (but ugly desaturated pure colors due to "overflows"...)
-        /// Many thanks to Tom MacLeod who gave me the idea for these inversion modes
-        /// </summary>
         public static float[,] NegativeHueShift180 { get; }
-
-        /// <summary>
-        /// high saturation, good pure colors
-        /// </summary>
         public static float[,] NegativeHueShift180Variation1 { get; }
-
-        /// <summary>
-        /// overall desaturated, yellows and blue plain bad. actually relaxing and very usable
-        /// </summary>
         public static float[,] NegativeHueShift180Variation2 { get; }
-
-        /// <summary>
-        /// high saturation. yellows and blues plain bad. actually quite readable
-        /// </summary>
         public static float[,] NegativeHueShift180Variation3 { get; }
-
-        /// <summary>
-        /// not so readable, good colors (CMY colors a bit desaturated, still more saturated than normal)
-        /// </summary>
         public static float[,] NegativeHueShift180Variation4 { get; }
 
-        static BuiltinMatrices()
+        static Matrices()
         {
             Identity = new float[,] {
                 {  1.0f,  0.0f,  0.0f,  0.0f,  0.0f },
@@ -125,7 +75,6 @@ namespace NegativeScreen
             };
             NegativeHueShift180 = Multiply(Negative, HueShift180);
             NegativeHueShift180Variation1 = new float[,] {
-				// most simple working method for shifting hue 180deg.
 				{  1.0f, -1.0f, -1.0f, 0.0f, 0.0f },
                 { -1.0f,  1.0f, -1.0f, 0.0f, 0.0f },
                 { -1.0f, -1.0f,  1.0f, 0.0f, 0.0f },
@@ -133,7 +82,6 @@ namespace NegativeScreen
                 {  1.0f,  1.0f,  1.0f, 0.0f, 1.0f }
             };
             NegativeHueShift180Variation2 = new float[,] {
-				// generated with QColorMatrix http://www.codeguru.com/Cpp/G-M/gdi/gdi/article.php/c3667
 				{  0.39f, -0.62f, -0.62f, 0.0f, 0.0f },
                 { -1.21f, -0.22f, -1.22f, 0.0f, 0.0f },
                 { -0.16f, -0.16f,  0.84f, 0.0f, 0.0f },
@@ -179,7 +127,6 @@ namespace NegativeScreen
                 {
                     if (matrix[i, j] >= 0)
                     {
-                        // align negative signs
                         sb.Append(" ");
                     }
                     sb.Append(matrix[i, j].ToString(format, System.Globalization.NumberFormatInfo.InvariantInfo));
@@ -204,7 +151,7 @@ namespace NegativeScreen
             {
                 for (int j = 0; j < c.GetLength(1); j++)
                 {
-                    for (int k = 0; k < a.GetLength(1); k++) // k<b.GetLength(0)
+                    for (int k = 0; k < a.GetLength(1); k++)
                     {
                         c[i, j] = c[i, j] + a[i, k] * b[k, j];
                     }
@@ -230,27 +177,6 @@ namespace NegativeScreen
                 System.Threading.Thread.Sleep(timeBetweenFrames);
                 System.Windows.Forms.Application.DoEvents();
             }
-        }
-
-        public static float[,] MoreBlue(float[,] colorMatrix)
-        {
-            float[,] temp = (float[,])colorMatrix.Clone();
-            temp[2, 4] += 0.1f;//or remove 0.1 off the red
-            return temp;
-        }
-
-        public static float[,] MoreGreen(float[,] colorMatrix)
-        {
-            float[,] temp = (float[,])colorMatrix.Clone();
-            temp[1, 4] += 0.1f;
-            return temp;
-        }
-
-        public static float[,] MoreRed(float[,] colorMatrix)
-        {
-            float[,] temp = (float[,])colorMatrix.Clone();
-            temp[0, 4] += 0.1f;
-            return temp;
         }
 
         public static List<float[,]> Interpolate(float[,] A, float[,] B)
@@ -298,27 +224,6 @@ namespace NegativeScreen
             g.Dispose();
             return newBitmap;
         }
-    }
-
-[Serializable]
-    public class CannotChangeColorEffectException : Exception
-    {
-        public CannotChangeColorEffectException()
-        {
-        }
-
-        public CannotChangeColorEffectException(string message) : base(message)
-        {
-        }
-
-        public CannotChangeColorEffectException(string message, Exception inner) : base(message, inner)
-        {
-        }
-
-        protected CannotChangeColorEffectException(
-          System.Runtime.Serialization.SerializationInfo info,
-          System.Runtime.Serialization.StreamingContext context) : base(info, context)
-        { }
     }
 
     public static class NativeMethods
@@ -462,14 +367,14 @@ namespace NegativeScreen
 
     internal static class ExtensionMethods
     {
-        internal static T[][] ToJaggedArray<T>(this T[,] twoDimensionalArray)
+        internal static T[][] ToJaggedArray<T>(this T[,] ddArray)
         {
-            int rowsFirstIndex = twoDimensionalArray.GetLowerBound(0);
-            int rowsLastIndex = twoDimensionalArray.GetUpperBound(0);
+            int rowsFirstIndex = ddArray.GetLowerBound(0);
+            int rowsLastIndex = ddArray.GetUpperBound(0);
             int numberOfRows = rowsLastIndex + 1;
 
-            int columnsFirstIndex = twoDimensionalArray.GetLowerBound(1);
-            int columnsLastIndex = twoDimensionalArray.GetUpperBound(1);
+            int columnsFirstIndex = ddArray.GetLowerBound(1);
+            int columnsLastIndex = ddArray.GetUpperBound(1);
             int numberOfColumns = columnsLastIndex + 1;
 
             T[][] jaggedArray = new T[numberOfRows][];
@@ -479,7 +384,7 @@ namespace NegativeScreen
 
                 for (int j = columnsFirstIndex; j <= columnsLastIndex; j++)
                 {
-                    jaggedArray[i][j] = twoDimensionalArray[i, j];
+                    jaggedArray[i][j] = ddArray[i, j];
                 }
             }
             return jaggedArray;

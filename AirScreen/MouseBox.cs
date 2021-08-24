@@ -1,5 +1,5 @@
 ﻿using Microsoft.Win32;
-using NegativeScreen;
+using Magnifier;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -68,7 +68,7 @@ namespace AuraScreen
             this.Height = Height;
             this.Opacity = 0.99; //Form must be even slightly opaque inorder to pass through inputs
             this.Hide();
-            this.BackgroundImage = BuiltinMatrices.Transform(CaptureScreen(AppPosition, Height, Width), BuiltinMatrices.Negative);
+            this.BackgroundImage = Matrices.Transform(CaptureScreen(AppPosition, Height, Width), Matrices.Negative);
             this.Show();
         }
 
@@ -237,7 +237,7 @@ namespace AuraScreen
                 this.Opacity = 0.99; //Form must be even slightly opaque inorder to pass through inputs
                 inversionPT = Cursor.Position;
                 this.Hide();
-                this.BackgroundImage = BuiltinMatrices.Transform(CaptureScreen(), BuiltinMatrices.Negative);
+                this.BackgroundImage = Matrices.Transform(CaptureScreen(), Matrices.Negative);
                 this.Show();
                 DoInvert = false;
             }
@@ -433,7 +433,7 @@ namespace AuraScreen
             {
                 return;
             }
-            ColorEffect colorEffect = new ColorEffect(BuiltinMatrices.Negative);
+            ColorEffect colorEffect = new ColorEffect(Matrices.Negative);
             NativeMethods.MagSetColorEffect(hwndMag, ref colorEffect);
         }
 

@@ -20,7 +20,7 @@ using System;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 
-namespace NegativeScreen
+namespace Magnifier
 {
     // based on http://delphi32.blogspot.com/2010/09/windows-magnification-api-net.html
 

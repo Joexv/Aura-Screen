@@ -1,4 +1,4 @@
-﻿using NegativeScreen;
+﻿using Magnifier;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,16 +20,16 @@ namespace AuraScreen
         public static bool initialized { get; set; } = false;
         public MouseBox mousebox = new MouseBox();
         public Dictionary<string, float[,]> Matrix = new Dictionary<string, float[,]> {
-            { "None", BuiltinMatrices.Identity },
-            { "Negative", BuiltinMatrices.Negative },
-            { "Negative Greyscale", BuiltinMatrices.NegativeGrayScale },
-            { "Negative Hue Shift 180", BuiltinMatrices.NegativeHueShift180 },
-            { "Negative Red", BuiltinMatrices.NegativeRed },
-            { "Negative Sepia", BuiltinMatrices.NegativeSepia },
-            { "Sepia", BuiltinMatrices.Sepia },
-            { "Red", BuiltinMatrices.Red },
-            { "Greyscale", BuiltinMatrices.GrayScale },
-            { "Hue Shift 180", BuiltinMatrices.HueShift180 }
+            { "None", Matrices.Identity },
+            { "Negative", Matrices.Negative },
+            { "Negative Greyscale", Matrices.NegativeGrayScale },
+            { "Negative Hue Shift 180", Matrices.NegativeHueShift180 },
+            { "Negative Red", Matrices.NegativeRed },
+            { "Negative Sepia", Matrices.NegativeSepia },
+            { "Sepia", Matrices.Sepia },
+            { "Red", Matrices.Red },
+            { "Greyscale", Matrices.GrayScale },
+            { "Hue Shift 180", Matrices.HueShift180 }
         };
 
         [DllImport("user32.dll", SetLastError = true)]
@@ -312,7 +312,7 @@ namespace AuraScreen
                 matrixBox.SelectedIndex = 0;
             ps.Default.SF_LastUsed = matrixBox.Text;
             ps.Default.Save();
-            SF_FilterInUse = BuiltinMatrices.ChangeColorEffect(Matrix[ps.Default.SF_LastUsed]);
+            SF_FilterInUse = Matrices.ChangeColorEffect(Matrix[ps.Default.SF_LastUsed]);
         }
 
         public string[] TileModes = { "None", "Top", "Bottom", "Left", "Right" };
@@ -724,19 +724,19 @@ namespace AuraScreen
             Console.WriteLine(ps.Default.SF_LastUsed);
             ps.Default.SF_LastUsed = matrixBox.Text;
             ps.Default.Save();
-            Console.WriteLine($"Identity {BuiltinMatrices.MatrixToString(BuiltinMatrices.Identity)}" +
-                $"{ps.Default.SF_LastUsed} {BuiltinMatrices.MatrixToString(Matrix[ps.Default.SF_LastUsed])}");
+            Console.WriteLine($"Identity {Matrices.MatrixToString(Matrices.Identity)}" +
+                $"{ps.Default.SF_LastUsed} {Matrices.MatrixToString(Matrix[ps.Default.SF_LastUsed])}");
             if (matrixBox.Text == "None" && (ps.Default.FilterInUse && ps.Default.FilterNum != 3))
             {
                 ps.Default.FilterInUse = false;
                 ps.Default.FilterNum = 0;
-                BuiltinMatrices.ChangeColorEffect(BuiltinMatrices.Identity);
+                Matrices.ChangeColorEffect(Matrices.Identity);
             }
             else
             {
                     ps.Default.FilterInUse = true;
                     ps.Default.FilterNum = 3;
-                    SF_FilterInUse = BuiltinMatrices.ChangeColorEffect(Matrix[ps.Default.SF_LastUsed]);
+                    SF_FilterInUse = Matrices.ChangeColorEffect(Matrix[ps.Default.SF_LastUsed]);
             }
 
             ps.Default.Save();
@@ -757,7 +757,7 @@ namespace AuraScreen
         {
             if (pictureBox2.Image != null)
                 pictureBox2.Image.Dispose();
-            pictureBox2.Image = BuiltinMatrices.Transform((Bitmap)pictureBox1.Image, Matrix[matrixBox.Text]);
+            pictureBox2.Image = Matrices.Transform((Bitmap)pictureBox1.Image, Matrix[matrixBox.Text]);
         }
 
         public void filterStartup_CheckedChanged(object sender, EventArgs e)
@@ -867,7 +867,7 @@ namespace AuraScreen
             else
             {
                 Filter_Timer.Stop();
-                BuiltinMatrices.ChangeColorEffect(BuiltinMatrices.Identity);
+                Matrices.ChangeColorEffect(Matrices.Identity);
             }
         }
 
@@ -889,11 +889,11 @@ namespace AuraScreen
                 if (p != null && ps.Default.SF_Programs.Split(';').Contains(AppName, StringComparer.OrdinalIgnoreCase))
                 {
                     if (!SF_FilterInUse)
-                        SF_FilterInUse = BuiltinMatrices.ChangeColorEffect(Matrix[ps.Default.SF_LastUsed]);
+                        SF_FilterInUse = Matrices.ChangeColorEffect(Matrix[ps.Default.SF_LastUsed]);
                 }
                 else
                 {
-                    BuiltinMatrices.ChangeColorEffect(BuiltinMatrices.Identity);
+                    Matrices.ChangeColorEffect(Matrices.Identity);
                     SF_FilterInUse = false;
                 }
             }

@@ -1,5 +1,5 @@
 ﻿using EventHook;
-using NegativeScreen;
+using Magnifier;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -637,7 +637,7 @@ namespace AuraScreen
                 return;
             }
 
-            ColorEffect colorEffect = new ColorEffect(BuiltinMatrices.Negative);
+            ColorEffect colorEffect = new ColorEffect(Matrices.Negative);
             NativeMethods.MagSetColorEffect(hwndMag, ref colorEffect);
             InvertTimer.Start();
         }
