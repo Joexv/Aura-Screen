@@ -171,6 +171,8 @@ namespace AuraScreen
             checkBox3.Checked = ps.Default.keepInTray;
             checkBox5.Checked = !ps.Default.TB_AutoHide;
 
+            checkBox8.Checked = ps.Default.useAltInvert;
+
             if (ps.Default.BF_Location != 0)
                 tileSelect.SelectedIndex = ps.Default.BF_Location - 1;
 
@@ -178,19 +180,19 @@ namespace AuraScreen
             {
                 case 0:
                     shift.Checked = true;
-                    return;
+                    break;
 
                 case 1:
                     r.Checked = true;
-                    return;
+                    break;
 
                 case 2:
                     squwiggly.Checked = true;
-                    return;
+                    break;
 
                 case 3:
                     f1.Checked = true;
-                    return;
+                    break;
             }
 
             #endregion Other
@@ -697,7 +699,7 @@ namespace AuraScreen
         {
             Bitmap newBmp = new Bitmap(original.Width, original.Height);
             Graphics g = Graphics.FromImage(newBmp);
-            System.Drawing.Imaging.ColorMatrix colorMatrix = new System.Drawing.Imaging.ColorMatrix(matrix.ToJaggedArray());
+            System.Drawing.Imaging.ColorMatrix colorMatrix = new System.Drawing.Imaging.ColorMatrix(ColorMatrix.ToJaggedArray(matrix));
             ImageAttributes img = new ImageAttributes();
             img.SetColorMatrix(colorMatrix);
             g.DrawImage(original, new Rectangle(0, 0, original.Width, original.Height), 0, 0, original.Width, original.Height, GraphicsUnit.Pixel, img);
@@ -1206,32 +1208,16 @@ namespace AuraScreen
         {
             Process.Start(@"https://youtube.com");
         }
-    }
 
-    //This is no longer used as I swapped from my poorly implemented color matricies to the ones used by NegativeScreen
-    internal static class ExtensionMethods
-    {
-        internal static T[][] ToJaggedArray<T>(this T[,] twoDimensionalArray)
+        private void checkBox8_CheckedChanged(object sender, EventArgs e)
         {
-            int rowsFirstIndex = twoDimensionalArray.GetLowerBound(0);
-            int rowsLastIndex = twoDimensionalArray.GetUpperBound(0);
-            int numberOfRows = rowsLastIndex + 1;
+            ps.Default.useAltInvert = checkBox8.Checked;
+            ps.Default.Save();
+        }
 
-            int columnsFirstIndex = twoDimensionalArray.GetLowerBound(1);
-            int columnsLastIndex = twoDimensionalArray.GetUpperBound(1);
-            int numberOfColumns = columnsLastIndex + 1;
-
-            T[][] jaggedArray = new T[numberOfRows][];
-            for (int i = rowsFirstIndex; i <= rowsLastIndex; i++)
-            {
-                jaggedArray[i] = new T[numberOfColumns];
-
-                for (int j = columnsFirstIndex; j <= columnsLastIndex; j++)
-                {
-                    jaggedArray[i][j] = twoDimensionalArray[i, j];
-                }
-            }
-            return jaggedArray;
+        private void button21_Click_1(object sender, EventArgs e)
+        {
+            mousebox.StartMag();
         }
     }
 }

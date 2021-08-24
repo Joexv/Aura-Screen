@@ -30,27 +30,27 @@ namespace AuraScreen
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.LocationTimer = new System.Windows.Forms.Timer(this.components);
+            this.InvertTimer = new System.Windows.Forms.Timer(this.components);
+            this.MagTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // timer1
+            // LocationTimer
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
+            this.LocationTimer.Enabled = true;
+            this.LocationTimer.Interval = 1;
+            this.LocationTimer.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
-            // timer2
+            // InvertTimer
             // 
-            this.timer2.Enabled = true;
-            this.timer2.Interval = 1;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            this.InvertTimer.Enabled = true;
+            this.InvertTimer.Interval = 1;
+            this.InvertTimer.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // timer3
+            // MagTimer
             // 
-            this.timer3.Enabled = true;
-            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            this.MagTimer.Interval = 1;
+            this.MagTimer.Tick += new System.EventHandler(this.timer3_Tick);
             // 
             // MouseBox
             // 
@@ -79,8 +79,8 @@ namespace AuraScreen
 
         #endregion
 
-        public System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Timer timer2;
-        private System.Windows.Forms.Timer timer3;
+        public System.Windows.Forms.Timer LocationTimer;
+        private System.Windows.Forms.Timer InvertTimer;
+        public System.Windows.Forms.Timer MagTimer;
     }
 }

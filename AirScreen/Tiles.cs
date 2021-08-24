@@ -280,7 +280,8 @@ namespace AuraScreen
                 this.Opacity = 0.99;
                 this.Hide();
                 Application.DoEvents();
-                this.BackgroundImage = Transform(CaptureScreen());
+                this.BackgroundImage = 
+                    (CaptureScreen());
                 Application.DoEvents();
                 this.Show();
                 InvertTimer.Interval = ps.Default.BF_InvertTime * 1000;

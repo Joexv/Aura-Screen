@@ -59,6 +59,7 @@ namespace AuraScreen
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.label44 = new System.Windows.Forms.Label();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.tabPage6 = new System.Windows.Forms.TabPage();
             this.AO_Start = new System.Windows.Forms.CheckBox();
             this.label43 = new System.Windows.Forms.Label();
@@ -203,7 +204,7 @@ namespace AuraScreen
             this.Filter_Timer = new System.Windows.Forms.Timer(this.components);
             this.CursorTimer = new System.Windows.Forms.Timer(this.components);
             this.CursorTimer2 = new System.Windows.Forms.Timer(this.components);
-            this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.button21 = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AO_Time)).BeginInit();
@@ -437,7 +438,7 @@ namespace AuraScreen
             // checkBox4
             // 
             this.checkBox4.AutoSize = true;
-            this.checkBox4.Location = new System.Drawing.Point(13, 102);
+            this.checkBox4.Location = new System.Drawing.Point(270, 32);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(218, 29);
             this.checkBox4.TabIndex = 17;
@@ -456,6 +457,7 @@ namespace AuraScreen
             this.inversionToggle.Text = "Toggle overlay with inversion";
             this.toolTip1.SetToolTip(this.inversionToggle, "Will turn the Cursor Filter on or off alongside Invertsion.");
             this.inversionToggle.UseVisualStyleBackColor = true;
+            this.inversionToggle.Visible = false;
             this.inversionToggle.CheckedChanged += new System.EventHandler(this.inversionToggle_CheckedChanged);
             // 
             // inversionBox
@@ -463,9 +465,9 @@ namespace AuraScreen
             this.inversionBox.AutoSize = true;
             this.inversionBox.Location = new System.Drawing.Point(13, 67);
             this.inversionBox.Name = "inversionBox";
-            this.inversionBox.Size = new System.Drawing.Size(131, 29);
+            this.inversionBox.Size = new System.Drawing.Size(165, 29);
             this.inversionBox.TabIndex = 15;
-            this.inversionBox.Text = "Inversion";
+            this.inversionBox.Text = "Invert Colors";
             this.toolTip1.SetToolTip(this.inversionBox, "Creates a static iverted screenshot of the contents\r\nbelow the cursor filter. Ove" +
         "rrides set color and opacity.");
             this.inversionBox.UseVisualStyleBackColor = true;
@@ -530,6 +532,18 @@ namespace AuraScreen
             this.label44.TabIndex = 12;
             this.label44.Text = "Set Manual On Screen";
             this.toolTip1.SetToolTip(this.label44, "This will enable/disable the border\r\narouond the tile when using manual mode.");
+            // 
+            // checkBox8
+            // 
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.Location = new System.Drawing.Point(18, 369);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(374, 29);
+            this.checkBox8.TabIndex = 29;
+            this.checkBox8.Text = "Enable Alternate Inversion Method";
+            this.toolTip1.SetToolTip(this.checkBox8, resources.GetString("checkBox8.ToolTip"));
+            this.checkBox8.UseVisualStyleBackColor = true;
+            this.checkBox8.CheckedChanged += new System.EventHandler(this.checkBox8_CheckedChanged);
             // 
             // tabPage6
             // 
@@ -1863,6 +1877,7 @@ namespace AuraScreen
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button21);
             this.tabPage1.Controls.Add(this.groupBox4);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.groupBox3);
@@ -1991,7 +2006,7 @@ namespace AuraScreen
             this.groupBox3.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox3.Size = new System.Drawing.Size(627, 156);
+            this.groupBox3.Size = new System.Drawing.Size(627, 114);
             this.groupBox3.TabIndex = 25;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Settings";
@@ -2210,18 +2225,17 @@ namespace AuraScreen
             this.CursorTimer2.Enabled = true;
             this.CursorTimer2.Tick += new System.EventHandler(this.CursorTimer2_Tick);
             // 
-            // checkBox8
+            // button21
             // 
-            this.checkBox8.AutoSize = true;
-            this.checkBox8.Location = new System.Drawing.Point(18, 369);
-            this.checkBox8.Name = "checkBox8";
-            this.checkBox8.Size = new System.Drawing.Size(374, 29);
-            this.checkBox8.TabIndex = 29;
-            this.checkBox8.Text = "Enable Alternate Inversion Method";
-            this.toolTip1.SetToolTip(this.checkBox8, resources.GetString("checkBox8.ToolTip"));
-            this.checkBox8.UseVisualStyleBackColor = true;
+            this.button21.Location = new System.Drawing.Point(97, 608);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(184, 49);
+            this.button21.TabIndex = 27;
+            this.button21.Text = "Test";
+            this.button21.UseVisualStyleBackColor = true;
+            this.button21.Click += new System.EventHandler(this.button21_Click_1);
             // 
-            // MainForm
+            // Configurator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -2231,7 +2245,7 @@ namespace AuraScreen
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "MainForm";
+            this.Name = "Configurator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Aura Screen Configurator";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -2467,6 +2481,7 @@ namespace AuraScreen
         private System.Windows.Forms.LinkLabel linkLabel4;
         private System.Windows.Forms.LinkLabel linkLabel3;
         private System.Windows.Forms.CheckBox checkBox8;
+        private System.Windows.Forms.Button button21;
     }
 }
 

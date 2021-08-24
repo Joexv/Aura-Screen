@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using AuraScreen.Magnification;
+using Microsoft.Win32;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -24,6 +25,7 @@ namespace AuraScreen
         {
             InitializeComponent();
             CreateView();
+            LocationTimer.Interval = NativeMethods.USER_TIMER_MINIMUM;
         }
 
 
@@ -56,41 +58,8 @@ namespace AuraScreen
             this.Height = Height;
             this.Opacity = 0.99; //Form must be even slightly opaque inorder to pass through inputs
             this.Hide();
-            this.BackgroundImage = Transform(CaptureScreen(AppPosition, Height, Width));
+            this.BackgroundImage = ColorMatrix.Transform(CaptureScreen(AppPosition, Height, Width), ColorMatrix.Negative);
             this.Show();
-        }
-
-        public Bitmap Transform(Bitmap source)
-        {
-            //create a blank bitmap the same size as original
-            Bitmap newBitmap = new Bitmap(source.Width, source.Height);
-
-            //get a graphics object from the new image
-            Graphics g = Graphics.FromImage(newBitmap);
-
-            // create the negative color matrix
-            System.Drawing.Imaging.ColorMatrix colorMatrix = new System.Drawing.Imaging.ColorMatrix(
-            new float[][]
-            {
-                new float[] {-1, 0, 0, 0, 0},
-                new float[] {0, -1, 0, 0, 0},
-                new float[] {0, 0, -1, 0, 0},
-                new float[] {0, 0, 0, 1, 0},
-                new float[] {1, 1, 1, 0, 1}
-             });
-
-            // create some image attributes
-            ImageAttributes attributes = new ImageAttributes();
-
-            attributes.SetColorMatrix(colorMatrix);
-
-            g.DrawImage(source, new Rectangle(0, 0, source.Width, source.Height),
-                        0, 0, source.Width, source.Height, GraphicsUnit.Pixel, attributes);
-
-            //dispose the Graphics object
-            g.Dispose();
-
-            return newBitmap;
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -117,6 +86,41 @@ namespace AuraScreen
                     case "Invert Rectangle":
                         return;
                 }
+            }
+        }
+        public enum GWL
+        {
+            ExStyle = -20
+        }
+
+        public enum WS_EX
+        {
+            Transparent = 0x20,
+            Layered = 0x80000
+        }
+
+        public enum LWA
+        {
+            ColorKey = 0x1,
+            Alpha = 0x2
+        }
+
+        [DllImport("user32.dll", EntryPoint = "GetWindowLong")]
+        public static extern int GetWindowLong(IntPtr hWnd, GWL nIndex);
+
+        [DllImport("user32.dll", EntryPoint = "SetWindowLong")]
+        public static extern int SetWindowLong(IntPtr hWnd, GWL nIndex, int dwNewLong);
+
+        [DllImport("user32.dll", EntryPoint = "SetLayeredWindowAttributes")]
+        public static extern bool SetLayeredWindowAttributes(IntPtr hWnd, int crKey, byte alpha, LWA dwFlags);
+
+        protected override System.Windows.Forms.CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle = cp.ExStyle | WS_EX_TRANSPARENT;
+                return cp;
             }
         }
 
@@ -230,7 +234,7 @@ namespace AuraScreen
             this.Opacity = 0.99; //Form must be even slightly opaque inorder to pass through inputs
             inversionPT = Cursor.Position;
             this.Hide();
-            this.BackgroundImage = Transform(CaptureScreen());
+            this.BackgroundImage = ColorMatrix.Transform(CaptureScreen(), ColorMatrix.Negative);
             this.Show();
             DoInvert = false;
         }
@@ -283,8 +287,136 @@ namespace AuraScreen
         }
         private void timer3_Tick(object sender, EventArgs e)
         {
-            //if(!ps.Default.invert)
-            //CreateView();
+            UpdateMaginifier();
+        }
+
+        private IntPtr hwndMag;
+        private float magnification;
+        private bool initialized;
+        internal RECT magWindowRect = new RECT();
+
+        public void StartMag()
+        {
+            initialized = NativeMethods.MagInitialize();
+            if (initialized)
+            {
+                SetupMagnifier();
+                MagTimer.Interval = NativeMethods.USER_TIMER_MINIMUM;
+                MagTimer.Enabled = true;
+            }
+        }
+        protected virtual void ResizeMagnifier()
+        {
+            if (initialized && (hwndMag != IntPtr.Zero))
+            {
+                NativeMethods.GetClientRect(this.Handle, ref magWindowRect);
+                // Resize the control to fill the window.
+                NativeMethods.SetWindowPos(hwndMag, IntPtr.Zero,
+                    magWindowRect.left, magWindowRect.top, magWindowRect.right, magWindowRect.bottom, 0);
+            }
+        }
+
+        public virtual void UpdateMaginifier()
+        {
+            if ((!initialized) || (hwndMag == IntPtr.Zero))
+                return;
+
+            POINT mousePoint = new POINT();
+            RECT sourceRect = new RECT();
+
+            NativeMethods.GetCursorPos(ref mousePoint);
+
+            int width = (int)((magWindowRect.right - magWindowRect.left) / magnification);
+            int height = (int)((magWindowRect.bottom - magWindowRect.top) / magnification);
+
+            sourceRect.left = mousePoint.x - width / 2;
+            sourceRect.top = mousePoint.y - height / 2;
+
+
+            // Don't scroll outside desktop area.
+            if (sourceRect.left < 0)
+            {
+                sourceRect.left = 0;
+            }
+            if (sourceRect.left > NativeMethods.GetSystemMetrics(NativeMethods.SM_CXSCREEN) - width)
+            {
+                sourceRect.left = NativeMethods.GetSystemMetrics(NativeMethods.SM_CXSCREEN) - width;
+            }
+            sourceRect.right = sourceRect.left + width;
+
+            if (sourceRect.top < 0)
+            {
+                sourceRect.top = 0;
+            }
+            if (sourceRect.top > NativeMethods.GetSystemMetrics(NativeMethods.SM_CYSCREEN) - height)
+            {
+                sourceRect.top = NativeMethods.GetSystemMetrics(NativeMethods.SM_CYSCREEN) - height;
+            }
+            sourceRect.bottom = sourceRect.top + height;
+
+            // Set the source rectangle for the magnifier control.
+            NativeMethods.MagSetWindowSource(hwndMag, sourceRect);
+
+            // Reclaim topmost status, to prevent unmagnified menus from remaining in view. 
+            NativeMethods.SetWindowPos(this.Handle, NativeMethods.HWND_TOPMOST, 0, 0, 0, 0,
+                (int)SetWindowPosFlags.SWP_NOACTIVATE | (int)SetWindowPosFlags.SWP_NOMOVE | (int)SetWindowPosFlags.SWP_NOSIZE);
+
+            // Force redraw.
+            NativeMethods.InvalidateRect(hwndMag, IntPtr.Zero, true);
+        }
+
+        public float Magnification
+        {
+            get { return magnification; }
+            set
+            {
+                if (magnification != value)
+                {
+                    magnification = value;
+                    // Set the magnification factor.
+                    Transformation matrix = new Transformation(magnification);
+                    NativeMethods.MagSetWindowTransform(hwndMag, ref matrix);
+                }
+            }
+        }
+
+        public void SetupMagnifier()
+        {
+            if (!initialized)
+                return;
+
+            IntPtr hInst;
+
+            hInst = NativeMethods.GetModuleHandle(null);
+
+            // Make the window opaque.
+            this.AllowTransparency = true;
+            this.TransparencyKey = Color.Empty;
+            this.Opacity = 255;
+
+            // Create a magnifier control that fills the client area.
+            NativeMethods.GetClientRect(this.Handle, ref magWindowRect);
+            hwndMag = NativeMethods.CreateWindow((int)ExtendedWindowStyles.WS_EX_CLIENTEDGE, NativeMethods.WC_MAGNIFIER,
+                "MagnifierWindow", (int)WindowStyles.WS_CHILD | (int)MagnifierStyle.MS_SHOWMAGNIFIEDCURSOR |
+                (int)WindowStyles.WS_VISIBLE,
+                magWindowRect.left, magWindowRect.top, magWindowRect.right, magWindowRect.bottom, this.Handle, IntPtr.Zero, hInst, IntPtr.Zero);
+
+            if (hwndMag == IntPtr.Zero)
+            {
+                return;
+            }
+
+            // Set the magnification factor.
+            Transformation matrix = new Transformation(magnification);
+            NativeMethods.MagSetWindowTransform(hwndMag, ref matrix);
+
+            NativeMethods.MagSetColorEffect(hwndMag, ref Color)
+        }
+
+        protected void RemoveMagnifier()
+        {
+            if (initialized)
+                NativeMethods.MagUninitialize();
         }
     }
 }

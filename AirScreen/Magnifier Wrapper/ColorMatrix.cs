@@ -1,6 +1,8 @@
 using AuraScreen.Magnification;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -45,13 +47,20 @@ namespace AuraScreen
                 {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
                 {  0.0f,  0.0f,  0.0f,  0.0f,  1.0f }
             };
-
+            NegativeGrayScale = Multiply(Negative, GrayScale);
             Red = new float[,] {
                 {  1.0f,  0.0f,  0.0f,  0.0f,  0.0f },
                 {  0.0f,  0.0f,  0.0f,  0.0f,  0.0f },
                 {  0.0f,  0.0f,  0.0f,  0.0f,  0.0f },
                 {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
                 {  0.0f,  0.0f,  0.0f,  0.0f,  1.0f }
+            };
+            HueShift180 = new float[,] {
+                { -0.3333333f,  0.6666667f,  0.6666667f, 0.0f, 0.0f },
+                {  0.6666667f, -0.3333333f,  0.6666667f, 0.0f, 0.0f },
+                {  0.6666667f,  0.6666667f, -0.3333333f, 0.0f, 0.0f },
+                {  0.0f,              0.0f,        0.0f, 1.0f, 0.0f },
+                {  0.0f,              0.0f,        0.0f, 0.0f, 1.0f }
             };
             Red = Multiply(GrayScale, Red);
             NegativeRed = Multiply(NegativeGrayScale, Red);
@@ -105,6 +114,33 @@ namespace AuraScreen
                 }
             }
             return c;
+        }
+
+        public static Bitmap Transform(Bitmap source, float[,] Matrix)
+        {
+            Bitmap newBitmap = new Bitmap(source.Width, source.Height);
+            Graphics g = Graphics.FromImage(newBitmap);
+            System.Drawing.Imaging.ColorMatrix colorMatrix = new System.Drawing.Imaging.ColorMatrix(ToJaggedArray(Matrix));
+            ImageAttributes attributes = new ImageAttributes();
+            attributes.SetColorMatrix(colorMatrix);
+            g.DrawImage(source, new Rectangle(0, 0, source.Width, source.Height), 0, 0, source.Width, source.Height, GraphicsUnit.Pixel, attributes);
+            g.Dispose();
+            return newBitmap;
+        }
+
+        public static float[][] ToJaggedArray(float[,] Matrix)
+        {
+            float[][] newArray = new float[][] { };
+
+            for (int i = 0; i < 5; i++)
+            {
+                for (int k = 0; i < 5; i++)
+                {
+                    newArray[i][k] = Matrix[i, k];
+                }
+            }
+
+            return newArray;
         }
     }
 }
