@@ -25,9 +25,17 @@ namespace AuraScreen
         {
             InitializeComponent();
             CreateView();
-            magnification = 1.0f;
             MagTimer.Interval = NativeMethods.USER_TIMER_MINIMUM;
             LocationTimer.Interval = NativeMethods.USER_TIMER_MINIMUM;
+        }
+        protected override System.Windows.Forms.CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle = cp.ExStyle | WS_EX_TRANSPARENT;
+                return cp;
+            }
         }
 
 
@@ -116,28 +124,15 @@ namespace AuraScreen
         [DllImport("user32.dll", EntryPoint = "SetLayeredWindowAttributes")]
         public static extern bool SetLayeredWindowAttributes(IntPtr hWnd, int crKey, byte alpha, LWA dwFlags);
 
-        protected override System.Windows.Forms.CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                cp.ExStyle = cp.ExStyle | WS_EX_TRANSPARENT;
-                return cp;
-            }
-        }
-
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            if (!ps.Default.CF_DoInvert)
-            {
-                int wl = GetWindowLong(this.Handle, GWL.ExStyle);
-                wl = wl | 0x80000 | 0x20;
-                SetWindowLong(this.Handle, GWL.ExStyle, wl);
-                SetLayeredWindowAttributes(this.Handle, 0, 128, LWA.Alpha);
+            int initialStyle = GetWindowLong(this.Handle, GWL.ExStyle);
+            SetWindowLong(this.Handle, GWL.ExStyle, initialStyle | 0x80000 | 0x20);
 
-                this.Opacity = (double)ps.Default.CF_Opacity;
-            }
+            this.Opacity = (double)ps.Default.CF_Opacity;
+            if (ps.Default.CF_DoInvert && !ps.Default.useAltInvert)
+                StartMag();
         }
 
         private void AdjustLocation()
@@ -206,8 +201,8 @@ namespace AuraScreen
 
         private void Form2_LocationChanged(object sender, EventArgs e)
         {
-            if (DoInvert)
-                Invert();
+            //if (DoInvert)
+            //    Invert();
         }
 
         private void Form2_MouseLeave(object sender, EventArgs e)
@@ -246,7 +241,7 @@ namespace AuraScreen
                 this.Show();
                 DoInvert = false;
             }
-            else SetupMagnifier();
+            else StartMag();
         }
 
         private void MouseBox_Shown(object sender, EventArgs e)
@@ -258,6 +253,7 @@ namespace AuraScreen
         {
             if(!ps.Default.CF_DoInvert)
             {
+                //RemoveMagnifier();
                 if(!ps.Default.CF_Lock)
                     AdjustLocation();
                 if (this.Width != ps.Default.CF_Width || this.Height != ps.Default.CF_Height)
@@ -266,7 +262,7 @@ namespace AuraScreen
                     CreateView();
             }
         }
-        private void timer2_Tick(object sender, EventArgs e)
+        private void InvertTimer_Tick(object sender, EventArgs e)
         {
             if (this.Visible)
             {
@@ -274,16 +270,18 @@ namespace AuraScreen
                 {
                     if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftShift))
                         ShiftHeld = true;
+
                     if(!ShiftHeld && !ps.Default.CF_Lock)
+                        ShiftHeld = false;
+
+                    if (ShiftHeld && !System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftShift))
                     {
                         ShiftHeld = false;
+                        source.left = Cursor.Position.X - this.Width / 2;
+                        source.top = Cursor.Position.Y - this.Height / 2;
                         this.Location = new Point(source.left, source.top);
                     }
-                    else if (ShiftHeld && !System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftShift))
-                    {
-                        ShiftHeld = true;
-                        this.Location = new Point(source.left, source.top);
-                    }
+
                     if (this.Width != ps.Default.CF_Width || this.Height != ps.Default.CF_Height)
                     {
                         CreateView();
@@ -300,7 +298,7 @@ namespace AuraScreen
                         DoInvert = true;
                         AdjustLocation();
                     }
-                    else if (ShiftHeld && !System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftShift))
+                    if (ShiftHeld && !System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftShift))
                     {
                         ShiftHeld = false;
                         DoInvert = true;
@@ -325,19 +323,30 @@ namespace AuraScreen
         }
 
         private IntPtr hwndMag;
-        private float magnification;
         private bool initialized;
         RECT magWindowRect = new RECT();
         RECT source = new RECT();
 
         public void StartMag()
         {
-            initialized = NativeMethods.MagInitialize();
-            if (initialized)
+            if (ps.Default.FilterInUse && ps.Default.FilterNum != 1)
             {
-                SetupMagnifier();
-                MagTimer.Interval = NativeMethods.USER_TIMER_MINIMUM;
-                MagTimer.Enabled = true;
+                MessageBox.Show("Another filter is currently using Aura Screen's Filterting System. Please diable that before enabling another.");
+                this.Close();
+            }
+            else
+            {
+                initialized = NativeMethods.MagInitialize();
+                if (initialized)
+                {
+                    ps.Default.FilterInUse = true;
+                    ps.Default.FilterNum = 1;
+                    ps.Default.Save();
+
+                    SetupMagnifier();
+                    MagTimer.Interval = NativeMethods.USER_TIMER_MINIMUM;
+                    MagTimer.Enabled = true;
+                }
             }
         }
         protected virtual void ResizeMagnifier()
@@ -359,8 +368,17 @@ namespace AuraScreen
             int width = (int)((magWindowRect.right - magWindowRect.left));
             int height = (int)((magWindowRect.bottom - magWindowRect.top));
 
-            source.left = Cursor.Position.X - width / 2;
-            source.top = Cursor.Position.Y - height / 2;
+            if (!ps.Default.CF_Lock)
+            {
+                source.left = Cursor.Position.X - width / 2;
+                source.top = Cursor.Position.Y - height / 2;
+            }
+            else
+            {
+                source.left = this.Location.X;
+                source.top = this.Location.Y;
+            }
+            
 
             if (source.left < 0)
                 source.left = 0;
@@ -381,13 +399,14 @@ namespace AuraScreen
                (int)SetWindowPosFlags.SWP_NOACTIVATE |
                (int)SetWindowPosFlags.SWP_NOMOVE |
                (int)SetWindowPosFlags.SWP_NOSIZE);
+            if (!ShiftHeld && !ps.Default.CF_Lock)
+                this.Location = new Point(source.left, source.top);
             NativeMethods.InvalidateRect(hwndMag, IntPtr.Zero, true);
-            this.Location = new Point(source.left, source.top);
         }
 
         public void SetupMagnifier()
         {
-            MagTimer.Start();
+            //MagTimer.Start();
 
             DoubleBuffered = true;
             if (!initialized)
@@ -400,6 +419,7 @@ namespace AuraScreen
             // Make the window opaque.
             this.AllowTransparency = true;
             this.TransparencyKey = Color.Empty;
+            this.BackColor = Color.Empty;
             this.Opacity = 0.99;
 
             // Create a magnifier control that fills the client area.
@@ -413,11 +433,6 @@ namespace AuraScreen
             {
                 return;
             }
-
-            // Set the magnification factor.
-            Transformation matrix = new Transformation(magnification);
-            NativeMethods.MagSetWindowTransform(hwndMag, ref matrix);
-
             ColorEffect colorEffect = new ColorEffect(BuiltinMatrices.Negative);
             NativeMethods.MagSetColorEffect(hwndMag, ref colorEffect);
         }
@@ -425,7 +440,23 @@ namespace AuraScreen
         protected void RemoveMagnifier()
         {
             if (initialized)
+            {
                 NativeMethods.MagUninitialize();
+            }  
+        }
+
+        private void MouseBox_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MagTimer.Enabled = false;
+            RemoveMagnifier();
+        }
+
+        private void MouseBox_VisibleChanged(object sender, EventArgs e)
+        {
+            if (!this.Visible)
+                MagTimer.Enabled = false;
+            else if (ps.Default.CF_DoInvert && this.Visible)
+                MagTimer.Enabled = true;
         }
     }
 }

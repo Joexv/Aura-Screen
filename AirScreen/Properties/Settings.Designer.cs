@@ -799,5 +799,41 @@ namespace AuraScreen.Properties {
                 this["useAltInvert"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool FilterInUse {
+            get {
+                return ((bool)(this["FilterInUse"]));
+            }
+            set {
+                this["FilterInUse"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int FilterNum {
+            get {
+                return ((int)(this["FilterNum"]));
+            }
+            set {
+                this["FilterNum"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool EnterEditMode {
+            get {
+                return ((bool)(this["EnterEditMode"]));
+            }
+            set {
+                this["EnterEditMode"] = value;
+            }
+        }
     }
 }

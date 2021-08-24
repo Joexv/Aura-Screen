@@ -17,6 +17,7 @@ namespace AuraScreen
 
     public partial class Configurator : Form
     {
+        public static bool initialized { get; set; } = false;
         public MouseBox mousebox = new MouseBox();
         public Dictionary<string, float[,]> Matrix = new Dictionary<string, float[,]> {
             { "None", BuiltinMatrices.Identity },
@@ -61,11 +62,11 @@ namespace AuraScreen
             notifyIcon1.Visible = true;
 
             toolbox.MF = this;
-
         }
 
         public void PopulateControls()
         {
+            ps.Default.FilterInUse = false;
             if (ps.Default.CF_OnStartup)
                 ToggleCF();
 
@@ -332,11 +333,7 @@ namespace AuraScreen
             }
             ps.Default.Save();
 
-            try { blockfilter.Close(); }
-            catch { }
-
-            blockfilter = new Tiles();
-            blockfilter.Show();
+            ReloadTiles();
         }
 
         public void Invert(bool AdjustCheckBox = true)
@@ -388,9 +385,12 @@ namespace AuraScreen
 
         public void ToggleCF()
         {
-            if (mousebox == null)
-                mousebox = new MouseBox();
-
+            if (mousebox.IsDisposed)
+            {
+                ReloadCF();
+                return;
+            }
+                
             if (mousebox.Visible)
                 mousebox.Hide();
             else
@@ -457,42 +457,65 @@ namespace AuraScreen
             ReloadCF();
         }
 
+        public bool FilterInUse(int Override = 0)
+        {
+            if (ps.Default.CF_DoInvert && mousebox.Visible && Override != 1)
+            {
+                tileInvert.Checked = false;
+                return true;
+            }
+
+            if (ps.Default.BF_Invert && blockfilter.Visible && Override != 2)
+            {
+                inversionBox.Checked = false;
+                return true;
+            }
+            if (SF_FilterInUse && Override != 3)
+            {
+                inversionBox.Checked = false;
+                tileInvert.Checked = false;
+                return true;
+            }
+
+            return false;
+        }
+
         public void ReloadCF()
         {
-            mousebox.Close();
-            mousebox = new MouseBox();
-            mousebox.Show();
+            try
+            {
+                if(!mousebox.IsDisposed)
+                    mousebox.Dispose();
+                Application.DoEvents();
 
-            PopulateControls();
-            SaveHotkeys();
+                mousebox = new MouseBox();
+                mousebox.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         public void EditTiles()
         {
             if (ps.Default.BF_Location == 5 && blockfilter.Visible)
             {
-                if (blockfilter.FormBorderStyle == FormBorderStyle.None)
+                if (!ps.Default.EnterEditMode)
                 {
-                    blockfilter.FormBorderStyle = FormBorderStyle.Sizable;
-                    blockfilter.PreviewButton.Visible = true;
-                    blockfilter.SaveButton.Visible = true;
-                    blockfilter.label1.Visible = true;
-                    blockfilter.button1.Visible = true;
-                    blockfilter.numericUpDown1.Visible = true;
-                    blockfilter.groupBox1.Visible = true;
-                    blockfilter.Opacity = 1;
-                    blockfilter.BackgroundImage = null;
+                    ps.Default.EnterEditMode = true;
+                    ps.Default.Save();
+                    ReloadTiles();
                 }
                 else
                 {
-                    blockfilter.FormBorderStyle = FormBorderStyle.None;
-                    blockfilter.PreviewButton.Visible = false;
-                    blockfilter.SaveButton.Visible = false;
-                    blockfilter.label1.Visible = false;
-                    blockfilter.button1.Visible = false;
-                    blockfilter.numericUpDown1.Visible = false;
-                    blockfilter.groupBox1.Visible = false;
-                    blockfilter.Opacity = (double)ps.Default.BF_Opacity;
+                    ps.Default.EnterEditMode = false;
+                    ps.Default.Save();
+
+                    if (ps.Default.BF_Invert)
+                        ReloadTiles();
+                    else
+                        blockfilter.ExitEditMode();
                 }
             }
         }
@@ -621,16 +644,30 @@ namespace AuraScreen
         {
         }
 
-        public void button2_Click_1(object sender, EventArgs e)
+        public void ReloadTiles()
         {
-            //ToggleBlockFilter();
+            Console.WriteLine("Reloading Block Filter");
             ps.Default.BF_Location = tileSelect.SelectedIndex + 1;
             ps.Default.BF_Opacity = tileOpacity.Value;
+            ps.Default.BF_Invert = tileInvert.Checked;
             ps.Default.Save();
-            try { blockfilter.Close(); }
-            catch { }
-            blockfilter = new Tiles();
-            blockfilter.Show();
+            try
+            {
+                if (!blockfilter.IsDisposed)
+                    blockfilter.Dispose();
+                Application.DoEvents();
+                blockfilter = new Tiles();
+                blockfilter.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        public void button2_Click_1(object sender, EventArgs e)
+        {
+            ReloadTiles();
         }
 
         public void ToggleBlockFilter()
@@ -639,10 +676,12 @@ namespace AuraScreen
             ps.Default.BF_Opacity = tileOpacity.Value;
             ps.Default.Save();
 
-            //try { tile.Close(); }
-            //catch { }
-            //tile = new Tiles();
-
+            if (blockfilter.IsDisposed)
+            {
+                ReloadTiles();
+                return;
+            }
+                
             if (blockfilter.Visible)
                 blockfilter.Hide();
             else
@@ -651,10 +690,7 @@ namespace AuraScreen
 
         public void button12_Click(object sender, EventArgs e)
         {
-            if (blockfilter.Visible)
-                blockfilter.Hide();
-            else
-                blockfilter.Show();
+            ToggleBlockFilter();
         }
 
         public void button11_Click(object sender, EventArgs e)
@@ -676,7 +712,7 @@ namespace AuraScreen
         {
         }
 
-        private bool SF_FilterInUse = false;
+        public bool SF_FilterInUse = false;
 
         public void button14_Click(object sender, EventArgs e)
         {
@@ -690,13 +726,20 @@ namespace AuraScreen
             ps.Default.Save();
             Console.WriteLine($"Identity {BuiltinMatrices.MatrixToString(BuiltinMatrices.Identity)}" +
                 $"{ps.Default.SF_LastUsed} {BuiltinMatrices.MatrixToString(Matrix[ps.Default.SF_LastUsed])}");
-            if (SF_FilterInUse || matrixBox.Text == "None")
+            if (matrixBox.Text == "None" && (ps.Default.FilterInUse && ps.Default.FilterNum != 3))
             {
-                SF_FilterInUse = false;
+                ps.Default.FilterInUse = false;
+                ps.Default.FilterNum = 0;
                 BuiltinMatrices.ChangeColorEffect(BuiltinMatrices.Identity);
             }
             else
-                SF_FilterInUse = BuiltinMatrices.ChangeColorEffect(Matrix[ps.Default.SF_LastUsed]);
+            {
+                    ps.Default.FilterInUse = true;
+                    ps.Default.FilterNum = 3;
+                    SF_FilterInUse = BuiltinMatrices.ChangeColorEffect(Matrix[ps.Default.SF_LastUsed]);
+            }
+
+            ps.Default.Save();
         }
 
         public void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -1005,19 +1048,46 @@ namespace AuraScreen
 
         public void inversionBox_CheckedChanged(object sender, EventArgs e)
         {
-            inversionBox.CheckedChanged -= new System.EventHandler(inversionBox_CheckedChanged);
             ps.Default.CF_DoInvert = inversionBox.Checked;
             ps.Default.Save();
 
-            if (ps.Default.CF_DoInvert && ps.Default.CF_InversionToggle && !mousebox.Visible)
-                ToggleCF();
-            else if (!ps.Default.CF_DoInvert && !ps.Default.CF_InversionToggle)
-                ReloadCF();
-            else if (!ps.Default.CF_DoInvert && ps.Default.CF_InversionToggle)
+            if (!inversionBox.Checked)
             {
-                mousebox.Hide();
+                if(CheckFilter(1))
+                {
+                    ps.Default.FilterInUse = false;
+                    ps.Default.FilterNum = 0;
+                    ps.Default.Save();
+                }
+                mousebox.Close();
             }
-            inversionBox.CheckedChanged += new System.EventHandler(inversionBox_CheckedChanged);
+            else 
+            {
+                if (CheckFilter(1))
+                {
+                    MessageBox.Show("Another filter is currently using Aura Screen's Filterting. Please diable that before enabling another.");
+                    inversionBox.Checked = false;
+                    ps.Default.CF_DoInvert = false;
+                    ps.Default.Save();
+                }
+                else
+                {
+                    ps.Default.FilterInUse = true;
+                    ps.Default.FilterNum = 1;
+                    ps.Default.Save();
+                }
+            }
+
+            if (mousebox.Visible)
+                ReloadCF();
+        }
+
+        //Returns False if either no filter is running or current filter is the one checked against
+        private bool CheckFilter(int Filter = 0)
+        {
+            if (Filter == ps.Default.FilterNum)
+                return false;
+            return ps.Default.FilterInUse;
         }
 
         public void inversionToggle_CheckedChanged(object sender, EventArgs e)
@@ -1132,6 +1202,36 @@ namespace AuraScreen
         {
             ps.Default.BF_Invert = tileInvert.Checked;
             ps.Default.Save();
+
+            if (!tileInvert.Checked)
+            {
+                if (CheckFilter(2))
+                {
+                    ps.Default.FilterInUse = false;
+                    ps.Default.FilterNum = 0;
+                    ps.Default.Save();
+                }
+                blockfilter.Close();
+            }
+            else
+            {
+                if (CheckFilter(2))
+                {
+                    MessageBox.Show("Another filter is currently using Aura Screen's Filterting. Please diable that before enabling another.");
+                    tileInvert.Checked = false;
+                    ps.Default.BF_Invert = false;
+                    ps.Default.Save();
+                }
+                else
+                {
+                    ps.Default.FilterInUse = true;
+                    ps.Default.FilterNum = 2;
+                    ps.Default.Save();
+                }
+            }
+
+            if (blockfilter.Visible)
+                ReloadTiles();
         }
 
         private void time_ValueChanged(object sender, EventArgs e)
@@ -1221,6 +1321,11 @@ namespace AuraScreen
         private void button21_Click_1(object sender, EventArgs e)
         {
             
+        }
+
+        private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

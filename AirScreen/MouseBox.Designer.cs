@@ -43,8 +43,9 @@ namespace AuraScreen
             // 
             // InvertTimer
             // 
+            this.InvertTimer.Enabled = true;
             this.InvertTimer.Interval = 1;
-            this.InvertTimer.Tick += new System.EventHandler(this.timer2_Tick);
+            this.InvertTimer.Tick += new System.EventHandler(this.InvertTimer_Tick);
             // 
             // MagTimer
             // 
@@ -68,9 +69,11 @@ namespace AuraScreen
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Form2";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MouseBox_FormClosing);
             this.Load += new System.EventHandler(this.Form2_Load);
             this.Shown += new System.EventHandler(this.MouseBox_Shown);
             this.LocationChanged += new System.EventHandler(this.Form2_LocationChanged);
+            this.VisibleChanged += new System.EventHandler(this.MouseBox_VisibleChanged);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form2_KeyPress);
             this.MouseLeave += new System.EventHandler(this.Form2_MouseLeave);
             this.Resize += new System.EventHandler(this.MouseBox_Resize);

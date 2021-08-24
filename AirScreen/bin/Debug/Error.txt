@@ -1,20 +1,20 @@
 System.ObjectDisposedException: Cannot access a disposed object.
-Object name: 'MouseBox'.
+Object name: 'Tiles'.
    at System.Windows.Forms.Control.CreateHandle()
    at System.Windows.Forms.Form.CreateHandle()
    at System.Windows.Forms.Control.get_Handle()
-   at System.Windows.Forms.Control.SetVisibleCore(Boolean value)
-   at System.Windows.Forms.Form.SetVisibleCore(Boolean value)
-   at System.Windows.Forms.Control.Show()
-   at AuraScreen.Configurator.ToggleCF() in C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\Configurator.cs:line 397
-   at AuraScreen.Configurator.button1_Click(Object sender, EventArgs e) in C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\Configurator.cs:line 403
-   at System.Windows.Forms.Control.OnClick(EventArgs e)
-   at System.Windows.Forms.Button.OnClick(EventArgs e)
-   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
-   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
+   at AuraScreen.Tiles.OnShown(EventArgs e) in C:\Users\HPD\Documents\Github\MouseHover\AirScreen\Tiles.cs:line 62
+   at System.Windows.Forms.Form.CallShownEvent()
+   at System.Windows.Forms.Control.InvokeMarshaledCallbackDo(ThreadMethodEntry tme)
+   at System.Windows.Forms.Control.InvokeMarshaledCallbackHelper(Object obj)
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Windows.Forms.Control.InvokeMarshaledCallback(ThreadMethodEntry tme)
+   at System.Windows.Forms.Control.InvokeMarshaledCallbacks()
    at System.Windows.Forms.Control.WndProc(Message& m)
-   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
-   at System.Windows.Forms.Button.WndProc(Message& m)
+   at System.Windows.Forms.ScrollableControl.WndProc(Message& m)
+   at System.Windows.Forms.Form.WndProc(Message& m)
    at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
    at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
    at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
@@ -23,4 +23,4 @@ Object name: 'MouseBox'.
    at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
    at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
    at System.Windows.Forms.Application.Run(Form mainForm)
-   at AuraScreen.Program.Main() in C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\Program.cs:line 16
+   at AuraScreen.Program.Main() in C:\Users\HPD\Documents\Github\MouseHover\AirScreen\Program.cs:line 16
