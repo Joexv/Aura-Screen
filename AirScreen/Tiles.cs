@@ -545,7 +545,7 @@ namespace AuraScreen
         {
             if (ps.Default.FilterInUse && ps.Default.FilterNum != 2)
             {
-                MessageBox.Show("Another filter is currently using Aura Screen's Filterting. Please diable that before enabling another.");
+                MessageBox.Show($"Another filter is currently using Aura Screen's Filterting. Please diable that before enabling another. Filter with the ID {ps.Default.FilterNum}");
                 this.Close();
             }
             else if(!ps.Default.EnterEditMode)

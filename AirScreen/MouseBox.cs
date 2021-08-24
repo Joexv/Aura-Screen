@@ -15,8 +15,6 @@ namespace AuraScreen
     {
         private const int WS_EX_TRANSPARENT = 0x20;
 
-        private bool DoInvert = false;
-
         private Point inversionPT;
 
         private bool ShiftHeld = false;
@@ -27,6 +25,7 @@ namespace AuraScreen
             CreateView();
             MagTimer.Interval = NativeMethods.USER_TIMER_MINIMUM;
             LocationTimer.Interval = NativeMethods.USER_TIMER_MINIMUM;
+            this.Location = Cursor.Position;
         }
         protected override System.Windows.Forms.CreateParams CreateParams
         {
@@ -127,10 +126,13 @@ namespace AuraScreen
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
-            int initialStyle = GetWindowLong(this.Handle, GWL.ExStyle);
-            SetWindowLong(this.Handle, GWL.ExStyle, initialStyle | 0x80000 | 0x20);
 
+            int wl = GetWindowLong(this.Handle, GWL.ExStyle);
+            wl = wl | 0x80000 | 0x20;
+            SetWindowLong(this.Handle, GWL.ExStyle, wl);
+            SetLayeredWindowAttributes(this.Handle, 0, 128, LWA.Alpha);
             this.Opacity = (double)ps.Default.CF_Opacity;
+
             if (ps.Default.CF_DoInvert && !ps.Default.useAltInvert)
                 StartMag();
         }
@@ -239,7 +241,6 @@ namespace AuraScreen
                 this.Hide();
                 this.BackgroundImage = Matrices.Transform(CaptureScreen(), Matrices.Negative);
                 this.Show();
-                DoInvert = false;
             }
             else StartMag();
         }
@@ -295,13 +296,11 @@ namespace AuraScreen
                     if (InversionPositionCheck() && !ShiftHeld && !ps.Default.CF_Lock)
                     {
                         ShiftHeld = false;
-                        DoInvert = true;
                         AdjustLocation();
                     }
                     if (ShiftHeld && !System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftShift))
                     {
                         ShiftHeld = false;
-                        DoInvert = true;
                         Invert();
                     }
 
@@ -331,7 +330,7 @@ namespace AuraScreen
         {
             if (ps.Default.FilterInUse && ps.Default.FilterNum != 1)
             {
-                MessageBox.Show("Another filter is currently using Aura Screen's Filterting System. Please diable that before enabling another.");
+                MessageBox.Show($"Another filter is currently using Aura Screen's Filterting System. Please diable that before enabling another. Filter with the ID {ps.Default.FilterNum}");
                 this.Close();
             }
             else

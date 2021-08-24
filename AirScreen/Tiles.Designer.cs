@@ -38,6 +38,13 @@ namespace AuraScreen
             this.button1 = new System.Windows.Forms.Button();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.squwiggly = new System.Windows.Forms.RadioButton();
             this.label3 = new System.Windows.Forms.Label();
             this.f1 = new System.Windows.Forms.RadioButton();
@@ -49,14 +56,7 @@ namespace AuraScreen
             this.InvertTimer = new System.Windows.Forms.Timer(this.components);
             this.InvertKeyChecker = new System.Windows.Forms.Timer(this.components);
             this.ScrollingTimer = new System.Windows.Forms.Timer(this.components);
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.time)).BeginInit();
@@ -64,7 +64,7 @@ namespace AuraScreen
             // 
             // PreviewButton
             // 
-            this.PreviewButton.Location = new System.Drawing.Point(12, 12);
+            this.PreviewButton.Location = new System.Drawing.Point(395, 106);
             this.PreviewButton.Margin = new System.Windows.Forms.Padding(4);
             this.PreviewButton.Name = "PreviewButton";
             this.PreviewButton.Size = new System.Drawing.Size(264, 80);
@@ -76,7 +76,7 @@ namespace AuraScreen
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(282, 12);
+            this.SaveButton.Location = new System.Drawing.Point(395, 18);
             this.SaveButton.Margin = new System.Windows.Forms.Padding(4);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(264, 80);
@@ -99,7 +99,7 @@ namespace AuraScreen
             0,
             0,
             131072});
-            this.numericUpDown1.Location = new System.Drawing.Point(286, 114);
+            this.numericUpDown1.Location = new System.Drawing.Point(222, 54);
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             99,
@@ -125,7 +125,7 @@ namespace AuraScreen
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(282, 86);
+            this.label1.Location = new System.Drawing.Point(217, 25);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(85, 25);
@@ -135,10 +135,10 @@ namespace AuraScreen
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(10, 86);
+            this.button1.Location = new System.Drawing.Point(30, 104);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(264, 80);
+            this.button1.Size = new System.Drawing.Size(312, 51);
             this.button1.TabIndex = 4;
             this.button1.Text = "Change Color";
             this.button1.UseVisualStyleBackColor = true;
@@ -148,10 +148,10 @@ namespace AuraScreen
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.button7);
             this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.button5);
             this.groupBox1.Controls.Add(this.button4);
             this.groupBox1.Controls.Add(this.button3);
@@ -167,16 +167,85 @@ namespace AuraScreen
             this.groupBox1.Controls.Add(this.time);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.invert);
-            this.groupBox1.Location = new System.Drawing.Point(12, 98);
+            this.groupBox1.Location = new System.Drawing.Point(13, 13);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(744, 565);
+            this.groupBox1.Size = new System.Drawing.Size(374, 565);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Settings";
             this.groupBox1.Visible = false;
             this.groupBox1.VisibleChanged += new System.EventHandler(this.groupBox1_VisibleChanged);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(189, 451);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(153, 88);
+            this.button7.TabIndex = 15;
+            this.button7.Text = "Vertically";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(30, 451);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(153, 88);
+            this.button6.TabIndex = 14;
+            this.button6.Text = "Horizontally";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(30, 423);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(312, 25);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Fill";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(111, 310);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(153, 88);
+            this.button5.TabIndex = 11;
+            this.button5.Text = "Bottom";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(111, 216);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(153, 88);
+            this.button4.TabIndex = 10;
+            this.button4.Text = "Top";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(270, 216);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 182);
+            this.button3.TabIndex = 9;
+            this.button3.Text = "Right";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(30, 216);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 182);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Left";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // squwiggly
             // 
@@ -282,7 +351,7 @@ namespace AuraScreen
             // invert
             // 
             this.invert.AutoSize = true;
-            this.invert.Location = new System.Drawing.Point(30, 44);
+            this.invert.Location = new System.Drawing.Point(30, 56);
             this.invert.Margin = new System.Windows.Forms.Padding(4);
             this.invert.Name = "invert";
             this.invert.Size = new System.Drawing.Size(97, 29);
@@ -307,83 +376,14 @@ namespace AuraScreen
             this.ScrollingTimer.Interval = 500;
             this.ScrollingTimer.Tick += new System.EventHandler(this.ScrollingTimer_Tick);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(30, 216);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 182);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Left";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(270, 216);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 182);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "Right";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(111, 216);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(153, 88);
-            this.button4.TabIndex = 10;
-            this.button4.Text = "Up";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(111, 310);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(153, 88);
-            this.button5.TabIndex = 11;
-            this.button5.Text = "Down";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(158, 188);
+            this.label4.Location = new System.Drawing.Point(33, 188);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 25);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Align";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(167, 423);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 25);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Fill";
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(30, 451);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(153, 88);
-            this.button6.TabIndex = 14;
-            this.button6.Text = "Horizontally";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(189, 451);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(153, 88);
-            this.button7.TabIndex = 15;
-            this.button7.Text = "Vertically";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.label4.Size = new System.Drawing.Size(312, 25);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Snap To";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Tiles
             // 
@@ -400,7 +400,7 @@ namespace AuraScreen
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Tiles";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Tile Overlay";
+            this.Text = "Block Filter";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Tiles_FormClosing);
             this.Load += new System.EventHandler(this.Tiles_Load);
             this.Shown += new System.EventHandler(this.Tiles_Shown);
@@ -435,7 +435,6 @@ namespace AuraScreen
         private System.Windows.Forms.Timer InvertKeyChecker;
         public System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Timer ScrollingTimer;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button3;
@@ -443,5 +442,6 @@ namespace AuraScreen
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
     }
 }

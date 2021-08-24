@@ -241,7 +241,10 @@ namespace AuraScreen
         public void ReloadHotKeys()
         {
             GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.HK_ToggleCF, () => ToggleCF());
-            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.HK_InvertCF, () => Invert());
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.HK_InvertCF, () => {
+                inversionBox.Checked = !inversionBox.Checked;
+                ReloadCF();
+            });
             GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.HK_LockCF, () => { ps.Default.CF_Lock = !ps.Default.CF_Lock; ps.Default.Save(); });
 
             GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.HK_EnlargeCF, () =>
@@ -251,6 +254,7 @@ namespace AuraScreen
                     ps.Default.CF_Width += (int)ps.Default.CF_SizeIncrement;
                     ps.Default.CF_Height += (int)ps.Default.CF_SizeIncrement;
                     ps.Default.Save();
+                    ReloadCF();
                 }
             });
             GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.HK_ShrinkCF, () =>
@@ -260,6 +264,7 @@ namespace AuraScreen
                     ps.Default.CF_Width -= (int)ps.Default.CF_SizeIncrement;
                     ps.Default.CF_Height -= (int)ps.Default.CF_SizeIncrement;
                     ps.Default.Save();
+                    ReloadCF();
                 }
             });
 
@@ -336,41 +341,16 @@ namespace AuraScreen
             ReloadTiles();
         }
 
-        public void Invert(bool AdjustCheckBox = true)
-        {
-            ps.Default.CF_DoInvert = !ps.Default.CF_DoInvert;
-            ps.Default.Save();
-
-            if (AdjustCheckBox)
-            {
-                inversionBox.CheckedChanged -= new System.EventHandler(inversionBox_CheckedChanged);
-                inversionBox.Checked = ps.Default.CF_DoInvert;
-                inversionBox.CheckedChanged += new System.EventHandler(inversionBox_CheckedChanged);
-            }
-
-            if (!mousebox.Visible)
-                ToggleCF();
-
-            if (!ps.Default.CF_DoInvert && !ps.Default.CF_InversionToggle)
-                ReloadCF();
-            else if (!ps.Default.CF_DoInvert && ps.Default.CF_InversionToggle)
-            {
-                mousebox.Hide();
-            }
-        }
-
         public void DisableInvert()
         {
-            ps.Default.CF_DoInvert = false;
-            ps.Default.Save();
-            mousebox.Hide();
+            inversionBox.Checked = false;
+            ReloadCF();
         }
 
         public void EnableInvert()
         {
-            ps.Default.CF_DoInvert = true;
-            ps.Default.Save();
-            mousebox.Show();
+            inversionBox.Checked = true;
+            ReloadCF();
         }
 
         public void HideCursor()
@@ -421,16 +401,18 @@ namespace AuraScreen
         //Width
         public void button3_Click(object sender, EventArgs e)
         {
-            if (ps.Default.CF_Width < 10001)
-                ps.Default.CF_Width = ps.Default.CF_Width + 10;
+            ps.Default.CF_Width = ps.Default.CF_Width + 25;
+            if (ps.Default.CF_Width > 10001)
+                ps.Default.CF_Width = 10000;
             width.Text = ps.Default.CF_Width.ToString();
             ps.Default.Save();
         }
 
         public void button4_Click(object sender, EventArgs e)
         {
-            if (ps.Default.CF_Width > 30)
-                ps.Default.CF_Width = ps.Default.CF_Width - 10;
+            ps.Default.CF_Width = ps.Default.CF_Width - 25;
+            if (ps.Default.CF_Width < 30)
+                ps.Default.CF_Width = 30;
             width.Text = ps.Default.CF_Width.ToString();
             ps.Default.Save();
         }
@@ -438,16 +420,18 @@ namespace AuraScreen
         //Height
         public void button6_Click(object sender, EventArgs e)
         {
-            if (ps.Default.CF_Height < 10001)
-                ps.Default.CF_Height = ps.Default.CF_Height + 10;
+            ps.Default.CF_Height = ps.Default.CF_Height + 25;
+            if (ps.Default.CF_Height > 10001)
+                ps.Default.CF_Height = 10000;
             height.Text = ps.Default.CF_Height.ToString();
             ps.Default.Save();
         }
 
         public void button5_Click(object sender, EventArgs e)
         {
-            if (ps.Default.CF_Height > 30)
-                ps.Default.CF_Height = ps.Default.CF_Height - 10;
+            ps.Default.CF_Height = ps.Default.CF_Height - 25;
+            if (ps.Default.CF_Height < 30)
+                ps.Default.CF_Height = 30;
             height.Text = ps.Default.CF_Height.ToString();
             ps.Default.Save();
         }
@@ -490,6 +474,7 @@ namespace AuraScreen
 
                 mousebox = new MouseBox();
                 mousebox.Show();
+                Application.DoEvents();
             }
             catch (Exception ex)
             {
@@ -721,22 +706,24 @@ namespace AuraScreen
 
         public void ToggleFilter()
         {
-            Console.WriteLine(ps.Default.SF_LastUsed);
             ps.Default.SF_LastUsed = matrixBox.Text;
             ps.Default.Save();
-            Console.WriteLine($"Identity {Matrices.MatrixToString(Matrices.Identity)}" +
-                $"{ps.Default.SF_LastUsed} {Matrices.MatrixToString(Matrix[ps.Default.SF_LastUsed])}");
-            if (matrixBox.Text == "None" && (ps.Default.FilterInUse && ps.Default.FilterNum != 3))
+            if (matrixBox.Text == "None" || SF_FilterInUse)
             {
+                SF_FilterInUse = false;
                 ps.Default.FilterInUse = false;
                 ps.Default.FilterNum = 0;
                 Matrices.ChangeColorEffect(Matrices.Identity);
             }
-            else
+            else if(!CheckFilter(3))
             {
                     ps.Default.FilterInUse = true;
                     ps.Default.FilterNum = 3;
                     SF_FilterInUse = Matrices.ChangeColorEffect(Matrix[ps.Default.SF_LastUsed]);
+            }
+            else
+            {
+                FilterError();
             }
 
             ps.Default.Save();
@@ -1065,7 +1052,7 @@ namespace AuraScreen
             {
                 if (CheckFilter(1))
                 {
-                    MessageBox.Show("Another filter is currently using Aura Screen's Filterting. Please diable that before enabling another.");
+                    FilterError();
                     inversionBox.Checked = false;
                     ps.Default.CF_DoInvert = false;
                     ps.Default.Save();
@@ -1080,6 +1067,27 @@ namespace AuraScreen
 
             if (mousebox.Visible)
                 ReloadCF();
+        }
+
+        public void FilterError()
+        {
+            string Filter = "";
+            switch (ps.Default.FilterNum)
+            {
+                case 0:
+                    Filter = "Hol up. There isn't currently a filter using it. Try applying it again.";
+                    break;
+                case 1:
+                    Filter = "Currently being used by the Cursor Filter";
+                    break;
+                case 2:
+                    Filter = "Currently being used by the Block/Tile Filter";
+                    break;
+                case 3:
+                    Filter = "Currently being usd by the Screen Filter";
+                    break;
+            }
+            MessageBox.Show($"Another filter is currently using Aura Screen's Filterting. Please diable that before enabling another.\n\n{Filter}");
         }
 
         //Returns False if either no filter is running or current filter is the one checked against
@@ -1217,7 +1225,7 @@ namespace AuraScreen
             {
                 if (CheckFilter(2))
                 {
-                    MessageBox.Show("Another filter is currently using Aura Screen's Filterting. Please diable that before enabling another.");
+                    FilterError();
                     tileInvert.Checked = false;
                     ps.Default.BF_Invert = false;
                     ps.Default.Save();

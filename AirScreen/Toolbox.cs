@@ -50,7 +50,8 @@ namespace AuraScreen
 
         private void Toolbox_Load(object sender, EventArgs e)
         {
-            if (ps.Default.CF_DoInvert && ps.Default.TB_AutoHide)
+            /*
+            if (ps.Default.CF_DoInvert && !ps.Default.TB_AutoHide)
             {
                 wasInverted = true;
                 MF.DisableInvert();
@@ -66,13 +67,16 @@ namespace AuraScreen
             }
             else
             {
-                foreach (var button in this.Controls.OfType<Button>())
-                {
-                    button.FlatAppearance.MouseDownBackColor = Color.FromArgb(230, 237, 183);
-                    button.FlatAppearance.BorderColor = Color.FromArgb(41, 53, 65);
-                }
-                ButtonPopulation();
+                
             }
+            */
+
+            foreach (var button in this.Controls.OfType<Button>())
+            {
+                button.FlatAppearance.MouseDownBackColor = Color.FromArgb(230, 237, 183);
+                button.FlatAppearance.BorderColor = Color.FromArgb(41, 53, 65);
+            }
+            ButtonPopulation();
 
             //Adjust button locations
             //FlowLayoutPanel p = flowLayoutPanel1;
@@ -87,8 +91,12 @@ namespace AuraScreen
 
         private void cursorInvert_Click(object sender, EventArgs e)
         {
-            MF.Invert();
-            ButtonPopulation();
+            if (!MF.FilterInUse(1))
+            {
+                //MF.Invert();
+                MF.inversionBox.Checked = !MF.inversionBox.Checked;
+                ButtonPopulation();
+            }             
         }
 
         private void lockCursor_Click(object sender, EventArgs e)
@@ -108,14 +116,30 @@ namespace AuraScreen
         {
             ps.Default.CF_Width -= (int)ps.Default.CF_SizeIncrement;
             ps.Default.CF_Height -= (int)ps.Default.CF_SizeIncrement;
+
+            if (ps.Default.CF_Width < 30)
+                ps.Default.CF_Width = 30;
+            if (ps.Default.CF_Height < 30)
+                ps.Default.CF_Height = 30;
+
             ps.Default.Save();
+            if(ps.Default.CF_DoInvert)
+                MF.ReloadCF();
         }
 
         private void enlargeCursor_Click(object sender, EventArgs e)
         {
             ps.Default.CF_Width += (int)ps.Default.CF_SizeIncrement;
             ps.Default.CF_Height += (int)ps.Default.CF_SizeIncrement;
+
+            if (ps.Default.CF_Width > 10000)
+                ps.Default.CF_Width = 10000;
+            if (ps.Default.CF_Height > 10000)
+                ps.Default.CF_Height = 10000;
+
             ps.Default.Save();
+            if (ps.Default.CF_DoInvert)
+                MF.ReloadCF();
         }
 
         private void lowerOpacity_Click(object sender, EventArgs e)
@@ -124,7 +148,9 @@ namespace AuraScreen
                 ps.Default.CF_Opacity -= (decimal)0.10;
             if (ps.Default.CF_Opacity < (decimal)0.10)
                 ps.Default.CF_Opacity = (decimal)0.10;
+
             ps.Default.Save();
+            MF.ReloadCF();
         }
 
         private void raiseOpacity_Click(object sender, EventArgs e)
@@ -134,6 +160,7 @@ namespace AuraScreen
             if (ps.Default.CF_Opacity >= 1)
                 ps.Default.CF_Opacity = (decimal)0.90;
             ps.Default.Save();
+            MF.ReloadCF();
         }
 
         private void AO_Toggle_Click(object sender, EventArgs e)
