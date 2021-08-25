@@ -1,18 +1,18 @@
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\Invisible_Cursor.cur
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\Pink_Crosshair_Cursor.cur
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\AirScreen.exe.config
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\AirScreen.exe
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\AirScreen.pdb
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\EventHook.dll
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\Air Screen.csprojAssemblyReference.cache
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AirScreen.AppOverlay.resources
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AirScreen.Toolbox.resources
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AirScreen.MainForm.resources
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AirScreen.MouseBox.resources
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AirScreen.Properties.Resources.resources
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AirScreen.Tiles.resources
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\Air Screen.csproj.GenerateResource.cache
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\Air Screen.csproj.CoreCompileInputs.cache
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\Air Screen.csproj.CopyComplete
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AirScreen.exe
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AirScreen.pdb
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\AuraScreen.exe.config
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\AuraScreen.exe
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\AuraScreen.pdb
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.AppOverlay.resources
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.Toolbox.resources
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.MainForm.resources
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.MouseBox.resources
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.Properties.Resources.resources
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.Tiles.resources
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.exe
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.pdb

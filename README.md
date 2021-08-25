@@ -1,3 +1,4 @@
+![AuraScreen logo](https://picc.io/7aVyJE3.png "AuraScreen logo" =250x)
 # Air Screen
 
 This repo is setup to keep track of code, 
@@ -22,24 +23,24 @@ Current Features
 ## Setup
 
 ### Windows
-- Goto the (Releases Tab)[https://github.com/Joexv/Air-Screen/releases] and download the latest release of Air Screen. 
+- Goto the https://github.com/Joexv/Aura-Screen/releases and download the latest release of Aura Screen. 
 You will only need the first ZIP file.
 - Once downloaded, extract the ZIP anywhere on your computer. It's recommended to extract it somewhere easy to access, like your Desktop.
-- Inside the newly created folder, simply open the AirScreen.exe.
-- That's it! setting up Air Screen is nice and simple. No bulky installation required!
+- Inside the newly created folder, simply open the AuraScreen.exe.
+- That's it! setting up Aura Screen is nice and simple. No bulky installation required!
 
 
-- Want to have AirScreen open when you start your computer? Right click the AirScreen.exe and click Copy.
+- Want to have Aura Screen open when you start your computer? Right click the AuraScreen.exe and click Copy.
 - On your keyboard press the Windows Key + R to open the Run dialog.
 - Type in "shell:startup" then hit run.
 - In the newly opened folder, right click any empty space, and hit 'Paste Shortcut'.
 - To remove the program from start up simply delete this same shortcut!
 
-If you experiance any issues or simply want to backup your configuration for any reason, the program's configuration file is located in %localappdata%\AirScreen\
+If you experiance any issues or simply want to backup your configuration for any reason, the program's configuration file is located in %localappdata%\AuraScreen\
 
 
 ### MacOS
-Since Air Screen is developed in C# .Net, it only works natively in Windows. This is nice for Windows users as they
+Since Aura Screen is developed in C# .Net, it only works natively in Windows. This is nice for Windows users as they
 don't have to worry about compatability at all. They run it and it will jsut work. Because of this the MacOS setup is a bit tricker. 
 Until a native MacOS port is made, there are a few options, some cost money, some are free. Choose the method you are comfortable with.
 
@@ -47,7 +48,7 @@ Until a native MacOS port is made, there are a few options, some cost money, som
 Using Prallels gives you some added functionality via the Comprehensive mode which will overlay a Windows Program ontop of your MacOSX desktop.
 Parallels, does cost money. If you already have it great! Setup is easy!
 - Download Parallels from https://www.parallels.com/
-- Follow the Prallels setup instructions (HERE)[https://download.parallels.com/desktop/v16/docs/en_US/Parallels%20Desktop%20User's%20Guide.pdf]
+- Follow the Prallels setup instructions https://download.parallels.com/desktop/v16/docs/en_US/Parallels%20Desktop%20User's%20Guide.pdf
 Once Parallels is installed and setup, simply follow the same instructions for the Windows Section!
 
 #### MacOS Bootcamp - Identical to the Windows Use case as you just boot windows. Technically free
@@ -56,6 +57,6 @@ Once Parallels is installed and setup, simply follow the same instructions for t
 You can migrate from Bootcamp to Paralles in the future for ease of use without having to reinstall Windows!
 
 #### MacOS VMWare - Identical to running in Windows - free for personal use
-Using VMWare is not recommended as it will require your computer to run a full version of Windows alongside your already running MacOS.
+Using VMWare works exactly like Parallels, but simply does not have the comprehensive mode.
 - Install your Windows VM following the instructions form VMWare https://kb.vmware.com/s/article/2128765
-- Setup AirScreen in the Guest OS as you would normally in Windows.
+- Setup Aura Screen in the Guest OS as you would normally in Windows.

@@ -1,5 +1,5 @@
 ﻿
-namespace AirScreen
+namespace AuraScreen
 {
     partial class AppOverlay
     {
@@ -36,7 +36,6 @@ namespace AirScreen
             // 
             // AO_AttatchTimer
             // 
-            this.AO_AttatchTimer.Interval = 1;
             this.AO_AttatchTimer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // AO_InvertTimer

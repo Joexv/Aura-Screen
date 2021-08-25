@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace AirScreen
+namespace AuraScreen
 {
     internal static class Program
     {
@@ -13,7 +13,7 @@ namespace AirScreen
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm());
+            Application.Run(new Configurator());
         }
     }
 }

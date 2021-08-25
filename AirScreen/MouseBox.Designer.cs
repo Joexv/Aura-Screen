@@ -1,5 +1,5 @@
 ﻿
-namespace AirScreen
+namespace AuraScreen
 {
     partial class MouseBox
     {
@@ -30,57 +30,61 @@ namespace AirScreen
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.LocationTimer = new System.Windows.Forms.Timer(this.components);
+            this.InvertTimer = new System.Windows.Forms.Timer(this.components);
+            this.MagTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // timer1
+            // LocationTimer
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
+            this.LocationTimer.Enabled = true;
+            this.LocationTimer.Interval = 1;
+            this.LocationTimer.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
-            // timer2
+            // InvertTimer
             // 
-            this.timer2.Enabled = true;
-            this.timer2.Interval = 1;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            this.InvertTimer.Enabled = true;
+            this.InvertTimer.Interval = 1;
+            this.InvertTimer.Tick += new System.EventHandler(this.InvertTimer_Tick);
             // 
-            // timer3
+            // MagTimer
             // 
-            this.timer3.Enabled = true;
-            this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            this.MagTimer.Interval = 1;
+            this.MagTimer.Tick += new System.EventHandler(this.timer3_Tick);
             // 
             // MouseBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(967, 834);
+            this.ClientSize = new System.Drawing.Size(968, 834);
             this.ControlBox = false;
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "MouseBox";
             this.Opacity = 0.15D;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "Form2";
+            this.Text = "Cursor Filter";
             this.TopMost = true;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MouseBox_FormClosing);
             this.Load += new System.EventHandler(this.Form2_Load);
             this.Shown += new System.EventHandler(this.MouseBox_Shown);
             this.LocationChanged += new System.EventHandler(this.Form2_LocationChanged);
+            this.VisibleChanged += new System.EventHandler(this.MouseBox_VisibleChanged);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form2_KeyPress);
             this.MouseLeave += new System.EventHandler(this.Form2_MouseLeave);
+            this.Resize += new System.EventHandler(this.MouseBox_Resize);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        public System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Timer timer2;
-        private System.Windows.Forms.Timer timer3;
+        public System.Windows.Forms.Timer LocationTimer;
+        private System.Windows.Forms.Timer InvertTimer;
+        public System.Windows.Forms.Timer MagTimer;
     }
 }
