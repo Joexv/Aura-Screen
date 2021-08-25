@@ -118,76 +118,82 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="BF_Top_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BF_Top_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Mouse_Filter_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Mouse_Filter_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Mouse_Border_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Mouse_Border_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BoxFilter_Toggle_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BoxFilter_Toggle_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Cursor_Lock_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Cursor_Lock_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ScreenFilter_Toggle_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ScreenFilter_Toggle_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Cursor_UnLock_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Cursor_UnLock_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ScreenFilter_Active_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ScreenFilter_Active_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Mouse_Filter_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mouse_Filter_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BlockFilter_Cycle_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BlockFilter_Cycle_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ScreenFilter_Program_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ScreenFilter_Program_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AppOverlay_Active_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AppOverlay_Active_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Mouse_IOpacity_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mouse_IOpacity_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Mouse_Shrink_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mouse_Shrink_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BF_Right_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BF_Right_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Mouse_DOpacity_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mouse_DOpacity_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="BoxFilter_Edit_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\BoxFilter_Edit_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="BoxFilter_Manual_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BoxFilter_Manual_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Mouse_Invert_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mouse_Invert_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Mouse_Enlarge_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Mouse_Enlarge_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Mouse_Shrink_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Mouse_Shrink_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="BF_Bottom_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BF_Bottom_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Mouse_Enlarge_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Mouse_Enlarge_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Cursor_Lock_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cursor_Lock_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AppOverlay_Toggle_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AppOverlay_Toggle_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Mouse_IOpacity_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Mouse_IOpacity_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AppOverlay_Active_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AppOverlay_Active_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ScreenFilter_Toggle_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ScreenFilter_Toggle_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Aura_Screen_Icon_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Aura_Screen_Icon_1.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ScreenFilter_Cycle_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ScreenFilter_Cycle_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ScreenFilter_Program_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ScreenFilter_Program_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BoxFilter_Toggle_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BoxFilter_Toggle_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BF_Right_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BF_Right_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cursor_UnLock_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cursor_UnLock_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Mouse_DOpacity_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Mouse_DOpacity_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Mouse_Invert_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Mouse_Invert_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Mouse_Shape_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Mouse_Shape_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Aura_Screen_Icon_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Aura_Screen_Icon_1.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="BlockFilter_Cycle_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BlockFilter_Cycle_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Aura_Logo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Aura_Logo.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Aura_Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Aura_Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AppOverlay_Toggle_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AppOverlay_Toggle_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BF_Top_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BF_Top_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BoxFilter_Edit_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BoxFilter_Edit_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

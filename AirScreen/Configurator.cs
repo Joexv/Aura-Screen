@@ -62,6 +62,12 @@ namespace AuraScreen
             notifyIcon1.Visible = true;
 
             toolbox.MF = this;
+            if (ps.Default.ShowWelcomeScreen)
+            {
+                Welcome welcome = new Welcome();
+                welcome.Show();
+                welcome.Activate();
+            }
         }
 
         public void PopulateControls()
@@ -1332,6 +1338,11 @@ namespace AuraScreen
         }
 
         private void groupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button21_Click_2(object sender, EventArgs e)
         {
 
         }

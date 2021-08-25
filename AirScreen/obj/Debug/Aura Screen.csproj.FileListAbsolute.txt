@@ -1,21 +1,3 @@
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\Invisible_Cursor.cur
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\Pink_Crosshair_Cursor.cur
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\AuraScreen.exe.config
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\AuraScreen.exe
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\AuraScreen.pdb
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\EventHook.dll
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.AppOverlay.resources
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.Toolbox.resources
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.MouseBox.resources
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.Properties.Resources.resources
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.Tiles.resources
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\Aura Screen.csproj.GenerateResource.cache
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\Aura Screen.csproj.CoreCompileInputs.cache
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\Aura Screen.csproj.CopyComplete
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.exe
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.pdb
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\Aura Screen.csprojAssemblyReference.cache
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.Configurator.resources
 C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\obj\Debug\Aura Screen.csprojAssemblyReference.cache
 C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\obj\Debug\AuraScreen.AppOverlay.resources
 C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\obj\Debug\AuraScreen.Toolbox.resources
@@ -34,3 +16,23 @@ C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\bin\Debug\AuraScr
 C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\bin\Debug\AuraScreen.pdb
 C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\bin\Debug\EventHook.dll
 C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\obj\Debug\Aura Screen.csproj.CopyComplete
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\Invisible_Cursor.cur
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\Pink_Crosshair_Cursor.cur
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\AuraScreen.exe.config
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\AuraScreen.exe
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\AuraScreen.pdb
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\Octokit.xml
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.AppOverlay.resources
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.Welcome.resources
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.Toolbox.resources
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.Configurator.resources
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.MouseBox.resources
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.Properties.Resources.resources
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.Tiles.resources
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\Aura Screen.csproj.GenerateResource.cache
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\Aura Screen.csproj.CoreCompileInputs.cache
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\Aura Screen.csproj.Fody.CopyLocal.cache
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\Aura Screen.csproj.CopyComplete
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.exe
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.pdb

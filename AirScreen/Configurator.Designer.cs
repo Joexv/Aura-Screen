@@ -119,6 +119,7 @@ namespace AuraScreen
             this.button2 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.button21 = new System.Windows.Forms.Button();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
@@ -296,7 +297,7 @@ namespace AuraScreen
             // disableHotKey
             // 
             this.disableHotKey.Location = new System.Drawing.Point(2146, 276);
-            this.disableHotKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.disableHotKey.Margin = new System.Windows.Forms.Padding(4);
             this.disableHotKey.Name = "disableHotKey";
             this.disableHotKey.Size = new System.Drawing.Size(100, 31);
             this.disableHotKey.TabIndex = 3;
@@ -309,7 +310,7 @@ namespace AuraScreen
             // 
             this.AO_ByName.AutoSize = true;
             this.AO_ByName.Location = new System.Drawing.Point(10, 132);
-            this.AO_ByName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AO_ByName.Margin = new System.Windows.Forms.Padding(4);
             this.AO_ByName.Name = "AO_ByName";
             this.AO_ByName.Size = new System.Drawing.Size(203, 29);
             this.AO_ByName.TabIndex = 3;
@@ -359,7 +360,7 @@ namespace AuraScreen
             // 
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.Location = new System.Drawing.Point(514, 82);
-            this.button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(68, 56);
             this.button5.TabIndex = 6;
@@ -373,7 +374,7 @@ namespace AuraScreen
             // 
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.Location = new System.Drawing.Point(438, 82);
-            this.button6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button6.Margin = new System.Windows.Forms.Padding(4);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(68, 56);
             this.button6.TabIndex = 5;
@@ -399,7 +400,7 @@ namespace AuraScreen
             // 
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Location = new System.Drawing.Point(514, 22);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(68, 56);
             this.button4.TabIndex = 3;
@@ -413,7 +414,7 @@ namespace AuraScreen
             // 
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Location = new System.Drawing.Point(438, 22);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(68, 56);
             this.button3.TabIndex = 2;
@@ -427,7 +428,7 @@ namespace AuraScreen
             // 
             this.Filter_OnActive.AutoSize = true;
             this.Filter_OnActive.Location = new System.Drawing.Point(14, 500);
-            this.Filter_OnActive.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Filter_OnActive.Margin = new System.Windows.Forms.Padding(4);
             this.Filter_OnActive.Name = "Filter_OnActive";
             this.Filter_OnActive.Size = new System.Drawing.Size(337, 29);
             this.Filter_OnActive.TabIndex = 22;
@@ -453,7 +454,7 @@ namespace AuraScreen
             // 
             this.checkBox4.AutoSize = true;
             this.checkBox4.Location = new System.Drawing.Point(12, 110);
-            this.checkBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox4.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Size = new System.Drawing.Size(218, 29);
             this.checkBox4.TabIndex = 17;
@@ -466,7 +467,7 @@ namespace AuraScreen
             // 
             this.inversionToggle.AutoSize = true;
             this.inversionToggle.Location = new System.Drawing.Point(12, 152);
-            this.inversionToggle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.inversionToggle.Margin = new System.Windows.Forms.Padding(4);
             this.inversionToggle.Name = "inversionToggle";
             this.inversionToggle.Size = new System.Drawing.Size(323, 29);
             this.inversionToggle.TabIndex = 16;
@@ -480,7 +481,7 @@ namespace AuraScreen
             // 
             this.inversionBox.AutoSize = true;
             this.inversionBox.Location = new System.Drawing.Point(12, 68);
-            this.inversionBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.inversionBox.Margin = new System.Windows.Forms.Padding(4);
             this.inversionBox.Name = "inversionBox";
             this.inversionBox.Size = new System.Drawing.Size(165, 29);
             this.inversionBox.TabIndex = 15;
@@ -494,7 +495,7 @@ namespace AuraScreen
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.Location = new System.Drawing.Point(12, 32);
-            this.checkBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(183, 29);
             this.checkBox1.TabIndex = 14;
@@ -507,7 +508,7 @@ namespace AuraScreen
             // 
             this.cursorChange.AutoSize = true;
             this.cursorChange.Location = new System.Drawing.Point(10, 36);
-            this.cursorChange.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cursorChange.Margin = new System.Windows.Forms.Padding(4);
             this.cursorChange.Name = "cursorChange";
             this.cursorChange.Size = new System.Drawing.Size(123, 29);
             this.cursorChange.TabIndex = 11;
@@ -521,7 +522,7 @@ namespace AuraScreen
             // 
             this.checkBox5.AutoSize = true;
             this.checkBox5.Location = new System.Drawing.Point(18, 64);
-            this.checkBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox5.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox5.Name = "checkBox5";
             this.checkBox5.Size = new System.Drawing.Size(306, 29);
             this.checkBox5.TabIndex = 21;
@@ -535,7 +536,7 @@ namespace AuraScreen
             // 
             this.checkBox6.AutoSize = true;
             this.checkBox6.Location = new System.Drawing.Point(18, 100);
-            this.checkBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox6.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox6.Name = "checkBox6";
             this.checkBox6.Size = new System.Drawing.Size(441, 29);
             this.checkBox6.TabIndex = 22;
@@ -559,13 +560,14 @@ namespace AuraScreen
             // 
             this.checkBox8.AutoSize = true;
             this.checkBox8.Location = new System.Drawing.Point(18, 368);
-            this.checkBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox8.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox8.Name = "checkBox8";
             this.checkBox8.Size = new System.Drawing.Size(374, 29);
             this.checkBox8.TabIndex = 29;
             this.checkBox8.Text = "Enable Alternate Inversion Method";
             this.toolTip1.SetToolTip(this.checkBox8, resources.GetString("checkBox8.ToolTip"));
             this.checkBox8.UseVisualStyleBackColor = true;
+            this.checkBox8.Visible = false;
             this.checkBox8.CheckedChanged += new System.EventHandler(this.checkBox8_CheckedChanged);
             // 
             // tabPage6
@@ -589,9 +591,9 @@ namespace AuraScreen
             this.tabPage6.Controls.Add(this.AO_TextBox);
             this.tabPage6.Controls.Add(this.AO_Apply);
             this.tabPage6.Location = new System.Drawing.Point(8, 43);
-            this.tabPage6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage6.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage6.Size = new System.Drawing.Size(762, 1011);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "App Overlay";
@@ -601,7 +603,7 @@ namespace AuraScreen
             // 
             this.AO_Start.AutoSize = true;
             this.AO_Start.Location = new System.Drawing.Point(12, 616);
-            this.AO_Start.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AO_Start.Margin = new System.Windows.Forms.Padding(4);
             this.AO_Start.Name = "AO_Start";
             this.AO_Start.Size = new System.Drawing.Size(345, 29);
             this.AO_Start.TabIndex = 46;
@@ -624,7 +626,7 @@ namespace AuraScreen
             // 
             this.AO_Time.Enabled = false;
             this.AO_Time.Location = new System.Drawing.Point(330, 480);
-            this.AO_Time.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AO_Time.Margin = new System.Windows.Forms.Padding(4);
             this.AO_Time.Minimum = new decimal(new int[] {
             1,
             0,
@@ -656,7 +658,7 @@ namespace AuraScreen
             this.AO_Invert.AutoSize = true;
             this.AO_Invert.Enabled = false;
             this.AO_Invert.Location = new System.Drawing.Point(330, 404);
-            this.AO_Invert.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AO_Invert.Margin = new System.Windows.Forms.Padding(4);
             this.AO_Invert.Name = "AO_Invert";
             this.AO_Invert.Size = new System.Drawing.Size(177, 29);
             this.AO_Invert.TabIndex = 42;
@@ -679,7 +681,7 @@ namespace AuraScreen
             // button16
             // 
             this.button16.Location = new System.Drawing.Point(10, 652);
-            this.button16.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button16.Margin = new System.Windows.Forms.Padding(4);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(624, 60);
             this.button16.TabIndex = 40;
@@ -690,7 +692,7 @@ namespace AuraScreen
             // AO_ColorChange
             // 
             this.AO_ColorChange.Location = new System.Drawing.Point(330, 340);
-            this.AO_ColorChange.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AO_ColorChange.Margin = new System.Windows.Forms.Padding(4);
             this.AO_ColorChange.Name = "AO_ColorChange";
             this.AO_ColorChange.Size = new System.Drawing.Size(290, 46);
             this.AO_ColorChange.TabIndex = 39;
@@ -707,7 +709,7 @@ namespace AuraScreen
             0,
             131072});
             this.AO_Opacity.Location = new System.Drawing.Point(170, 400);
-            this.AO_Opacity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AO_Opacity.Margin = new System.Windows.Forms.Padding(4);
             this.AO_Opacity.Maximum = new decimal(new int[] {
             99,
             0,
@@ -741,7 +743,7 @@ namespace AuraScreen
             // AO_Select
             // 
             this.AO_Select.Location = new System.Drawing.Point(330, 272);
-            this.AO_Select.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AO_Select.Margin = new System.Windows.Forms.Padding(4);
             this.AO_Select.Name = "AO_Select";
             this.AO_Select.Size = new System.Drawing.Size(290, 52);
             this.AO_Select.TabIndex = 8;
@@ -762,7 +764,7 @@ namespace AuraScreen
             // AO_Refresh
             // 
             this.AO_Refresh.Location = new System.Drawing.Point(330, 212);
-            this.AO_Refresh.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AO_Refresh.Margin = new System.Windows.Forms.Padding(4);
             this.AO_Refresh.Name = "AO_Refresh";
             this.AO_Refresh.Size = new System.Drawing.Size(290, 52);
             this.AO_Refresh.TabIndex = 6;
@@ -774,7 +776,7 @@ namespace AuraScreen
             // 
             this.AO_ComboBox.FormattingEnabled = true;
             this.AO_ComboBox.Location = new System.Drawing.Point(4, 308);
-            this.AO_ComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AO_ComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.AO_ComboBox.Name = "AO_ComboBox";
             this.AO_ComboBox.Size = new System.Drawing.Size(308, 33);
             this.AO_ComboBox.TabIndex = 5;
@@ -784,7 +786,7 @@ namespace AuraScreen
             this.AO_TopMost.AutoSize = true;
             this.AO_TopMost.Checked = true;
             this.AO_TopMost.Location = new System.Drawing.Point(376, 132);
-            this.AO_TopMost.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AO_TopMost.Margin = new System.Windows.Forms.Padding(4);
             this.AO_TopMost.Name = "AO_TopMost";
             this.AO_TopMost.Size = new System.Drawing.Size(266, 29);
             this.AO_TopMost.TabIndex = 4;
@@ -796,7 +798,7 @@ namespace AuraScreen
             // AO_TextBox
             // 
             this.AO_TextBox.Location = new System.Drawing.Point(4, 172);
-            this.AO_TextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AO_TextBox.Margin = new System.Windows.Forms.Padding(4);
             this.AO_TextBox.Name = "AO_TextBox";
             this.AO_TextBox.Size = new System.Drawing.Size(308, 31);
             this.AO_TextBox.TabIndex = 1;
@@ -804,7 +806,7 @@ namespace AuraScreen
             // AO_Apply
             // 
             this.AO_Apply.Location = new System.Drawing.Point(10, 708);
-            this.AO_Apply.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AO_Apply.Margin = new System.Windows.Forms.Padding(4);
             this.AO_Apply.Name = "AO_Apply";
             this.AO_Apply.Size = new System.Drawing.Size(624, 60);
             this.AO_Apply.TabIndex = 0;
@@ -829,9 +831,9 @@ namespace AuraScreen
             this.tabPage5.Controls.Add(this.label18);
             this.tabPage5.Controls.Add(this.button14);
             this.tabPage5.Location = new System.Drawing.Point(8, 43);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage5.Size = new System.Drawing.Size(762, 1011);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Screen Filters";
@@ -857,9 +859,9 @@ namespace AuraScreen
             this.groupBox1.Controls.Add(this.Filter_ComboBox);
             this.groupBox1.Controls.Add(this.button17);
             this.groupBox1.Location = new System.Drawing.Point(14, 542);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(650, 260);
             this.groupBox1.TabIndex = 18;
             this.groupBox1.TabStop = false;
@@ -868,7 +870,7 @@ namespace AuraScreen
             // button10
             // 
             this.button10.Location = new System.Drawing.Point(456, 204);
-            this.button10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button10.Margin = new System.Windows.Forms.Padding(4);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(184, 50);
             this.button10.TabIndex = 27;
@@ -890,7 +892,7 @@ namespace AuraScreen
             // 
             this.Filter_Programs.FormattingEnabled = true;
             this.Filter_Programs.Location = new System.Drawing.Point(20, 150);
-            this.Filter_Programs.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Filter_Programs.Margin = new System.Windows.Forms.Padding(4);
             this.Filter_Programs.Name = "Filter_Programs";
             this.Filter_Programs.Size = new System.Drawing.Size(424, 33);
             this.Filter_Programs.TabIndex = 25;
@@ -908,7 +910,7 @@ namespace AuraScreen
             // button18
             // 
             this.button18.Location = new System.Drawing.Point(456, 144);
-            this.button18.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button18.Margin = new System.Windows.Forms.Padding(4);
             this.button18.Name = "button18";
             this.button18.Size = new System.Drawing.Size(184, 50);
             this.button18.TabIndex = 23;
@@ -920,7 +922,7 @@ namespace AuraScreen
             // 
             this.Filter_ComboBox.FormattingEnabled = true;
             this.Filter_ComboBox.Location = new System.Drawing.Point(20, 76);
-            this.Filter_ComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Filter_ComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.Filter_ComboBox.Name = "Filter_ComboBox";
             this.Filter_ComboBox.Size = new System.Drawing.Size(424, 33);
             this.Filter_ComboBox.TabIndex = 20;
@@ -928,7 +930,7 @@ namespace AuraScreen
             // button17
             // 
             this.button17.Location = new System.Drawing.Point(456, 70);
-            this.button17.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button17.Margin = new System.Windows.Forms.Padding(4);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(184, 50);
             this.button17.TabIndex = 19;
@@ -949,7 +951,7 @@ namespace AuraScreen
             // 
             this.filterStartup.AutoSize = true;
             this.filterStartup.Location = new System.Drawing.Point(14, 460);
-            this.filterStartup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.filterStartup.Margin = new System.Windows.Forms.Padding(4);
             this.filterStartup.Name = "filterStartup";
             this.filterStartup.Size = new System.Drawing.Size(356, 29);
             this.filterStartup.TabIndex = 9;
@@ -960,7 +962,7 @@ namespace AuraScreen
             // button15
             // 
             this.button15.Location = new System.Drawing.Point(514, 212);
-            this.button15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button15.Margin = new System.Windows.Forms.Padding(4);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(150, 78);
             this.button15.TabIndex = 8;
@@ -991,7 +993,7 @@ namespace AuraScreen
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(264, 212);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(240, 240);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1002,7 +1004,7 @@ namespace AuraScreen
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(14, 212);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(240, 240);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1013,7 +1015,7 @@ namespace AuraScreen
             // 
             this.matrixBox.FormattingEnabled = true;
             this.matrixBox.Location = new System.Drawing.Point(108, 164);
-            this.matrixBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.matrixBox.Margin = new System.Windows.Forms.Padding(4);
             this.matrixBox.Name = "matrixBox";
             this.matrixBox.Size = new System.Drawing.Size(406, 33);
             this.matrixBox.TabIndex = 3;
@@ -1034,7 +1036,7 @@ namespace AuraScreen
             // button14
             // 
             this.button14.Location = new System.Drawing.Point(10, 812);
-            this.button14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button14.Margin = new System.Windows.Forms.Padding(4);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(624, 60);
             this.button14.TabIndex = 0;
@@ -1050,7 +1052,7 @@ namespace AuraScreen
             this.tabPage4.Controls.Add(this.button2);
             this.tabPage4.Controls.Add(this.button12);
             this.tabPage4.Location = new System.Drawing.Point(8, 43);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(762, 1011);
             this.tabPage4.TabIndex = 3;
@@ -1067,9 +1069,9 @@ namespace AuraScreen
             this.groupBox12.Controls.Add(this.label12);
             this.groupBox12.Controls.Add(this.tileOpacity);
             this.groupBox12.Location = new System.Drawing.Point(10, 6);
-            this.groupBox12.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox12.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox12.Padding = new System.Windows.Forms.Padding(6);
             this.groupBox12.Size = new System.Drawing.Size(722, 248);
             this.groupBox12.TabIndex = 42;
             this.groupBox12.TabStop = false;
@@ -1079,7 +1081,7 @@ namespace AuraScreen
             // 
             this.tileInvert.AutoSize = true;
             this.tileInvert.Location = new System.Drawing.Point(342, 66);
-            this.tileInvert.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tileInvert.Margin = new System.Windows.Forms.Padding(4);
             this.tileInvert.Name = "tileInvert";
             this.tileInvert.Size = new System.Drawing.Size(161, 29);
             this.tileInvert.TabIndex = 9;
@@ -1107,7 +1109,7 @@ namespace AuraScreen
             "Right",
             "Manual"});
             this.tileSelect.Location = new System.Drawing.Point(14, 62);
-            this.tileSelect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tileSelect.Margin = new System.Windows.Forms.Padding(4);
             this.tileSelect.Name = "tileSelect";
             this.tileSelect.Size = new System.Drawing.Size(296, 33);
             this.tileSelect.TabIndex = 28;
@@ -1116,7 +1118,7 @@ namespace AuraScreen
             // button11
             // 
             this.button11.Location = new System.Drawing.Point(14, 112);
-            this.button11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button11.Margin = new System.Windows.Forms.Padding(4);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(290, 46);
             this.button11.TabIndex = 26;
@@ -1143,7 +1145,7 @@ namespace AuraScreen
             0,
             131072});
             this.tileOpacity.Location = new System.Drawing.Point(448, 118);
-            this.tileOpacity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tileOpacity.Margin = new System.Windows.Forms.Padding(4);
             this.tileOpacity.Maximum = new decimal(new int[] {
             99,
             0,
@@ -1175,9 +1177,9 @@ namespace AuraScreen
             this.groupBox9.Controls.Add(this.time);
             this.groupBox9.Controls.Add(this.label46);
             this.groupBox9.Location = new System.Drawing.Point(10, 312);
-            this.groupBox9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox9.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox9.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox9.Size = new System.Drawing.Size(722, 260);
             this.groupBox9.TabIndex = 41;
             this.groupBox9.TabStop = false;
@@ -1188,7 +1190,7 @@ namespace AuraScreen
             // 
             this.tileScrollDisable.AutoSize = true;
             this.tileScrollDisable.Location = new System.Drawing.Point(198, 44);
-            this.tileScrollDisable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tileScrollDisable.Margin = new System.Windows.Forms.Padding(4);
             this.tileScrollDisable.Name = "tileScrollDisable";
             this.tileScrollDisable.Size = new System.Drawing.Size(257, 29);
             this.tileScrollDisable.TabIndex = 8;
@@ -1200,7 +1202,7 @@ namespace AuraScreen
             // 
             this.squwiggly.AutoSize = true;
             this.squwiggly.Location = new System.Drawing.Point(154, 206);
-            this.squwiggly.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.squwiggly.Margin = new System.Windows.Forms.Padding(4);
             this.squwiggly.Name = "squwiggly";
             this.squwiggly.Size = new System.Drawing.Size(55, 29);
             this.squwiggly.TabIndex = 7;
@@ -1222,7 +1224,7 @@ namespace AuraScreen
             // 
             this.f1.AutoSize = true;
             this.f1.Location = new System.Drawing.Point(36, 206);
-            this.f1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.f1.Margin = new System.Windows.Forms.Padding(4);
             this.f1.Name = "f1";
             this.f1.Size = new System.Drawing.Size(68, 29);
             this.f1.TabIndex = 5;
@@ -1234,7 +1236,7 @@ namespace AuraScreen
             // 
             this.r.AutoSize = true;
             this.r.Location = new System.Drawing.Point(154, 172);
-            this.r.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.r.Margin = new System.Windows.Forms.Padding(4);
             this.r.Name = "r";
             this.r.Size = new System.Drawing.Size(58, 29);
             this.r.TabIndex = 4;
@@ -1247,7 +1249,7 @@ namespace AuraScreen
             this.shift.AutoSize = true;
             this.shift.Checked = true;
             this.shift.Location = new System.Drawing.Point(36, 172);
-            this.shift.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.shift.Margin = new System.Windows.Forms.Padding(4);
             this.shift.Name = "shift";
             this.shift.Size = new System.Drawing.Size(86, 29);
             this.shift.TabIndex = 3;
@@ -1259,7 +1261,7 @@ namespace AuraScreen
             // time
             // 
             this.time.Location = new System.Drawing.Point(184, 80);
-            this.time.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.time.Margin = new System.Windows.Forms.Padding(4);
             this.time.Maximum = new decimal(new int[] {
             600,
             0,
@@ -1303,7 +1305,7 @@ namespace AuraScreen
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(4, 912);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(754, 60);
             this.button2.TabIndex = 38;
@@ -1314,7 +1316,7 @@ namespace AuraScreen
             // button12
             // 
             this.button12.Location = new System.Drawing.Point(4, 844);
-            this.button12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button12.Margin = new System.Windows.Forms.Padding(4);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(754, 60);
             this.button12.TabIndex = 37;
@@ -1324,6 +1326,7 @@ namespace AuraScreen
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.button21);
             this.tabPage3.Controls.Add(this.checkBox8);
             this.tabPage3.Controls.Add(this.linkLabel4);
             this.tabPage3.Controls.Add(this.linkLabel3);
@@ -1335,17 +1338,28 @@ namespace AuraScreen
             this.tabPage3.Controls.Add(this.checkBox5);
             this.tabPage3.Controls.Add(this.checkBox3);
             this.tabPage3.Location = new System.Drawing.Point(8, 43);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(762, 1011);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Settings";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // button21
+            // 
+            this.button21.Location = new System.Drawing.Point(18, 942);
+            this.button21.Margin = new System.Windows.Forms.Padding(4);
+            this.button21.Name = "button21";
+            this.button21.Size = new System.Drawing.Size(256, 52);
+            this.button21.TabIndex = 30;
+            this.button21.Text = "Check For Updates";
+            this.button21.UseVisualStyleBackColor = true;
+            this.button21.Click += new System.EventHandler(this.button21_Click_2);
+            // 
             // linkLabel4
             // 
             this.linkLabel4.AutoSize = true;
-            this.linkLabel4.Location = new System.Drawing.Point(422, 780);
+            this.linkLabel4.Location = new System.Drawing.Point(547, 928);
             this.linkLabel4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel4.Name = "linkLabel4";
             this.linkLabel4.Size = new System.Drawing.Size(201, 25);
@@ -1357,7 +1371,7 @@ namespace AuraScreen
             // linkLabel3
             // 
             this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(422, 742);
+            this.linkLabel3.Location = new System.Drawing.Point(506, 882);
             this.linkLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(242, 25);
@@ -1369,20 +1383,20 @@ namespace AuraScreen
             // linkLabel2
             // 
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(422, 824);
+            this.linkLabel2.Location = new System.Drawing.Point(498, 969);
             this.linkLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(236, 25);
+            this.linkLabel2.Size = new System.Drawing.Size(250, 25);
             this.linkLabel2.TabIndex = 26;
             this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "Video Guides & Tutorials";
+            this.linkLabel2.Text = "Video Guides && Tutorials";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
             // checkBox7
             // 
             this.checkBox7.AutoSize = true;
             this.checkBox7.Location = new System.Drawing.Point(18, 136);
-            this.checkBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox7.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox7.Name = "checkBox7";
             this.checkBox7.Size = new System.Drawing.Size(274, 29);
             this.checkBox7.TabIndex = 25;
@@ -1401,9 +1415,9 @@ namespace AuraScreen
             this.groupBox10.Controls.Add(this.tbHeight);
             this.groupBox10.Controls.Add(this.button20);
             this.groupBox10.Location = new System.Drawing.Point(18, 172);
-            this.groupBox10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox10.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox10.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox10.Size = new System.Drawing.Size(640, 192);
             this.groupBox10.TabIndex = 24;
             this.groupBox10.TabStop = false;
@@ -1412,7 +1426,7 @@ namespace AuraScreen
             // tbRows
             // 
             this.tbRows.Location = new System.Drawing.Point(300, 94);
-            this.tbRows.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbRows.Margin = new System.Windows.Forms.Padding(4);
             this.tbRows.Maximum = new decimal(new int[] {
             12,
             0,
@@ -1475,7 +1489,7 @@ namespace AuraScreen
             // tbWidth
             // 
             this.tbWidth.Location = new System.Drawing.Point(156, 94);
-            this.tbWidth.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbWidth.Margin = new System.Windows.Forms.Padding(4);
             this.tbWidth.Maximum = new decimal(new int[] {
             300,
             0,
@@ -1498,7 +1512,7 @@ namespace AuraScreen
             // tbHeight
             // 
             this.tbHeight.Location = new System.Drawing.Point(28, 94);
-            this.tbHeight.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbHeight.Margin = new System.Windows.Forms.Padding(4);
             this.tbHeight.Maximum = new decimal(new int[] {
             300,
             0,
@@ -1521,7 +1535,7 @@ namespace AuraScreen
             // button20
             // 
             this.button20.Location = new System.Drawing.Point(388, 132);
-            this.button20.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button20.Margin = new System.Windows.Forms.Padding(4);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(246, 40);
             this.button20.TabIndex = 0;
@@ -1531,8 +1545,8 @@ namespace AuraScreen
             // 
             // button19
             // 
-            this.button19.Location = new System.Drawing.Point(18, 810);
-            this.button19.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button19.Location = new System.Drawing.Point(18, 882);
+            this.button19.Margin = new System.Windows.Forms.Padding(4);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(256, 52);
             this.button19.TabIndex = 23;
@@ -1544,7 +1558,7 @@ namespace AuraScreen
             // 
             this.checkBox3.AutoSize = true;
             this.checkBox3.Location = new System.Drawing.Point(18, 30);
-            this.checkBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox3.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox3.Name = "checkBox3";
             this.checkBox3.Size = new System.Drawing.Size(379, 29);
             this.checkBox3.TabIndex = 20;
@@ -1567,9 +1581,9 @@ namespace AuraScreen
             this.tabPage2.Controls.Add(this.button13);
             this.tabPage2.Controls.Add(this.label11);
             this.tabPage2.Location = new System.Drawing.Point(8, 43);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage2.Size = new System.Drawing.Size(762, 1011);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "HotKeys";
@@ -1588,7 +1602,7 @@ namespace AuraScreen
             // toolboxHK
             // 
             this.toolboxHK.Location = new System.Drawing.Point(254, 782);
-            this.toolboxHK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.toolboxHK.Margin = new System.Windows.Forms.Padding(4);
             this.toolboxHK.Name = "toolboxHK";
             this.toolboxHK.Size = new System.Drawing.Size(72, 31);
             this.toolboxHK.TabIndex = 25;
@@ -1607,7 +1621,7 @@ namespace AuraScreen
             // killswitchHK
             // 
             this.killswitchHK.Location = new System.Drawing.Point(254, 748);
-            this.killswitchHK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.killswitchHK.Margin = new System.Windows.Forms.Padding(4);
             this.killswitchHK.Name = "killswitchHK";
             this.killswitchHK.Size = new System.Drawing.Size(72, 31);
             this.killswitchHK.TabIndex = 23;
@@ -1632,9 +1646,9 @@ namespace AuraScreen
             this.groupBox8.Controls.Add(this.label9);
             this.groupBox8.Controls.Add(this.cylceHotKey);
             this.groupBox8.Location = new System.Drawing.Point(8, 580);
-            this.groupBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox8.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox8.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox8.Size = new System.Drawing.Size(654, 122);
             this.groupBox8.TabIndex = 21;
             this.groupBox8.TabStop = false;
@@ -1643,7 +1657,7 @@ namespace AuraScreen
             // tilesManualHK
             // 
             this.tilesManualHK.Location = new System.Drawing.Point(256, 80);
-            this.tilesManualHK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tilesManualHK.Margin = new System.Windows.Forms.Padding(4);
             this.tilesManualHK.Name = "tilesManualHK";
             this.tilesManualHK.Size = new System.Drawing.Size(72, 31);
             this.tilesManualHK.TabIndex = 13;
@@ -1662,7 +1676,7 @@ namespace AuraScreen
             // BF_ToggleHK
             // 
             this.BF_ToggleHK.Location = new System.Drawing.Point(116, 40);
-            this.BF_ToggleHK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BF_ToggleHK.Margin = new System.Windows.Forms.Padding(4);
             this.BF_ToggleHK.Name = "BF_ToggleHK";
             this.BF_ToggleHK.Size = new System.Drawing.Size(72, 31);
             this.BF_ToggleHK.TabIndex = 11;
@@ -1681,7 +1695,7 @@ namespace AuraScreen
             // cylceHotKey
             // 
             this.cylceHotKey.Location = new System.Drawing.Point(400, 40);
-            this.cylceHotKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cylceHotKey.Margin = new System.Windows.Forms.Padding(4);
             this.cylceHotKey.Name = "cylceHotKey";
             this.cylceHotKey.Size = new System.Drawing.Size(72, 31);
             this.cylceHotKey.TabIndex = 9;
@@ -1690,7 +1704,7 @@ namespace AuraScreen
             // SettingsHK
             // 
             this.SettingsHK.Location = new System.Drawing.Point(254, 710);
-            this.SettingsHK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SettingsHK.Margin = new System.Windows.Forms.Padding(4);
             this.SettingsHK.Name = "SettingsHK";
             this.SettingsHK.Size = new System.Drawing.Size(72, 31);
             this.SettingsHK.TabIndex = 13;
@@ -1701,9 +1715,9 @@ namespace AuraScreen
             this.groupBox7.Controls.Add(this.label36);
             this.groupBox7.Controls.Add(this.AO_ToggleHK);
             this.groupBox7.Location = new System.Drawing.Point(8, 494);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox7.Size = new System.Drawing.Size(654, 80);
             this.groupBox7.TabIndex = 20;
             this.groupBox7.TabStop = false;
@@ -1722,7 +1736,7 @@ namespace AuraScreen
             // AO_ToggleHK
             // 
             this.AO_ToggleHK.Location = new System.Drawing.Point(248, 36);
-            this.AO_ToggleHK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AO_ToggleHK.Margin = new System.Windows.Forms.Padding(4);
             this.AO_ToggleHK.Name = "AO_ToggleHK";
             this.AO_ToggleHK.Size = new System.Drawing.Size(72, 31);
             this.AO_ToggleHK.TabIndex = 13;
@@ -1737,9 +1751,9 @@ namespace AuraScreen
             this.groupBox6.Controls.Add(this.SF_ToggleHK);
             this.groupBox6.Controls.Add(this.label35);
             this.groupBox6.Location = new System.Drawing.Point(6, 316);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox6.Size = new System.Drawing.Size(656, 172);
             this.groupBox6.TabIndex = 19;
             this.groupBox6.TabStop = false;
@@ -1768,7 +1782,7 @@ namespace AuraScreen
             // SF_ProgramHK
             // 
             this.SF_ProgramHK.Location = new System.Drawing.Point(250, 120);
-            this.SF_ProgramHK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SF_ProgramHK.Margin = new System.Windows.Forms.Padding(4);
             this.SF_ProgramHK.Name = "SF_ProgramHK";
             this.SF_ProgramHK.Size = new System.Drawing.Size(72, 31);
             this.SF_ProgramHK.TabIndex = 22;
@@ -1777,7 +1791,7 @@ namespace AuraScreen
             // SF_CycleHK
             // 
             this.SF_CycleHK.Location = new System.Drawing.Point(250, 80);
-            this.SF_CycleHK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SF_CycleHK.Margin = new System.Windows.Forms.Padding(4);
             this.SF_CycleHK.Name = "SF_CycleHK";
             this.SF_CycleHK.Size = new System.Drawing.Size(72, 31);
             this.SF_CycleHK.TabIndex = 21;
@@ -1786,7 +1800,7 @@ namespace AuraScreen
             // SF_ToggleHK
             // 
             this.SF_ToggleHK.Location = new System.Drawing.Point(250, 40);
-            this.SF_ToggleHK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.SF_ToggleHK.Margin = new System.Windows.Forms.Padding(4);
             this.SF_ToggleHK.Name = "SF_ToggleHK";
             this.SF_ToggleHK.Size = new System.Drawing.Size(72, 31);
             this.SF_ToggleHK.TabIndex = 19;
@@ -1819,9 +1833,9 @@ namespace AuraScreen
             this.groupBox5.Controls.Add(this.invertHotKey);
             this.groupBox5.Controls.Add(this.enableHotKey);
             this.groupBox5.Location = new System.Drawing.Point(6, 42);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox5.Size = new System.Drawing.Size(656, 268);
             this.groupBox5.TabIndex = 18;
             this.groupBox5.TabStop = false;
@@ -1870,7 +1884,7 @@ namespace AuraScreen
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(344, 114);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -1884,7 +1898,7 @@ namespace AuraScreen
             // cursorLock
             // 
             this.cursorLock.Location = new System.Drawing.Point(248, 192);
-            this.cursorLock.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cursorLock.Margin = new System.Windows.Forms.Padding(4);
             this.cursorLock.Name = "cursorLock";
             this.cursorLock.Size = new System.Drawing.Size(72, 31);
             this.cursorLock.TabIndex = 13;
@@ -1933,7 +1947,7 @@ namespace AuraScreen
             // shrinkHotKey
             // 
             this.shrinkHotKey.Location = new System.Drawing.Point(248, 112);
-            this.shrinkHotKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.shrinkHotKey.Margin = new System.Windows.Forms.Padding(4);
             this.shrinkHotKey.Name = "shrinkHotKey";
             this.shrinkHotKey.Size = new System.Drawing.Size(72, 31);
             this.shrinkHotKey.TabIndex = 7;
@@ -1942,7 +1956,7 @@ namespace AuraScreen
             // enlargeHotKey
             // 
             this.enlargeHotKey.Location = new System.Drawing.Point(248, 76);
-            this.enlargeHotKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.enlargeHotKey.Margin = new System.Windows.Forms.Padding(4);
             this.enlargeHotKey.Name = "enlargeHotKey";
             this.enlargeHotKey.Size = new System.Drawing.Size(72, 31);
             this.enlargeHotKey.TabIndex = 5;
@@ -1951,7 +1965,7 @@ namespace AuraScreen
             // invertHotKey
             // 
             this.invertHotKey.Location = new System.Drawing.Point(248, 152);
-            this.invertHotKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.invertHotKey.Margin = new System.Windows.Forms.Padding(4);
             this.invertHotKey.Name = "invertHotKey";
             this.invertHotKey.Size = new System.Drawing.Size(72, 31);
             this.invertHotKey.TabIndex = 11;
@@ -1960,7 +1974,7 @@ namespace AuraScreen
             // enableHotKey
             // 
             this.enableHotKey.Location = new System.Drawing.Point(248, 36);
-            this.enableHotKey.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.enableHotKey.Margin = new System.Windows.Forms.Padding(4);
             this.enableHotKey.Name = "enableHotKey";
             this.enableHotKey.Size = new System.Drawing.Size(72, 31);
             this.enableHotKey.TabIndex = 1;
@@ -1969,7 +1983,7 @@ namespace AuraScreen
             // button13
             // 
             this.button13.Location = new System.Drawing.Point(8, 820);
-            this.button13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button13.Margin = new System.Windows.Forms.Padding(4);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(654, 46);
             this.button13.TabIndex = 15;
@@ -1995,9 +2009,9 @@ namespace AuraScreen
             this.tabPage1.Controls.Add(this.groupBox2);
             this.tabPage1.Controls.Add(this.button8);
             this.tabPage1.Location = new System.Drawing.Point(8, 43);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(762, 1011);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Cursor Filter";
@@ -2019,9 +2033,9 @@ namespace AuraScreen
             this.groupBox4.Controls.Add(this.button6);
             this.groupBox4.Controls.Add(this.label1);
             this.groupBox4.Location = new System.Drawing.Point(8, 8);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox4.Size = new System.Drawing.Size(744, 220);
             this.groupBox4.TabIndex = 26;
             this.groupBox4.TabStop = false;
@@ -2047,7 +2061,7 @@ namespace AuraScreen
             0,
             131072});
             this.opacityBar.Location = new System.Drawing.Point(106, 50);
-            this.opacityBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.opacityBar.Margin = new System.Windows.Forms.Padding(4);
             this.opacityBar.Maximum = new decimal(new int[] {
             99,
             0,
@@ -2071,7 +2085,7 @@ namespace AuraScreen
             // button7
             // 
             this.button7.Location = new System.Drawing.Point(20, 136);
-            this.button7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button7.Margin = new System.Windows.Forms.Padding(4);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(234, 62);
             this.button7.TabIndex = 8;
@@ -2097,7 +2111,7 @@ namespace AuraScreen
             "Ellipse",
             "Circle"});
             this.styleBox.Location = new System.Drawing.Point(360, 156);
-            this.styleBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.styleBox.Margin = new System.Windows.Forms.Padding(4);
             this.styleBox.Name = "styleBox";
             this.styleBox.Size = new System.Drawing.Size(296, 33);
             this.styleBox.TabIndex = 12;
@@ -2106,7 +2120,7 @@ namespace AuraScreen
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(8, 830);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(744, 60);
             this.button1.TabIndex = 0;
@@ -2121,9 +2135,9 @@ namespace AuraScreen
             this.groupBox3.Controls.Add(this.inversionBox);
             this.groupBox3.Controls.Add(this.checkBox1);
             this.groupBox3.Location = new System.Drawing.Point(296, 236);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(456, 204);
             this.groupBox3.TabIndex = 25;
             this.groupBox3.TabStop = false;
@@ -2136,9 +2150,9 @@ namespace AuraScreen
             this.groupBox2.Controls.Add(this.borderThicccccc);
             this.groupBox2.Controls.Add(this.button9);
             this.groupBox2.Location = new System.Drawing.Point(6, 236);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(284, 204);
             this.groupBox2.TabIndex = 24;
             this.groupBox2.TabStop = false;
@@ -2148,7 +2162,7 @@ namespace AuraScreen
             // 
             this.checkBox2.AutoSize = true;
             this.checkBox2.Location = new System.Drawing.Point(22, 34);
-            this.checkBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.checkBox2.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(181, 29);
             this.checkBox2.TabIndex = 15;
@@ -2169,7 +2183,7 @@ namespace AuraScreen
             // borderThicccccc
             // 
             this.borderThicccccc.Location = new System.Drawing.Point(136, 80);
-            this.borderThicccccc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.borderThicccccc.Margin = new System.Windows.Forms.Padding(4);
             this.borderThicccccc.Maximum = new decimal(new int[] {
             25,
             0,
@@ -2183,7 +2197,7 @@ namespace AuraScreen
             // button9
             // 
             this.button9.Location = new System.Drawing.Point(22, 128);
-            this.button9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button9.Margin = new System.Windows.Forms.Padding(4);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(234, 56);
             this.button9.TabIndex = 18;
@@ -2194,7 +2208,7 @@ namespace AuraScreen
             // button8
             // 
             this.button8.Location = new System.Drawing.Point(8, 898);
-            this.button8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button8.Margin = new System.Windows.Forms.Padding(4);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(744, 60);
             this.button8.TabIndex = 9;
@@ -2216,7 +2230,7 @@ namespace AuraScreen
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.ItemSize = new System.Drawing.Size(130, 35);
             this.tabControl1.Location = new System.Drawing.Point(14, 14);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(778, 1062);
@@ -2230,7 +2244,7 @@ namespace AuraScreen
             this.tabPage7.Controls.Add(this.label29);
             this.tabPage7.Controls.Add(this.cursorApply);
             this.tabPage7.Location = new System.Drawing.Point(8, 43);
-            this.tabPage7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage7.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Size = new System.Drawing.Size(762, 1011);
             this.tabPage7.TabIndex = 6;
@@ -2246,9 +2260,9 @@ namespace AuraScreen
             this.groupBox11.Controls.Add(this.cursorSelect);
             this.groupBox11.Controls.Add(this.cursorIdle);
             this.groupBox11.Location = new System.Drawing.Point(10, 8);
-            this.groupBox11.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox11.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox11.Padding = new System.Windows.Forms.Padding(6);
             this.groupBox11.Size = new System.Drawing.Size(746, 200);
             this.groupBox11.TabIndex = 20;
             this.groupBox11.TabStop = false;
@@ -2258,7 +2272,7 @@ namespace AuraScreen
             // 
             this.filterHide.AutoSize = true;
             this.filterHide.Location = new System.Drawing.Point(10, 78);
-            this.filterHide.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.filterHide.Margin = new System.Windows.Forms.Padding(4);
             this.filterHide.Name = "filterHide";
             this.filterHide.Size = new System.Drawing.Size(314, 29);
             this.filterHide.TabIndex = 19;
@@ -2269,7 +2283,7 @@ namespace AuraScreen
             // 
             this.cursorStartup.AutoSize = true;
             this.cursorStartup.Location = new System.Drawing.Point(10, 120);
-            this.cursorStartup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cursorStartup.Margin = new System.Windows.Forms.Padding(4);
             this.cursorStartup.Name = "cursorStartup";
             this.cursorStartup.Size = new System.Drawing.Size(220, 29);
             this.cursorStartup.TabIndex = 18;
@@ -2289,7 +2303,7 @@ namespace AuraScreen
             // cursorSelect
             // 
             this.cursorSelect.Location = new System.Drawing.Point(468, 104);
-            this.cursorSelect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cursorSelect.Margin = new System.Windows.Forms.Padding(4);
             this.cursorSelect.Name = "cursorSelect";
             this.cursorSelect.Size = new System.Drawing.Size(228, 50);
             this.cursorSelect.TabIndex = 14;
@@ -2300,7 +2314,7 @@ namespace AuraScreen
             // cursorIdle
             // 
             this.cursorIdle.Location = new System.Drawing.Point(576, 32);
-            this.cursorIdle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cursorIdle.Margin = new System.Windows.Forms.Padding(4);
             this.cursorIdle.Name = "cursorIdle";
             this.cursorIdle.Size = new System.Drawing.Size(120, 31);
             this.cursorIdle.TabIndex = 12;
@@ -2318,7 +2332,7 @@ namespace AuraScreen
             // cursorPreview
             // 
             this.cursorPreview.Location = new System.Drawing.Point(4, 492);
-            this.cursorPreview.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cursorPreview.Margin = new System.Windows.Forms.Padding(4);
             this.cursorPreview.Name = "cursorPreview";
             this.cursorPreview.Size = new System.Drawing.Size(754, 412);
             this.cursorPreview.TabIndex = 16;
@@ -2337,7 +2351,7 @@ namespace AuraScreen
             // cursorApply
             // 
             this.cursorApply.Location = new System.Drawing.Point(4, 912);
-            this.cursorApply.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cursorApply.Margin = new System.Windows.Forms.Padding(4);
             this.cursorApply.Name = "cursorApply";
             this.cursorApply.Size = new System.Drawing.Size(754, 60);
             this.cursorApply.TabIndex = 10;
@@ -2369,7 +2383,7 @@ namespace AuraScreen
             this.Controls.Add(this.disableHotKey);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "Configurator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -2609,6 +2623,7 @@ namespace AuraScreen
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.GroupBox groupBox12;
         public System.Windows.Forms.CheckBox inversionBox;
+        private System.Windows.Forms.Button button21;
     }
 }
 

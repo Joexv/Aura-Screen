@@ -835,5 +835,17 @@ namespace AuraScreen.Properties {
                 this["EnterEditMode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool ShowWelcomeScreen {
+            get {
+                return ((bool)(this["ShowWelcomeScreen"]));
+            }
+            set {
+                this["ShowWelcomeScreen"] = value;
+            }
+        }
     }
 }
