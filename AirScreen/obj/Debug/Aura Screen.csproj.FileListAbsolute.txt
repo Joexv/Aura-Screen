@@ -21,7 +21,6 @@ C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\Pink_Crosshair_Curs
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\AuraScreen.exe.config
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\AuraScreen.exe
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\AuraScreen.pdb
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\Octokit.xml
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\System.Diagnostics.DiagnosticSource.xml
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.AppOverlay.resources
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.Welcome.resources
@@ -36,3 +35,8 @@ C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\Aura Screen.csproj.
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\Aura Screen.csproj.CopyComplete
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.exe
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.pdb
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\System.Buffers.xml
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\System.Memory.xml
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\Aura Screen.csprojAssemblyReference.cache

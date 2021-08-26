@@ -2184,11 +2184,6 @@ namespace AuraScreen
             // 
             this.borderThicccccc.Location = new System.Drawing.Point(136, 80);
             this.borderThicccccc.Margin = new System.Windows.Forms.Padding(4);
-            this.borderThicccccc.Maximum = new decimal(new int[] {
-            25,
-            0,
-            0,
-            0});
             this.borderThicccccc.Name = "borderThicccccc";
             this.borderThicccccc.Size = new System.Drawing.Size(120, 31);
             this.borderThicccccc.TabIndex = 16;

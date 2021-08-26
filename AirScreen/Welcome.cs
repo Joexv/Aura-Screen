@@ -16,7 +16,7 @@ namespace AuraScreen
         {
             InitializeComponent();
         }
-
+        public Configurator conf { get; set; }
         private void Welcome_Load(object sender, EventArgs e)
         {
             tabControl1.Appearance = TabAppearance.FlatButtons;
@@ -35,5 +35,10 @@ namespace AuraScreen
             "Bug fixes regarding the ToolBox and Cursor Filters\n" +
             "Started work on redesigning UI\n" +
             "Started work on adding logging of errors for simpler bug reporting";
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

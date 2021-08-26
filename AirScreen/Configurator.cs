@@ -64,9 +64,13 @@ namespace AuraScreen
             toolbox.MF = this;
             if (ps.Default.ShowWelcomeScreen)
             {
-                Welcome welcome = new Welcome();
+                Welcome welcome = new Welcome
+                {
+                    conf = this
+                };
                 welcome.Show();
                 welcome.Activate();
+                this.Hide();
             }
         }
 
@@ -371,7 +375,7 @@ namespace AuraScreen
 
         public void ToggleCF()
         {
-            if (mousebox.IsDisposed)
+            if (mousebox.IsDisposed || ps.Default.CF_DoInvert && !mousebox.Visible)
             {
                 ReloadCF();
                 return;

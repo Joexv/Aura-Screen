@@ -25,7 +25,6 @@ namespace AuraScreen
             CreateView();
             MagTimer.Interval = NativeMethods.USER_TIMER_MINIMUM;
             LocationTimer.Interval = NativeMethods.USER_TIMER_MINIMUM;
-            this.Location = Cursor.Position;
         }
         protected override System.Windows.Forms.CreateParams CreateParams
         {
@@ -71,32 +70,7 @@ namespace AuraScreen
             this.Show();
         }
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
-            if (ps.Default.CF_DoBorder)
-            {
-                base.OnPaint(e);
-                Pen pen = new Pen(ps.Default.CF_BorderColor, ps.Default.CF_BorderSize);
-                Rectangle rect = new Rectangle(0, 0, this.Width, this.Height);
-                switch (ps.Default.CF_Style)
-                {
-                    case "Rectangle":
-                        e.Graphics.DrawRectangle(pen, rect);
-                        return;
 
-                    case "Circle":
-                        e.Graphics.DrawEllipse(pen, new Rectangle(0, 0, this.Width, this.Width));
-                        return;
-
-                    case "Ellipse":
-                        e.Graphics.DrawEllipse(pen, rect);
-                        return;
-
-                    case "Invert Rectangle":
-                        return;
-                }
-            }
-        }
         public enum GWL
         {
             ExStyle = -20
@@ -197,6 +171,8 @@ namespace AuraScreen
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            this.Location = new Point(Cursor.Position.X - this.Width  / 2, Cursor.Position.Y - this.Height / 2);
+
             if (!ps.Default.CF_DoInvert)
                 CreateView();
         }
@@ -364,8 +340,8 @@ namespace AuraScreen
             if (!initialized || hwndMag == IntPtr.Zero)
                 return;
 
-            int width = (int)((magWindowRect.right - magWindowRect.left));
-            int height = (int)((magWindowRect.bottom - magWindowRect.top));
+            int width = (int)(magWindowRect.right - magWindowRect.left);
+            int height = (int)(magWindowRect.bottom - magWindowRect.top);
 
             if (!ps.Default.CF_Lock)
             {
@@ -394,12 +370,14 @@ namespace AuraScreen
 
             NativeMethods.MagSetWindowSource(hwndMag, source);
             NativeMethods.SetWindowPos(this.Handle,
-               NativeMethods.HWND_TOPMOST, magWindowRect.left, magWindowRect.top, magWindowRect.right, magWindowRect.bottom,
-               (int)SetWindowPosFlags.SWP_NOACTIVATE |
-               (int)SetWindowPosFlags.SWP_NOMOVE |
-               (int)SetWindowPosFlags.SWP_NOSIZE);
+                NativeMethods.HWND_TOPMOST, magWindowRect.left, magWindowRect.top, magWindowRect.right, magWindowRect.bottom,
+                (int)SetWindowPosFlags.SWP_NOACTIVATE |
+                (int)SetWindowPosFlags.SWP_NOMOVE |
+                (int)SetWindowPosFlags.SWP_NOSIZE);
+
             if (!ShiftHeld && !ps.Default.CF_Lock)
                 this.Location = new Point(source.left, source.top);
+
             NativeMethods.InvalidateRect(hwndMag, IntPtr.Zero, true);
         }
 
@@ -423,6 +401,15 @@ namespace AuraScreen
 
             // Create a magnifier control that fills the client area.
             NativeMethods.GetClientRect(this.Handle, ref magWindowRect);
+
+            if (ps.Default.CF_DoBorder)
+            {
+                magWindowRect.right -= ps.Default.CF_BorderSize / 2;
+                magWindowRect.bottom -= ps.Default.CF_BorderSize / 2;
+                magWindowRect.top += ps.Default.CF_BorderSize / 2;
+                magWindowRect.left += ps.Default.CF_BorderSize / 2;
+            }
+
             hwndMag = NativeMethods.CreateWindow((int)ExtendedWindowStyles.WS_EX_TRANSPARENT, NativeMethods.WC_MAGNIFIER,
                 "MouseBox", (int)WindowStyles.WS_CHILD | (int)MagnifierStyle.MS_SHOWMAGNIFIEDCURSOR |
                 (int)WindowStyles.WS_VISIBLE,
@@ -453,9 +440,32 @@ namespace AuraScreen
         private void MouseBox_VisibleChanged(object sender, EventArgs e)
         {
             if (!this.Visible)
+            {
                 MagTimer.Enabled = false;
-            else if (ps.Default.CF_DoInvert && this.Visible)
-                MagTimer.Enabled = true;
+            }
+        }
+
+        private void MouseBox_Paint(object sender, PaintEventArgs e)
+        {
+            if (ps.Default.CF_DoBorder)
+            {
+                Pen pen = new Pen(ps.Default.CF_BorderColor, ps.Default.CF_BorderSize);
+                Rectangle rect = new Rectangle(0, 0, this.Width, this.Height);
+                switch (ps.Default.CF_Style)
+                {
+                    case "Rectangle":
+                        e.Graphics.DrawRectangle(pen, rect);
+                        break;
+
+                    case "Circle":
+                        e.Graphics.DrawEllipse(pen, new Rectangle(0, 0, this.Width, this.Width));
+                        break;
+
+                    case "Ellipse":
+                        e.Graphics.DrawEllipse(pen, rect);
+                        break;
+                }
+            }
         }
     }
 }
