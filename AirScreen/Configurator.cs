@@ -87,7 +87,8 @@ namespace AuraScreen
 
             foreach (var button in flowLayoutPanel1.Controls.OfType<Button>())
             {
-                Size newSize = new Size(64, 64);
+                int size = button.Height / 3;
+                Size newSize = new Size(size, size);
                 if (button.Image != null)
                     button.Image = (Image)(new Bitmap(button.Image, newSize));
             }
@@ -107,7 +108,6 @@ namespace AuraScreen
         Color Clicked = Color.FromArgb(230, 237, 183);
         Color Default = Color.FromArgb(10, 150, 170);
 
-
         private void ApplyColors()
         {
 
@@ -115,19 +115,24 @@ namespace AuraScreen
             Color TextColor = Color.Black;
             Color AltTextColor = Color.White;
             Color ClickedColor = Color.FromArgb(119, 119, 119);
-            Color BackgroundColor = Color.White;
+            Color BackgroundColor = Color.FromArgb(119, 100, 114); //Color.White;
             Color GroupBoxColor = Color.White;
             Color TextBoxColor = Color.White;
             Color BorderColor = Color.Black;
 
             if (ps.Default.DarkMode)
             {
-                Button = Color.FromArgb(109, 109, 109);
-                TextColor = Color.White;
-                ClickedColor = Color.FromArgb(119, 119, 119);
+                //000000
+                //151515
+                //F8a145
+                //d35100
+                //dfe0e2
+                Button = ColorTranslator.FromHtml("#B84600"); //Color.FromArgb(109, 109, 109);
+                TextColor = ColorTranslator.FromHtml("#dfe0e2"); //Color.White;
+                ClickedColor = ColorTranslator.FromHtml("#F8a145");  //Color.FromArgb(119, 119, 119);
                 BackgroundColor = Color.Black;
-                GroupBoxColor = Color.FromArgb(75, 75, 75);
-                TextBoxColor = Color.FromArgb(110, 110, 110);
+                GroupBoxColor = ColorTranslator.FromHtml("#151515"); //Color.FromArgb(75, 75, 75);
+                TextBoxColor = ColorTranslator.FromHtml("#151515");  //Color.FromArgb(110, 110, 110);
                 BorderColor = Color.Black;
             }
 
@@ -686,22 +691,33 @@ namespace AuraScreen
 
         public void SystemCleanup()
         {
+            notifyIcon1.Visible = false;
+            notifyIcon1.Dispose();
+
             try
             {
                 if (CursorHasChanged)
                     SystemParametersInfo(0x0057, 0, null, 0);
-                mousebox.Dispose();
-                blockfilter.Dispose();
             }
-            catch { Console.WriteLine("Something happened! Shit!"); }
-
+            catch { Console.WriteLine("Cursor failed to revert!"); }
+            //Fuck error messages
             try
             {
-                notifyIcon1.Visible = false;
-                notifyIcon1.Dispose();
-                NativeMethods.MagUninitialize();
+                mousebox.Dispose();
             }
             catch { }
+            try
+            {
+                blockfilter.Dispose();
+            }
+            catch { }
+            try
+            {
+                appO.Dispose();
+            }
+            catch { }
+
+            NativeMethods.MagUninitialize();
         }
 
         private Toolbox toolbox = new Toolbox();
@@ -746,7 +762,7 @@ namespace AuraScreen
         public void ReloadTiles()
         {
             Console.WriteLine("Reloading Block Filter");
-            ps.Default.BF_Location = tileSelect.SelectedIndex + 1;
+            //ps.Default.BF_Location = tileSelect.SelectedIndex + 1;
             ps.Default.BF_Opacity = tileOpacity.Value;
             ps.Default.BF_Invert = tileInvert.Checked;
             ps.Default.Save();
@@ -766,12 +782,14 @@ namespace AuraScreen
 
         public void button2_Click_1(object sender, EventArgs e)
         {
+            ps.Default.BF_Location = tileSelect.SelectedIndex + 1;
+            ps.Default.Save();
             ReloadTiles();
         }
 
         public void ToggleBlockFilter()
         {
-            ps.Default.BF_Location = tileSelect.SelectedIndex + 1;
+            //ps.Default.BF_Location = tileSelect.SelectedIndex + 1;
             ps.Default.BF_Opacity = tileOpacity.Value;
             ps.Default.Save();
 
@@ -789,6 +807,8 @@ namespace AuraScreen
 
         public void button12_Click(object sender, EventArgs e)
         {
+            ps.Default.BF_Location = tileSelect.SelectedIndex + 1;
+            ps.Default.Save();
             ToggleBlockFilter();
         }
 

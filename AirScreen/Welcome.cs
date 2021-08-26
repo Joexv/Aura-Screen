@@ -16,6 +16,9 @@ namespace AuraScreen
         public Welcome()
         {
             InitializeComponent();
+            label1.Parent = pictureBox1;
+            label2.Parent = pictureBox1;
+            button1.Parent = pictureBox1;
         }
         public Configurator conf { get; set; }
         private void Welcome_Load(object sender, EventArgs e)
@@ -29,7 +32,7 @@ namespace AuraScreen
                 tab.Text = "";
             }
 
-            changelog.Text = beta0020;
+            //changelog.Text = beta0020;
         }
         private string beta0020 = 
             "Started work on initial welcome screen\n" +
@@ -45,6 +48,31 @@ namespace AuraScreen
 #endif
             this.Hide();
             conf.Show();
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            if (Parent != null)
+            {
+                using (var bmp = new Bitmap(Parent.Width, Parent.Height))
+                {
+                    Parent.Controls.Cast<Control>()
+                          .Where(c => Parent.Controls.GetChildIndex(c) > Parent.Controls.GetChildIndex(this))
+                          .Where(c => c.Bounds.IntersectsWith(this.Bounds))
+                          .OrderByDescending(c => Parent.Controls.GetChildIndex(c))
+                          .ToList()
+                          .ForEach(c => c.DrawToBitmap(bmp, c.Bounds));
+
+
+                    e.Graphics.DrawImage(bmp, -Left, -Top);
+                    using (var b = new SolidBrush(Color.FromArgb(15, this.TransparencyKey.R, this.TransparencyKey.B, this.TransparencyKey.G)))
+                    {
+                        e.Graphics.FillRectangle(b, this.ClientRectangle);
+                    }
+                    e.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+                    TextRenderer.DrawText(e.Graphics, this.Text, this.Font, this.ClientRectangle, this.ForeColor, Color.Transparent);
+                }
+            }
         }
     }
 }

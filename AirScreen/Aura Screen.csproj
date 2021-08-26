@@ -317,6 +317,7 @@
     <Content Include="Pink_Crosshair_Cursor.cur">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Aura_Logo_2.png" />
     <None Include="Resources\Color_Wheel_1.png" />
     <None Include="Resources\HK_1.png" />
     <None Include="Resources\Settings_Gear_1.png" />

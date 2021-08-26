@@ -608,7 +608,7 @@ namespace AuraScreen
             this.aoTab.Margin = new System.Windows.Forms.Padding(2);
             this.aoTab.Name = "aoTab";
             this.aoTab.Padding = new System.Windows.Forms.Padding(2);
-            this.aoTab.Size = new System.Drawing.Size(384, 508);
+            this.aoTab.Size = new System.Drawing.Size(388, 448);
             this.aoTab.TabIndex = 5;
             this.aoTab.Text = "App Overlay";
             this.aoTab.UseVisualStyleBackColor = true;
@@ -1069,7 +1069,7 @@ namespace AuraScreen
             this.tileTab.Location = new System.Drawing.Point(4, 36);
             this.tileTab.Margin = new System.Windows.Forms.Padding(2);
             this.tileTab.Name = "tileTab";
-            this.tileTab.Size = new System.Drawing.Size(384, 508);
+            this.tileTab.Size = new System.Drawing.Size(375, 448);
             this.tileTab.TabIndex = 3;
             this.tileTab.Text = "Tile Filter";
             this.tileTab.UseVisualStyleBackColor = true;
@@ -2420,6 +2420,9 @@ namespace AuraScreen
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.cursorTab);
             this.tabControl1.Controls.Add(this.idleTab);
             this.tabControl1.Controls.Add(this.tileTab);
@@ -2432,7 +2435,7 @@ namespace AuraScreen
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(392, 548);
+            this.tabControl1.Size = new System.Drawing.Size(396, 488);
             this.tabControl1.TabIndex = 21;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             this.tabControl1.TabIndexChanged += new System.EventHandler(this.tabControl1_TabIndexChanged);
@@ -2582,6 +2585,9 @@ namespace AuraScreen
             // 
             this.flowLayoutPanel1.AllowDrop = true;
             this.flowLayoutPanel1.AutoScroll = true;
+            this.flowLayoutPanel1.AutoScrollMinSize = new System.Drawing.Size(20, 0);
+            this.flowLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel1.Controls.Add(this.button22);
             this.flowLayoutPanel1.Controls.Add(this.button24);
             this.flowLayoutPanel1.Controls.Add(this.button26);
@@ -2592,7 +2598,7 @@ namespace AuraScreen
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(218, 589);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(218, 529);
             this.flowLayoutPanel1.TabIndex = 22;
             // 
             // button22
@@ -2742,7 +2748,7 @@ namespace AuraScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(621, 589);
+            this.ClientSize = new System.Drawing.Size(621, 529);
             this.Controls.Add(this.titleBar);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.tabControl1);
