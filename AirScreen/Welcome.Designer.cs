@@ -52,9 +52,10 @@ namespace AuraScreen
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.ItemSize = new System.Drawing.Size(0, 1);
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1374, 1329);
+            this.tabControl1.Size = new System.Drawing.Size(687, 697);
             this.tabControl1.TabIndex = 0;
             // 
             // WelcomeTab
@@ -68,10 +69,11 @@ namespace AuraScreen
             this.WelcomeTab.Controls.Add(this.pictureBox1);
             this.WelcomeTab.Controls.Add(this.label2);
             this.WelcomeTab.Controls.Add(this.label1);
-            this.WelcomeTab.Location = new System.Drawing.Point(8, 9);
+            this.WelcomeTab.Location = new System.Drawing.Point(4, 5);
+            this.WelcomeTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.WelcomeTab.Name = "WelcomeTab";
-            this.WelcomeTab.Padding = new System.Windows.Forms.Padding(3);
-            this.WelcomeTab.Size = new System.Drawing.Size(1358, 1312);
+            this.WelcomeTab.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.WelcomeTab.Size = new System.Drawing.Size(679, 688);
             this.WelcomeTab.TabIndex = 0;
             this.WelcomeTab.Text = "tabPage1";
             // 
@@ -80,35 +82,39 @@ namespace AuraScreen
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(544, 713);
+            this.label3.Location = new System.Drawing.Point(272, 371);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(279, 55);
+            this.label3.Size = new System.Drawing.Size(139, 29);
             this.label3.TabIndex = 6;
             this.label3.Text = "What\'s New";
             this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // changelog
             // 
-            this.changelog.Location = new System.Drawing.Point(22, 792);
+            this.changelog.Location = new System.Drawing.Point(11, 412);
+            this.changelog.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.changelog.Multiline = true;
             this.changelog.Name = "changelog";
-            this.changelog.Size = new System.Drawing.Size(1314, 514);
+            this.changelog.Size = new System.Drawing.Size(659, 269);
             this.changelog.TabIndex = 5;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(681, 504);
+            this.button2.Location = new System.Drawing.Point(340, 262);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(673, 126);
+            this.button2.Size = new System.Drawing.Size(336, 66);
             this.button2.TabIndex = 4;
             this.button2.Text = "Tutorial";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(3, 504);
+            this.button1.Location = new System.Drawing.Point(2, 262);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(673, 126);
+            this.button1.Size = new System.Drawing.Size(336, 66);
             this.button1.TabIndex = 3;
             this.button1.Text = "Get Started";
             this.button1.UseVisualStyleBackColor = true;
@@ -118,9 +124,10 @@ namespace AuraScreen
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.Image = global::AuraScreen.Properties.Resources.Aura_Logo;
-            this.pictureBox1.Location = new System.Drawing.Point(554, 6);
+            this.pictureBox1.Location = new System.Drawing.Point(277, 3);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(250, 250);
+            this.pictureBox1.Size = new System.Drawing.Size(125, 130);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -130,9 +137,10 @@ namespace AuraScreen
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Palatino Linotype", 16.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(0, 384);
+            this.label2.Location = new System.Drawing.Point(0, 200);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(1358, 119);
+            this.label2.Size = new System.Drawing.Size(679, 62);
             this.label2.TabIndex = 1;
             this.label2.Text = "Bringing zen to your computer screen\r\n";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -142,31 +150,34 @@ namespace AuraScreen
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Palatino Linotype", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(0, 259);
+            this.label1.Location = new System.Drawing.Point(0, 135);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1358, 125);
+            this.label1.Size = new System.Drawing.Size(679, 65);
             this.label1.TabIndex = 0;
             this.label1.Text = "Welcome To Aura Screen";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // GettingStartedTab
             // 
-            this.GettingStartedTab.Location = new System.Drawing.Point(8, 9);
+            this.GettingStartedTab.Location = new System.Drawing.Point(4, 5);
+            this.GettingStartedTab.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.GettingStartedTab.Name = "GettingStartedTab";
-            this.GettingStartedTab.Padding = new System.Windows.Forms.Padding(3);
-            this.GettingStartedTab.Size = new System.Drawing.Size(1358, 1312);
+            this.GettingStartedTab.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.GettingStartedTab.Size = new System.Drawing.Size(679, 682);
             this.GettingStartedTab.TabIndex = 1;
             this.GettingStartedTab.Text = "tabPage2";
             this.GettingStartedTab.UseVisualStyleBackColor = true;
             // 
             // Welcome
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1374, 1329);
+            this.ClientSize = new System.Drawing.Size(687, 697);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Welcome";

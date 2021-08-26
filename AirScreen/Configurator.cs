@@ -72,7 +72,26 @@ namespace AuraScreen
                 welcome.Activate();
                 this.Hide();
             }
+
+
+            tabControl1.Appearance = TabAppearance.FlatButtons;
+            tabControl1.ItemSize = new Size(0, 1);
+            tabControl1.SizeMode = TabSizeMode.Fixed;
+
+            foreach (TabPage tab in tabControl1.TabPages)
+            {
+                //tab.Text = "";
+            }
+
+            foreach (var button in flowLayoutPanel1.Controls.OfType<Button>())
+            {
+                Size newSize = new Size(50, 50);
+                if (button.Image != null)
+                    button.Image = (Image)(new Bitmap(button.Image, newSize));
+            }
         }
+        Color Clicked = Color.FromArgb(230, 237, 183);
+        Color Default = Color.FromArgb(10, 150, 170);
 
         public void PopulateControls()
         {
@@ -401,6 +420,7 @@ namespace AuraScreen
 
         public void button7_Click(object sender, EventArgs e)
         {
+            colorDialog1.Color = ps.Default.CF_Color;
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 ps.Default.CF_Color = colorDialog1.Color;
@@ -542,6 +562,7 @@ namespace AuraScreen
 
         public void button9_Click(object sender, EventArgs e)
         {
+            colorDialog1.Color = ps.Default.CF_BorderColor;
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 ps.Default.CF_BorderColor = colorDialog1.Color;
@@ -690,6 +711,7 @@ namespace AuraScreen
 
         public void button11_Click(object sender, EventArgs e)
         {
+            colorDialog1.Color = ps.Default.BF_Color;
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 ps.Default.BF_Color = colorDialog1.Color;
@@ -818,6 +840,7 @@ namespace AuraScreen
 
         public void AO_ColorChange_Click(object sender, EventArgs e)
         {
+            colorDialog1.Color = ps.Default.AO_Color;
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 ps.Default.AO_Color = colorDialog1.Color;
@@ -1349,6 +1372,50 @@ namespace AuraScreen
         private void button21_Click_2(object sender, EventArgs e)
         {
 
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = cursorTab;
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = idleTab;
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = tileTab;
+        }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = aoTab;
+        }
+
+        private void button26_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = filterTab;
+        }
+
+        private void button27_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = settingsTab;
+        }
+
+        private void button28_Click(object sender, EventArgs e)
+        {
+            tabControl1.SelectedTab = hkTab;
+        }
+
+        private void tabControl1_TabIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            titleBar.Text = tabControl1.SelectedTab.Text;
         }
     }
 }

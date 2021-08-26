@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace AuraScreen
 {
+    using ps = AuraScreen.Properties.Settings;
     public partial class Welcome : Form
     {
         public Welcome()
@@ -38,7 +39,12 @@ namespace AuraScreen
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+#if !DEBUG
+            ps.Default.ShowWelcomeScreen = false;
+            ps.Default.Save();
+#endif
+            this.Hide();
+            conf.Show();
         }
     }
 }

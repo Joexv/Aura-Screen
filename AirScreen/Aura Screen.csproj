@@ -317,12 +317,12 @@
     <Content Include="Pink_Crosshair_Cursor.cur">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\AdobeStock_215942165_Preview.png" />
-    <None Include="Resources\AdobeStock_249648058_Preview.jpeg" />
+    <None Include="Resources\Color_Wheel_1.png" />
+    <None Include="Resources\HK_1.png" />
+    <None Include="Resources\Settings_Gear_1.png" />
+    <None Include="Resources\Idle_Cursor_1.png" />
     <None Include="Resources\Aura_Logo.ico" />
     <None Include="Resources\Aura_Logo.png" />
-    <None Include="Resources\ezgif.com-gif-maker.gif" />
-    <None Include="Resources\VE Project 1.gif" />
     <None Include="Resources\Aura_Screen_Icon_1.ico" />
     <None Include="Resources\Mouse_Shape_1.png" />
     <None Include="Resources\BoxFilter_Edit_1.png" />

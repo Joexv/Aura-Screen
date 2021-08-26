@@ -148,8 +148,14 @@
   <data name="AppOverlay_Active_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\AppOverlay_Active_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Cursor_UnLock_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cursor_UnLock_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ScreenFilter_Toggle_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ScreenFilter_Toggle_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Idle_Cursor_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Idle_Cursor_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Aura_Screen_Icon_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Aura_Screen_Icon_1.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,8 +172,8 @@
   <data name="BF_Right_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BF_Right_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Cursor_UnLock_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Cursor_UnLock_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Settings_Gear_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Settings_Gear_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Mouse_DOpacity_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Mouse_DOpacity_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -177,6 +183,9 @@
   </data>
   <data name="Mouse_Shape_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Mouse_Shape_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HK_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HK_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="BlockFilter_Cycle_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BlockFilter_Cycle_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -195,5 +204,8 @@
   </data>
   <data name="BoxFilter_Edit_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\BoxFilter_Edit_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Color_Wheel_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Color_Wheel_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
