@@ -20,7 +20,6 @@ namespace AuraScreen
             InitializeComponent();
         }
 
-        private bool InversionToggle;
         void Form_LostFocus(object sender, EventArgs e)
         {
             this.MouseLeave -= new System.EventHandler(Form_LostFocus);
@@ -192,6 +191,7 @@ namespace AuraScreen
         private void SF_Program_Click(object sender, EventArgs e)
         {
             MF.Filter_OnActive.Checked = !MF.Filter_OnActive.Checked;
+            MF.StartSFActive();
             ButtonPopulation();
         }
 
@@ -250,8 +250,6 @@ namespace AuraScreen
         }
 
         private bool wasInverted = false;
-        private bool LockCursor;
-        private bool DoneOnce = false;
         private void flowLayoutPanel1_MouseEnter(object sender, EventArgs e)
         {
             if (ps.Default.TB_AutoHide)

@@ -49,12 +49,6 @@ namespace AuraScreen
             Alpha = 0x2
         }
 
-        public enum WS_EX
-        {
-            Transparent = 0x20,
-            Layered = 0x80000
-        }
-
         public string AppName { get; set; }
         protected override System.Windows.Forms.CreateParams CreateParams
         {
@@ -126,14 +120,20 @@ namespace AuraScreen
         {
             Process[] processes = null;
             string Name = ps.Default.AO_SavedName;
-            if (!ps.Default.AO_ByName || String.IsNullOrEmpty(Name))
-                Name = GetActiveProcessFileName() + ".exe";
 
-            processes = Process.GetProcessesByName(Name.Substring(0, Name.Length - 4));
+            //Sets Program Name to Currently Running progra, allows for running the overlay over active program rather than predefined
+            if (!ps.Default.AO_ByName || String.IsNullOrEmpty(Name))
+                Name = GetActiveProcessFileName();
+
+            processes = Process.GetProcessesByName(Name);
 
             Process p = processes.FirstOrDefault();
             OldLocation = this.Location;
-            if (p != null && GetActiveProcessFileName() != Process.GetCurrentProcess().ProcessName && (GetActiveProcessFileName() + ".exe" == Name))
+            bool AS_Attatch = true;
+            if (ps.Default.AO_DontAttatchToAS)
+                AS_Attatch = GetActiveProcessFileName() != Process.GetCurrentProcess().ProcessName;
+
+            if (p != null && (GetActiveProcessFileName() == Name) && AS_Attatch)
             {
                 IntPtr windowHandle;
                 windowHandle = p.MainWindowHandle;
@@ -150,38 +150,6 @@ namespace AuraScreen
             }
             else
                 this.Visible = false;
-        }
-
-        private Bitmap CaptureScreen(Point Location, Size size)
-        {
-            Bitmap b = new Bitmap(size.Width, size.Height);
-            Graphics g = Graphics.FromImage(b);
-            g.CopyFromScreen(Location.X, Location.Y, 0, 0, b.Size);
-            g.Dispose();
-            return b;
-        }
-
-        private string GetActiveWindowTitle()
-        {
-            const int nChars = 256;
-            StringBuilder Buff = new StringBuilder(nChars);
-            IntPtr handle = GetForegroundWindow();
-
-            if (GetWindowText(handle, Buff, nChars) > 0)
-            {
-                return Buff.ToString();
-            }
-            return null;
-        }
-
-        private void Invert(Point Location, Size size)
-        {
-            this.Hide();
-            Console.WriteLine("Inverting AO");
-            this.Opacity = 0.99; //Form must be even slightly opaque inorder to pass through inputs
-            this.BackgroundImage = Matrices.Transform(CaptureScreen(Location, size), Matrices.Negative); ;
-            Application.DoEvents();
-            this.Show();
         }
 
         private void timer1_Tick(object sender, EventArgs e)

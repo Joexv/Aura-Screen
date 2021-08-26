@@ -162,10 +162,10 @@ namespace Magnifier
 
         public static bool ChangeColorEffect(float[,] matrix, bool FilterUsed = false)
         {
-            NativeMethods.MagInitialize();
+            bool initalized = NativeMethods.MagInitialize();
             ColorEffect colorEffect = new ColorEffect(matrix);
             NativeMethods.MagSetFullscreenColorEffect(ref colorEffect);
-            return true;
+            return initalized;
         }
 
         public static void InterpolateColorEffect(float[,] fromMatrix, float[,] toMatrix, int timeBetweenFrames = 15)
@@ -202,9 +202,7 @@ namespace Magnifier
                 {
                     for (int y = 0; y < SIZE; y++)
                     {
-                        // f(x)=ya+(x-xa)*(yb-ya)/(xb-xa)
-                        // calculate 10 steps, from 1 to 10 (we don't need 0, as we start from there)
-                        result[i][x, y] = A[x, y] + (i + 1/*-0*/) * (B[x, y] - A[x, y]) / (STEPS/*-0*/);
+                        result[i][x, y] = A[x, y] + (i + 1) * (B[x, y] - A[x, y]) / (STEPS);
                     }
                 }
             }

@@ -73,6 +73,8 @@ namespace AuraScreen
                 this.Hide();
             }
 
+            if (ps.Default.CF_OnStartup)
+                ToggleCF();
 
             tabControl1.Appearance = TabAppearance.FlatButtons;
             tabControl1.ItemSize = new Size(0, 1);
@@ -85,20 +87,100 @@ namespace AuraScreen
 
             foreach (var button in flowLayoutPanel1.Controls.OfType<Button>())
             {
-                Size newSize = new Size(50, 50);
+                Size newSize = new Size(64, 64);
                 if (button.Image != null)
                     button.Image = (Image)(new Bitmap(button.Image, newSize));
             }
+
+            ApplyColors();
         }
+
+        public IEnumerable<Control> GetAll(Control control, Type type)
+        {
+            var controls = control.Controls.Cast<Control>();
+
+            return controls.SelectMany(ctrl => GetAll(ctrl, type))
+                                      .Concat(controls)
+                                      .Where(c => c.GetType() == type);
+        }
+
         Color Clicked = Color.FromArgb(230, 237, 183);
         Color Default = Color.FromArgb(10, 150, 170);
+
+
+        private void ApplyColors()
+        {
+
+            Color Button = Default;
+            Color TextColor = Color.Black;
+            Color AltTextColor = Color.White;
+            Color ClickedColor = Color.FromArgb(119, 119, 119);
+            Color BackgroundColor = Color.White;
+            Color GroupBoxColor = Color.White;
+            Color TextBoxColor = Color.White;
+            Color BorderColor = Color.Black;
+
+            if (ps.Default.DarkMode)
+            {
+                Button = Color.FromArgb(109, 109, 109);
+                TextColor = Color.White;
+                ClickedColor = Color.FromArgb(119, 119, 119);
+                BackgroundColor = Color.Black;
+                GroupBoxColor = Color.FromArgb(75, 75, 75);
+                TextBoxColor = Color.FromArgb(110, 110, 110);
+                BorderColor = Color.Black;
+            }
+
+            foreach (TextBox textbox in GetAll(this, typeof(TextBox)))
+            {
+                textbox.BackColor = TextBoxColor;
+                textbox.ForeColor = AltTextColor;
+            }
+
+            foreach (Button button in GetAll(this, typeof(Button)))
+            {
+                button.BackColor = Button;
+                button.ForeColor = Color.White;
+                button.FlatAppearance.MouseDownBackColor = ClickedColor;
+                button.FlatAppearance.BorderColor = Color.Black;
+                button.FlatStyle = FlatStyle.Flat;
+            }
+
+            foreach (GroupBox groupbox in GetAll(this, typeof(GroupBox)))
+            {
+                groupbox.BackColor = GroupBoxColor;
+                groupbox.ForeColor = TextColor;
+            }
+
+            foreach (Label label in GetAll(this, typeof(Label)))
+            {
+                label.ForeColor = TextColor;
+            }
+
+            foreach (ComboBox combobox in GetAll(this, typeof(ComboBox)))
+            {
+                combobox.BackColor = BackgroundColor;
+                combobox.ForeColor = TextColor;
+            }
+
+            foreach (NumericUpDown num in GetAll(this, typeof(NumericUpDown)))
+            {
+                num.ForeColor = TextColor;
+                num.BackColor = BackgroundColor;
+            }
+
+            foreach (TabPage tp in GetAll(this, typeof(TabPage)))
+            {
+                tp.BackColor = BackgroundColor;
+            }
+
+            this.BackColor = BackgroundColor;
+            flowLayoutPanel1.BackColor = BackgroundColor;
+        }
 
         public void PopulateControls()
         {
             ps.Default.FilterInUse = false;
-            if (ps.Default.CF_OnStartup)
-                ToggleCF();
-
             #region MainPage
 
             width.Text = ps.Default.CF_Width.ToString();
@@ -107,7 +189,7 @@ namespace AuraScreen
             checkBox1.Checked = ps.Default.CF_OnStartup;
             checkBox2.Checked = ps.Default.CF_DoBorder;
             borderThicccccc.Value = ps.Default.CF_BorderSize;
-            checkBox3.Checked = ps.Default.keepInTray;
+            toTray.Checked = ps.Default.keepInTray;
             //This is only here because my config was stupid and I didn't want to find it and fix it :)
             if (ps.Default.CF_Opacity > (decimal)0.99)
             {
@@ -125,6 +207,12 @@ namespace AuraScreen
             time.Value = ps.Default.BF_InvertTime;
             tileScrollDisable.Checked = ps.Default.BF_Scroll;
 
+            tileHeight.Value = ps.Default.BF_Height;
+            tileWidth.Value = ps.Default.BF_Width;
+            tileX.Value = ps.Default.BF_X;
+            tileY.Value = ps.Default.BF_Y;
+
+            darkmode.Checked = ps.Default.DarkMode;
             #endregion MainPage
 
             #region hotKeys
@@ -150,7 +238,7 @@ namespace AuraScreen
             killswitchHK.Text = ps.Default.HK_KillSwitch;
             toolboxHK.Text = ps.Default.HK_ShowTB;
 
-            checkBox6.Checked = ps.Default.TB_Cursor;
+            TB_To_Cursor.Checked = ps.Default.TB_Cursor;
 
             tilesManualHK.Text = ps.Default.HK_EditBF;
 
@@ -163,13 +251,8 @@ namespace AuraScreen
             AO_TextBox.Text = ps.Default.AO_SavedName;
             AO_Opacity.Value = ps.Default.AO_Opacity;
 
-            //AO_Invert.Checked = ps.Default.AO_Invert;
-            //AO_Time.Value = ps.Default.AO_InvertTime;
-
-            AO_Invert.Checked = false;
-            AO_Time.Value = ps.Default.AO_InvertTime;
-
             AO_Start.Checked = ps.Default.AO_OnStart;
+            ao_AS.Checked = ps.Default.AO_DontAttatchToAS;
 
             #endregion AppOverlay
 
@@ -205,16 +288,16 @@ namespace AuraScreen
 
             #region Other
 
-            checkBox7.Checked = ps.Default.doAdjust;
+            overrideTB.Checked = ps.Default.doAdjust;
             tbWidth.Value = ps.Default.tbWidth;
             tbHeight.Value = ps.Default.tbHeight;
             tbRows.Value = ps.Default.tbPad;
             groupBox10.Enabled = ps.Default.doAdjust;
 
-            checkBox3.Checked = ps.Default.keepInTray;
-            checkBox5.Checked = !ps.Default.TB_AutoHide;
+            toTray.Checked = ps.Default.keepInTray;
+            TB_AutoHide.Checked = !ps.Default.TB_AutoHide;
 
-            checkBox8.Checked = ps.Default.useAltInvert;
+            altInverse.Checked = ps.Default.useAltInvert;
 
             if (ps.Default.BF_Location != 0)
                 tileSelect.SelectedIndex = ps.Default.BF_Location - 1;
@@ -572,7 +655,7 @@ namespace AuraScreen
 
         public void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            ps.Default.keepInTray = checkBox3.Checked;
+            ps.Default.keepInTray = toTray.Checked;
             ps.Default.Save();
 
             //notifyIcon1.Visible = checkBox3.Checked;
@@ -736,12 +819,40 @@ namespace AuraScreen
             ToggleFilter();
         }
 
+        public void StartSFActive()
+        {
+            if (!SF_FilterInUse && !CheckFilter(3) && !Filter_Timer.Enabled)
+            {
+                ps.Default.FilterInUse = true;
+                ps.Default.FilterNum = 3;
+                SF_FilterInUse = true;
+                Filter_Timer.Enabled = true;
+            }
+            else if (!CheckFilter(3) && Filter_Timer.Enabled)
+            {
+                SF_FilterInUse = false;
+                ps.Default.FilterInUse = false;
+                ps.Default.FilterNum = 0;
+                Matrices.ChangeColorEffect(Matrices.Identity);
+                Filter_Timer.Enabled = false;
+            }
+            else
+            {
+                FilterError();
+            }
+        }
+
         public void ToggleFilter()
         {
             ps.Default.SF_LastUsed = matrixBox.Text;
             ps.Default.Save();
+
+            if (ps.Default.SF_OnActive)
+                Filter_Timer.Enabled = !Filter_Timer.Enabled;
+
             if (matrixBox.Text == "None" || SF_FilterInUse)
             {
+                Console.WriteLine($"MatrixBox {matrixBox.Text} :: FilterInUse {SF_FilterInUse}");
                 SF_FilterInUse = false;
                 ps.Default.FilterInUse = false;
                 ps.Default.FilterNum = 0;
@@ -749,9 +860,10 @@ namespace AuraScreen
             }
             else if(!CheckFilter(3))
             {
-                    ps.Default.FilterInUse = true;
-                    ps.Default.FilterNum = 3;
-                    SF_FilterInUse = Matrices.ChangeColorEffect(Matrix[ps.Default.SF_LastUsed]);
+                Console.WriteLine("Attempting to apply filter");
+                ps.Default.FilterInUse = true;
+                ps.Default.FilterNum = 3;
+                SF_FilterInUse = Matrices.ChangeColorEffect(Matrix[ps.Default.SF_LastUsed]);
             }
             else
             {
@@ -777,6 +889,7 @@ namespace AuraScreen
             if (pictureBox2.Image != null)
                 pictureBox2.Image.Dispose();
             pictureBox2.Image = Matrices.Transform((Bitmap)pictureBox1.Image, Matrix[matrixBox.Text]);
+            label20.Text = matrixBox.Text;
         }
 
         public void filterStartup_CheckedChanged(object sender, EventArgs e)
@@ -813,8 +926,6 @@ namespace AuraScreen
         {
             ps.Default.AO_ByName = AO_ByName.Checked;
             ps.Default.AO_Opacity = AO_Opacity.Value;
-            ps.Default.AO_Invert = AO_Invert.Checked;
-            ps.Default.AO_InvertTime = (int)AO_Time.Value;
             ps.Default.Save();
 
             appO.Close();
@@ -880,15 +991,8 @@ namespace AuraScreen
         {
             ps.Default.SF_OnActive = Filter_OnActive.Checked;
             groupBox1.Enabled = ps.Default.SF_OnActive;
+            StartSFActive();
             ps.Default.Save();
-
-            if (ps.Default.SF_OnActive)
-                Filter_Timer.Start();
-            else
-            {
-                Filter_Timer.Stop();
-                Matrices.ChangeColorEffect(Matrices.Identity);
-            }
         }
 
         public void button10_Click_1(object sender, EventArgs e)
@@ -908,11 +1012,13 @@ namespace AuraScreen
 
                 if (p != null && ps.Default.SF_Programs.Split(';').Contains(AppName, StringComparer.OrdinalIgnoreCase))
                 {
+                    Console.WriteLine($"{AppName} is active and is selected");
                     if (!SF_FilterInUse)
                         SF_FilterInUse = Matrices.ChangeColorEffect(Matrix[ps.Default.SF_LastUsed]);
                 }
                 else
                 {
+                    Console.WriteLine($"{AppName} is Active and NOT selected");
                     Matrices.ChangeColorEffect(Matrices.Identity);
                     SF_FilterInUse = false;
                 }
@@ -1192,19 +1298,19 @@ namespace AuraScreen
 
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
         {
-            ps.Default.TB_AutoHide = !checkBox5.Checked;
+            ps.Default.TB_AutoHide = !TB_AutoHide.Checked;
             ps.Default.Save();
         }
 
         private void checkBox3_CheckedChanged_1(object sender, EventArgs e)
         {
-            ps.Default.keepInTray = checkBox3.Checked;
+            ps.Default.keepInTray = toTray.Checked;
             ps.Default.Save();
         }
 
         private void checkBox6_CheckedChanged(object sender, EventArgs e)
         {
-            ps.Default.TB_Cursor = checkBox6.Checked;
+            ps.Default.TB_Cursor = TB_To_Cursor.Checked;
             ps.Default.Save();
         }
 
@@ -1213,18 +1319,6 @@ namespace AuraScreen
             DialogResult dialogResult = MessageBox.Show("Are you sure you want to restore default settings for Air Screen? This cannot be undone.", "Warning", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
                 ps.Default.Reset();
-        }
-
-        private void checkBox7_CheckedChanged(object sender, EventArgs e)
-        {
-            ps.Default.AO_Invert = AO_Invert.Checked;
-            ps.Default.Save();
-        }
-
-        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
-        {
-            ps.Default.AO_InvertTime = (int)AO_Time.Value;
-            ps.Default.Save();
         }
 
         private void AO_Start_CheckedChanged(object sender, EventArgs e)
@@ -1329,10 +1423,10 @@ namespace AuraScreen
 
         private void checkBox7_CheckedChanged_1(object sender, EventArgs e)
         {
-            ps.Default.doAdjust = checkBox7.Checked;
+            ps.Default.doAdjust = overrideTB.Checked;
             ps.Default.Save();
 
-            groupBox10.Enabled = checkBox7.Checked;
+            groupBox10.Enabled = overrideTB.Checked;
 
             toolbox.Close();
             toolbox = new Toolbox();
@@ -1355,7 +1449,7 @@ namespace AuraScreen
 
         private void checkBox8_CheckedChanged(object sender, EventArgs e)
         {
-            ps.Default.useAltInvert = checkBox8.Checked;
+            ps.Default.useAltInvert = altInverse.Checked;
             ps.Default.Save();
         }
 
@@ -1416,6 +1510,55 @@ namespace AuraScreen
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             titleBar.Text = tabControl1.SelectedTab.Text;
+        }
+
+        private void tileEditButton_Click(object sender, EventArgs e)
+        {
+            EditTiles();
+        }
+
+        private void tileHeight_ValueChanged(object sender, EventArgs e)
+        {
+            ps.Default.BF_Height = (int)tileHeight.Value;
+            ps.Default.Save();
+        }
+
+        private void tileWidth_ValueChanged(object sender, EventArgs e)
+        {
+            ps.Default.BF_Width = (int)tileWidth.Value;
+            ps.Default.Save();
+        }
+
+        private void tileX_ValueChanged(object sender, EventArgs e)
+        {
+            ps.Default.BF_X = (int)tileX.Value;
+            ps.Default.Save();
+        }
+
+        private void tileY_ValueChanged(object sender, EventArgs e)
+        {
+            ps.Default.BF_Y = (int)tileY.Value;
+            ps.Default.Save();
+        }
+
+        private void ao_AS_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox9_CheckedChanged(object sender, EventArgs e)
+        {
+            ps.Default.DarkMode = darkmode.Checked;
+            ps.Default.Save();
+
+            this.Hide();
+            ApplyColors();
+            this.Show();
+        }
+
+        private void groupBox9_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
