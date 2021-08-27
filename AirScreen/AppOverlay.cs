@@ -15,7 +15,6 @@ namespace AuraScreen
     public partial class AppOverlay : Form
     {
         private const int WS_EX_TRANSPARENT = 0x20;
-        private Point OldLocation;
 
         public AppOverlay()
         {
@@ -123,22 +122,20 @@ namespace AuraScreen
 
             //Sets Program Name to Currently Running progra, allows for running the overlay over active program rather than predefined
             if (!ps.Default.AO_ByName || String.IsNullOrEmpty(Name))
-                Name = GetActiveProcessFileName();
+                Name = GetActiveProcessFileName() + ".exe";
 
-            processes = Process.GetProcessesByName(Name);
-
+            processes = Process.GetProcessesByName(Name.Substring(0, Name.Length - 4));
             Process p = processes.FirstOrDefault();
-            OldLocation = this.Location;
-            bool AS_Attatch = true;
-            if (ps.Default.AO_DontAttatchToAS)
-                AS_Attatch = GetActiveProcessFileName() != Process.GetCurrentProcess().ProcessName;
 
-            if (p != null && (GetActiveProcessFileName() == Name) && AS_Attatch)
+            if (ps.Default.AO_DontAttatchToAS && GetActiveProcessFileName() == Process.GetCurrentProcess().ProcessName)
+                return;
+
+            if (p != null)
             {
                 IntPtr windowHandle;
                 windowHandle = p.MainWindowHandle;
                 RECT rect = new RECT();
-                _ = GetWindowRect(windowHandle, ref rect);
+                GetWindowRect(windowHandle, ref rect);
 
                 if (!ps.Default.AO_Invert)
                 {

@@ -277,6 +277,7 @@ namespace AuraScreen
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            colorDialog1.Color = ps.Default.BF_Color;
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 ps.Default.BF_Color = colorDialog1.Color;

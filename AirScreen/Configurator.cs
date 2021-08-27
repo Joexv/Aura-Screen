@@ -79,7 +79,7 @@ namespace AuraScreen
             tabControl1.Appearance = TabAppearance.FlatButtons;
             tabControl1.ItemSize = new Size(0, 1);
             tabControl1.SizeMode = TabSizeMode.Fixed;
-
+            tabControl1.Width += 30;
             foreach (TabPage tab in tabControl1.TabPages)
             {
                 //tab.Text = "";
@@ -87,7 +87,7 @@ namespace AuraScreen
 
             foreach (var button in flowLayoutPanel1.Controls.OfType<Button>())
             {
-                int size = button.Height / 3;
+                int size = (int)(button.Height / 1.5);
                 Size newSize = new Size(size, size);
                 if (button.Image != null)
                     button.Image = (Image)(new Bitmap(button.Image, newSize));
@@ -115,18 +115,13 @@ namespace AuraScreen
             Color TextColor = Color.Black;
             Color AltTextColor = Color.White;
             Color ClickedColor = Color.FromArgb(119, 119, 119);
-            Color BackgroundColor = Color.FromArgb(119, 100, 114); //Color.White;
+            Color BackgroundColor = Color.White;
             Color GroupBoxColor = Color.White;
             Color TextBoxColor = Color.White;
             Color BorderColor = Color.Black;
 
             if (ps.Default.DarkMode)
             {
-                //000000
-                //151515
-                //F8a145
-                //d35100
-                //dfe0e2
                 Button = ColorTranslator.FromHtml("#B84600"); //Color.FromArgb(109, 109, 109);
                 TextColor = ColorTranslator.FromHtml("#dfe0e2"); //Color.White;
                 ClickedColor = ColorTranslator.FromHtml("#F8a145");  //Color.FromArgb(119, 119, 119);
@@ -522,8 +517,8 @@ namespace AuraScreen
             ps.Default.CF_Width = ps.Default.CF_Width + 25;
             if (ps.Default.CF_Width > 10001)
                 ps.Default.CF_Width = 10000;
-            width.Text = ps.Default.CF_Width.ToString();
             ps.Default.Save();
+            width.Text = ps.Default.CF_Width.ToString();
         }
 
         public void button4_Click(object sender, EventArgs e)
@@ -531,8 +526,8 @@ namespace AuraScreen
             ps.Default.CF_Width = ps.Default.CF_Width - 25;
             if (ps.Default.CF_Width < 30)
                 ps.Default.CF_Width = 30;
-            width.Text = ps.Default.CF_Width.ToString();
             ps.Default.Save();
+            width.Text = ps.Default.CF_Width.ToString();
         }
 
         //Height
@@ -541,8 +536,8 @@ namespace AuraScreen
             ps.Default.CF_Height = ps.Default.CF_Height + 25;
             if (ps.Default.CF_Height > 10001)
                 ps.Default.CF_Height = 10000;
-            height.Text = ps.Default.CF_Height.ToString();
             ps.Default.Save();
+            height.Text = ps.Default.CF_Height.ToString();
         }
 
         public void button5_Click(object sender, EventArgs e)
@@ -550,8 +545,8 @@ namespace AuraScreen
             ps.Default.CF_Height = ps.Default.CF_Height - 25;
             if (ps.Default.CF_Height < 30)
                 ps.Default.CF_Height = 30;
-            height.Text = ps.Default.CF_Height.ToString();
             ps.Default.Save();
+            height.Text = ps.Default.CF_Height.ToString();
         }
 
         public void button8_Click(object sender, EventArgs e)
@@ -1002,9 +997,7 @@ namespace AuraScreen
                 appO.Hide();
             }
             else
-            {
                 ReloadAO();
-            }
         }
 
         public void checkBox4_CheckedChanged(object sender, EventArgs e)
@@ -1199,13 +1192,13 @@ namespace AuraScreen
 
             if (!inversionBox.Checked)
             {
-                if(CheckFilter(1))
+                if(!CheckFilter(1))
                 {
                     ps.Default.FilterInUse = false;
                     ps.Default.FilterNum = 0;
                     ps.Default.Save();
                 }
-                mousebox.Close();
+                //mousebox.Close();
             }
             else 
             {
@@ -1579,6 +1572,15 @@ namespace AuraScreen
         private void groupBox9_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void button29_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Would you like to upgrade/import the settings from a previous version of Aura Screen? This will overwrite your current settings and CANNOT BE UNDONE. Proceed?", "Upgrade Old Settings", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                ps.Default.Upgrade();
+            }
         }
     }
 }

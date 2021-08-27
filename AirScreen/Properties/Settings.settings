@@ -72,7 +72,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="AO_SavedName" Type="System.String" Scope="User">
-      <Value Profile="(Default)">firefox.exe</Value>
+      <Value Profile="(Default)">notepad.exe</Value>
     </Setting>
     <Setting Name="SF_OnStartup" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>

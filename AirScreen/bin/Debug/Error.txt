@@ -1,0 +1,17 @@
+System.ArgumentException: Control does not support transparent background colors.
+   at System.Windows.Forms.Control.set_BackColor(Color value)
+   at AuraScreen.Welcome.InitializeComponent() in C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\AirScreen\Welcome.Designer.cs:line 119
+   at AuraScreen.Welcome..ctor() in C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\AirScreen\Welcome.cs:line 18
+   at AuraScreen.Configurator.Form1_Load(Object sender, EventArgs e) in C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\AirScreen\Configurator.cs:line 67
+   at System.Windows.Forms.Form.OnLoad(EventArgs e)
+   at System.Windows.Forms.Form.OnCreateControl()
+   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   at System.Windows.Forms.Control.CreateControl()
+   at System.Windows.Forms.Control.WmShowWindow(Message& m)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ScrollableControl.WndProc(Message& m)
+   at System.Windows.Forms.Form.WmShowWindow(Message& m)
+   at System.Windows.Forms.Form.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)

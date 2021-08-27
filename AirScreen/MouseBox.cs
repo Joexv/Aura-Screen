@@ -114,8 +114,10 @@ namespace AuraScreen
         private void AdjustLocation()
         {
             Point pt = Cursor.Position;
-            if (ps.Default.CF_Style == "Circle")
-                pt.Offset(-1 * this.Width / 2, -1 * this.Width / 2);
+            if (ps.Default.CF_Style == "Half Circle")
+                pt.Offset(-1 * this.Width / 2, -1 * this.Height / 2);
+            else if (ps.Default.CF_Style == "Circle")
+                pt.Offset(-1 * this.Height / 2, -1 * this.Height / 2);
             else
                 pt.Offset(-1 * this.Width / 2, -1 * this.Height / 2);
 
@@ -151,10 +153,13 @@ namespace AuraScreen
                     this.Region = new Region(GP);
                     return;
 
-                case "Circle":
-                    //centerX - radius, centerY - radius,
-                    //radius + radius, radius + radius
+                case "Half Circle":
                     GP.AddEllipse(0, 0, this.Width, this.Width);
+                    this.Region = new Region(GP);
+                    return;
+
+                case "Circle":
+                    GP.AddEllipse(0, 0, this.Height, this.Height);
                     this.Region = new Region(GP);
                     return;
 
@@ -379,6 +384,7 @@ namespace AuraScreen
                 this.Location = new Point(source.left, source.top);
 
             NativeMethods.InvalidateRect(hwndMag, IntPtr.Zero, true);
+            this.Refresh();
         }
 
         public void SetupMagnifier()
@@ -401,19 +407,10 @@ namespace AuraScreen
 
             // Create a magnifier control that fills the client area.
             NativeMethods.GetClientRect(this.Handle, ref magWindowRect);
-
-            if (ps.Default.CF_DoBorder)
-            {
-                magWindowRect.right -= ps.Default.CF_BorderSize / 2;
-                magWindowRect.bottom -= ps.Default.CF_BorderSize / 2;
-                magWindowRect.top += ps.Default.CF_BorderSize / 2;
-                magWindowRect.left += ps.Default.CF_BorderSize / 2;
-            }
-
             hwndMag = NativeMethods.CreateWindow((int)ExtendedWindowStyles.WS_EX_TRANSPARENT, NativeMethods.WC_MAGNIFIER,
-                "MouseBox", (int)WindowStyles.WS_CHILD | (int)MagnifierStyle.MS_SHOWMAGNIFIEDCURSOR |
-                (int)WindowStyles.WS_VISIBLE,
-                magWindowRect.left, magWindowRect.top, magWindowRect.right, magWindowRect.bottom, this.Handle, IntPtr.Zero, hInst, IntPtr.Zero);
+                        "MouseBox", (int)WindowStyles.WS_CHILD | (int)MagnifierStyle.MS_SHOWMAGNIFIEDCURSOR |
+                        (int)WindowStyles.WS_VISIBLE,
+                        magWindowRect.left, magWindowRect.top, magWindowRect.right, magWindowRect.bottom, this.Handle, IntPtr.Zero, hInst, IntPtr.Zero);
 
             if (hwndMag == IntPtr.Zero)
             {
@@ -447,18 +444,22 @@ namespace AuraScreen
 
         private void MouseBox_Paint(object sender, PaintEventArgs e)
         {
-            if (ps.Default.CF_DoBorder)
+            if (ps.Default.CF_DoBorder && !ps.Default.CF_DoInvert)
             {
                 Pen pen = new Pen(ps.Default.CF_BorderColor, ps.Default.CF_BorderSize);
-                Rectangle rect = new Rectangle(0, 0, this.Width, this.Height);
+                Rectangle rect  = new Rectangle(0, 0, this.Width, this.Height);
                 switch (ps.Default.CF_Style)
                 {
                     case "Rectangle":
                         e.Graphics.DrawRectangle(pen, rect);
                         break;
 
-                    case "Circle":
+                    case "Half Circle":
                         e.Graphics.DrawEllipse(pen, new Rectangle(0, 0, this.Width, this.Width));
+                        break;
+
+                    case "Circle":
+                        e.Graphics.DrawEllipse(pen, new Rectangle(0, 0, this.Height, this.Height));
                         break;
 
                     case "Ellipse":
