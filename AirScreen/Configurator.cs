@@ -134,13 +134,13 @@ namespace AuraScreen
             foreach (TextBox textbox in GetAll(this, typeof(TextBox)))
             {
                 textbox.BackColor = TextBoxColor;
-                textbox.ForeColor = AltTextColor;
+                textbox.ForeColor = TextColor;
             }
 
             foreach (Button button in GetAll(this, typeof(Button)))
             {
                 button.BackColor = Button;
-                button.ForeColor = Color.White;
+                button.ForeColor = TextColor;
                 button.FlatAppearance.MouseDownBackColor = ClickedColor;
                 button.FlatAppearance.BorderColor = Color.Black;
                 button.FlatStyle = FlatStyle.Flat;
@@ -177,12 +177,16 @@ namespace AuraScreen
             this.BackColor = BackgroundColor;
             flowLayoutPanel1.BackColor = BackgroundColor;
         }
-
+        public bool OnlyOnStart = false;
         public void PopulateControls()
         {
-            ps.Default.FilterInUse = false;
-            #region MainPage
+            if (!OnlyOnStart)
+                ps.Default.FilterInUse = false;
+            else
+                OnlyOnStart = true;
 
+            #region MainPage
+            Console.WriteLine("Cursor Controls");
             width.Text = ps.Default.CF_Width.ToString();
             height.Text = ps.Default.CF_Height.ToString();
             styleBox.Text = ps.Default.CF_Style;
@@ -202,7 +206,7 @@ namespace AuraScreen
             inversionBox.Checked = ps.Default.CF_DoInvert;
             inversionToggle.Checked = ps.Default.CF_InversionToggle;
             checkBox4.Checked = ps.Default.CF_Lock;
-
+            Console.WriteLine("Tile Controls");
             tileInvert.Checked = ps.Default.BF_Invert;
             time.Value = ps.Default.BF_InvertTime;
             tileScrollDisable.Checked = ps.Default.BF_Scroll;
@@ -216,7 +220,7 @@ namespace AuraScreen
             #endregion MainPage
 
             #region hotKeys
-
+            Console.WriteLine("Hotkeys");
             enableHotKey.Text = ps.Default.HK_ToggleCF;
             invertHotKey.Text = ps.Default.HK_InvertCF;
             enlargeHotKey.Text = ps.Default.HK_EnlargeCF;
@@ -677,6 +681,7 @@ namespace AuraScreen
 
         private void Form1_Shown(object sender, EventArgs e)
         {
+            
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)

@@ -334,7 +334,7 @@ namespace AuraScreen
             this.disableHotKey.Location = new System.Drawing.Point(662, 11);
             this.disableHotKey.Margin = new System.Windows.Forms.Padding(2);
             this.disableHotKey.Name = "disableHotKey";
-            this.disableHotKey.Size = new System.Drawing.Size(52, 22);
+            this.disableHotKey.Size = new System.Drawing.Size(52, 20);
             this.disableHotKey.TabIndex = 3;
             // 
             // toolTip1
@@ -982,7 +982,7 @@ namespace AuraScreen
             this.label25.Location = new System.Drawing.Point(7, 316);
             this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(0, 16);
+            this.label25.Size = new System.Drawing.Size(0, 13);
             this.label25.TabIndex = 17;
             // 
             // button15
@@ -1082,7 +1082,7 @@ namespace AuraScreen
             this.tileScrollDisable.Location = new System.Drawing.Point(150, 287);
             this.tileScrollDisable.Margin = new System.Windows.Forms.Padding(2);
             this.tileScrollDisable.Name = "tileScrollDisable";
-            this.tileScrollDisable.Size = new System.Drawing.Size(160, 20);
+            this.tileScrollDisable.Size = new System.Drawing.Size(129, 17);
             this.tileScrollDisable.TabIndex = 8;
             this.tileScrollDisable.Text = "Disable while scrolling";
             this.tileScrollDisable.UseVisualStyleBackColor = true;
@@ -1199,7 +1199,7 @@ namespace AuraScreen
             this.squwiggly.Location = new System.Drawing.Point(93, 337);
             this.squwiggly.Margin = new System.Windows.Forms.Padding(2);
             this.squwiggly.Name = "squwiggly";
-            this.squwiggly.Size = new System.Drawing.Size(35, 20);
+            this.squwiggly.Size = new System.Drawing.Size(32, 17);
             this.squwiggly.TabIndex = 7;
             this.squwiggly.Text = "~";
             this.squwiggly.UseVisualStyleBackColor = true;
@@ -1340,7 +1340,7 @@ namespace AuraScreen
             this.label45.Location = new System.Drawing.Point(150, 338);
             this.label45.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(132, 16);
+            this.label45.Size = new System.Drawing.Size(106, 13);
             this.label45.TabIndex = 6;
             this.label45.Text = "Manually Refresh On";
             this.label45.Visible = false;
@@ -1362,7 +1362,7 @@ namespace AuraScreen
             this.f1.Location = new System.Drawing.Point(34, 337);
             this.f1.Margin = new System.Windows.Forms.Padding(2);
             this.f1.Name = "f1";
-            this.f1.Size = new System.Drawing.Size(41, 20);
+            this.f1.Size = new System.Drawing.Size(37, 17);
             this.f1.TabIndex = 5;
             this.f1.Text = "F1";
             this.f1.UseVisualStyleBackColor = true;
@@ -1387,7 +1387,7 @@ namespace AuraScreen
             this.r.Location = new System.Drawing.Point(93, 320);
             this.r.Margin = new System.Windows.Forms.Padding(2);
             this.r.Name = "r";
-            this.r.Size = new System.Drawing.Size(36, 20);
+            this.r.Size = new System.Drawing.Size(33, 17);
             this.r.TabIndex = 4;
             this.r.Text = "R";
             this.r.UseVisualStyleBackColor = true;
@@ -1413,7 +1413,7 @@ namespace AuraScreen
             this.shift.Location = new System.Drawing.Point(34, 320);
             this.shift.Margin = new System.Windows.Forms.Padding(2);
             this.shift.Name = "shift";
-            this.shift.Size = new System.Drawing.Size(51, 20);
+            this.shift.Size = new System.Drawing.Size(46, 17);
             this.shift.TabIndex = 3;
             this.shift.TabStop = true;
             this.shift.Text = "Shift";
@@ -1427,7 +1427,7 @@ namespace AuraScreen
             this.label46.Location = new System.Drawing.Point(147, 308);
             this.label46.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(93, 16);
+            this.label46.Size = new System.Drawing.Size(74, 13);
             this.label46.TabIndex = 1;
             this.label46.Text = "Refresh Every";
             this.label46.Visible = false;
@@ -1447,7 +1447,7 @@ namespace AuraScreen
             0,
             0});
             this.time.Name = "time";
-            this.time.Size = new System.Drawing.Size(60, 22);
+            this.time.Size = new System.Drawing.Size(60, 20);
             this.time.TabIndex = 2;
             this.time.Value = new decimal(new int[] {
             5,
@@ -1805,6 +1805,7 @@ namespace AuraScreen
             this.toolboxHK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.toolboxHK.Location = new System.Drawing.Point(124, 13);
             this.toolboxHK.Margin = new System.Windows.Forms.Padding(2);
+            this.toolboxHK.MaxLength = 1;
             this.toolboxHK.Name = "toolboxHK";
             this.toolboxHK.Size = new System.Drawing.Size(38, 21);
             this.toolboxHK.TabIndex = 25;
@@ -1827,6 +1828,7 @@ namespace AuraScreen
             this.killswitchHK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.killswitchHK.Location = new System.Drawing.Point(331, 13);
             this.killswitchHK.Margin = new System.Windows.Forms.Padding(2);
+            this.killswitchHK.MaxLength = 1;
             this.killswitchHK.Name = "killswitchHK";
             this.killswitchHK.Size = new System.Drawing.Size(38, 21);
             this.killswitchHK.TabIndex = 23;
@@ -1847,8 +1849,9 @@ namespace AuraScreen
             // SettingsHK
             // 
             this.SettingsHK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SettingsHK.Location = new System.Drawing.Point(123, 43);
+            this.SettingsHK.Location = new System.Drawing.Point(124, 40);
             this.SettingsHK.Margin = new System.Windows.Forms.Padding(2);
+            this.SettingsHK.MaxLength = 1;
             this.SettingsHK.Name = "SettingsHK";
             this.SettingsHK.Size = new System.Drawing.Size(38, 21);
             this.SettingsHK.TabIndex = 13;
@@ -1877,6 +1880,7 @@ namespace AuraScreen
             // 
             this.tilesManualHK.Location = new System.Drawing.Point(332, 45);
             this.tilesManualHK.Margin = new System.Windows.Forms.Padding(2);
+            this.tilesManualHK.MaxLength = 1;
             this.tilesManualHK.Name = "tilesManualHK";
             this.tilesManualHK.Size = new System.Drawing.Size(38, 21);
             this.tilesManualHK.TabIndex = 13;
@@ -1897,6 +1901,7 @@ namespace AuraScreen
             // 
             this.BF_ToggleHK.Location = new System.Drawing.Point(124, 20);
             this.BF_ToggleHK.Margin = new System.Windows.Forms.Padding(2);
+            this.BF_ToggleHK.MaxLength = 1;
             this.BF_ToggleHK.Name = "BF_ToggleHK";
             this.BF_ToggleHK.Size = new System.Drawing.Size(38, 21);
             this.BF_ToggleHK.TabIndex = 11;
@@ -1917,6 +1922,7 @@ namespace AuraScreen
             // 
             this.cylceHotKey.Location = new System.Drawing.Point(332, 20);
             this.cylceHotKey.Margin = new System.Windows.Forms.Padding(2);
+            this.cylceHotKey.MaxLength = 1;
             this.cylceHotKey.Name = "cylceHotKey";
             this.cylceHotKey.Size = new System.Drawing.Size(38, 21);
             this.cylceHotKey.TabIndex = 9;
@@ -1951,6 +1957,7 @@ namespace AuraScreen
             // 
             this.AO_ToggleHK.Location = new System.Drawing.Point(123, 16);
             this.AO_ToggleHK.Margin = new System.Windows.Forms.Padding(2);
+            this.AO_ToggleHK.MaxLength = 1;
             this.AO_ToggleHK.Name = "AO_ToggleHK";
             this.AO_ToggleHK.Size = new System.Drawing.Size(38, 21);
             this.AO_ToggleHK.TabIndex = 13;
@@ -1999,6 +2006,7 @@ namespace AuraScreen
             // 
             this.SF_ProgramHK.Location = new System.Drawing.Point(332, 20);
             this.SF_ProgramHK.Margin = new System.Windows.Forms.Padding(2);
+            this.SF_ProgramHK.MaxLength = 1;
             this.SF_ProgramHK.Name = "SF_ProgramHK";
             this.SF_ProgramHK.Size = new System.Drawing.Size(38, 21);
             this.SF_ProgramHK.TabIndex = 22;
@@ -2007,8 +2015,9 @@ namespace AuraScreen
             // 
             // SF_CycleHK
             // 
-            this.SF_CycleHK.Location = new System.Drawing.Point(124, 45);
+            this.SF_CycleHK.Location = new System.Drawing.Point(125, 45);
             this.SF_CycleHK.Margin = new System.Windows.Forms.Padding(2);
+            this.SF_CycleHK.MaxLength = 1;
             this.SF_CycleHK.Name = "SF_CycleHK";
             this.SF_CycleHK.Size = new System.Drawing.Size(38, 21);
             this.SF_CycleHK.TabIndex = 21;
@@ -2019,6 +2028,7 @@ namespace AuraScreen
             // 
             this.SF_ToggleHK.Location = new System.Drawing.Point(125, 20);
             this.SF_ToggleHK.Margin = new System.Windows.Forms.Padding(2);
+            this.SF_ToggleHK.MaxLength = 1;
             this.SF_ToggleHK.Name = "SF_ToggleHK";
             this.SF_ToggleHK.Size = new System.Drawing.Size(38, 21);
             this.SF_ToggleHK.TabIndex = 19;
@@ -2109,6 +2119,7 @@ namespace AuraScreen
             // 
             this.cursorLock.Location = new System.Drawing.Point(142, 116);
             this.cursorLock.Margin = new System.Windows.Forms.Padding(2);
+            this.cursorLock.MaxLength = 1;
             this.cursorLock.Name = "cursorLock";
             this.cursorLock.Size = new System.Drawing.Size(38, 21);
             this.cursorLock.TabIndex = 13;
@@ -2159,6 +2170,7 @@ namespace AuraScreen
             // 
             this.shrinkHotKey.Location = new System.Drawing.Point(142, 66);
             this.shrinkHotKey.Margin = new System.Windows.Forms.Padding(2);
+            this.shrinkHotKey.MaxLength = 1;
             this.shrinkHotKey.Name = "shrinkHotKey";
             this.shrinkHotKey.Size = new System.Drawing.Size(38, 21);
             this.shrinkHotKey.TabIndex = 7;
@@ -2169,6 +2181,7 @@ namespace AuraScreen
             // 
             this.enlargeHotKey.Location = new System.Drawing.Point(142, 41);
             this.enlargeHotKey.Margin = new System.Windows.Forms.Padding(2);
+            this.enlargeHotKey.MaxLength = 1;
             this.enlargeHotKey.Name = "enlargeHotKey";
             this.enlargeHotKey.Size = new System.Drawing.Size(38, 21);
             this.enlargeHotKey.TabIndex = 5;
@@ -2179,6 +2192,7 @@ namespace AuraScreen
             // 
             this.invertHotKey.Location = new System.Drawing.Point(142, 91);
             this.invertHotKey.Margin = new System.Windows.Forms.Padding(2);
+            this.invertHotKey.MaxLength = 1;
             this.invertHotKey.Name = "invertHotKey";
             this.invertHotKey.Size = new System.Drawing.Size(38, 21);
             this.invertHotKey.TabIndex = 11;
@@ -2189,6 +2203,7 @@ namespace AuraScreen
             // 
             this.enableHotKey.Location = new System.Drawing.Point(142, 16);
             this.enableHotKey.Margin = new System.Windows.Forms.Padding(2);
+            this.enableHotKey.MaxLength = 1;
             this.enableHotKey.Name = "enableHotKey";
             this.enableHotKey.Size = new System.Drawing.Size(38, 21);
             this.enableHotKey.TabIndex = 1;
