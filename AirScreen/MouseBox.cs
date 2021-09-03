@@ -113,15 +113,15 @@ namespace AuraScreen
 
         private void AdjustLocation()
         {
-            Point pt = Cursor.Position;
-            if (ps.Default.CF_Style == "Half Circle")
-                pt.Offset(-1 * this.Width / 2, -1 * this.Height / 2);
-            else if (ps.Default.CF_Style == "Circle")
-                pt.Offset(-1 * this.Height / 2, -1 * this.Height / 2);
-            else
-                pt.Offset(-1 * this.Width / 2, -1 * this.Height / 2);
+                Point pt = Cursor.Position;
+                if (ps.Default.CF_Style == "Half Circle")
+                    pt.Offset(-1 * this.Width / 2, -1 * this.Height / 2);
+                else if (ps.Default.CF_Style == "Circle")
+                    pt.Offset(-1 * this.Height / 2, -1 * this.Height / 2);
+                else
+                    pt.Offset(-1 * this.Width / 2, -1 * this.Height / 2);
 
-            this.Location = pt;
+                this.Location = pt;
         }
 
         private void CreateView()
@@ -134,40 +134,68 @@ namespace AuraScreen
             this.Opacity = (double)ps.Default.CF_Opacity;
             this.TopMost = true;
             this.BackColor = ps.Default.CF_Color;
-
+            System.Drawing.Drawing2D.GraphicsPath GP = new System.Drawing.Drawing2D.GraphicsPath();
             Application.DoEvents();
             //this.FormBorderStyle = FormBorderStyle.None;
-
-            // Makes the form circular:
-            System.Drawing.Drawing2D.GraphicsPath GP = new System.Drawing.Drawing2D.GraphicsPath();
-
             switch (ps.Default.CF_Style)
             {
                 case "Rectangle":
                     GP.AddRectangle(this.ClientRectangle);
-                    this.Region = new Region(GP);
-                    return;
+                    NewRegion = new Region(GP);
+                    break;
 
                 case "Ellipse":
                     GP.AddEllipse(this.ClientRectangle);
-                    this.Region = new Region(GP);
-                    return;
+                    NewRegion = new Region(GP);
+                    break;
 
                 case "Half Circle":
                     GP.AddEllipse(0, 0, this.Width, this.Width);
-                    this.Region = new Region(GP);
-                    return;
+                    NewRegion = new Region(GP);
+                    break;
 
                 case "Circle":
                     GP.AddEllipse(0, 0, this.Height, this.Height);
-                    this.Region = new Region(GP);
-                    return;
-
-                default:
-                    GP.AddRectangle(this.ClientRectangle);
-                    this.Region = new Region(GP);
-                    return;
+                    this.Width = this.Height;
+                    NewRegion = new Region(GP);
+                    break;
+                case "Triangle":
+                    DrawTriangle();
+                    break;
+                case "Triangle - Flipped":
+                    DrawTriangleFlipped();
+                    break;
             }
+
+            this.Region = NewRegion;
+        }
+
+        private Region NewRegion;
+        private Point[] Triangle;
+        public void DrawTriangle()
+        {
+            Console.WriteLine("Drawing triangle");
+            System.Drawing.Drawing2D.GraphicsPath GP = new System.Drawing.Drawing2D.GraphicsPath();
+            Point top = new Point(this.Width / 2, 0);
+            Point right = new Point(this.Width, this.Height);
+            Point left = new Point(0, this.Height);
+            Triangle = new Point[] { top, right, left };
+            GP.AddPolygon(Triangle);
+            NewRegion = new Region(GP);
+            this.Refresh();
+        }
+
+        public void DrawTriangleFlipped()
+        {
+            Console.WriteLine("Drawing triangle");
+            System.Drawing.Drawing2D.GraphicsPath GP = new System.Drawing.Drawing2D.GraphicsPath();
+            Point top = new Point(this.Width / 2, this.Height);
+            Point right = new Point(this.Width, 0);
+            Point left = new Point(0, 0);
+            Triangle = new Point[] { top, right, left };
+            GP.AddPolygon(Triangle);
+            NewRegion = new Region(GP);
+            this.Refresh();
         }
 
         private void Form2_KeyPress(object sender, KeyPressEventArgs e)
@@ -453,16 +481,14 @@ namespace AuraScreen
                     case "Rectangle":
                         e.Graphics.DrawRectangle(pen, rect);
                         break;
-
-                    case "Half Circle":
-                        e.Graphics.DrawEllipse(pen, new Rectangle(0, 0, this.Width, this.Width));
-                        break;
-
                     case "Circle":
                         e.Graphics.DrawEllipse(pen, new Rectangle(0, 0, this.Height, this.Height));
                         break;
-
-                    case "Ellipse":
+                    case "Triangle":
+                    case "Triangle - Flipped":
+                        e.Graphics.DrawPolygon(pen, Triangle);
+                        break;
+                    default:
                         e.Graphics.DrawEllipse(pen, rect);
                         break;
                 }

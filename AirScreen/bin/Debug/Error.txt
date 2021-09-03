@@ -1,0 +1,14 @@
+System.ArgumentNullException: Value cannot be null.
+Parameter name: points
+   at System.Drawing.Graphics.DrawPolygon(Pen pen, Point[] points)
+   at AuraScreen.MouseBox.MouseBox_Paint(Object sender, PaintEventArgs e) in C:\Users\HPD\Documents\Github\MouseHover\AirScreen\MouseBox.cs:line 467
+   at System.Windows.Forms.Control.OnPaint(PaintEventArgs e)
+   at System.Windows.Forms.Form.OnPaint(PaintEventArgs e)
+   at System.Windows.Forms.Control.PaintWithErrorHandling(PaintEventArgs e, Int16 layer)
+   at System.Windows.Forms.Control.WmPaint(Message& m)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ScrollableControl.WndProc(Message& m)
+   at System.Windows.Forms.Form.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)

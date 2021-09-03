@@ -195,6 +195,7 @@ namespace AuraScreen
             this.styleBox = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button30 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -490,7 +491,7 @@ namespace AuraScreen
             // inversionToggle
             // 
             this.inversionToggle.AutoSize = true;
-            this.inversionToggle.Location = new System.Drawing.Point(53, 152);
+            this.inversionToggle.Location = new System.Drawing.Point(168, 71);
             this.inversionToggle.Margin = new System.Windows.Forms.Padding(2);
             this.inversionToggle.Name = "inversionToggle";
             this.inversionToggle.Size = new System.Drawing.Size(182, 19);
@@ -518,7 +519,7 @@ namespace AuraScreen
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(53, 129);
+            this.checkBox1.Location = new System.Drawing.Point(168, 48);
             this.checkBox1.Margin = new System.Windows.Forms.Padding(2);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(105, 19);
@@ -2341,7 +2342,9 @@ namespace AuraScreen
             this.styleBox.Items.AddRange(new object[] {
             "Rectangle",
             "Ellipse",
-            "Circle"});
+            "Circle",
+            "Triangle",
+            "Triangle - Flipped"});
             this.styleBox.Location = new System.Drawing.Point(10, 78);
             this.styleBox.Margin = new System.Windows.Forms.Padding(2);
             this.styleBox.Name = "styleBox";
@@ -2363,6 +2366,7 @@ namespace AuraScreen
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.button30);
             this.groupBox3.Controls.Add(this.checkBox4);
             this.groupBox3.Controls.Add(this.inversionToggle);
             this.groupBox3.Controls.Add(this.inversionBox);
@@ -2376,6 +2380,16 @@ namespace AuraScreen
             this.groupBox3.TabIndex = 25;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Additional Options";
+            // 
+            // button30
+            // 
+            this.button30.Location = new System.Drawing.Point(135, 148);
+            this.button30.Name = "button30";
+            this.button30.Size = new System.Drawing.Size(75, 23);
+            this.button30.TabIndex = 18;
+            this.button30.Text = "Add Texture";
+            this.button30.UseVisualStyleBackColor = true;
+            this.button30.Click += new System.EventHandler(this.button30_Click);
             // 
             // groupBox2
             // 
@@ -3053,6 +3067,7 @@ namespace AuraScreen
         private System.Windows.Forms.GroupBox groupBox18;
         private System.Windows.Forms.CheckBox darkmode;
         private System.Windows.Forms.Button button29;
+        private System.Windows.Forms.Button button30;
     }
 }
 

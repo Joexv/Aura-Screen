@@ -1587,5 +1587,10 @@ namespace AuraScreen
                 ps.Default.Upgrade();
             }
         }
+
+        private void button30_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
