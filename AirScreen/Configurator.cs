@@ -85,7 +85,7 @@ namespace AuraScreen
                 //tab.Text = "";
             }
 
-            foreach (var button in flowLayoutPanel1.Controls.OfType<Button>())
+            foreach (var button in panel1.Controls.OfType<Button>())
             {
                 int size = (int)(button.Height / 1.5);
                 Size newSize = new Size(size, size);
@@ -108,18 +108,17 @@ namespace AuraScreen
         Color Clicked = Color.FromArgb(230, 237, 183);
         Color Default = Color.FromArgb(10, 150, 170);
 
+        Color Selected = Color.FromArgb(6, 84, 96);
+        Color Button = Color.FromArgb(10, 150, 170);
+        Color TextColor = Color.Black;
+        Color AltTextColor = Color.White;
+        Color ClickedColor = Color.FromArgb(119, 119, 119);
+        Color BackgroundColor = Color.White;
+        Color GroupBoxColor = Color.White;
+        Color TextBoxColor = Color.White;
+        Color BorderColor = Color.Black;
         private void ApplyColors()
         {
-
-            Color Button = Default;
-            Color TextColor = Color.Black;
-            Color AltTextColor = Color.White;
-            Color ClickedColor = Color.FromArgb(119, 119, 119);
-            Color BackgroundColor = Color.White;
-            Color GroupBoxColor = Color.White;
-            Color TextBoxColor = Color.White;
-            Color BorderColor = Color.Black;
-
             if (ps.Default.DarkMode)
             {
                 Button = ColorTranslator.FromHtml("#B84600"); //Color.FromArgb(109, 109, 109);
@@ -129,6 +128,7 @@ namespace AuraScreen
                 GroupBoxColor = ColorTranslator.FromHtml("#151515"); //Color.FromArgb(75, 75, 75);
                 TextBoxColor = ColorTranslator.FromHtml("#151515");  //Color.FromArgb(110, 110, 110);
                 BorderColor = Color.Black;
+                Selected = Color.Black;
             }
 
             foreach (TextBox textbox in GetAll(this, typeof(TextBox)))
@@ -175,7 +175,7 @@ namespace AuraScreen
             }
 
             this.BackColor = BackgroundColor;
-            flowLayoutPanel1.BackColor = BackgroundColor;
+            panel1.BackColor = BackgroundColor;
         }
         public bool OnlyOnStart = false;
         public void PopulateControls()
@@ -1489,36 +1489,57 @@ namespace AuraScreen
         private void button22_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedTab = cursorTab;
+            ApplyColors();
+            button22.BackColor = Selected;
+            button22.ForeColor = AltTextColor;
         }
 
         private void button23_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedTab = idleTab;
+            ApplyColors();
+            button23.BackColor = Selected;
+            button23.ForeColor = AltTextColor;
         }
 
         private void button24_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedTab = tileTab;
+            ApplyColors();
+            button24.BackColor = Selected;
+            button24.ForeColor = AltTextColor;
         }
 
         private void button25_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedTab = aoTab;
+            ApplyColors();
+            button25.BackColor = Selected;
+            button25.ForeColor = AltTextColor;
         }
 
         private void button26_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedTab = filterTab;
+            ApplyColors();
+            button26.BackColor = Selected;
+            button26.ForeColor = AltTextColor;
         }
 
         private void button27_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedTab = settingsTab;
+            ApplyColors();
+            button27.BackColor = Selected;
+            button27.ForeColor = AltTextColor;
         }
 
         private void button28_Click(object sender, EventArgs e)
         {
             tabControl1.SelectedTab = hkTab;
+            ApplyColors();
+            button28.BackColor = Selected;
+            button28.ForeColor = AltTextColor;
         }
 
         private void tabControl1_TabIndexChanged(object sender, EventArgs e)

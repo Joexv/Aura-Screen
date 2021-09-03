@@ -38,7 +38,6 @@ namespace AuraScreen
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.disableHotKey = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.AO_ByName = new System.Windows.Forms.RadioButton();
             this.height = new System.Windows.Forms.Label();
@@ -217,7 +216,6 @@ namespace AuraScreen
             this.Filter_Timer = new System.Windows.Forms.Timer(this.components);
             this.CursorTimer = new System.Windows.Forms.Timer(this.components);
             this.CursorTimer2 = new System.Windows.Forms.Timer(this.components);
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.button22 = new System.Windows.Forms.Button();
             this.button24 = new System.Windows.Forms.Button();
             this.button26 = new System.Windows.Forms.Button();
@@ -226,6 +224,8 @@ namespace AuraScreen
             this.button27 = new System.Windows.Forms.Button();
             this.button28 = new System.Windows.Forms.Button();
             this.titleBar = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.contextMenuStrip1.SuspendLayout();
             this.aoTab.SuspendLayout();
             this.groupBox15.SuspendLayout();
@@ -270,7 +270,8 @@ namespace AuraScreen
             this.groupBox11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cursorIdle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cursorPreview)).BeginInit();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // colorDialog1
@@ -329,14 +330,6 @@ namespace AuraScreen
             this.toolStripMenuItem3.Text = "Close Air Screen";
             this.toolStripMenuItem3.ToolTipText = "Close Program";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
-            // 
-            // disableHotKey
-            // 
-            this.disableHotKey.Location = new System.Drawing.Point(662, 11);
-            this.disableHotKey.Margin = new System.Windows.Forms.Padding(2);
-            this.disableHotKey.Name = "disableHotKey";
-            this.disableHotKey.Size = new System.Drawing.Size(52, 20);
-            this.disableHotKey.TabIndex = 3;
             // 
             // toolTip1
             // 
@@ -610,7 +603,7 @@ namespace AuraScreen
             this.aoTab.Margin = new System.Windows.Forms.Padding(2);
             this.aoTab.Name = "aoTab";
             this.aoTab.Padding = new System.Windows.Forms.Padding(2);
-            this.aoTab.Size = new System.Drawing.Size(356, 523);
+            this.aoTab.Size = new System.Drawing.Size(586, 621);
             this.aoTab.TabIndex = 5;
             this.aoTab.Text = "App Overlay";
             this.aoTab.UseVisualStyleBackColor = true;
@@ -835,7 +828,7 @@ namespace AuraScreen
             this.filterTab.Margin = new System.Windows.Forms.Padding(2);
             this.filterTab.Name = "filterTab";
             this.filterTab.Padding = new System.Windows.Forms.Padding(2);
-            this.filterTab.Size = new System.Drawing.Size(356, 523);
+            this.filterTab.Size = new System.Drawing.Size(586, 621);
             this.filterTab.TabIndex = 4;
             this.filterTab.Text = "Screen Filters";
             this.filterTab.UseVisualStyleBackColor = true;
@@ -1071,7 +1064,7 @@ namespace AuraScreen
             this.tileTab.Location = new System.Drawing.Point(4, 4);
             this.tileTab.Margin = new System.Windows.Forms.Padding(2);
             this.tileTab.Name = "tileTab";
-            this.tileTab.Size = new System.Drawing.Size(356, 523);
+            this.tileTab.Size = new System.Drawing.Size(586, 621);
             this.tileTab.TabIndex = 3;
             this.tileTab.Text = "Tile Filter";
             this.tileTab.UseVisualStyleBackColor = true;
@@ -1466,7 +1459,7 @@ namespace AuraScreen
             this.settingsTab.Location = new System.Drawing.Point(4, 4);
             this.settingsTab.Margin = new System.Windows.Forms.Padding(2);
             this.settingsTab.Name = "settingsTab";
-            this.settingsTab.Size = new System.Drawing.Size(356, 523);
+            this.settingsTab.Size = new System.Drawing.Size(586, 621);
             this.settingsTab.TabIndex = 2;
             this.settingsTab.Text = "Settings";
             this.settingsTab.UseVisualStyleBackColor = true;
@@ -1771,7 +1764,7 @@ namespace AuraScreen
             this.hkTab.Margin = new System.Windows.Forms.Padding(2);
             this.hkTab.Name = "hkTab";
             this.hkTab.Padding = new System.Windows.Forms.Padding(2);
-            this.hkTab.Size = new System.Drawing.Size(356, 523);
+            this.hkTab.Size = new System.Drawing.Size(586, 621);
             this.hkTab.TabIndex = 1;
             this.hkTab.Text = "HotKeys";
             this.hkTab.UseVisualStyleBackColor = true;
@@ -2245,7 +2238,7 @@ namespace AuraScreen
             this.cursorTab.Margin = new System.Windows.Forms.Padding(2);
             this.cursorTab.Name = "cursorTab";
             this.cursorTab.Padding = new System.Windows.Forms.Padding(2);
-            this.cursorTab.Size = new System.Drawing.Size(356, 523);
+            this.cursorTab.Size = new System.Drawing.Size(586, 683);
             this.cursorTab.TabIndex = 0;
             this.cursorTab.Text = "Cursor Filter";
             this.cursorTab.UseVisualStyleBackColor = true;
@@ -2472,12 +2465,12 @@ namespace AuraScreen
             this.tabControl1.Controls.Add(this.settingsTab);
             this.tabControl1.Controls.Add(this.hkTab);
             this.tabControl1.ItemSize = new System.Drawing.Size(1, 32);
-            this.tabControl1.Location = new System.Drawing.Point(223, 41);
+            this.tabControl1.Location = new System.Drawing.Point(231, 3);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(396, 531);
+            this.tabControl1.Size = new System.Drawing.Size(626, 691);
             this.tabControl1.TabIndex = 21;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             this.tabControl1.TabIndexChanged += new System.EventHandler(this.tabControl1_TabIndexChanged);
@@ -2492,7 +2485,7 @@ namespace AuraScreen
             this.idleTab.Location = new System.Drawing.Point(4, 4);
             this.idleTab.Margin = new System.Windows.Forms.Padding(2);
             this.idleTab.Name = "idleTab";
-            this.idleTab.Size = new System.Drawing.Size(356, 523);
+            this.idleTab.Size = new System.Drawing.Size(586, 621);
             this.idleTab.TabIndex = 6;
             this.idleTab.Text = "Idle Cursor";
             this.idleTab.UseVisualStyleBackColor = true;
@@ -2623,26 +2616,6 @@ namespace AuraScreen
             this.CursorTimer2.Enabled = true;
             this.CursorTimer2.Tick += new System.EventHandler(this.CursorTimer2_Tick);
             // 
-            // flowLayoutPanel1
-            // 
-            this.flowLayoutPanel1.AllowDrop = true;
-            this.flowLayoutPanel1.AutoScroll = true;
-            this.flowLayoutPanel1.AutoScrollMinSize = new System.Drawing.Size(20, 0);
-            this.flowLayoutPanel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel1.Controls.Add(this.button22);
-            this.flowLayoutPanel1.Controls.Add(this.button24);
-            this.flowLayoutPanel1.Controls.Add(this.button26);
-            this.flowLayoutPanel1.Controls.Add(this.button25);
-            this.flowLayoutPanel1.Controls.Add(this.button23);
-            this.flowLayoutPanel1.Controls.Add(this.button27);
-            this.flowLayoutPanel1.Controls.Add(this.button28);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(218, 572);
-            this.flowLayoutPanel1.TabIndex = 22;
-            // 
             // button22
             // 
             this.button22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(150)))), ((int)(((byte)(170)))));
@@ -2652,9 +2625,9 @@ namespace AuraScreen
             this.button22.ForeColor = System.Drawing.Color.White;
             this.button22.Image = global::AuraScreen.Properties.Resources.Mouse_Filter_1;
             this.button22.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button22.Location = new System.Drawing.Point(3, 3);
+            this.button22.Location = new System.Drawing.Point(3, 175);
             this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(193, 90);
+            this.button22.Size = new System.Drawing.Size(220, 67);
             this.button22.TabIndex = 23;
             this.button22.Text = "Cursor Filter";
             this.button22.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2670,9 +2643,9 @@ namespace AuraScreen
             this.button24.ForeColor = System.Drawing.Color.White;
             this.button24.Image = global::AuraScreen.Properties.Resources.BoxFilter_Manual_1;
             this.button24.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button24.Location = new System.Drawing.Point(3, 99);
+            this.button24.Location = new System.Drawing.Point(3, 248);
             this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(193, 90);
+            this.button24.Size = new System.Drawing.Size(220, 67);
             this.button24.TabIndex = 25;
             this.button24.Text = "Tile Filter";
             this.button24.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2688,9 +2661,9 @@ namespace AuraScreen
             this.button26.ForeColor = System.Drawing.Color.White;
             this.button26.Image = global::AuraScreen.Properties.Resources.ScreenFilter_Toggle_1;
             this.button26.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button26.Location = new System.Drawing.Point(3, 195);
+            this.button26.Location = new System.Drawing.Point(3, 321);
             this.button26.Name = "button26";
-            this.button26.Size = new System.Drawing.Size(193, 90);
+            this.button26.Size = new System.Drawing.Size(220, 67);
             this.button26.TabIndex = 27;
             this.button26.Text = "Screen Filter";
             this.button26.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2706,9 +2679,9 @@ namespace AuraScreen
             this.button25.ForeColor = System.Drawing.Color.White;
             this.button25.Image = global::AuraScreen.Properties.Resources.AppOverlay_Toggle_1;
             this.button25.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button25.Location = new System.Drawing.Point(3, 291);
+            this.button25.Location = new System.Drawing.Point(3, 394);
             this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(193, 90);
+            this.button25.Size = new System.Drawing.Size(220, 67);
             this.button25.TabIndex = 26;
             this.button25.Text = "App Overlay";
             this.button25.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2724,9 +2697,9 @@ namespace AuraScreen
             this.button23.ForeColor = System.Drawing.Color.White;
             this.button23.Image = global::AuraScreen.Properties.Resources.Idle_Cursor_1;
             this.button23.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button23.Location = new System.Drawing.Point(3, 387);
+            this.button23.Location = new System.Drawing.Point(3, 467);
             this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(193, 90);
+            this.button23.Size = new System.Drawing.Size(220, 67);
             this.button23.TabIndex = 24;
             this.button23.Text = "Idle Cursor";
             this.button23.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2742,9 +2715,9 @@ namespace AuraScreen
             this.button27.ForeColor = System.Drawing.Color.White;
             this.button27.Image = global::AuraScreen.Properties.Resources.Settings_Gear_1;
             this.button27.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button27.Location = new System.Drawing.Point(3, 483);
+            this.button27.Location = new System.Drawing.Point(3, 540);
             this.button27.Name = "button27";
-            this.button27.Size = new System.Drawing.Size(193, 90);
+            this.button27.Size = new System.Drawing.Size(220, 67);
             this.button27.TabIndex = 28;
             this.button27.Text = "Settings";
             this.button27.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2760,9 +2733,9 @@ namespace AuraScreen
             this.button28.ForeColor = System.Drawing.Color.White;
             this.button28.Image = global::AuraScreen.Properties.Resources.HK_1;
             this.button28.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button28.Location = new System.Drawing.Point(3, 579);
+            this.button28.Location = new System.Drawing.Point(3, 615);
             this.button28.Name = "button28";
-            this.button28.Size = new System.Drawing.Size(193, 90);
+            this.button28.Size = new System.Drawing.Size(220, 67);
             this.button28.TabIndex = 30;
             this.button28.Text = "Hot Keys";
             this.button28.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2772,22 +2745,48 @@ namespace AuraScreen
             // titleBar
             // 
             this.titleBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleBar.Location = new System.Drawing.Point(225, 0);
+            this.titleBar.Location = new System.Drawing.Point(917, 14);
             this.titleBar.Name = "titleBar";
-            this.titleBar.Size = new System.Drawing.Size(390, 39);
+            this.titleBar.Size = new System.Drawing.Size(623, 39);
             this.titleBar.TabIndex = 23;
             this.titleBar.Text = "Cursor Filter";
             this.titleBar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(150)))), ((int)(((byte)(170)))));
+            this.panel1.Controls.Add(this.pictureBox3);
+            this.panel1.Controls.Add(this.button28);
+            this.panel1.Controls.Add(this.button27);
+            this.panel1.Controls.Add(this.button23);
+            this.panel1.Controls.Add(this.button25);
+            this.panel1.Controls.Add(this.button26);
+            this.panel1.Controls.Add(this.button24);
+            this.panel1.Controls.Add(this.button22);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(226, 691);
+            this.panel1.TabIndex = 24;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::AuraScreen.Properties.Resources.Aura_Logo;
+            this.pictureBox3.Location = new System.Drawing.Point(3, 4);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(220, 165);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 31;
+            this.pictureBox3.TabStop = false;
             // 
             // Configurator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(622, 572);
+            this.ClientSize = new System.Drawing.Size(1227, 691);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.titleBar);
-            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.disableHotKey);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -2866,16 +2865,15 @@ namespace AuraScreen
             this.groupBox11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cursorIdle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cursorPreview)).EndInit();
-            this.flowLayoutPanel1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
-        private System.Windows.Forms.TextBox disableHotKey;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.TabPage aoTab;
         private System.Windows.Forms.Button button16;
@@ -3040,7 +3038,6 @@ namespace AuraScreen
         private System.Windows.Forms.GroupBox groupBox12;
         public System.Windows.Forms.CheckBox inversionBox;
         private System.Windows.Forms.Button button21;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button button22;
         private System.Windows.Forms.Button button23;
         private System.Windows.Forms.Button button24;
@@ -3068,6 +3065,8 @@ namespace AuraScreen
         private System.Windows.Forms.CheckBox darkmode;
         private System.Windows.Forms.Button button29;
         private System.Windows.Forms.Button button30;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }
 

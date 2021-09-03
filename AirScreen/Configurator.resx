@@ -819,9 +819,6 @@ Or if you use more than one monitor the alternate method will work better.
         IiIiIiIiIiIiIiIiIiIiIiIiIiLqRtL/A5YzY3RPZrrkAAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="tabControl1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="Filter_Timer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>474, 17</value>
   </metadata>
@@ -830,9 +827,6 @@ Or if you use more than one monitor the alternate method will work better.
   </metadata>
   <metadata name="CursorTimer2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>876, 17</value>
-  </metadata>
-  <metadata name="flowLayoutPanel1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>49</value>
