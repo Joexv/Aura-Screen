@@ -8,6 +8,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Management;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -94,6 +95,9 @@ namespace AuraScreen
             }
 
             ApplyColors();
+            button22.BackColor = Selected;
+
+            //this.Width = this.Width - tabControl1.ItemSize.Width;
         }
 
         public IEnumerable<Control> GetAll(Control control, Type type)
@@ -130,6 +134,18 @@ namespace AuraScreen
                 BorderColor = Color.Black;
                 Selected = Color.Black;
             }
+            else
+            {
+                Selected = Color.FromArgb(6, 84, 96);
+                Button = Color.FromArgb(10, 150, 170);
+                TextColor = Color.Black;
+                AltTextColor = Color.White;
+                ClickedColor = Color.FromArgb(119, 119, 119);
+                BackgroundColor = Color.White;
+                GroupBoxColor = Color.White;
+                TextBoxColor = Color.White;
+                BorderColor = Color.Black;
+            }
 
             foreach (TextBox textbox in GetAll(this, typeof(TextBox)))
             {
@@ -139,11 +155,14 @@ namespace AuraScreen
 
             foreach (Button button in GetAll(this, typeof(Button)))
             {
-                button.BackColor = Button;
-                button.ForeColor = TextColor;
-                button.FlatAppearance.MouseDownBackColor = ClickedColor;
-                button.FlatAppearance.BorderColor = Color.Black;
-                button.FlatStyle = FlatStyle.Flat;
+                if(button.BackColor != Color.Green && button.BackColor != Color.DarkRed)
+                {
+                    button.BackColor = Button;
+                    button.ForeColor = TextColor;
+                    button.FlatAppearance.MouseDownBackColor = ClickedColor;
+                    button.FlatAppearance.BorderColor = Color.Black;
+                    button.FlatStyle = FlatStyle.Flat;
+                }
             }
 
             foreach (GroupBox groupbox in GetAll(this, typeof(GroupBox)))
@@ -190,7 +209,6 @@ namespace AuraScreen
             width.Text = ps.Default.CF_Width.ToString();
             height.Text = ps.Default.CF_Height.ToString();
             styleBox.Text = ps.Default.CF_Style;
-            checkBox1.Checked = ps.Default.CF_OnStartup;
             checkBox2.Checked = ps.Default.CF_DoBorder;
             borderThicccccc.Value = ps.Default.CF_BorderSize;
             toTray.Checked = ps.Default.keepInTray;
@@ -204,12 +222,9 @@ namespace AuraScreen
             opacityBar.Value = ps.Default.CF_Opacity;
 
             inversionBox.Checked = ps.Default.CF_DoInvert;
-            inversionToggle.Checked = ps.Default.CF_InversionToggle;
             checkBox4.Checked = ps.Default.CF_Lock;
             Console.WriteLine("Tile Controls");
             tileInvert.Checked = ps.Default.BF_Invert;
-            time.Value = ps.Default.BF_InvertTime;
-            tileScrollDisable.Checked = ps.Default.BF_Scroll;
 
             tileHeight.Value = ps.Default.BF_Height;
             tileWidth.Value = ps.Default.BF_Width;
@@ -255,7 +270,6 @@ namespace AuraScreen
             AO_TextBox.Text = ps.Default.AO_SavedName;
             AO_Opacity.Value = ps.Default.AO_Opacity;
 
-            AO_Start.Checked = ps.Default.AO_OnStart;
             ao_AS.Checked = ps.Default.AO_DontAttatchToAS;
 
             #endregion AppOverlay
@@ -263,17 +277,9 @@ namespace AuraScreen
             #region Screen Filters
 
             Filter_Programs.DataSource = ps.Default.SF_Programs.Split(';');
-            filterStartup.Checked = ps.Default.SF_OnStartup;
             Filter_OnActive.Checked = ps.Default.SF_OnActive;
             matrixBox.Text = ps.Default.SF_LastUsed;
             groupBox1.Enabled = ps.Default.SF_OnActive;
-            if (Filter_OnActive.Checked && filterStartup.Checked)
-                Filter_Timer.Start();
-            else
-                Filter_Timer.Stop();
-
-            if (filterStartup.Checked)
-                ToggleFilter();
 
             #endregion Screen Filters
 
@@ -305,25 +311,6 @@ namespace AuraScreen
 
             if (ps.Default.BF_Location != 0)
                 tileSelect.SelectedIndex = ps.Default.BF_Location - 1;
-
-            switch (ps.Default.tileKey)
-            {
-                case 0:
-                    shift.Checked = true;
-                    break;
-
-                case 1:
-                    r.Checked = true;
-                    break;
-
-                case 2:
-                    squwiggly.Checked = true;
-                    break;
-
-                case 3:
-                    f1.Checked = true;
-                    break;
-            }
 
             #endregion Other
         }
@@ -628,12 +615,6 @@ namespace AuraScreen
             ps.Default.Save();
         }
 
-        public void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-            ps.Default.CF_OnStartup = checkBox1.Checked;
-            ps.Default.Save();
-        }
-
         //Border
         public void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
@@ -912,12 +893,6 @@ namespace AuraScreen
             label20.Text = matrixBox.Text;
         }
 
-        public void filterStartup_CheckedChanged(object sender, EventArgs e)
-        {
-            ps.Default.SF_OnStartup = filterStartup.Checked;
-            ps.Default.Save();
-        }
-
         public AppOverlay appO = new AppOverlay();
 
         public static string[] ListProcesses()
@@ -1101,13 +1076,17 @@ namespace AuraScreen
         }
 
         private Cursor IdleCursor;
-
         public void LoadCursor(string filePath)
         {
             using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
             {
-                Cursor result = new Cursor(fs);
-                cursorPreview.Cursor = result;
+                //Cursor result = new Cursor(fs);
+                //cursorPreview.Cursor = result;
+
+                Cursor mycursor = new Cursor(Cursor.Current.Handle);
+                IntPtr colorcursorhandle = LoadCursorFromFile(filePath);
+                mycursor.GetType().InvokeMember("handle", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.SetField, null, mycursor, new object[] { colorcursorhandle });
+                cursorPreview.Cursor = mycursor;
             }
         }
 
@@ -1255,12 +1234,6 @@ namespace AuraScreen
             return ps.Default.FilterInUse;
         }
 
-        public void inversionToggle_CheckedChanged(object sender, EventArgs e)
-        {
-            ps.Default.CF_InversionToggle = inversionToggle.Checked;
-            ps.Default.Save();
-        }
-
         public void checkBox4_CheckedChanged_2(object sender, EventArgs e)
         {
             ps.Default.CF_Lock = checkBox4.Checked;
@@ -1339,18 +1312,6 @@ namespace AuraScreen
                 ps.Default.Reset();
         }
 
-        private void AO_Start_CheckedChanged(object sender, EventArgs e)
-        {
-            ps.Default.AO_OnStart = AO_Start.Checked;
-            ps.Default.Save();
-        }
-
-        private void tileScrollDisable_CheckedChanged(object sender, EventArgs e)
-        {
-            ps.Default.BF_Scroll = tileScrollDisable.Checked;
-            ps.Default.Save();
-        }
-
         private void tileInvert_CheckedChanged(object sender, EventArgs e)
         {
             ps.Default.BF_Invert = tileInvert.Checked;
@@ -1385,12 +1346,6 @@ namespace AuraScreen
 
             if (blockfilter.Visible)
                 ReloadTiles();
-        }
-
-        private void time_ValueChanged(object sender, EventArgs e)
-        {
-            ps.Default.BF_InvertTime = (int)time.Value;
-            ps.Default.Save();
         }
 
         private void shift_CheckedChanged(object sender, EventArgs e)
@@ -1590,9 +1545,9 @@ namespace AuraScreen
             ps.Default.DarkMode = darkmode.Checked;
             ps.Default.Save();
 
-            this.Hide();
+            //this.Hide();
             ApplyColors();
-            this.Show();
+            //this.Show();
         }
 
         private void groupBox9_Enter(object sender, EventArgs e)
@@ -1612,6 +1567,22 @@ namespace AuraScreen
         private void button30_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void AO_ByName_CheckedChanged(object sender, EventArgs e)
+        {
+            AO_TextBox.Enabled = AO_ByName.Checked;
+        }
+
+        private void button30_Click_1(object sender, EventArgs e)
+        {
+            Application.Restart();
+            Environment.Exit(0);
+        }
+
+        private void label30_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
