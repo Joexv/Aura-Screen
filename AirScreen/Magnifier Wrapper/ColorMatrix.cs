@@ -281,6 +281,7 @@ namespace Magnifier
         public static extern bool MagSetWindowTransform(IntPtr hwnd, ref Transformation pTransform);
 
         public const string WC_MAGNIFIER = "Magnifier";
+        public const string WC_WINDOW = "MDICLIENT";
         public static IntPtr HWND_TOPMOST = new IntPtr(-1);
 
         public const int USER_TIMER_MINIMUM = 0x0000000A;

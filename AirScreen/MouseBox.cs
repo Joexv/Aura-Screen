@@ -173,6 +173,12 @@ namespace AuraScreen
             NewRegion = new Region(GP);
             this.Region = NewRegion;
             //this.Refresh();
+
+            if (ps.Default.CF_DoTexture && !String.IsNullOrWhiteSpace(ps.Default.CF_Texture))
+            {
+                Image image = Image.FromFile(Application.StartupPath + $"\\Textures\\{ps.Default.CF_Texture}");
+                this.BackgroundImage = TextureFilter(image, (float)ps.Default.CF_Opacity);
+            }
         }
 
         private Point[] Polygon;
@@ -282,13 +288,13 @@ namespace AuraScreen
                 InnerTriangle[1] = new Point(this.Width - this.Width / 5, this.Height / 10);
                 InnerTriangle[2] = new Point(this.Width / 5, this.Height / 10);
             }
-
+            
             if (isHollow)
             {
                 GP.AddPolygon(InnerTriangle);
                 GP.FillMode = System.Drawing.Drawing2D.FillMode.Alternate;
             }
-            
+
             GP.AddPolygon(Triangle);
         }
 
@@ -522,7 +528,6 @@ namespace AuraScreen
                 return;
 
             IntPtr hInst;
-
             hInst = NativeMethods.GetModuleHandle(null);
 
             // Make the window opaque.
@@ -533,13 +538,17 @@ namespace AuraScreen
 
             // Create a magnifier control that fills the client area.
             NativeMethods.GetClientRect(this.Handle, ref magWindowRect);
+
             //Removed the Magnifier cursor so it Looks better
             //(int)MagnifierStyle.MS_SHOWMAGNIFIEDCURSOR
             hwndMag = NativeMethods.CreateWindow((int)ExtendedWindowStyles.WS_EX_TRANSPARENT, NativeMethods.WC_MAGNIFIER,
                         "MouseBox", (int)WindowStyles.WS_CHILD |
                         (int)WindowStyles.WS_VISIBLE,
-                        magWindowRect.left, magWindowRect.top, magWindowRect.right, magWindowRect.bottom, this.Handle, IntPtr.Zero, hInst, IntPtr.Zero);
-
+                        magWindowRect.left, 
+                        magWindowRect.top, 
+                        magWindowRect.right, 
+                        magWindowRect.bottom, 
+                        this.Handle, IntPtr.Zero, hInst, IntPtr.Zero);
             if (hwndMag == IntPtr.Zero)
             {
                 return;
@@ -564,10 +573,10 @@ namespace AuraScreen
                 if ((int)hdc != 0)
                 {
                     //This Currently doesn't work. It will draw the border fine, but as soon as the magnifier is enabled it kills it.
-                    Graphics g = Graphics.FromHdc(hdc);
-                    g.FillRectangle(Brushes.Green, new Rectangle(0, 0, 4800, 23));
-                    g.Flush();
-                    ReleaseDC(m.HWnd, hdc);
+                    //Graphics g = Graphics.FromHdc(hdc);
+                    //g.FillRectangle(Brushes.Green, this.ClientRectangle);
+                    //g.Flush();
+                    //ReleaseDC(m.HWnd, hdc);
                 }
             }
         }
@@ -609,7 +618,7 @@ namespace AuraScreen
         private void PaintBorder(Graphics g)
         {
             // && !ps.Default.CF_DoInvert
-            if (ps.Default.CF_DoBorder && !ps.Default.CF_DoInvert)
+            if (ps.Default.CF_DoBorder)
             {
                 Pen pen = new Pen(ps.Default.CF_BorderColor, ps.Default.CF_BorderSize);
                 Rectangle rect = new Rectangle(0, 0, this.Width, this.Height);
@@ -640,6 +649,47 @@ namespace AuraScreen
                         break;
                 }
             }
+        }
+
+        private Image TextureFilter(Image pImage, float pColorOpacity)
+        {
+            Image mResult = null;
+            Image tempImage = null; //we will set the opacity of pImage to pColorOpacity and copy
+                                    //it to tempImage 
+            if (pImage != null)
+            {
+                Graphics g;
+                ColorMatrix matrix = new ColorMatrix(new float[][]{
+                     new float[] {1F, 0, 0, 0, 0},
+                     new float[] {0, 1F, 0, 0, 0},
+                     new float[] {0, 0, 1F, 0, 0},
+                     new float[] {0, 0, 0, pColorOpacity, 0}, //opacity in rage [0 1]
+                     new float[] {0, 0, 0, 0, 1F}});
+
+                ImageAttributes imageAttributes = new ImageAttributes();
+                imageAttributes.SetColorMatrix(matrix);
+                imageAttributes.SetWrapMode(System.Drawing.Drawing2D.WrapMode.TileFlipXY);
+                tempImage = new Bitmap(this.Width, this.Height, PixelFormat.Format32bppArgb);
+
+                g = Graphics.FromImage(tempImage);
+                g.DrawImage(pImage, this.ClientRectangle, 0, 0, pImage.Width, pImage.Height, GraphicsUnit.Pixel, imageAttributes);
+
+                g.Dispose();
+                g = null;
+                TextureBrush texture = new TextureBrush(tempImage);
+                mResult = new Bitmap(this.Width, this.Height, PixelFormat.Format32bppArgb);
+
+                g = Graphics.FromImage(mResult);
+                g.Clear(ps.Default.CF_Color);
+                g.FillRectangle(texture, this.ClientRectangle);
+                g.Dispose();
+                g = null;
+
+                tempImage.Dispose();
+                tempImage = null;
+            }
+
+            return mResult;
         }
     }
 }

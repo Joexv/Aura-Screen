@@ -154,6 +154,12 @@ namespace AuraScreen
                     break;
             }
 
+            if (ps.Default.BF_DoTexture && !String.IsNullOrWhiteSpace(ps.Default.BF_Texture))
+            {
+                Image image = Image.FromFile(Application.StartupPath + $"\\Textures\\{ps.Default.BF_Texture}");
+                this.BackgroundImage = TextureFilter(image, (float)ps.Default.BF_Opacity);
+            }
+
             //Inversion Settings
             invert.Checked = ps.Default.BF_Invert;
             if (ps.Default.useAltInvert)
@@ -687,6 +693,47 @@ namespace AuraScreen
         private void button7_Click(object sender, EventArgs e)
         {
             this.Height = screenHeight;
+        }
+
+        private Image TextureFilter(Image pImage, float pColorOpacity)
+        {
+            Image mResult = null;
+            Image tempImage = null; //we will set the opacity of pImage to pColorOpacity and copy
+                                    //it to tempImage 
+            if (pImage != null)
+            {
+                Graphics g;
+                ColorMatrix matrix = new ColorMatrix(new float[][]{
+                     new float[] {1F, 0, 0, 0, 0},
+                     new float[] {0, 1F, 0, 0, 0},
+                     new float[] {0, 0, 1F, 0, 0},
+                     new float[] {0, 0, 0, pColorOpacity, 0}, //opacity in rage [0 1]
+                     new float[] {0, 0, 0, 0, 1F}});
+
+                ImageAttributes imageAttributes = new ImageAttributes();
+                imageAttributes.SetColorMatrix(matrix);
+                imageAttributes.SetWrapMode(System.Drawing.Drawing2D.WrapMode.TileFlipXY);
+                tempImage = new Bitmap(this.Width, this.Height, PixelFormat.Format32bppArgb);
+
+                g = Graphics.FromImage(tempImage);
+                g.DrawImage(pImage, this.ClientRectangle, 0, 0, pImage.Width, pImage.Height, GraphicsUnit.Pixel, imageAttributes);
+
+                g.Dispose();
+                g = null;
+                TextureBrush texture = new TextureBrush(tempImage);
+                mResult = new Bitmap(this.Width, this.Height, PixelFormat.Format32bppArgb);
+
+                g = Graphics.FromImage(mResult);
+                g.Clear(ps.Default.CF_Color);
+                g.FillRectangle(texture, this.ClientRectangle);
+                g.Dispose();
+                g = null;
+
+                tempImage.Dispose();
+                tempImage = null;
+            }
+
+            return mResult;
         }
     }
 }

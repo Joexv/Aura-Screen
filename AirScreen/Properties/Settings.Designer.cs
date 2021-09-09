@@ -883,5 +883,77 @@ namespace AuraScreen.Properties {
                 this["CF_Flip"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CF_DoTexture {
+            get {
+                return ((bool)(this["CF_DoTexture"]));
+            }
+            set {
+                this["CF_DoTexture"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CF_Texture {
+            get {
+                return ((string)(this["CF_Texture"]));
+            }
+            set {
+                this["CF_Texture"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool BF_DoTexture {
+            get {
+                return ((bool)(this["BF_DoTexture"]));
+            }
+            set {
+                this["BF_DoTexture"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string BF_Texture {
+            get {
+                return ((string)(this["BF_Texture"]));
+            }
+            set {
+                this["BF_Texture"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AO_DoTexture {
+            get {
+                return ((bool)(this["AO_DoTexture"]));
+            }
+            set {
+                this["AO_DoTexture"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AO_Texture {
+            get {
+                return ((string)(this["AO_Texture"]));
+            }
+            set {
+                this["AO_Texture"] = value;
+            }
+        }
     }
 }

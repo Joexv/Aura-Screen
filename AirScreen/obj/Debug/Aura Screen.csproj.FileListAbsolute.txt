@@ -64,3 +64,5 @@ C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\AirScreen\obj\Debug\Aura Scre
 C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\AirScreen\obj\Debug\Aura Screen.csproj.CopyComplete
 C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\AirScreen\obj\Debug\AuraScreen.exe
 C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\AirScreen\obj\Debug\AuraScreen.pdb
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\Textures\Texture_Test.png
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\Textures\egg.png

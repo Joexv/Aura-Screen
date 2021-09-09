@@ -109,6 +109,53 @@ namespace AuraScreen
             this.FormBorderStyle = FormBorderStyle.None;
             this.BackColor = ps.Default.AO_Color;
             this.Opacity = (double)ps.Default.AO_Opacity;
+
+            if (ps.Default.AO_DoTexture && !String.IsNullOrWhiteSpace(ps.Default.AO_Texture))
+            {
+                Image image = Image.FromFile(Application.StartupPath + $"\\Textures\\{ps.Default.AO_Texture}");
+                this.BackgroundImage = TextureFilter(image, (float)ps.Default.AO_Opacity);
+            }
+        }
+
+        private Image TextureFilter(Image pImage, float pColorOpacity)
+        {
+            Image mResult = null;
+            Image tempImage = null; //we will set the opacity of pImage to pColorOpacity and copy
+                                    //it to tempImage 
+            if (pImage != null)
+            {
+                Graphics g;
+                ColorMatrix matrix = new ColorMatrix(new float[][]{
+                     new float[] {1F, 0, 0, 0, 0},
+                     new float[] {0, 1F, 0, 0, 0},
+                     new float[] {0, 0, 1F, 0, 0},
+                     new float[] {0, 0, 0, pColorOpacity, 0}, //opacity in rage [0 1]
+                     new float[] {0, 0, 0, 0, 1F}});
+
+                ImageAttributes imageAttributes = new ImageAttributes();
+                imageAttributes.SetColorMatrix(matrix);
+                imageAttributes.SetWrapMode(System.Drawing.Drawing2D.WrapMode.TileFlipXY);
+                tempImage = new Bitmap(this.Width, this.Height, PixelFormat.Format32bppArgb);
+
+                g = Graphics.FromImage(tempImage);
+                g.DrawImage(pImage, this.ClientRectangle, 0, 0, pImage.Width, pImage.Height, GraphicsUnit.Pixel, imageAttributes);
+
+                g.Dispose();
+                g = null;
+                TextureBrush texture = new TextureBrush(tempImage);
+                mResult = new Bitmap(this.Width, this.Height, PixelFormat.Format32bppArgb);
+
+                g = Graphics.FromImage(mResult);
+                g.Clear(ps.Default.CF_Color);
+                g.FillRectangle(texture, this.ClientRectangle);
+                g.Dispose();
+                g = null;
+
+                tempImage.Dispose();
+                tempImage = null;
+            }
+
+            return mResult;
         }
 
         private void AppOverlay_Shown(object sender, EventArgs e)

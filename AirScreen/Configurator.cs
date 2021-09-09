@@ -220,6 +220,34 @@ namespace AuraScreen
                 ps.Default.Save();
             }
 
+            textureCombo.Items.Clear();
+            textureCombo.Items.AddRange(GetFilesFrom(Application.StartupPath + "\\Textures", new String[] { "png", "jpg", "jpeg" }));
+
+            if(textureCombo.Items.Count == 0)
+            {
+                textureBox.Enabled = false;
+                textureCombo.Enabled = false;
+            }
+
+            Tile_Texture.Items.Clear();
+            Tile_Texture.Items.AddRange(GetFilesFrom(Application.StartupPath + "\\Textures", new String[] { "png", "jpg", "jpeg" }));
+
+            if (Tile_Texture.Items.Count == 0)
+            {
+                Tile_TextureBox.Enabled = false;
+                Tile_Texture.Enabled = false;
+            }
+
+            AO_Texture.Items.Clear();
+            AO_Texture.Items.AddRange(GetFilesFrom(Application.StartupPath + "\\Textures", new String[] { "png", "jpg", "jpeg" }));
+
+            if (AO_Texture.Items.Count == 0)
+            {
+                AO_TextureBox.Enabled = false;
+                AO_Texture.Enabled = false;
+            }
+
+            textureBox.Checked = ps.Default.CF_DoTexture;
             opacityBar.Value = ps.Default.CF_Opacity;
             flipBox.Checked = ps.Default.CF_Flip;
             inversionBox.Checked = ps.Default.CF_DoInvert;
@@ -243,7 +271,7 @@ namespace AuraScreen
             shrinkHotKey.Text = ps.Default.HK_ShrinkCF;
             cylceHotKey.Text = ps.Default.HK_CycleBF;
             cursorLock.Text = ps.Default.HK_LockCF;
-
+            
             numericUpDown1.Value = ps.Default.CF_SizeIncrement;
 
             SF_CycleHK.Text = ps.Default.HK_CycleSF;
@@ -315,7 +343,16 @@ namespace AuraScreen
 
             #endregion Other
         }
-
+        public static String[] GetFilesFrom(String searchFolder, String[] filters)
+        {
+            List<String> filesFound = new List<String>();
+            foreach (var filter in filters)
+                foreach (string file in Directory.GetFiles(searchFolder, String.Format("*.{0}", filter), SearchOption.TopDirectoryOnly))
+                    if(!filesFound.Contains(Path.GetFileName(file)))
+                        filesFound.Add(Path.GetFileName(file));
+                    
+            return filesFound.ToArray();
+        }
         public void SaveHotkeys()
         {
             ps.Default.HK_ToggleCF = enableHotKey.Text;
@@ -1587,6 +1624,51 @@ namespace AuraScreen
         private void flipBox_CheckedChanged(object sender, EventArgs e)
         {
             ps.Default.CF_Flip = flipBox.Checked;
+            ps.Default.Save();
+        }
+
+        private void textureBox_CheckedChanged(object sender, EventArgs e)
+        {
+            ps.Default.CF_DoTexture = textureBox.Checked;
+            ps.Default.Save();
+        }
+
+        private void textureCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(textureCombo.SelectedItem.ToString()))
+            {
+                ps.Default.CF_Texture = textureCombo.SelectedItem.ToString();
+                ps.Default.Save();
+            }
+        }
+
+        private void Tile_TextureBox_CheckedChanged(object sender, EventArgs e)
+        {
+            ps.Default.BF_DoTexture = Tile_TextureBox.Checked;
+            ps.Default.Save();
+        }
+
+        private void Tile_Texture_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(Tile_Texture.SelectedItem.ToString()))
+            {
+                ps.Default.BF_Texture = Tile_Texture.SelectedItem.ToString();
+                ps.Default.Save();
+            }
+        }
+
+        private void AO_Texture_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(AO_Texture.SelectedItem.ToString()))
+            {
+                ps.Default.AO_Texture = AO_Texture.SelectedItem.ToString();
+                ps.Default.Save();
+            }
+        }
+
+        private void AO_TextureBox_CheckedChanged(object sender, EventArgs e)
+        {
+            ps.Default.AO_DoTexture = AO_TextureBox.Checked;
             ps.Default.Save();
         }
     }
