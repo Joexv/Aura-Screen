@@ -13,6 +13,10 @@ namespace AuraScreen
 
     public partial class Tiles : Form
     {
+        double V_Left = System.Windows.SystemParameters.VirtualScreenLeft;
+        double V_Top = System.Windows.SystemParameters.VirtualScreenTop;
+        double V_Width = System.Windows.SystemParameters.VirtualScreenWidth;
+        double V_Height = System.Windows.SystemParameters.VirtualScreenHeight;
         private int screenWidth = Screen.PrimaryScreen.Bounds.Width;
         private int screenHeight = Screen.PrimaryScreen.Bounds.Height;
         //public Configurator conf { get; set; }
@@ -372,7 +376,6 @@ namespace AuraScreen
 
         public void EnterEditMode()
         {
-            this.Refresh();
             this.FormBorderStyle = FormBorderStyle.Sizable;
             this.PreviewButton.Visible = true;
             this.SaveButton.Visible = true;
@@ -382,6 +385,7 @@ namespace AuraScreen
             this.groupBox1.Visible = true;
             this.AllowTransparency = false;
             this.Opacity = 1;
+            this.Refresh();
         }
 
         public void ExitEditMode()
@@ -661,7 +665,7 @@ namespace AuraScreen
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, this.Location.Y);
+            this.Location = new Point(screenWidth - this.Width, this.Location.Y);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -671,17 +675,18 @@ namespace AuraScreen
 
         private void button5_Click(object sender, EventArgs e)
         {
-            this.Location = new Point(this.Location.X, Screen.PrimaryScreen.Bounds.Height - this.Height);
+            this.Location = new Point(this.Location.X, screenHeight - this.Height);
         }
-
+        
         private void button6_Click(object sender, EventArgs e)
         {
-            this.Width = Screen.PrimaryScreen.Bounds.Width;
+
+            this.Width = screenWidth;
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            this.Height = Screen.PrimaryScreen.Bounds.Height;
+            this.Height = screenHeight;
         }
     }
 }

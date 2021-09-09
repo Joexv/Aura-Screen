@@ -158,7 +158,7 @@ namespace AuraScreen
                 if(button.BackColor != Color.Green && button.BackColor != Color.DarkRed)
                 {
                     button.BackColor = Button;
-                    button.ForeColor = TextColor;
+                    button.ForeColor = AltTextColor;
                     button.FlatAppearance.MouseDownBackColor = ClickedColor;
                     button.FlatAppearance.BorderColor = Color.Black;
                     button.FlatStyle = FlatStyle.Flat;
@@ -212,6 +212,7 @@ namespace AuraScreen
             checkBox2.Checked = ps.Default.CF_DoBorder;
             borderThicccccc.Value = ps.Default.CF_BorderSize;
             toTray.Checked = ps.Default.keepInTray;
+
             //This is only here because my config was stupid and I didn't want to find it and fix it :)
             if (ps.Default.CF_Opacity > (decimal)0.99)
             {
@@ -220,7 +221,7 @@ namespace AuraScreen
             }
 
             opacityBar.Value = ps.Default.CF_Opacity;
-
+            flipBox.Checked = ps.Default.CF_Flip;
             inversionBox.Checked = ps.Default.CF_DoInvert;
             checkBox4.Checked = ps.Default.CF_Lock;
             Console.WriteLine("Tile Controls");
@@ -1171,9 +1172,6 @@ namespace AuraScreen
 
         public void inversionBox_CheckedChanged(object sender, EventArgs e)
         {
-            ps.Default.CF_DoInvert = inversionBox.Checked;
-            ps.Default.Save();
-
             if (!inversionBox.Checked)
             {
                 if(!CheckFilter(1))
@@ -1182,7 +1180,6 @@ namespace AuraScreen
                     ps.Default.FilterNum = 0;
                     ps.Default.Save();
                 }
-                //mousebox.Close();
             }
             else 
             {
@@ -1200,6 +1197,8 @@ namespace AuraScreen
                     ps.Default.Save();
                 }
             }
+            ps.Default.CF_DoInvert = inversionBox.Checked;
+            ps.Default.Save();
 
             if (mousebox.Visible)
                 ReloadCF();
@@ -1314,9 +1313,6 @@ namespace AuraScreen
 
         private void tileInvert_CheckedChanged(object sender, EventArgs e)
         {
-            ps.Default.BF_Invert = tileInvert.Checked;
-            ps.Default.Save();
-
             if (!tileInvert.Checked)
             {
                 if (CheckFilter(2))
@@ -1343,6 +1339,9 @@ namespace AuraScreen
                     ps.Default.Save();
                 }
             }
+
+            ps.Default.BF_Invert = tileInvert.Checked;
+            ps.Default.Save();
 
             if (blockfilter.Visible)
                 ReloadTiles();
@@ -1583,6 +1582,12 @@ namespace AuraScreen
         private void label30_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void flipBox_CheckedChanged(object sender, EventArgs e)
+        {
+            ps.Default.CF_Flip = flipBox.Checked;
+            ps.Default.Save();
         }
     }
 }

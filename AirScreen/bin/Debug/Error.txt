@@ -1,14 +1,26 @@
-System.ArgumentNullException: Value cannot be null.
-Parameter name: points
-   at System.Drawing.Graphics.DrawPolygon(Pen pen, Point[] points)
-   at AuraScreen.MouseBox.MouseBox_Paint(Object sender, PaintEventArgs e) in C:\Users\HPD\Documents\Github\MouseHover\AirScreen\MouseBox.cs:line 467
-   at System.Windows.Forms.Control.OnPaint(PaintEventArgs e)
-   at System.Windows.Forms.Form.OnPaint(PaintEventArgs e)
-   at System.Windows.Forms.Control.PaintWithErrorHandling(PaintEventArgs e, Int16 layer)
-   at System.Windows.Forms.Control.WmPaint(Message& m)
+System.ObjectDisposedException: Cannot access a disposed object.
+Object name: 'MouseBox'.
+   at System.Windows.Forms.Control.CreateHandle()
+   at System.Windows.Forms.Form.CreateHandle()
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.ContainerControl.FocusActiveControlInternal()
+   at System.Windows.Forms.Form.SetVisibleCore(Boolean value)
+   at System.Windows.Forms.Control.Show()
+   at AuraScreen.Configurator.ToggleCF() in C:\Users\HPD\Documents\Github\MouseHover\AirScreen\Configurator.cs:line 481
+   at AuraScreen.Toolbox.cursorToggle_Click(Object sender, EventArgs e) in C:\Users\HPD\Documents\Github\MouseHover\AirScreen\Toolbox.cs:line 57
+   at System.Windows.Forms.Control.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnClick(EventArgs e)
+   at System.Windows.Forms.Button.OnMouseUp(MouseEventArgs mevent)
+   at System.Windows.Forms.Control.WmMouseUp(Message& m, MouseButtons button, Int32 clicks)
    at System.Windows.Forms.Control.WndProc(Message& m)
-   at System.Windows.Forms.ScrollableControl.WndProc(Message& m)
-   at System.Windows.Forms.Form.WndProc(Message& m)
+   at System.Windows.Forms.ButtonBase.WndProc(Message& m)
+   at System.Windows.Forms.Button.WndProc(Message& m)
    at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
    at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
    at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.DispatchMessageW(MSG& msg)
+   at System.Windows.Forms.Application.ComponentManager.System.Windows.Forms.UnsafeNativeMethods.IMsoComponentManager.FPushMessageLoop(IntPtr dwComponentID, Int32 reason, Int32 pvLoopData)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoopInner(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.ThreadContext.RunMessageLoop(Int32 reason, ApplicationContext context)
+   at System.Windows.Forms.Application.Run(Form mainForm)
+   at AuraScreen.Program.Main() in C:\Users\HPD\Documents\Github\MouseHover\AirScreen\Program.cs:line 16

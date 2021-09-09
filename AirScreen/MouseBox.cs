@@ -113,19 +113,14 @@ namespace AuraScreen
 
         private void AdjustLocation()
         {
-                Point pt = Cursor.Position;
-                if (ps.Default.CF_Style == "Half Circle")
-                    pt.Offset(-1 * this.Width / 2, -1 * this.Height / 2);
-                else if (ps.Default.CF_Style == "Circle")
-                    pt.Offset(-1 * this.Height / 2, -1 * this.Height / 2);
-                else
-                    pt.Offset(-1 * this.Width / 2, -1 * this.Height / 2);
-
-                this.Location = pt;
+            Point pt = Cursor.Position;
+            pt.Offset(-1 * this.Width / 2, -1 * this.Height / 2);
+            this.Location = pt;
         }
 
         private void CreateView()
         {
+            GP.Reset();
             //Adjust Settings
             this.Width = ps.Default.CF_Width;
             this.Height = ps.Default.CF_Height;
@@ -134,68 +129,177 @@ namespace AuraScreen
             this.Opacity = (double)ps.Default.CF_Opacity;
             this.TopMost = true;
             this.BackColor = ps.Default.CF_Color;
-            System.Drawing.Drawing2D.GraphicsPath GP = new System.Drawing.Drawing2D.GraphicsPath();
             Application.DoEvents();
             //this.FormBorderStyle = FormBorderStyle.None;
             switch (ps.Default.CF_Style)
             {
                 case "Rectangle":
                     GP.AddRectangle(this.ClientRectangle);
-                    NewRegion = new Region(GP);
                     break;
-
                 case "Ellipse":
                     GP.AddEllipse(this.ClientRectangle);
-                    NewRegion = new Region(GP);
                     break;
-
-                case "Half Circle":
-                    GP.AddEllipse(0, 0, this.Width, this.Width);
-                    NewRegion = new Region(GP);
-                    break;
-
                 case "Circle":
-                    GP.AddEllipse(0, 0, this.Height, this.Height);
+                    ps.Default.CF_Width = ps.Default.CF_Height;
+                    ps.Default.Save();
                     this.Width = this.Height;
-                    NewRegion = new Region(GP);
+                    GP.AddEllipse(this.ClientRectangle);
                     break;
+
                 case "Triangle":
                     DrawTriangle();
+                    break;
+                case "Triangle - Hollow":
+                    DrawTriangleHollow(true);
+                    break;
+                case "Triangle - Filled":
+                    DrawTriangleHollow(false);
                     break;
                 case "Triangle - Flipped":
                     DrawTriangleFlipped();
                     break;
+
+                case "Pentagon":
+                    DrawPolygon(5);
+                    break;
+                case "Hexagon":
+                    DrawPolygon(6);
+                    break;
+                case "Octagon":
+                    DrawPolygon(8);
+                    break;
             }
 
+            NewRegion = new Region(GP);
             this.Region = NewRegion;
+            //this.Refresh();
         }
+
+        private Point[] Polygon;
+        private void DrawPolygon(int Sides = 5)
+        {
+            switch (Sides)
+            {
+                case 8:
+                    Polygon = new Point[] 
+                    { 
+                        //Top Left Corners
+                        new Point(this.Width / 5, 0),
+                        new Point(0, this.Height / 5),
+                        //Bottom Left Corners
+                        new Point(0, this.Height - this.Height / 5),
+                        new Point(this.Width / 5, this.Height),
+                        //Bottom Right Corners
+                        new Point(this.Width - this.Width / 5, this.Height),
+                        new Point(this.Width, this.Height - this.Height / 5),
+                         //Top Right Corners
+                        new Point(this.Width, this.Height / 5),
+                        new Point(this.Width - this.Width / 5, 0), 
+                    };
+                    break;
+                case 6:
+                    Polygon = new Point[]
+                    {
+                        new Point(this.Width / 5, 0),
+                        new Point(0, this.Height / 2),
+                        new Point(this.Width / 5, this.Height),
+                        new Point(this.Width - this.Width / 5, this.Height),
+                        new Point(this.Width, this.Height / 2),
+                        new Point(this.Width - this.Width / 5, 0)
+                    };
+                    break;
+                case 5:
+                default:
+                    Polygon = new Point[]
+                    {
+                        //Top Middle
+                        new Point(this.Width / 2, 0),
+                        //Left Middle
+                        new Point(0, this.Height / 3),
+                        //Left Corner
+                        new Point(this.Width / 6, this.Height),
+                        //Right Corner
+                        new Point(this.Width - this.Width / 6, this.Height),
+                        //Right Middle
+                        new Point(this.Width, this.Height / 3),
+                    };
+                    break;
+            }
+
+            GP.AddPolygon(Polygon);
+        }
+
 
         private Region NewRegion;
         private Point[] Triangle;
+        private Point[] InnerTriangle;
         public void DrawTriangle()
         {
             Console.WriteLine("Drawing triangle");
-            System.Drawing.Drawing2D.GraphicsPath GP = new System.Drawing.Drawing2D.GraphicsPath();
             Point top = new Point(this.Width / 2, 0);
             Point right = new Point(this.Width, this.Height);
             Point left = new Point(0, this.Height);
+            if (ps.Default.CF_Flip)
+            {
+                top = new Point(this.Width / 2, this.Height);
+                right = new Point(this.Width, 0);
+                left = new Point(0, 0);
+            }
+
             Triangle = new Point[] { top, right, left };
             GP.AddPolygon(Triangle);
-            NewRegion = new Region(GP);
-            this.Refresh();
+        }
+        System.Drawing.Drawing2D.GraphicsPath GP = new System.Drawing.Drawing2D.GraphicsPath();
+        public void DrawTriangleHollow(bool isHollow)
+        {
+            Console.WriteLine("Drawing triangle");
+            Point top = new Point(this.Width / 2, 0);
+            Point right = new Point(this.Width, this.Height);
+            Point left = new Point(0, this.Height);
+            if (ps.Default.CF_Flip)
+            {
+                top = new Point(this.Width / 2, this.Height);
+                right = new Point(this.Width, 0);
+                left = new Point(0, 0);
+            }
+
+            Triangle = new Point[] { 
+                top, 
+                right, 
+                left,
+            };
+
+            InnerTriangle = new Point[]
+            {
+                new Point(this.Width / 2, (this.Height / 5)),
+                new Point(this.Width / 5, this.Height - (this.Height / 10)),
+                new Point(this.Width - (this.Width / 5), this.Height - (this.Height / 10))
+            };
+
+            if (ps.Default.CF_Flip)
+            {
+                InnerTriangle[0] = new Point(this.Width / 2, this.Height - this.Height / 5);
+                InnerTriangle[1] = new Point(this.Width - this.Width / 5, this.Height / 10);
+                InnerTriangle[2] = new Point(this.Width / 5, this.Height / 10);
+            }
+
+            if (isHollow)
+            {
+                GP.AddPolygon(InnerTriangle);
+                GP.FillMode = System.Drawing.Drawing2D.FillMode.Alternate;
+            }
+            
+            GP.AddPolygon(Triangle);
         }
 
         public void DrawTriangleFlipped()
         {
             Console.WriteLine("Drawing triangle");
-            System.Drawing.Drawing2D.GraphicsPath GP = new System.Drawing.Drawing2D.GraphicsPath();
             Point top = new Point(this.Width / 2, this.Height);
             Point right = new Point(this.Width, 0);
             Point left = new Point(0, 0);
             Triangle = new Point[] { top, right, left };
             GP.AddPolygon(Triangle);
-            NewRegion = new Region(GP);
-            this.Refresh();
         }
 
         private void Form2_KeyPress(object sender, KeyPressEventArgs e)
@@ -263,10 +367,9 @@ namespace AuraScreen
         {
             if(!ps.Default.CF_DoInvert)
             {
-                //RemoveMagnifier();
                 if(!ps.Default.CF_Lock)
                     AdjustLocation();
-                if (this.Width != ps.Default.CF_Width || this.Height != ps.Default.CF_Height)
+                if (this.Width != ps.Default.CF_Width && ps.Default.CF_Style != "Circle" || this.Height != ps.Default.CF_Height)
                     CreateView();
                 if (this.Opacity != (double)ps.Default.CF_Opacity && !ps.Default.CF_DoInvert)
                     CreateView();
@@ -290,11 +393,6 @@ namespace AuraScreen
                         source.left = Cursor.Position.X - this.Width / 2;
                         source.top = Cursor.Position.Y - this.Height / 2;
                         this.Location = new Point(source.left, source.top);
-                    }
-
-                    if (this.Width != ps.Default.CF_Width || this.Height != ps.Default.CF_Height)
-                    {
-                        CreateView();
                     }
                 }
                 //Alternate inversion method
@@ -400,7 +498,6 @@ namespace AuraScreen
                 source.top = Screen.PrimaryScreen.Bounds.Height - height;
 
             source.bottom = source.top + height;
-
             NativeMethods.MagSetWindowSource(hwndMag, source);
             NativeMethods.SetWindowPos(this.Handle,
                 NativeMethods.HWND_TOPMOST, magWindowRect.left, magWindowRect.top, magWindowRect.right, magWindowRect.bottom,
@@ -472,6 +569,14 @@ namespace AuraScreen
 
         private void MouseBox_Paint(object sender, PaintEventArgs e)
         {
+            //SolidBrush brush = new SolidBrush(ps.Default.CF_Color);
+            //e.Graphics.FillPath(brush, GP);
+            if (ps.Default.CF_Style == "Triangle - Filled")
+            {
+                SolidBrush brush2 = new SolidBrush(ps.Default.CF_BorderColor);
+                e.Graphics.FillPolygon(brush2, InnerTriangle);
+            }
+
             if (ps.Default.CF_DoBorder && !ps.Default.CF_DoInvert)
             {
                 Pen pen = new Pen(ps.Default.CF_BorderColor, ps.Default.CF_BorderSize);
@@ -482,16 +587,33 @@ namespace AuraScreen
                         e.Graphics.DrawRectangle(pen, rect);
                         break;
                     case "Circle":
-                        e.Graphics.DrawEllipse(pen, new Rectangle(0, 0, this.Height, this.Height));
+                        this.Width = this.Height;
+                        e.Graphics.DrawEllipse(pen, rect);
                         break;
                     case "Triangle":
                     case "Triangle - Flipped":
+                    case "Triangle - Hollow":
+                    case "Triangle - Filled":
+                        if (Triangle == null)
+                            CreateView();
                         e.Graphics.DrawPolygon(pen, Triangle);
+                        break;
+                    case "Pentagon":
+                    case "Octagon":
+                    case "Hexagon":
+                        e.Graphics.DrawPolygon(pen, Polygon);
                         break;
                     default:
                         e.Graphics.DrawEllipse(pen, rect);
                         break;
                 }
+            }
+
+            
+
+            if (ps.Default.CF_Style.Contains("Triangle - ") && ps.Default.CF_DoInvert)
+            {
+
             }
         }
     }
