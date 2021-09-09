@@ -498,6 +498,7 @@ namespace AuraScreen
                 source.top = Screen.PrimaryScreen.Bounds.Height - height;
 
             source.bottom = source.top + height;
+            
             NativeMethods.MagSetWindowSource(hwndMag, source);
             NativeMethods.SetWindowPos(this.Handle,
                 NativeMethods.HWND_TOPMOST, magWindowRect.left, magWindowRect.top, magWindowRect.right, magWindowRect.bottom,
@@ -532,8 +533,10 @@ namespace AuraScreen
 
             // Create a magnifier control that fills the client area.
             NativeMethods.GetClientRect(this.Handle, ref magWindowRect);
+            //Removed the Magnifier cursor so it Looks better
+            //(int)MagnifierStyle.MS_SHOWMAGNIFIEDCURSOR
             hwndMag = NativeMethods.CreateWindow((int)ExtendedWindowStyles.WS_EX_TRANSPARENT, NativeMethods.WC_MAGNIFIER,
-                        "MouseBox", (int)WindowStyles.WS_CHILD | (int)MagnifierStyle.MS_SHOWMAGNIFIEDCURSOR |
+                        "MouseBox", (int)WindowStyles.WS_CHILD |
                         (int)WindowStyles.WS_VISIBLE,
                         magWindowRect.left, magWindowRect.top, magWindowRect.right, magWindowRect.bottom, this.Handle, IntPtr.Zero, hInst, IntPtr.Zero);
 
@@ -543,6 +546,30 @@ namespace AuraScreen
             }
             ColorEffect colorEffect = new ColorEffect(Matrices.Negative);
             NativeMethods.MagSetColorEffect(hwndMag, ref colorEffect);
+        }
+
+        [DllImport("User32.dll", CharSet = CharSet.Auto)]
+        public static extern int ReleaseDC(IntPtr hWnd, IntPtr hDC);
+
+        [DllImport("User32.dll")]
+        private static extern IntPtr GetWindowDC(IntPtr hWnd);
+
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+            const int WM_NCPAINT = 0x85;
+            if (m.Msg == WM_NCPAINT)
+            {
+                IntPtr hdc = GetWindowDC(m.HWnd);
+                if ((int)hdc != 0)
+                {
+                    //This Currently doesn't work. It will draw the border fine, but as soon as the magnifier is enabled it kills it.
+                    Graphics g = Graphics.FromHdc(hdc);
+                    g.FillRectangle(Brushes.Green, new Rectangle(0, 0, 4800, 23));
+                    g.Flush();
+                    ReleaseDC(m.HWnd, hdc);
+                }
+            }
         }
 
         protected void RemoveMagnifier()
@@ -576,19 +603,24 @@ namespace AuraScreen
                 SolidBrush brush2 = new SolidBrush(ps.Default.CF_BorderColor);
                 e.Graphics.FillPolygon(brush2, InnerTriangle);
             }
+            PaintBorder(e.Graphics);
+        }
 
+        private void PaintBorder(Graphics g)
+        {
+            // && !ps.Default.CF_DoInvert
             if (ps.Default.CF_DoBorder && !ps.Default.CF_DoInvert)
             {
                 Pen pen = new Pen(ps.Default.CF_BorderColor, ps.Default.CF_BorderSize);
-                Rectangle rect  = new Rectangle(0, 0, this.Width, this.Height);
+                Rectangle rect = new Rectangle(0, 0, this.Width, this.Height);
                 switch (ps.Default.CF_Style)
                 {
                     case "Rectangle":
-                        e.Graphics.DrawRectangle(pen, rect);
+                        g.DrawRectangle(pen, rect);
                         break;
                     case "Circle":
                         this.Width = this.Height;
-                        e.Graphics.DrawEllipse(pen, rect);
+                        g.DrawEllipse(pen, rect);
                         break;
                     case "Triangle":
                     case "Triangle - Flipped":
@@ -596,24 +628,17 @@ namespace AuraScreen
                     case "Triangle - Filled":
                         if (Triangle == null)
                             CreateView();
-                        e.Graphics.DrawPolygon(pen, Triangle);
+                        g.DrawPolygon(pen, Triangle);
                         break;
                     case "Pentagon":
                     case "Octagon":
                     case "Hexagon":
-                        e.Graphics.DrawPolygon(pen, Polygon);
+                        g.DrawPolygon(pen, Polygon);
                         break;
                     default:
-                        e.Graphics.DrawEllipse(pen, rect);
+                        g.DrawEllipse(pen, rect);
                         break;
                 }
-            }
-
-            
-
-            if (ps.Default.CF_Style.Contains("Triangle - ") && ps.Default.CF_DoInvert)
-            {
-
             }
         }
     }

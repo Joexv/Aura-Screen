@@ -221,20 +221,6 @@ namespace Magnifier
         WS_MAXIMIZEBOX = 0x00010000
     }
 
-    [Description("Common window styles")]
-    internal enum CommonWindowStyles : int
-    {
-        WS_TILED = WindowStyles.WS_OVERLAPPED,
-        WS_ICONIC = WindowStyles.WS_MINIMIZE,
-        WS_SIZEBOX = WindowStyles.WS_THICKFRAME,
-        WS_OVERLAPPEDWINDOW = (WindowStyles.WS_OVERLAPPED | WindowStyles.WS_CAPTION | WindowStyles.WS_SYSMENU | WindowStyles.WS_THICKFRAME | WindowStyles.WS_MINIMIZEBOX | WindowStyles.WS_MAXIMIZEBOX),
-        WS_TILEDWINDOW = WS_OVERLAPPEDWINDOW,
-        WS_POPUPWINDOW = (WindowStyles.WS_POPUP |
-                          WindowStyles.WS_BORDER |
-                          WindowStyles.WS_SYSMENU),
-        WS_CHILDWINDOW = (WindowStyles.WS_CHILD)
-    }
-
     [Flags]
     internal enum SetWindowPosFlags : int
     {
@@ -279,17 +265,6 @@ namespace Magnifier
         WS_EX_LAYOUTRTL = 0x00400000,
         WS_EX_COMPOSITED = 0x02000000,
         WS_EX_NOACTIVATE = 0x08000000
-    }
-
-
-    [Description("Common extended window styles")]
-    internal enum CommonExtendedWindowStyles : int
-    {
-        WS_EX_OVERLAPPEDWINDOW = (ExtendedWindowStyles.WS_EX_WINDOWEDGE |
-                                  ExtendedWindowStyles.WS_EX_CLIENTEDGE),
-        WS_EX_PALETTEWINDOW = (ExtendedWindowStyles.WS_EX_WINDOWEDGE |
-                                  ExtendedWindowStyles.WS_EX_TOOLWINDOW |
-                                  ExtendedWindowStyles.WS_EX_TOPMOST)
     }
 
     [Flags]
