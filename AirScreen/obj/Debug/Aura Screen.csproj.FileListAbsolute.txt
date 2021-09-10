@@ -16,8 +16,6 @@ C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\bin\Debug\AuraScr
 C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\bin\Debug\AuraScreen.pdb
 C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\bin\Debug\EventHook.dll
 C:\Users\ManMadeOfGouda\Documents\GitHub\Aura-Screen\AirScreen\obj\Debug\Aura Screen.csproj.CopyComplete
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\Invisible_Cursor.cur
-C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\Pink_Crosshair_Cursor.cur
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\AuraScreen.exe.config
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\AuraScreen.exe
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\AuraScreen.pdb
@@ -66,3 +64,5 @@ C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\AirScreen\obj\Debug\AuraScree
 C:\Users\Stealth Gouda\Documents\GitHub\MouseHover\AirScreen\obj\Debug\AuraScreen.pdb
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\Textures\Texture_Test.png
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\Textures\egg.png
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\Cursors\Invisible_Cursor.cur
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\Cursors\Pink_Crosshair_Cursor.cur

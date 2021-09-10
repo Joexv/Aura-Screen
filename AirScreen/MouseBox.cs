@@ -6,6 +6,7 @@ using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
+using System.IO;
 
 namespace AuraScreen
 {
@@ -145,6 +146,14 @@ namespace AuraScreen
                     this.Width = this.Height;
                     GP.AddEllipse(this.ClientRectangle);
                     break;
+                case "Circle - Hollow":
+                    ps.Default.CF_Width = ps.Default.CF_Height;
+                    ps.Default.Save();
+                    this.Width = this.Height;
+                    GP.AddEllipse(this.ClientRectangle);
+                    innerCircle = this.ClientRectangle;
+                    innerCircle.Inflate(-90, -90);
+                    break;
 
                 case "Triangle":
                     DrawTriangle();
@@ -176,8 +185,11 @@ namespace AuraScreen
 
             if (ps.Default.CF_DoTexture && !String.IsNullOrWhiteSpace(ps.Default.CF_Texture))
             {
-                Image image = Image.FromFile(Application.StartupPath + $"\\Textures\\{ps.Default.CF_Texture}");
-                this.BackgroundImage = TextureFilter(image, (float)ps.Default.CF_Opacity);
+                if(File.Exists(Application.StartupPath + $"\\Textures\\{ps.Default.CF_Texture}"))
+                {
+                    Image image = Image.FromFile(Application.StartupPath + $"\\Textures\\{ps.Default.CF_Texture}");
+                    this.BackgroundImage = TextureFilter(image, (float)ps.Default.CF_Opacity);
+                }
             }
         }
 
@@ -375,7 +387,7 @@ namespace AuraScreen
             {
                 if(!ps.Default.CF_Lock)
                     AdjustLocation();
-                if (this.Width != ps.Default.CF_Width && ps.Default.CF_Style != "Circle" || this.Height != ps.Default.CF_Height)
+                if (this.Width != ps.Default.CF_Width && !ps.Default.CF_Style.Contains("Circle") || this.Height != ps.Default.CF_Height)
                     CreateView();
                 if (this.Opacity != (double)ps.Default.CF_Opacity && !ps.Default.CF_DoInvert)
                     CreateView();
@@ -602,16 +614,18 @@ namespace AuraScreen
                 MagTimer.Enabled = false;
             }
         }
-
+        Rectangle innerCircle;
         private void MouseBox_Paint(object sender, PaintEventArgs e)
         {
             //SolidBrush brush = new SolidBrush(ps.Default.CF_Color);
             //e.Graphics.FillPath(brush, GP);
+            SolidBrush brush2 = new SolidBrush(ps.Default.CF_BorderColor);
             if (ps.Default.CF_Style == "Triangle - Filled")
-            {
-                SolidBrush brush2 = new SolidBrush(ps.Default.CF_BorderColor);
                 e.Graphics.FillPolygon(brush2, InnerTriangle);
-            }
+
+            if(ps.Default.CF_Style == "Circle - Hollow")
+                e.Graphics.FillEllipse(brush2, innerCircle);
+
             PaintBorder(e.Graphics);
         }
 
@@ -628,6 +642,7 @@ namespace AuraScreen
                         g.DrawRectangle(pen, rect);
                         break;
                     case "Circle":
+                    case "Circle - Hollow":
                         this.Width = this.Height;
                         g.DrawEllipse(pen, rect);
                         break;

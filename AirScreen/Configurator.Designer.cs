@@ -222,6 +222,9 @@ namespace AuraScreen
             this.Tile_TextureBox = new System.Windows.Forms.CheckBox();
             this.AO_Texture = new System.Windows.Forms.ComboBox();
             this.AO_TextureBox = new System.Windows.Forms.CheckBox();
+            this.groupBox19 = new System.Windows.Forms.GroupBox();
+            this.button31 = new System.Windows.Forms.Button();
+            this.button32 = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.aoTab.SuspendLayout();
             this.groupBox15.SuspendLayout();
@@ -267,6 +270,7 @@ namespace AuraScreen
             ((System.ComponentModel.ISupportInitialize)(this.cursorPreview)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.groupBox19.SuspendLayout();
             this.SuspendLayout();
             // 
             // colorDialog1
@@ -606,6 +610,7 @@ namespace AuraScreen
             this.groupBox15.Size = new System.Drawing.Size(532, 196);
             this.groupBox15.TabIndex = 48;
             this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Additional Options";
             // 
             // ao_AS
             // 
@@ -945,7 +950,7 @@ namespace AuraScreen
             // button10
             // 
             this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(331, 46);
+            this.button10.Location = new System.Drawing.Point(331, 39);
             this.button10.Margin = new System.Windows.Forms.Padding(2);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(136, 31);
@@ -976,7 +981,7 @@ namespace AuraScreen
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(7, 26);
+            this.label24.Location = new System.Drawing.Point(7, 19);
             this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(177, 18);
@@ -997,7 +1002,7 @@ namespace AuraScreen
             // Filter_ComboBox
             // 
             this.Filter_ComboBox.FormattingEnabled = true;
-            this.Filter_ComboBox.Location = new System.Drawing.Point(10, 46);
+            this.Filter_ComboBox.Location = new System.Drawing.Point(10, 39);
             this.Filter_ComboBox.Margin = new System.Windows.Forms.Padding(2);
             this.Filter_ComboBox.Name = "Filter_ComboBox";
             this.Filter_ComboBox.Size = new System.Drawing.Size(261, 26);
@@ -1005,7 +1010,7 @@ namespace AuraScreen
             // 
             // button17
             // 
-            this.button17.Location = new System.Drawing.Point(331, 81);
+            this.button17.Location = new System.Drawing.Point(331, 76);
             this.button17.Margin = new System.Windows.Forms.Padding(2);
             this.button17.Name = "button17";
             this.button17.Size = new System.Drawing.Size(136, 31);
@@ -1108,7 +1113,7 @@ namespace AuraScreen
             this.tileSelect.Location = new System.Drawing.Point(8, 61);
             this.tileSelect.Margin = new System.Windows.Forms.Padding(2);
             this.tileSelect.Name = "tileSelect";
-            this.tileSelect.Size = new System.Drawing.Size(218, 26);
+            this.tileSelect.Size = new System.Drawing.Size(164, 26);
             this.tileSelect.TabIndex = 28;
             this.tileSelect.SelectedIndexChanged += new System.EventHandler(this.tileSelect_SelectedIndexChanged);
             // 
@@ -1336,9 +1341,9 @@ namespace AuraScreen
             // 
             // settingsTab
             // 
+            this.settingsTab.Controls.Add(this.groupBox19);
             this.settingsTab.Controls.Add(this.button30);
             this.settingsTab.Controls.Add(this.groupBox17);
-            this.settingsTab.Controls.Add(this.button19);
             this.settingsTab.Controls.Add(this.groupBox16);
             this.settingsTab.Controls.Add(this.groupBox10);
             this.settingsTab.Location = new System.Drawing.Point(4, 4);
@@ -1355,7 +1360,7 @@ namespace AuraScreen
             this.button30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button30.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button30.ForeColor = System.Drawing.Color.White;
-            this.button30.Location = new System.Drawing.Point(357, 626);
+            this.button30.Location = new System.Drawing.Point(352, 629);
             this.button30.Margin = new System.Windows.Forms.Padding(2);
             this.button30.Name = "button30";
             this.button30.Size = new System.Drawing.Size(182, 30);
@@ -1428,7 +1433,7 @@ namespace AuraScreen
             this.button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button19.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button19.ForeColor = System.Drawing.Color.White;
-            this.button19.Location = new System.Drawing.Point(357, 592);
+            this.button19.Location = new System.Drawing.Point(343, 92);
             this.button19.Margin = new System.Windows.Forms.Padding(2);
             this.button19.Name = "button19";
             this.button19.Size = new System.Drawing.Size(182, 30);
@@ -1441,7 +1446,6 @@ namespace AuraScreen
             // 
             this.groupBox16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox16.Controls.Add(this.button29);
             this.groupBox16.Controls.Add(this.button21);
             this.groupBox16.Controls.Add(this.linkLabel2);
             this.groupBox16.Controls.Add(this.linkLabel4);
@@ -1449,26 +1453,27 @@ namespace AuraScreen
             this.groupBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox16.Location = new System.Drawing.Point(9, 307);
             this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(530, 138);
+            this.groupBox16.Size = new System.Drawing.Size(530, 127);
             this.groupBox16.TabIndex = 31;
             this.groupBox16.TabStop = false;
             // 
             // button29
             // 
             this.button29.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button29.Location = new System.Drawing.Point(5, 34);
+            this.button29.Location = new System.Drawing.Point(340, 35);
             this.button29.Margin = new System.Windows.Forms.Padding(2);
             this.button29.Name = "button29";
             this.button29.Size = new System.Drawing.Size(156, 40);
             this.button29.TabIndex = 31;
             this.button29.Text = "Upgrade Old Settings";
             this.button29.UseVisualStyleBackColor = true;
+            this.button29.Visible = false;
             this.button29.Click += new System.EventHandler(this.button29_Click);
             // 
             // button21
             // 
             this.button21.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button21.Location = new System.Drawing.Point(5, 76);
+            this.button21.Location = new System.Drawing.Point(8, 24);
             this.button21.Margin = new System.Windows.Forms.Padding(2);
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(156, 39);
@@ -1494,7 +1499,7 @@ namespace AuraScreen
             // 
             this.linkLabel4.AutoSize = true;
             this.linkLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel4.Location = new System.Drawing.Point(337, 60);
+            this.linkLabel4.Location = new System.Drawing.Point(337, 34);
             this.linkLabel4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.linkLabel4.Name = "linkLabel4";
             this.linkLabel4.Size = new System.Drawing.Size(139, 18);
@@ -1507,7 +1512,7 @@ namespace AuraScreen
             // 
             this.linkLabel3.AutoSize = true;
             this.linkLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel3.Location = new System.Drawing.Point(337, 34);
+            this.linkLabel3.Location = new System.Drawing.Point(337, 61);
             this.linkLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(167, 18);
@@ -2292,6 +2297,7 @@ namespace AuraScreen
             "Rectangle",
             "Ellipse",
             "Circle",
+            "Circle - Hollow",
             "Triangle",
             "Triangle - Hollow",
             "Triangle - Filled",
@@ -2786,7 +2792,7 @@ namespace AuraScreen
             this.textureCombo.FormattingEnabled = true;
             this.textureCombo.Location = new System.Drawing.Point(231, 92);
             this.textureCombo.Name = "textureCombo";
-            this.textureCombo.Size = new System.Drawing.Size(195, 26);
+            this.textureCombo.Size = new System.Drawing.Size(264, 26);
             this.textureCombo.TabIndex = 20;
             this.textureCombo.SelectedIndexChanged += new System.EventHandler(this.textureCombo_SelectedIndexChanged);
             // 
@@ -2795,7 +2801,7 @@ namespace AuraScreen
             this.Tile_Texture.FormattingEnabled = true;
             this.Tile_Texture.Location = new System.Drawing.Point(8, 174);
             this.Tile_Texture.Name = "Tile_Texture";
-            this.Tile_Texture.Size = new System.Drawing.Size(195, 26);
+            this.Tile_Texture.Size = new System.Drawing.Size(236, 26);
             this.Tile_Texture.TabIndex = 22;
             this.Tile_Texture.SelectedIndexChanged += new System.EventHandler(this.Tile_Texture_SelectedIndexChanged);
             // 
@@ -2831,6 +2837,44 @@ namespace AuraScreen
             this.toolTip1.SetToolTip(this.AO_TextureBox, "Will overlay an image onto the filter creating textured filters");
             this.AO_TextureBox.UseVisualStyleBackColor = true;
             this.AO_TextureBox.CheckedChanged += new System.EventHandler(this.AO_TextureBox_CheckedChanged);
+            // 
+            // groupBox19
+            // 
+            this.groupBox19.Controls.Add(this.button32);
+            this.groupBox19.Controls.Add(this.button31);
+            this.groupBox19.Controls.Add(this.button29);
+            this.groupBox19.Controls.Add(this.button19);
+            this.groupBox19.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox19.Location = new System.Drawing.Point(9, 441);
+            this.groupBox19.Name = "groupBox19";
+            this.groupBox19.Size = new System.Drawing.Size(530, 146);
+            this.groupBox19.TabIndex = 34;
+            this.groupBox19.TabStop = false;
+            this.groupBox19.Text = "Manage Configuration File";
+            // 
+            // button31
+            // 
+            this.button31.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button31.Location = new System.Drawing.Point(8, 35);
+            this.button31.Margin = new System.Windows.Forms.Padding(2);
+            this.button31.Name = "button31";
+            this.button31.Size = new System.Drawing.Size(156, 40);
+            this.button31.TabIndex = 32;
+            this.button31.Text = "Backup Settings";
+            this.button31.UseVisualStyleBackColor = true;
+            this.button31.Click += new System.EventHandler(this.button31_Click);
+            // 
+            // button32
+            // 
+            this.button32.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button32.Location = new System.Drawing.Point(8, 79);
+            this.button32.Margin = new System.Windows.Forms.Padding(2);
+            this.button32.Name = "button32";
+            this.button32.Size = new System.Drawing.Size(156, 40);
+            this.button32.TabIndex = 33;
+            this.button32.Text = "Restore Settings";
+            this.button32.UseVisualStyleBackColor = true;
+            this.button32.Click += new System.EventHandler(this.button32_Click);
             // 
             // Configurator
             // 
@@ -2917,6 +2961,7 @@ namespace AuraScreen
             ((System.ComponentModel.ISupportInitialize)(this.cursorPreview)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            this.groupBox19.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -3113,6 +3158,9 @@ namespace AuraScreen
         private System.Windows.Forms.CheckBox Tile_TextureBox;
         private System.Windows.Forms.ComboBox AO_Texture;
         private System.Windows.Forms.CheckBox AO_TextureBox;
+        private System.Windows.Forms.GroupBox groupBox19;
+        private System.Windows.Forms.Button button32;
+        private System.Windows.Forms.Button button31;
     }
 }
 

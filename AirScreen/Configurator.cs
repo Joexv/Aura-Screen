@@ -11,6 +11,7 @@ using System.Management;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace AuraScreen
 {
@@ -53,8 +54,41 @@ namespace AuraScreen
             MessageBox.Show("You bafoon, you absolute ignoramous. You broke it. Now what? Gonna cry? Send that error.txt over to the devs and they will take a look.");
         }
 
+        private void CheckForConfigErrors()
+        {
+            if (ps.Default.CF_Opacity > (decimal)0.99)
+                ps.Default.CF_Opacity = (decimal)0.99;
+
+            if (ps.Default.BF_Opacity > (decimal)0.99)
+                ps.Default.BF_Opacity = (decimal)0.99;
+
+            if (ps.Default.AO_Opacity > (decimal)0.99)
+                ps.Default.AO_Opacity = (decimal)0.99;
+
+            if(ps.Default.CF_DoInvert && ps.Default.BF_Invert)
+            {
+                ps.Default.CF_DoInvert = false;
+                ps.Default.BF_Invert = false;
+            }
+
+            if (!File.Exists(ps.Default.BF_Texture))
+                ps.Default.BF_Texture = "";
+            if (!File.Exists(ps.Default.CF_Texture))
+                ps.Default.CF_Texture = "";
+            if (!File.Exists(ps.Default.AO_Texture))
+                ps.Default.AO_Texture = "";
+
+            if (ps.Default.CF_Width > Screen.PrimaryScreen.Bounds.Width)
+                ps.Default.CF_Width = 200;
+            if (ps.Default.CF_Height > Screen.PrimaryScreen.Bounds.Height)
+                ps.Default.CF_Height = 200;
+        }
+
         public void Form1_Load(object sender, EventArgs e)
         {
+            Directory.CreateDirectory("Textures");
+            Directory.CreateDirectory("Cursors");
+            CheckForConfigErrors();
             PopulateControls();
             ReloadHotKeys();
             foreach (string item in Matrix.Keys)
@@ -161,8 +195,13 @@ namespace AuraScreen
                     button.ForeColor = AltTextColor;
                     button.FlatAppearance.MouseDownBackColor = ClickedColor;
                     button.FlatAppearance.BorderColor = Color.Black;
+                    button.FlatAppearance.BorderSize = 0;
                     button.FlatStyle = FlatStyle.Flat;
                 }
+
+                System.Drawing.Drawing2D.GraphicsPath GP = new System.Drawing.Drawing2D.GraphicsPath();
+                GP = GetRoundPath(button.ClientRectangle, 25);
+                button.Region = new Region(GP);
             }
 
             foreach (GroupBox groupbox in GetAll(this, typeof(GroupBox)))
@@ -212,13 +251,6 @@ namespace AuraScreen
             checkBox2.Checked = ps.Default.CF_DoBorder;
             borderThicccccc.Value = ps.Default.CF_BorderSize;
             toTray.Checked = ps.Default.keepInTray;
-
-            //This is only here because my config was stupid and I didn't want to find it and fix it :)
-            if (ps.Default.CF_Opacity > (decimal)0.99)
-            {
-                ps.Default.CF_Opacity = (decimal)0.99;
-                ps.Default.Save();
-            }
 
             textureCombo.Items.Clear();
             textureCombo.Items.AddRange(GetFilesFrom(Application.StartupPath + "\\Textures", new String[] { "png", "jpg", "jpeg" }));
@@ -860,24 +892,20 @@ namespace AuraScreen
 
         public void StartSFActive()
         {
-            if (!SF_FilterInUse && !CheckFilter(3) && !Filter_Timer.Enabled)
+            if (!SF_FilterInUse && !Filter_Timer.Enabled)
             {
-                ps.Default.FilterInUse = true;
-                ps.Default.FilterNum = 3;
+                //ps.Default.FilterInUse = true;
+                //ps.Default.FilterNum = 3;
                 SF_FilterInUse = true;
                 Filter_Timer.Enabled = true;
             }
-            else if (!CheckFilter(3) && Filter_Timer.Enabled)
+            else if (Filter_Timer.Enabled)
             {
                 SF_FilterInUse = false;
-                ps.Default.FilterInUse = false;
-                ps.Default.FilterNum = 0;
+                //ps.Default.FilterInUse = false;
+                //ps.Default.FilterNum = 0;
                 Matrices.ChangeColorEffect(Matrices.Identity);
                 Filter_Timer.Enabled = false;
-            }
-            else
-            {
-                FilterError();
             }
         }
 
@@ -893,10 +921,14 @@ namespace AuraScreen
             {
                 Console.WriteLine($"MatrixBox {matrixBox.Text} :: FilterInUse {SF_FilterInUse}");
                 SF_FilterInUse = false;
-                ps.Default.FilterInUse = false;
-                ps.Default.FilterNum = 0;
+                //ps.Default.FilterInUse = false;
+                //ps.Default.FilterNum = 0;
                 Matrices.ChangeColorEffect(Matrices.Identity);
             }
+            else
+                SF_FilterInUse = Matrices.ChangeColorEffect(Matrix[ps.Default.SF_LastUsed]);
+
+            /*
             else if(!CheckFilter(3))
             {
                 Console.WriteLine("Attempting to apply filter");
@@ -908,6 +940,7 @@ namespace AuraScreen
             {
                 FilterError();
             }
+            */
 
             ps.Default.Save();
         }
@@ -1209,34 +1242,26 @@ namespace AuraScreen
 
         public void inversionBox_CheckedChanged(object sender, EventArgs e)
         {
+            inversionBox.CheckedChanged -= inversionBox_CheckedChanged;
             if (!inversionBox.Checked)
             {
-                if(!CheckFilter(1))
-                {
-                    ps.Default.FilterInUse = false;
+                if (ps.Default.FilterNum == 1)
                     ps.Default.FilterNum = 0;
-                    ps.Default.Save();
-                }
             }
             else 
             {
-                if (CheckFilter(1))
+                if (ps.Default.FilterNum == 2)
                 {
-                    FilterError();
                     inversionBox.Checked = false;
-                    ps.Default.CF_DoInvert = false;
-                    ps.Default.Save();
+                    MessageBox.Show($"Sorry! But mixing the Cursor Filter Inversion and the Tile Filter Inversion causes insane slow down and freezing even on high end systems! Please disable one of them before continuing.");
+                    this.Close();
                 }
                 else
-                {
-                    ps.Default.FilterInUse = true;
                     ps.Default.FilterNum = 1;
-                    ps.Default.Save();
-                }
             }
             ps.Default.CF_DoInvert = inversionBox.Checked;
             ps.Default.Save();
-
+            inversionBox.CheckedChanged += inversionBox_CheckedChanged;
             if (mousebox.Visible)
                 ReloadCF();
         }
@@ -1350,36 +1375,29 @@ namespace AuraScreen
 
         private void tileInvert_CheckedChanged(object sender, EventArgs e)
         {
+            tileInvert.CheckedChanged -= tileInvert_CheckedChanged;
             if (!tileInvert.Checked)
             {
-                if (CheckFilter(2))
-                {
-                    ps.Default.FilterInUse = false;
+                if(ps.Default.FilterNum == 2)
                     ps.Default.FilterNum = 0;
-                    ps.Default.Save();
-                }
-                blockfilter.Close();
-            }
+                if (blockfilter.Visible)
+                    ReloadTiles();
+            } 
             else
             {
-                if (CheckFilter(2))
+                if (ps.Default.FilterNum == 1)
                 {
-                    FilterError();
                     tileInvert.Checked = false;
-                    ps.Default.BF_Invert = false;
-                    ps.Default.Save();
+                    MessageBox.Show($"Sorry! But mixing the Cursor Filter Inversion and the Tile Filter Inversion causes insane slow down and freezing even on high end systems! Please disable one of them before continuing.");
+                    this.Close();
                 }
                 else
-                {
-                    ps.Default.FilterInUse = true;
                     ps.Default.FilterNum = 2;
-                    ps.Default.Save();
-                }
             }
 
             ps.Default.BF_Invert = tileInvert.Checked;
             ps.Default.Save();
-
+            tileInvert.CheckedChanged += tileInvert_CheckedChanged;
             if (blockfilter.Visible)
                 ReloadTiles();
         }
@@ -1670,6 +1688,62 @@ namespace AuraScreen
         {
             ps.Default.AO_DoTexture = AO_TextureBox.Checked;
             ps.Default.Save();
+        }
+
+        System.Drawing.Drawing2D.GraphicsPath GetRoundPath(RectangleF Rect, int radius)
+        {
+            float r2 = radius / 2f;
+            System.Drawing.Drawing2D.GraphicsPath GraphPath = new System.Drawing.Drawing2D.GraphicsPath();
+            GraphPath.AddArc(Rect.X, Rect.Y, radius, radius, 180, 90);
+            GraphPath.AddLine(Rect.X + r2, Rect.Y, Rect.Width - r2, Rect.Y);
+            GraphPath.AddArc(Rect.X + Rect.Width - radius, Rect.Y, radius, radius, 270, 90);
+            GraphPath.AddLine(Rect.Width, Rect.Y + r2, Rect.Width, Rect.Height - r2);
+            GraphPath.AddArc(Rect.X + Rect.Width - radius,
+                             Rect.Y + Rect.Height - radius, radius, radius, 0, 90);
+            GraphPath.AddLine(Rect.Width - r2, Rect.Height, Rect.X + r2, Rect.Height);
+            GraphPath.AddArc(Rect.X, Rect.Y + Rect.Height - radius, radius, radius, 90, 90);
+            GraphPath.AddLine(Rect.X, Rect.Height - r2, Rect.X, Rect.Y + r2);
+            GraphPath.CloseFigure();
+            return GraphPath;
+        }
+        
+
+        private void button31_Click(object sender, EventArgs e)
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoaming);
+            File.Copy(config.FilePath, $"Settings_{DateTime.Now.ToString("dd/MM/yyyy")}.config", true);
+            if (File.Exists($"Settings_{DateTime.Now.ToString("dd/MM/yyyy")}.config"))
+                MessageBox.Show("Settings backed up to " + $"Settings_{DateTime.Today}.config");
+            else
+                MessageBox.Show("Failed to backup settings!");
+        }
+
+        private void button32_Click(object sender, EventArgs e)
+        {
+            var config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoaming);
+            DialogResult dialogResult = MessageBox.Show("This will overwrite all current settings and cannot be undone. Continue?", "Warning", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                var fileContent = string.Empty;
+                var filePath = string.Empty;
+
+                using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                {
+                    openFileDialog.InitialDirectory = Application.StartupPath;
+                    openFileDialog.Filter = "config files (*.config)|*.config";
+                    openFileDialog.FilterIndex = 2;
+                    openFileDialog.RestoreDirectory = false;
+
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        filePath = openFileDialog.FileName;
+                        File.Delete(config.FilePath);
+                        File.Copy(filePath, config.FilePath);
+                    }
+                }
+
+                MessageBox.Show(fileContent, "Settings have been restored!");
+            } 
         }
     }
 }

@@ -80,6 +80,7 @@
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Console, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Console.4.3.0\lib\net46\System.Console.dll</HintPath>
       <Private>True</Private>
@@ -311,10 +312,10 @@
     <EmbeddedResource Include="circle_rgb_color_mix.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Invisible_Cursor.cur">
+    <Content Include="Cursors\Invisible_Cursor.cur">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Pink_Crosshair_Cursor.cur">
+    <Content Include="Cursors\Pink_Crosshair_Cursor.cur">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Textures\egg.png">

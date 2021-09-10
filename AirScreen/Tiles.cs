@@ -3,6 +3,7 @@ using Magnifier;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -156,8 +157,11 @@ namespace AuraScreen
 
             if (ps.Default.BF_DoTexture && !String.IsNullOrWhiteSpace(ps.Default.BF_Texture))
             {
-                Image image = Image.FromFile(Application.StartupPath + $"\\Textures\\{ps.Default.BF_Texture}");
-                this.BackgroundImage = TextureFilter(image, (float)ps.Default.BF_Opacity);
+                if (File.Exists(Application.StartupPath + $"\\Textures\\{ps.Default.BF_Texture}"))
+                {
+                    Image image = Image.FromFile(Application.StartupPath + $"\\Textures\\{ps.Default.BF_Texture}");
+                    this.BackgroundImage = TextureFilter(image, (float)ps.Default.BF_Opacity);
+                }
             }
 
             //Inversion Settings
@@ -472,30 +476,27 @@ namespace AuraScreen
 
         private void invert_CheckedChanged(object sender, EventArgs e)
         {
-
-            ps.Default.BF_Invert = invert.Checked;
-            ps.Default.Save();
-            /*
-            if (invert.Checked)
+            invert.CheckedChanged -= invert_CheckedChanged;
+            if (!invert.Checked)
             {
-                if (ps.Default.useAltInvert)
-                {
-                    InvertKeyChecker.Start();
-                    InvertTimer.Start();
-                }
-                else
-                {
-                    StartMag();
-                }
-                
+                if (ps.Default.FilterNum == 2)
+                    ps.Default.FilterNum = 0;
             }
             else
             {
-                InvertKeyChecker.Stop();
-                InvertTimer.Stop();
-                RemoveMagnifier();
+                if (ps.Default.FilterNum == 1)
+                {
+                    invert.Checked = false;
+                    MessageBox.Show($"Sorry! But mixing the Cursor Filter Inversion and the Tile Filter Inversion causes insane slow down and freezing even on high end systems! Please disable one of them before continuing.");
+                    this.Close();
+                }
+                else
+                    ps.Default.FilterNum = 2;
             }
-            */
+
+            ps.Default.BF_Invert = invert.Checked;
+            ps.Default.Save();
+            invert.CheckedChanged += invert_CheckedChanged;
         }
 
         private void groupBox1_VisibleChanged(object sender, EventArgs e)
@@ -554,9 +555,9 @@ namespace AuraScreen
 
         public void StartMag()
         {
-            if (ps.Default.FilterInUse && ps.Default.FilterNum != 2)
+            if (ps.Default.FilterNum == 1)
             {
-                MessageBox.Show($"Another filter is currently using Aura Screen's Filterting. Please diable that before enabling another. Filter with the ID {ps.Default.FilterNum}");
+                MessageBox.Show($"Sorry! But mixing the Cursor Filter Inversion and the Tile Filter Inversion causes insane slow down and freezing even on high end systems! Please disable one of them before continuing.");
                 this.Close();
             }
             else if(!ps.Default.EnterEditMode)

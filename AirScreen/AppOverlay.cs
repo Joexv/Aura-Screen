@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -112,8 +113,11 @@ namespace AuraScreen
 
             if (ps.Default.AO_DoTexture && !String.IsNullOrWhiteSpace(ps.Default.AO_Texture))
             {
-                Image image = Image.FromFile(Application.StartupPath + $"\\Textures\\{ps.Default.AO_Texture}");
-                this.BackgroundImage = TextureFilter(image, (float)ps.Default.AO_Opacity);
+                if (File.Exists(Application.StartupPath + $"\\Textures\\{ps.Default.AO_Texture}"))
+                {
+                    Image image = Image.FromFile(Application.StartupPath + $"\\Textures\\{ps.Default.AO_Texture}");
+                    this.BackgroundImage = TextureFilter(image, (float)ps.Default.AO_Opacity);
+                }
             }
         }
 
