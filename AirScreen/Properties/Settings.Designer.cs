@@ -955,5 +955,29 @@ namespace AuraScreen.Properties {
                 this["AO_Texture"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SF_DoCustom {
+            get {
+                return ((bool)(this["SF_DoCustom"]));
+            }
+            set {
+                this["SF_DoCustom"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SF_Custom {
+            get {
+                return ((string)(this["SF_Custom"]));
+            }
+            set {
+                this["SF_Custom"] = value;
+            }
+        }
     }
 }

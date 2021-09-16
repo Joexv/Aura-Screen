@@ -66,3 +66,4 @@ C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\Textures\Texture_Te
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\Textures\egg.png
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\Cursors\Invisible_Cursor.cur
 C:\Users\HPD\Documents\Github\MouseHover\AirScreen\bin\Debug\Cursors\Pink_Crosshair_Cursor.cur
+C:\Users\HPD\Documents\Github\MouseHover\AirScreen\obj\Debug\AuraScreen.MatrixCreator.resources

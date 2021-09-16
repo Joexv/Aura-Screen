@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Magnifier
 {
@@ -74,34 +76,45 @@ namespace Magnifier
                 {  0.0f,              0.0f,        0.0f, 0.0f, 1.0f }
             };
             NegativeHueShift180 = Multiply(Negative, HueShift180);
-            NegativeHueShift180Variation1 = new float[,] {
-				{  1.0f, -1.0f, -1.0f, 0.0f, 0.0f },
-                { -1.0f,  1.0f, -1.0f, 0.0f, 0.0f },
-                { -1.0f, -1.0f,  1.0f, 0.0f, 0.0f },
-                {  0.0f,  0.0f,  0.0f, 1.0f, 0.0f },
-                {  1.0f,  1.0f,  1.0f, 0.0f, 1.0f }
-            };
-            NegativeHueShift180Variation2 = new float[,] {
-				{  0.39f, -0.62f, -0.62f, 0.0f, 0.0f },
-                { -1.21f, -0.22f, -1.22f, 0.0f, 0.0f },
-                { -0.16f, -0.16f,  0.84f, 0.0f, 0.0f },
-                {   0.0f,   0.0f,   0.0f, 1.0f, 0.0f },
-                {   1.0f,   1.0f,   1.0f, 0.0f, 1.0f }
-            };
-            NegativeHueShift180Variation3 = new float[,] {
-                {     1.089508f,   -0.9326327f, -0.932633042f,  0.0f,  0.0f },
-                {  -1.81771779f,    0.1683074f,  -1.84169245f,  0.0f,  0.0f },
-                { -0.244589478f, -0.247815639f,    1.7621845f,  0.0f,  0.0f },
-                {          0.0f,          0.0f,          0.0f,  1.0f,  0.0f },
-                {          1.0f,          1.0f,          1.0f,  0.0f,  1.0f }
-            };
-            NegativeHueShift180Variation4 = new float[,] {
-                {  0.50f, -0.78f, -0.78f, 0.0f, 0.0f },
-                { -0.56f,  0.72f, -0.56f, 0.0f, 0.0f },
-                { -0.94f, -0.94f,  0.34f, 0.0f, 0.0f },
-                {   0.0f,   0.0f,   0.0f, 1.0f, 0.0f },
-                {   1.0f,   1.0f,   1.0f, 0.0f, 1.0f }
-            };
+        }
+
+        public static float[,] StringToMatrix(string MatrixString)
+        {
+            float[,] matrix = new float[5,5];
+            int r = 0;
+            foreach (string s in ExtractFromString(MatrixString, "{", "}"))
+            {
+                int c = 0;
+                foreach (string n in s.Split(','))
+                {
+                    float f;
+                    if(!float.TryParse(n, out f))
+                        f = 0;
+                    matrix[r, c] = f;
+                    c++;
+                }
+                r++;
+            }
+            return matrix;
+        }
+
+        //https://stackoverflow.com/questions/13780654/extract-all-strings-between-two-strings/13780976
+        private static List<string> ExtractFromString(string source, string start, string end)
+        {
+            var results = new List<string>();
+
+            string pattern = string.Format(
+                "{0}({1}){2}",
+                Regex.Escape(start),
+                ".+?",
+                 Regex.Escape(end));
+
+            foreach (Match m in Regex.Matches(source, pattern))
+            {
+                results.Add(m.Groups[1].Value);
+            }
+
+            return results;
         }
 
         public static string MatrixToString(float[,] matrix)

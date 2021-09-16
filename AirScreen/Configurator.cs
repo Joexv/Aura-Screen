@@ -88,6 +88,8 @@ namespace AuraScreen
         {
             Directory.CreateDirectory("Textures");
             Directory.CreateDirectory("Cursors");
+            Directory.CreateDirectory("ColorMatricies");
+            Application.DoEvents();
             CheckForConfigErrors();
             PopulateControls();
             ReloadHotKeys();
@@ -342,6 +344,17 @@ namespace AuraScreen
             matrixBox.Text = ps.Default.SF_LastUsed;
             groupBox1.Enabled = ps.Default.SF_OnActive;
 
+            customMatrixBox.Checked = ps.Default.SF_DoCustom;
+            customMatrix.Enabled = ps.Default.SF_DoCustom;
+            
+            customMatrix.Items.Clear();
+            customMatrix.Items.AddRange(GetFilesFrom(Application.StartupPath + "\\ColorMatricies", new String[] { "ini" }));
+
+            if (customMatrix.Items.Count == 0)
+                customMatrix.Enabled = false;
+            else
+                customMatrix.SelectedIndex = 0;
+
             #endregion Screen Filters
 
             #region Cursor
@@ -378,6 +391,9 @@ namespace AuraScreen
         public static String[] GetFilesFrom(String searchFolder, String[] filters)
         {
             List<String> filesFound = new List<String>();
+            if (!Directory.Exists(searchFolder))
+                return filesFound.ToArray();
+
             foreach (var filter in filters)
                 foreach (string file in Directory.GetFiles(searchFolder, String.Format("*.{0}", filter), SearchOption.TopDirectoryOnly))
                     if(!filesFound.Contains(Path.GetFileName(file)))
@@ -911,22 +927,36 @@ namespace AuraScreen
 
         public void ToggleFilter()
         {
-            ps.Default.SF_LastUsed = matrixBox.Text;
-            ps.Default.Save();
-
-            if (ps.Default.SF_OnActive)
-                Filter_Timer.Enabled = !Filter_Timer.Enabled;
-
-            if (matrixBox.Text == "None" || SF_FilterInUse)
+            if (customMatrixBox.Checked)
             {
-                Console.WriteLine($"MatrixBox {matrixBox.Text} :: FilterInUse {SF_FilterInUse}");
-                SF_FilterInUse = false;
-                //ps.Default.FilterInUse = false;
-                //ps.Default.FilterNum = 0;
-                Matrices.ChangeColorEffect(Matrices.Identity);
+                if (!String.IsNullOrWhiteSpace(customMatrix.Text))
+                {
+                    if (SF_FilterInUse)
+                        SF_FilterInUse = !Matrices.ChangeColorEffect(Matrices.Identity);
+                    else
+                        SF_FilterInUse = Matrices.ChangeColorEffect(Matrices.StringToMatrix(File.ReadAllText(Application.StartupPath + "\\ColorMatricies\\" + customMatrix.Text)));
+                }
             }
             else
-                SF_FilterInUse = Matrices.ChangeColorEffect(Matrix[ps.Default.SF_LastUsed]);
+            {
+                ps.Default.SF_LastUsed = matrixBox.Text;
+                ps.Default.Save();
+
+                if (ps.Default.SF_OnActive)
+                    Filter_Timer.Enabled = !Filter_Timer.Enabled;
+
+                if (matrixBox.Text == "None" || SF_FilterInUse)
+                {
+                    Console.WriteLine($"MatrixBox {matrixBox.Text} :: FilterInUse {SF_FilterInUse}");
+                    SF_FilterInUse = false;
+                    //ps.Default.FilterInUse = false;
+                    //ps.Default.FilterNum = 0;
+                    Matrices.ChangeColorEffect(Matrices.Identity);
+                }
+                else
+                    SF_FilterInUse = Matrices.ChangeColorEffect(Matrix[ps.Default.SF_LastUsed]);
+            }
+            
 
             /*
             else if(!CheckFilter(3))
@@ -1744,6 +1774,37 @@ namespace AuraScreen
 
                 MessageBox.Show(fileContent, "Settings have been restored!");
             } 
+        }
+
+        private void customMatrixBox_CheckedChanged(object sender, EventArgs e)
+        {
+            customMatrix.Enabled = customMatrixBox.Checked;
+            matrixBox.Enabled = !customMatrixBox.Checked;
+            ps.Default.SF_DoCustom = customMatrixBox.Checked;
+        }
+
+        private void customMatrix_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        MatrixCreator mc = new MatrixCreator();
+        private void button33_Click(object sender, EventArgs e)
+        {
+            if(mc == null)
+                mc = new MatrixCreator();
+
+            if (!mc.Visible)
+            {
+                mc.VisibleChanged += mcClosed;
+                mc.FormClosed += mcClosed;
+                mc.Show();
+            }
+                
+        }
+
+        private void mcClosed(object sender, EventArgs e)
+        {
+            PopulateControls();
         }
     }
 }
