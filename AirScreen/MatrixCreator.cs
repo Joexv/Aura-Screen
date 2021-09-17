@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -12,8 +13,10 @@ using Magnifier;
 
 namespace AuraScreen
 {
+    using ps = AuraScreen.Properties.Settings;
     public partial class MatrixCreator : Form
     {
+        public Dictionary<string, float[,]> Matrix { get; set; }
         public MatrixCreator()
         {
             InitializeComponent();
@@ -21,7 +24,10 @@ namespace AuraScreen
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            ApplyColors();
             AddMethod();
+            comboBox1.Items.Clear();
+            comboBox1.Items.AddRange(Matrix.Keys.ToArray());
         }
 
         private void AddMethod()
@@ -42,18 +48,21 @@ namespace AuraScreen
 
         private void ReloadExample(object sender, EventArgs e)
         {
-            float[,] matrix = numericFloat();
-            adjPicture.Image = Matrices.Transform((Bitmap)basePicture.Image, matrix);
+            if (checkBox1.Checked)
+            {
+                float[,] matrix = numericFloat();
+                adjPicture.Image = Matrices.Transform((Bitmap)basePicture.Image, matrix);
+            }
         }
 
         private float[,] numericFloat()
         {
             return new float[,] { 
-                { (float)numericUpDown1.Value, (float)numericUpDown2.Value, (float)numericUpDown3.Value, (float)numericUpDown4.Value, (float)numericUpDown5.Value,},
-                { (float)numericUpDown6.Value, (float)numericUpDown7.Value, (float)numericUpDown8.Value, (float)numericUpDown9.Value, (float)numericUpDown10.Value,},
-                { (float)numericUpDown11.Value, (float)numericUpDown12.Value, (float)numericUpDown13.Value, (float)numericUpDown14.Value, (float)numericUpDown15.Value,},
-                { (float)numericUpDown16.Value, (float)numericUpDown17.Value, (float)numericUpDown18.Value, (float)numericUpDown19.Value, (float)numericUpDown20.Value,},
-                { (float)numericUpDown21.Value, (float)numericUpDown22.Value, (float)numericUpDown23.Value, (float)numericUpDown24.Value, (float)numericUpDown25.Value,},
+                { (float)rr.Value, (float)rg.Value, (float)rb.Value, (float)ra.Value, (float)rw.Value,},
+                { (float)gr.Value, (float)gg.Value, (float)gb.Value, (float)ga.Value, (float)gw.Value,},
+                { (float)br.Value, (float)bg.Value, (float)bb.Value, (float)ba.Value, (float)bw.Value,},
+                { (float)ar.Value, (float)ag.Value, (float)ab.Value, (float)aa.Value, (float)aw.Value,},
+                { (float)wr.Value, (float)wg.Value, (float)wb.Value, (float)wa.Value, (float)ww.Value,},
             };
         }
 
@@ -90,61 +99,189 @@ namespace AuraScreen
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("This will overwrite all current values and cannot be undone. Continue?", "Warning", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                using (OpenFileDialog openFileDialog = new OpenFileDialog())
+                openFileDialog.InitialDirectory = Application.StartupPath;
+                openFileDialog.Filter = "Matrix files (*.ini)|*.ini";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = false;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    openFileDialog.InitialDirectory = Application.StartupPath;
-                    openFileDialog.Filter = "Matrix files (*.ini)|*.ini";
-                    openFileDialog.FilterIndex = 2;
-                    openFileDialog.RestoreDirectory = false;
-
-                    if (openFileDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        float[,] matrix = Matrices.StringToMatrix(File.ReadAllText(openFileDialog.FileName));
-                        RemoveMethod();
-                        numericUpDown1.Value = (decimal)matrix[0, 0];
-                        numericUpDown2.Value = (decimal)matrix[0, 1];
-                        numericUpDown3.Value = (decimal)matrix[0, 2];
-                        numericUpDown4.Value = (decimal)matrix[0, 3];
-                        numericUpDown5.Value = (decimal)matrix[0, 4];
-
-                        numericUpDown6.Value = (decimal)matrix[1, 0];
-                        numericUpDown7.Value = (decimal)matrix[1, 1];
-                        numericUpDown8.Value = (decimal)matrix[1, 2];
-                        numericUpDown9.Value = (decimal)matrix[1, 3];
-                        numericUpDown10.Value = (decimal)matrix[1, 4];
-
-                        numericUpDown11.Value = (decimal)matrix[2, 0];
-                        numericUpDown12.Value = (decimal)matrix[2, 1];
-                        numericUpDown13.Value = (decimal)matrix[2, 2];
-                        numericUpDown14.Value = (decimal)matrix[2, 3];
-                        numericUpDown15.Value = (decimal)matrix[2, 4];
-
-                        numericUpDown16.Value = (decimal)matrix[3, 0];
-                        numericUpDown17.Value = (decimal)matrix[3, 1];
-                        numericUpDown18.Value = (decimal)matrix[3, 2];
-                        numericUpDown19.Value = (decimal)matrix[3, 3];
-                        numericUpDown20.Value = (decimal)matrix[3, 4];
-
-                        numericUpDown21.Value = (decimal)matrix[4, 0];
-                        numericUpDown22.Value = (decimal)matrix[4, 1];
-                        numericUpDown23.Value = (decimal)matrix[4, 2];
-                        numericUpDown24.Value = (decimal)matrix[4, 3];
-                        numericUpDown25.Value = (decimal)matrix[4, 4];
-
-                        AddMethod();
-                        ReloadExample(sender, e);
-                    }
+                    RemoveMethod();
+                    LoadValues(Matrices.StringToMatrix(File.ReadAllText(openFileDialog.FileName)));
+                    AddMethod();
+                    ReloadExample(sender, e);
                 }
             }
-            
+
+        }
+
+        private void LoadValues(float[,] matrix)
+        {
+            rr.Value = (decimal)matrix[0, 0];
+            rg.Value = (decimal)matrix[0, 1];
+            rb.Value = (decimal)matrix[0, 2];
+            ra.Value = (decimal)matrix[0, 3];
+            rw.Value = (decimal)matrix[0, 4];
+
+            gr.Value = (decimal)matrix[1, 0];
+            gg.Value = (decimal)matrix[1, 1];
+            gb.Value = (decimal)matrix[1, 2];
+            ga.Value = (decimal)matrix[1, 3];
+            gw.Value = (decimal)matrix[1, 4];
+
+            br.Value = (decimal)matrix[2, 0];
+            bg.Value = (decimal)matrix[2, 1];
+            bb.Value = (decimal)matrix[2, 2];
+            ba.Value = (decimal)matrix[2, 3];
+            bw.Value = (decimal)matrix[2, 4];
+
+            ar.Value = (decimal)matrix[3, 0];
+            ag.Value = (decimal)matrix[3, 1];
+            ab.Value = (decimal)matrix[3, 2];
+            aa.Value = (decimal)matrix[3, 3];
+            aw.Value = (decimal)matrix[3, 4];
+
+            wr.Value = (decimal)matrix[4, 0];
+            wg.Value = (decimal)matrix[4, 1];
+            wb.Value = (decimal)matrix[4, 2];
+            wa.Value = (decimal)matrix[4, 3];
+            ww.Value = (decimal)matrix[4, 4];
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             Console.WriteLine(Matrices.MatrixToString(Matrices.Negative));
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            button5.Visible = !checkBox1.Checked;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            float[,] matrix = numericFloat();
+            adjPicture.Image = Matrices.Transform((Bitmap)basePicture.Image, matrix);
+        }
+
+        private void button4_Click_1(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = Application.StartupPath + "\\ColorMatricies\\Example Images\\";
+                openFileDialog.Filter = "Image files (*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = false;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    basePicture.Image = Image.FromFile(openFileDialog.FileName);
+
+                ReloadExample(sender, e);
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://docs.rainmeter.net/tips/colormatrix-guide/");
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            RemoveMethod();
+            LoadValues(Matrix[comboBox1.Text]);
+            AddMethod();
+            ReloadExample(sender, e);
+        }
+
+        Color Clicked = Color.FromArgb(230, 237, 183);
+        Color Default = Color.FromArgb(10, 150, 170);
+
+        Color Selected = Color.FromArgb(6, 84, 96);
+        Color Button = Color.FromArgb(10, 150, 170);
+        Color TextColor = Color.Black;
+        Color AltTextColor = Color.White;
+        Color ClickedColor = Color.FromArgb(119, 119, 119);
+        Color BackgroundColor = Color.White;
+        Color GroupBoxColor = Color.White;
+        Color TextBoxColor = Color.White;
+        Color BorderColor = Color.Black;
+        private void ApplyColors()
+        {
+            if (ps.Default.DarkMode)
+            {
+                Button = ColorTranslator.FromHtml("#B84600"); //Color.FromArgb(109, 109, 109);
+                TextColor = ColorTranslator.FromHtml("#dfe0e2"); //Color.White;
+                ClickedColor = ColorTranslator.FromHtml("#F8a145");  //Color.FromArgb(119, 119, 119);
+                BackgroundColor = Color.Black;
+                GroupBoxColor = ColorTranslator.FromHtml("#151515"); //Color.FromArgb(75, 75, 75);
+                TextBoxColor = ColorTranslator.FromHtml("#151515");  //Color.FromArgb(110, 110, 110);
+                BorderColor = Color.Black;
+                Selected = Color.Black;
+            }
+            else
+            {
+                Selected = Color.FromArgb(6, 84, 96);
+                Button = Color.FromArgb(10, 150, 170);
+                TextColor = Color.Black;
+                AltTextColor = Color.White;
+                ClickedColor = Color.FromArgb(119, 119, 119);
+                BackgroundColor = Color.White;
+                GroupBoxColor = Color.White;
+                TextBoxColor = Color.White;
+                BorderColor = Color.Black;
+            }
+
+            foreach (TextBox textbox in GetAll(this, typeof(TextBox)))
+            {
+                textbox.BackColor = TextBoxColor;
+                textbox.ForeColor = TextColor;
+            }
+
+            foreach (Button button in GetAll(this, typeof(Button)))
+            {
+                if (button.BackColor != Color.Green && button.BackColor != Color.DarkRed)
+                {
+                    button.BackColor = Button;
+                    button.ForeColor = AltTextColor;
+                    button.FlatAppearance.MouseDownBackColor = ClickedColor;
+                    button.FlatAppearance.BorderColor = Color.Black;
+                    button.FlatAppearance.BorderSize = 0;
+                    button.FlatStyle = FlatStyle.Flat;
+                }
+            }
+
+            foreach (GroupBox groupbox in GetAll(this, typeof(GroupBox)))
+            {
+                groupbox.BackColor = GroupBoxColor;
+                groupbox.ForeColor = TextColor;
+            }
+
+            foreach (Label label in GetAll(this, typeof(Label)))
+            {
+                label.ForeColor = TextColor;
+            }
+
+            foreach (ComboBox combobox in GetAll(this, typeof(ComboBox)))
+            {
+                combobox.BackColor = BackgroundColor;
+                combobox.ForeColor = TextColor;
+            }
+
+            foreach (NumericUpDown num in GetAll(this, typeof(NumericUpDown)))
+            {
+                num.ForeColor = TextColor;
+                num.BackColor = BackgroundColor;
+            }
+
+            foreach (TabPage tp in GetAll(this, typeof(TabPage)))
+            {
+                tp.BackColor = BackgroundColor;
+            }
+
+            checkBox1.ForeColor = TextColor;
+            this.BackColor = BackgroundColor;
         }
     }
 }

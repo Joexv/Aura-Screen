@@ -30,7 +30,13 @@ namespace AuraScreen
             { "Negative Sepia", Matrices.NegativeSepia },
             { "Sepia", Matrices.Sepia },
             { "Red", Matrices.Red },
+            { "Green", Matrices.Green },
+            { "Blue", Matrices.Blue },
             { "Greyscale", Matrices.GrayScale },
+            { "Polaroid", Matrices.Polaroid },
+            { "Dim Screen", Matrices.DB_Step1 },
+            { "Darken Screen", Matrices.DB_Step2 },
+            { "My Morning Coffee", Matrices.DB_Step3 },
             { "Hue Shift 180", Matrices.HueShift180 }
         };
 
@@ -554,7 +560,7 @@ namespace AuraScreen
 
         public void ToggleCF()
         {
-            if (mousebox.IsDisposed || ps.Default.CF_DoInvert && !mousebox.Visible)
+            if (mousebox.IsDisposed || ps.Default.CF_DoInvert && !mousebox.Visible || mousebox == null)
             {
                 ReloadCF();
                 return;
@@ -929,12 +935,16 @@ namespace AuraScreen
         {
             if (customMatrixBox.Checked)
             {
-                if (!String.IsNullOrWhiteSpace(customMatrix.Text))
+                if (!String.IsNullOrWhiteSpace(customMatrix.Text) && File.Exists(Application.StartupPath + "\\ColorMatricies\\" + customMatrix.Text))
                 {
                     if (SF_FilterInUse)
                         SF_FilterInUse = !Matrices.ChangeColorEffect(Matrices.Identity);
                     else
                         SF_FilterInUse = Matrices.ChangeColorEffect(Matrices.StringToMatrix(File.ReadAllText(Application.StartupPath + "\\ColorMatricies\\" + customMatrix.Text)));
+                }
+                else if(!File.Exists(Application.StartupPath + "\\ColorMatricies\\" + customMatrix.Text))
+                {
+                    MessageBox.Show($"The matrix file {customMatrix.Text}\ndoes not exist. Please make sure it wasn't deleted or renamed.");
                 }
             }
             else
@@ -990,7 +1000,12 @@ namespace AuraScreen
         {
             if (pictureBox2.Image != null)
                 pictureBox2.Image.Dispose();
-            pictureBox2.Image = Matrices.Transform((Bitmap)pictureBox1.Image, Matrix[matrixBox.Text]);
+
+            if (customMatrixBox.Checked)
+                pictureBox2.Image = Matrices.Transform((Bitmap)pictureBox1.Image, Matrices.StringToMatrix(File.ReadAllText(Application.StartupPath + "\\ColorMatricies\\" + customMatrix.Text)));
+            else
+                pictureBox2.Image = Matrices.Transform((Bitmap)pictureBox1.Image, Matrix[matrixBox.Text]);
+
             label20.Text = matrixBox.Text;
         }
 
@@ -1781,6 +1796,7 @@ namespace AuraScreen
             customMatrix.Enabled = customMatrixBox.Checked;
             matrixBox.Enabled = !customMatrixBox.Checked;
             ps.Default.SF_DoCustom = customMatrixBox.Checked;
+            ps.Default.Save();
         }
 
         private void customMatrix_SelectedIndexChanged(object sender, EventArgs e)
@@ -1790,11 +1806,12 @@ namespace AuraScreen
         MatrixCreator mc = new MatrixCreator();
         private void button33_Click(object sender, EventArgs e)
         {
-            if(mc == null)
+            if(mc == null || mc.IsDisposed)
                 mc = new MatrixCreator();
 
             if (!mc.Visible)
             {
+                mc.Matrix = Matrix;
                 mc.VisibleChanged += mcClosed;
                 mc.FormClosed += mcClosed;
                 mc.Show();
@@ -1805,6 +1822,11 @@ namespace AuraScreen
         private void mcClosed(object sender, EventArgs e)
         {
             PopulateControls();
+        }
+
+        private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://zerowidthjoiner.net/");
         }
     }
 }

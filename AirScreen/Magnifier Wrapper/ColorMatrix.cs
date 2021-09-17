@@ -8,6 +8,12 @@ using System.Text.RegularExpressions;
 namespace Magnifier
 {
     //Credit to the creator of Negative screen for these default Matricies. Its a fucking life saver
+    //https://zerowidthjoiner.net/
+    /*
+     * A lot of this class was either made by them or heavily inspired by their work.
+     * I know its just a wrapper for an existing C++ API in windows, but holy fucking shit
+     * they did good
+     */
     public static class Matrices
     {
         public static float[,] Identity { get; }
@@ -15,17 +21,20 @@ namespace Magnifier
         public static float[,] GrayScale { get; }
         public static float[,] Sepia { get; }
         public static float[,] Red { get; }
+        public static float[,] Green { get; }
+        public static float[,] Blue { get; }
         public static float[,] HueShift180 { get; }
 
         public static float[,] NegativeGrayScale { get; }
         public static float[,] NegativeSepia { get; }
         public static float[,] NegativeRed { get; }
 
+        public static float[,] Polaroid { get; }
+        public static float[,] DB_Step1 { get; }
+        public static float[,] DB_Step2 { get; }
+        public static float[,] DB_Step3 { get; }
+
         public static float[,] NegativeHueShift180 { get; }
-        public static float[,] NegativeHueShift180Variation1 { get; }
-        public static float[,] NegativeHueShift180Variation2 { get; }
-        public static float[,] NegativeHueShift180Variation3 { get; }
-        public static float[,] NegativeHueShift180Variation4 { get; }
 
         static Matrices()
         {
@@ -33,6 +42,27 @@ namespace Magnifier
                 {  1.0f,  0.0f,  0.0f,  0.0f,  0.0f },
                 {  0.0f,  1.0f,  0.0f,  0.0f,  0.0f },
                 {  0.0f,  0.0f,  1.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  0.0f,  1.0f }
+            };
+            DB_Step1 = new float[,] {
+                {  0.8f,  0.0f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.8f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.8f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  0.0f,  1.0f }
+            };
+            DB_Step2 = new float[,] {
+                {  0.6f,  0.0f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.6f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.6f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  0.0f,  1.0f }
+            };
+            DB_Step3 = new float[,] {
+                {  0.4f,  0.0f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.4f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.4f,  0.0f,  0.0f },
                 {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
                 {  0.0f,  0.0f,  0.0f,  0.0f,  1.0f }
             };
@@ -58,6 +88,20 @@ namespace Magnifier
                 {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
                 {  0.0f,  0.0f,  0.0f,  0.0f,  1.0f }
             };
+            Blue = new float[,] {
+                {  0.0f,  0.0f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  1.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  0.0f,  1.0f }
+            };
+            Green = new float[,] {
+                {  0.0f,  0.0f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  1.0f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  0.0f,  1.0f }
+            };
             Red = Multiply(GrayScale, Red);
             NegativeRed = Multiply(NegativeGrayScale, Red);
             Sepia = new float[,] {
@@ -76,6 +120,14 @@ namespace Magnifier
                 {  0.0f,              0.0f,        0.0f, 0.0f, 1.0f }
             };
             NegativeHueShift180 = Multiply(Negative, HueShift180);
+            Polaroid = new float[,]
+            {
+                { 1.438f, -0.062f, -0.062f, 0.0f, 0.0f},
+                { -0.122f, 1.378f, -0.122f, 0.0f, 0.0f},
+                { -0.016f, -0.016f, 1.483f, 0.0f, 0.0f},
+                {  -0.03f,  0.05f,  -0.02f, 0f, 1.0f},
+                {  0.0f,  0.0f,  0.0f, 0.0f, 1.0f}
+            };
         }
 
         public static float[,] StringToMatrix(string MatrixString)
@@ -225,7 +277,6 @@ namespace Magnifier
 
         public static System.Drawing.Bitmap Transform(System.Drawing.Bitmap source, float[,] Matrix)
         {
-            Console.WriteLine(MatrixToString(Matrix));
             System.Drawing.Bitmap newBitmap = new System.Drawing.Bitmap(source.Width, source.Height);
             System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(newBitmap);
             System.Drawing.Imaging.ColorMatrix colorMatrix = new System.Drawing.Imaging.ColorMatrix(Matrix.ToJaggedArray());

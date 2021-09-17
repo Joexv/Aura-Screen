@@ -79,6 +79,9 @@ namespace AuraScreen
             this.AO_Apply = new System.Windows.Forms.Button();
             this.filterTab = new System.Windows.Forms.TabPage();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.button33 = new System.Windows.Forms.Button();
+            this.customMatrix = new System.Windows.Forms.ComboBox();
+            this.customMatrixBox = new System.Windows.Forms.CheckBox();
             this.matrixBox = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.button15 = new System.Windows.Forms.Button();
@@ -225,9 +228,7 @@ namespace AuraScreen
             this.titleBar = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.customMatrixBox = new System.Windows.Forms.CheckBox();
-            this.customMatrix = new System.Windows.Forms.ComboBox();
-            this.button33 = new System.Windows.Forms.Button();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.contextMenuStrip1.SuspendLayout();
             this.aoTab.SuspendLayout();
             this.groupBox15.SuspendLayout();
@@ -881,6 +882,7 @@ namespace AuraScreen
             // 
             this.groupBox13.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox13.Controls.Add(this.linkLabel1);
             this.groupBox13.Controls.Add(this.button33);
             this.groupBox13.Controls.Add(this.customMatrix);
             this.groupBox13.Controls.Add(this.customMatrixBox);
@@ -899,6 +901,37 @@ namespace AuraScreen
             this.groupBox13.TabIndex = 23;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Screen Filters";
+            // 
+            // button33
+            // 
+            this.button33.Location = new System.Drawing.Point(331, 273);
+            this.button33.Name = "button33";
+            this.button33.Size = new System.Drawing.Size(136, 42);
+            this.button33.TabIndex = 25;
+            this.button33.Text = "Create Matrix";
+            this.button33.UseVisualStyleBackColor = true;
+            this.button33.Click += new System.EventHandler(this.button33_Click);
+            // 
+            // customMatrix
+            // 
+            this.customMatrix.Enabled = false;
+            this.customMatrix.FormattingEnabled = true;
+            this.customMatrix.Location = new System.Drawing.Point(12, 282);
+            this.customMatrix.Name = "customMatrix";
+            this.customMatrix.Size = new System.Drawing.Size(259, 26);
+            this.customMatrix.TabIndex = 24;
+            this.customMatrix.SelectedIndexChanged += new System.EventHandler(this.customMatrix_SelectedIndexChanged);
+            // 
+            // customMatrixBox
+            // 
+            this.customMatrixBox.AutoSize = true;
+            this.customMatrixBox.Location = new System.Drawing.Point(12, 253);
+            this.customMatrixBox.Name = "customMatrixBox";
+            this.customMatrixBox.Size = new System.Drawing.Size(193, 22);
+            this.customMatrixBox.TabIndex = 23;
+            this.customMatrixBox.Text = "Use custom Color Matrix";
+            this.customMatrixBox.UseVisualStyleBackColor = true;
+            this.customMatrixBox.CheckedChanged += new System.EventHandler(this.customMatrixBox_CheckedChanged);
             // 
             // matrixBox
             // 
@@ -925,10 +958,10 @@ namespace AuraScreen
             // button15
             // 
             this.button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button15.Location = new System.Drawing.Point(275, 100);
+            this.button15.Location = new System.Drawing.Point(331, 118);
             this.button15.Margin = new System.Windows.Forms.Padding(2);
             this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(125, 39);
+            this.button15.Size = new System.Drawing.Size(136, 39);
             this.button15.TabIndex = 8;
             this.button15.Text = "Show Example";
             this.button15.UseVisualStyleBackColor = true;
@@ -2882,36 +2915,17 @@ namespace AuraScreen
             this.pictureBox3.TabIndex = 31;
             this.pictureBox3.TabStop = false;
             // 
-            // customMatrixBox
+            // linkLabel1
             // 
-            this.customMatrixBox.AutoSize = true;
-            this.customMatrixBox.Location = new System.Drawing.Point(12, 253);
-            this.customMatrixBox.Name = "customMatrixBox";
-            this.customMatrixBox.Size = new System.Drawing.Size(193, 22);
-            this.customMatrixBox.TabIndex = 23;
-            this.customMatrixBox.Text = "Use custom Color Matrix";
-            this.customMatrixBox.UseVisualStyleBackColor = true;
-            this.customMatrixBox.CheckedChanged += new System.EventHandler(this.customMatrixBox_CheckedChanged);
-            // 
-            // customMatrix
-            // 
-            this.customMatrix.Enabled = false;
-            this.customMatrix.FormattingEnabled = true;
-            this.customMatrix.Location = new System.Drawing.Point(12, 282);
-            this.customMatrix.Name = "customMatrix";
-            this.customMatrix.Size = new System.Drawing.Size(259, 26);
-            this.customMatrix.TabIndex = 24;
-            this.customMatrix.SelectedIndexChanged += new System.EventHandler(this.customMatrix_SelectedIndexChanged);
-            // 
-            // button33
-            // 
-            this.button33.Location = new System.Drawing.Point(331, 273);
-            this.button33.Name = "button33";
-            this.button33.Size = new System.Drawing.Size(136, 42);
-            this.button33.TabIndex = 25;
-            this.button33.Text = "Create Matrix";
-            this.button33.UseVisualStyleBackColor = true;
-            this.button33.Click += new System.EventHandler(this.button33_Click);
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Location = new System.Drawing.Point(9, 340);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(312, 13);
+            this.linkLabel1.TabIndex = 24;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Inspired by Negative Screen over on https://zerowidthjoiner.net/";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked_1);
             // 
             // Configurator
             // 
@@ -3201,6 +3215,7 @@ namespace AuraScreen
         private System.Windows.Forms.ComboBox customMatrix;
         private System.Windows.Forms.CheckBox customMatrixBox;
         private System.Windows.Forms.Button button33;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 
