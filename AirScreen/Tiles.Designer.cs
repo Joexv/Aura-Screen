@@ -70,10 +70,10 @@ namespace AuraScreen
             this.PreviewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.PreviewButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PreviewButton.ForeColor = System.Drawing.Color.White;
-            this.PreviewButton.Location = new System.Drawing.Point(395, 106);
-            this.PreviewButton.Margin = new System.Windows.Forms.Padding(4);
+            this.PreviewButton.Location = new System.Drawing.Point(292, 55);
+            this.PreviewButton.Margin = new System.Windows.Forms.Padding(2);
             this.PreviewButton.Name = "PreviewButton";
-            this.PreviewButton.Size = new System.Drawing.Size(264, 80);
+            this.PreviewButton.Size = new System.Drawing.Size(132, 40);
             this.PreviewButton.TabIndex = 0;
             this.PreviewButton.Text = "Preview";
             this.PreviewButton.UseVisualStyleBackColor = false;
@@ -87,10 +87,10 @@ namespace AuraScreen
             this.SaveButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveButton.ForeColor = System.Drawing.Color.White;
-            this.SaveButton.Location = new System.Drawing.Point(395, 18);
-            this.SaveButton.Margin = new System.Windows.Forms.Padding(4);
+            this.SaveButton.Location = new System.Drawing.Point(292, 11);
+            this.SaveButton.Margin = new System.Windows.Forms.Padding(2);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(264, 80);
+            this.SaveButton.Size = new System.Drawing.Size(132, 40);
             this.SaveButton.TabIndex = 1;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = false;
@@ -110,8 +110,8 @@ namespace AuraScreen
             0,
             0,
             131072});
-            this.numericUpDown1.Location = new System.Drawing.Point(222, 65);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4);
+            this.numericUpDown1.Location = new System.Drawing.Point(197, 27);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(2);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             99,
             0,
@@ -123,7 +123,7 @@ namespace AuraScreen
             0,
             131072});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 31);
+            this.numericUpDown1.Size = new System.Drawing.Size(60, 20);
             this.numericUpDown1.TabIndex = 2;
             this.numericUpDown1.Value = new decimal(new int[] {
             10,
@@ -136,10 +136,10 @@ namespace AuraScreen
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(217, 36);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(139, 29);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 25);
+            this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Opacity";
             this.label1.Visible = false;
@@ -150,15 +150,20 @@ namespace AuraScreen
             this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(183)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(30, 104);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(6, 28);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(312, 51);
+            this.button1.Size = new System.Drawing.Size(106, 48);
             this.button1.TabIndex = 4;
             this.button1.Text = "Change Color";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // colorDialog1
+            // 
+            this.colorDialog1.AnyColor = true;
+            this.colorDialog1.FullOpen = true;
             // 
             // groupBox1
             // 
@@ -182,11 +187,11 @@ namespace AuraScreen
             this.groupBox1.Controls.Add(this.time);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.invert);
-            this.groupBox1.Location = new System.Drawing.Point(13, 13);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(374, 555);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(282, 305);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Settings";
@@ -195,9 +200,10 @@ namespace AuraScreen
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(33, 188);
+            this.label4.Location = new System.Drawing.Point(37, 80);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(312, 25);
+            this.label4.Size = new System.Drawing.Size(156, 26);
             this.label4.TabIndex = 16;
             this.label4.Text = "Snap To";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -208,9 +214,10 @@ namespace AuraScreen
             this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(183)))));
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(189, 451);
+            this.button7.Location = new System.Drawing.Point(116, 245);
+            this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(153, 88);
+            this.button7.Size = new System.Drawing.Size(108, 44);
             this.button7.TabIndex = 15;
             this.button7.Text = "Vertically";
             this.button7.UseVisualStyleBackColor = false;
@@ -222,9 +229,10 @@ namespace AuraScreen
             this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(183)))));
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(30, 451);
+            this.button6.Location = new System.Drawing.Point(5, 245);
+            this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(153, 88);
+            this.button6.Size = new System.Drawing.Size(107, 44);
             this.button6.TabIndex = 14;
             this.button6.Text = "Horizontally";
             this.button6.UseVisualStyleBackColor = false;
@@ -232,9 +240,10 @@ namespace AuraScreen
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(30, 423);
+            this.label5.Location = new System.Drawing.Point(37, 224);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(312, 25);
+            this.label5.Size = new System.Drawing.Size(156, 19);
             this.label5.TabIndex = 13;
             this.label5.Text = "Fill";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -245,9 +254,10 @@ namespace AuraScreen
             this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(183)))));
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(111, 310);
+            this.button5.Location = new System.Drawing.Point(67, 155);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(153, 88);
+            this.button5.Size = new System.Drawing.Size(76, 44);
             this.button5.TabIndex = 11;
             this.button5.Text = "Bottom";
             this.button5.UseVisualStyleBackColor = false;
@@ -259,9 +269,10 @@ namespace AuraScreen
             this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(183)))));
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(111, 216);
+            this.button4.Location = new System.Drawing.Point(67, 108);
+            this.button4.Margin = new System.Windows.Forms.Padding(2);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(153, 88);
+            this.button4.Size = new System.Drawing.Size(76, 44);
             this.button4.TabIndex = 10;
             this.button4.Text = "Top";
             this.button4.UseVisualStyleBackColor = false;
@@ -273,9 +284,10 @@ namespace AuraScreen
             this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(183)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(270, 216);
+            this.button3.Location = new System.Drawing.Point(146, 108);
+            this.button3.Margin = new System.Windows.Forms.Padding(2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 182);
+            this.button3.Size = new System.Drawing.Size(58, 91);
             this.button3.TabIndex = 9;
             this.button3.Text = "Right";
             this.button3.UseVisualStyleBackColor = false;
@@ -287,9 +299,10 @@ namespace AuraScreen
             this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(237)))), ((int)(((byte)(183)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(30, 216);
+            this.button2.Location = new System.Drawing.Point(5, 108);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 182);
+            this.button2.Size = new System.Drawing.Size(58, 91);
             this.button2.TabIndex = 8;
             this.button2.Text = "Left";
             this.button2.UseVisualStyleBackColor = false;
@@ -298,10 +311,10 @@ namespace AuraScreen
             // squwiggly
             // 
             this.squwiggly.AutoSize = true;
-            this.squwiggly.Location = new System.Drawing.Point(630, 363);
-            this.squwiggly.Margin = new System.Windows.Forms.Padding(4);
+            this.squwiggly.Location = new System.Drawing.Point(315, 182);
+            this.squwiggly.Margin = new System.Windows.Forms.Padding(2);
             this.squwiggly.Name = "squwiggly";
-            this.squwiggly.Size = new System.Drawing.Size(55, 29);
+            this.squwiggly.Size = new System.Drawing.Size(32, 17);
             this.squwiggly.TabIndex = 7;
             this.squwiggly.Text = "~";
             this.squwiggly.UseVisualStyleBackColor = true;
@@ -311,10 +324,10 @@ namespace AuraScreen
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(512, 297);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(260, 151);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(214, 25);
+            this.label3.Size = new System.Drawing.Size(106, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Manually Refresh On";
             this.label3.Visible = false;
@@ -322,10 +335,10 @@ namespace AuraScreen
             // f1
             // 
             this.f1.AutoSize = true;
-            this.f1.Location = new System.Drawing.Point(512, 363);
-            this.f1.Margin = new System.Windows.Forms.Padding(4);
+            this.f1.Location = new System.Drawing.Point(260, 185);
+            this.f1.Margin = new System.Windows.Forms.Padding(2);
             this.f1.Name = "f1";
-            this.f1.Size = new System.Drawing.Size(68, 29);
+            this.f1.Size = new System.Drawing.Size(37, 17);
             this.f1.TabIndex = 5;
             this.f1.Text = "F1";
             this.f1.UseVisualStyleBackColor = true;
@@ -335,10 +348,10 @@ namespace AuraScreen
             // r
             // 
             this.r.AutoSize = true;
-            this.r.Location = new System.Drawing.Point(630, 329);
-            this.r.Margin = new System.Windows.Forms.Padding(4);
+            this.r.Location = new System.Drawing.Point(315, 164);
+            this.r.Margin = new System.Windows.Forms.Padding(2);
             this.r.Name = "r";
-            this.r.Size = new System.Drawing.Size(58, 29);
+            this.r.Size = new System.Drawing.Size(33, 17);
             this.r.TabIndex = 4;
             this.r.Text = "R";
             this.r.UseVisualStyleBackColor = true;
@@ -349,10 +362,10 @@ namespace AuraScreen
             // 
             this.shift.AutoSize = true;
             this.shift.Checked = true;
-            this.shift.Location = new System.Drawing.Point(512, 329);
-            this.shift.Margin = new System.Windows.Forms.Padding(4);
+            this.shift.Location = new System.Drawing.Point(260, 167);
+            this.shift.Margin = new System.Windows.Forms.Padding(2);
             this.shift.Name = "shift";
-            this.shift.Size = new System.Drawing.Size(86, 29);
+            this.shift.Size = new System.Drawing.Size(46, 17);
             this.shift.TabIndex = 3;
             this.shift.TabStop = true;
             this.shift.Text = "Shift";
@@ -362,8 +375,8 @@ namespace AuraScreen
             // 
             // time
             // 
-            this.time.Location = new System.Drawing.Point(900, 297);
-            this.time.Margin = new System.Windows.Forms.Padding(4);
+            this.time.Location = new System.Drawing.Point(450, 148);
+            this.time.Margin = new System.Windows.Forms.Padding(2);
             this.time.Maximum = new decimal(new int[] {
             600,
             0,
@@ -375,7 +388,7 @@ namespace AuraScreen
             0,
             0});
             this.time.Name = "time";
-            this.time.Size = new System.Drawing.Size(120, 31);
+            this.time.Size = new System.Drawing.Size(60, 20);
             this.time.TabIndex = 2;
             this.time.Value = new decimal(new int[] {
             5,
@@ -388,10 +401,10 @@ namespace AuraScreen
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(746, 297);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(373, 148);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(148, 25);
+            this.label2.Size = new System.Drawing.Size(74, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Refresh Every";
             this.label2.Visible = false;
@@ -399,10 +412,10 @@ namespace AuraScreen
             // invert
             // 
             this.invert.AutoSize = true;
-            this.invert.Location = new System.Drawing.Point(30, 56);
-            this.invert.Margin = new System.Windows.Forms.Padding(4);
+            this.invert.Location = new System.Drawing.Point(142, 53);
+            this.invert.Margin = new System.Windows.Forms.Padding(2);
             this.invert.Name = "invert";
-            this.invert.Size = new System.Drawing.Size(97, 29);
+            this.invert.Size = new System.Drawing.Size(53, 17);
             this.invert.TabIndex = 0;
             this.invert.Text = "Invert";
             this.invert.UseVisualStyleBackColor = true;
@@ -426,10 +439,10 @@ namespace AuraScreen
             // 
             // Tiles
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(968, 823);
+            this.ClientSize = new System.Drawing.Size(484, 412);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.SaveButton);
@@ -437,9 +450,10 @@ namespace AuraScreen
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(968, 823);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MinimumSize = new System.Drawing.Size(484, 412);
             this.Name = "Tiles";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Block Filter";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Tiles_FormClosing);

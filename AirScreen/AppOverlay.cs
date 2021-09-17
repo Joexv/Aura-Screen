@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -15,7 +16,6 @@ namespace AuraScreen
     public partial class AppOverlay : Form
     {
         private const int WS_EX_TRANSPARENT = 0x20;
-        private Point OldLocation;
 
         public AppOverlay()
         {
@@ -47,12 +47,6 @@ namespace AuraScreen
         {
             ColorKey = 0x1,
             Alpha = 0x2
-        }
-
-        public enum WS_EX
-        {
-            Transparent = 0x20,
-            Layered = 0x80000
         }
 
         public string AppName { get; set; }
@@ -116,6 +110,56 @@ namespace AuraScreen
             this.FormBorderStyle = FormBorderStyle.None;
             this.BackColor = ps.Default.AO_Color;
             this.Opacity = (double)ps.Default.AO_Opacity;
+
+            if (ps.Default.AO_DoTexture && !String.IsNullOrWhiteSpace(ps.Default.AO_Texture))
+            {
+                if (File.Exists(Application.StartupPath + $"\\Textures\\{ps.Default.AO_Texture}"))
+                {
+                    Image image = Image.FromFile(Application.StartupPath + $"\\Textures\\{ps.Default.AO_Texture}");
+                    this.BackgroundImage = TextureFilter(image, (float)ps.Default.AO_Opacity);
+                }
+            }
+        }
+
+        private Image TextureFilter(Image pImage, float pColorOpacity)
+        {
+            Image mResult = null;
+            Image tempImage = null; //we will set the opacity of pImage to pColorOpacity and copy
+                                    //it to tempImage 
+            if (pImage != null)
+            {
+                Graphics g;
+                ColorMatrix matrix = new ColorMatrix(new float[][]{
+                     new float[] {1F, 0, 0, 0, 0},
+                     new float[] {0, 1F, 0, 0, 0},
+                     new float[] {0, 0, 1F, 0, 0},
+                     new float[] {0, 0, 0, pColorOpacity, 0}, //opacity in rage [0 1]
+                     new float[] {0, 0, 0, 0, 1F}});
+
+                ImageAttributes imageAttributes = new ImageAttributes();
+                imageAttributes.SetColorMatrix(matrix);
+                imageAttributes.SetWrapMode(System.Drawing.Drawing2D.WrapMode.TileFlipXY);
+                tempImage = new Bitmap(this.Width, this.Height, PixelFormat.Format32bppArgb);
+
+                g = Graphics.FromImage(tempImage);
+                g.DrawImage(pImage, this.ClientRectangle, 0, 0, pImage.Width, pImage.Height, GraphicsUnit.Pixel, imageAttributes);
+
+                g.Dispose();
+                g = null;
+                TextureBrush texture = new TextureBrush(tempImage);
+                mResult = new Bitmap(this.Width, this.Height, PixelFormat.Format32bppArgb);
+
+                g = Graphics.FromImage(mResult);
+                g.Clear(ps.Default.CF_Color);
+                g.FillRectangle(texture, this.ClientRectangle);
+                g.Dispose();
+                g = null;
+
+                tempImage.Dispose();
+                tempImage = null;
+            }
+
+            return mResult;
         }
 
         private void AppOverlay_Shown(object sender, EventArgs e)
@@ -126,19 +170,23 @@ namespace AuraScreen
         {
             Process[] processes = null;
             string Name = ps.Default.AO_SavedName;
+
+            //Sets Program Name to Currently Running progra, allows for running the overlay over active program rather than predefined
             if (!ps.Default.AO_ByName || String.IsNullOrEmpty(Name))
                 Name = GetActiveProcessFileName() + ".exe";
 
             processes = Process.GetProcessesByName(Name.Substring(0, Name.Length - 4));
-
             Process p = processes.FirstOrDefault();
-            OldLocation = this.Location;
-            if (p != null && GetActiveProcessFileName() != Process.GetCurrentProcess().ProcessName && (GetActiveProcessFileName() + ".exe" == Name))
+
+            if (ps.Default.AO_DontAttatchToAS && GetActiveProcessFileName() == Process.GetCurrentProcess().ProcessName)
+                return;
+
+            if (p != null)
             {
                 IntPtr windowHandle;
                 windowHandle = p.MainWindowHandle;
                 RECT rect = new RECT();
-                _ = GetWindowRect(windowHandle, ref rect);
+                GetWindowRect(windowHandle, ref rect);
 
                 if (!ps.Default.AO_Invert)
                 {
@@ -150,38 +198,6 @@ namespace AuraScreen
             }
             else
                 this.Visible = false;
-        }
-
-        private Bitmap CaptureScreen(Point Location, Size size)
-        {
-            Bitmap b = new Bitmap(size.Width, size.Height);
-            Graphics g = Graphics.FromImage(b);
-            g.CopyFromScreen(Location.X, Location.Y, 0, 0, b.Size);
-            g.Dispose();
-            return b;
-        }
-
-        private string GetActiveWindowTitle()
-        {
-            const int nChars = 256;
-            StringBuilder Buff = new StringBuilder(nChars);
-            IntPtr handle = GetForegroundWindow();
-
-            if (GetWindowText(handle, Buff, nChars) > 0)
-            {
-                return Buff.ToString();
-            }
-            return null;
-        }
-
-        private void Invert(Point Location, Size size)
-        {
-            this.Hide();
-            Console.WriteLine("Inverting AO");
-            this.Opacity = 0.99; //Form must be even slightly opaque inorder to pass through inputs
-            this.BackgroundImage = Matrices.Transform(CaptureScreen(Location, size), Matrices.Negative); ;
-            Application.DoEvents();
-            this.Show();
         }
 
         private void timer1_Tick(object sender, EventArgs e)

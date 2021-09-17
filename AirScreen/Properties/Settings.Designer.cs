@@ -301,7 +301,7 @@ namespace AuraScreen.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("firefox.exe")]
+        [global::System.Configuration.DefaultSettingValueAttribute("notepad.exe")]
         public string AO_SavedName {
             get {
                 return ((string)(this["AO_SavedName"]));
@@ -845,6 +845,138 @@ namespace AuraScreen.Properties {
             }
             set {
                 this["ShowWelcomeScreen"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool AO_DontAttatchToAS {
+            get {
+                return ((bool)(this["AO_DontAttatchToAS"]));
+            }
+            set {
+                this["AO_DontAttatchToAS"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DarkMode {
+            get {
+                return ((bool)(this["DarkMode"]));
+            }
+            set {
+                this["DarkMode"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CF_Flip {
+            get {
+                return ((bool)(this["CF_Flip"]));
+            }
+            set {
+                this["CF_Flip"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool CF_DoTexture {
+            get {
+                return ((bool)(this["CF_DoTexture"]));
+            }
+            set {
+                this["CF_DoTexture"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string CF_Texture {
+            get {
+                return ((string)(this["CF_Texture"]));
+            }
+            set {
+                this["CF_Texture"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool BF_DoTexture {
+            get {
+                return ((bool)(this["BF_DoTexture"]));
+            }
+            set {
+                this["BF_DoTexture"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string BF_Texture {
+            get {
+                return ((string)(this["BF_Texture"]));
+            }
+            set {
+                this["BF_Texture"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool AO_DoTexture {
+            get {
+                return ((bool)(this["AO_DoTexture"]));
+            }
+            set {
+                this["AO_DoTexture"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AO_Texture {
+            get {
+                return ((string)(this["AO_Texture"]));
+            }
+            set {
+                this["AO_Texture"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool SF_DoCustom {
+            get {
+                return ((bool)(this["SF_DoCustom"]));
+            }
+            set {
+                this["SF_DoCustom"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SF_Custom {
+            get {
+                return ((string)(this["SF_Custom"]));
+            }
+            set {
+                this["SF_Custom"] = value;
             }
         }
     }

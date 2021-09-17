@@ -1,4 +1,6 @@
-﻿namespace AuraScreen.Properties
+﻿using System;
+
+namespace AuraScreen.Properties
 {
     // This class allows you to handle specific events on the settings class:
     //  The SettingChanging event is raised before a setting's value is changed.
@@ -20,7 +22,7 @@
         private void SettingChangingEventHandler(object sender, System.Configuration.SettingChangingEventArgs e)
         {
             // Add code to handle the SettingChangingEvent event here.
-            this.Save();
+            Console.WriteLine($"Saving Property {e} with {e.NewValue}");
         }
 
         private void SettingsSavingEventHandler(object sender, System.ComponentModel.CancelEventArgs e)

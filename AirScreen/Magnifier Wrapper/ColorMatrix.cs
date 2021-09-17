@@ -1,11 +1,19 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Magnifier
 {
     //Credit to the creator of Negative screen for these default Matricies. Its a fucking life saver
+    //https://zerowidthjoiner.net/
+    /*
+     * A lot of this class was either made by them or heavily inspired by their work.
+     * I know its just a wrapper for an existing C++ API in windows, but holy fucking shit
+     * they did good
+     */
     public static class Matrices
     {
         public static float[,] Identity { get; }
@@ -13,17 +21,20 @@ namespace Magnifier
         public static float[,] GrayScale { get; }
         public static float[,] Sepia { get; }
         public static float[,] Red { get; }
+        public static float[,] Green { get; }
+        public static float[,] Blue { get; }
         public static float[,] HueShift180 { get; }
 
         public static float[,] NegativeGrayScale { get; }
         public static float[,] NegativeSepia { get; }
         public static float[,] NegativeRed { get; }
 
+        public static float[,] Polaroid { get; }
+        public static float[,] DB_Step1 { get; }
+        public static float[,] DB_Step2 { get; }
+        public static float[,] DB_Step3 { get; }
+
         public static float[,] NegativeHueShift180 { get; }
-        public static float[,] NegativeHueShift180Variation1 { get; }
-        public static float[,] NegativeHueShift180Variation2 { get; }
-        public static float[,] NegativeHueShift180Variation3 { get; }
-        public static float[,] NegativeHueShift180Variation4 { get; }
 
         static Matrices()
         {
@@ -31,6 +42,27 @@ namespace Magnifier
                 {  1.0f,  0.0f,  0.0f,  0.0f,  0.0f },
                 {  0.0f,  1.0f,  0.0f,  0.0f,  0.0f },
                 {  0.0f,  0.0f,  1.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  0.0f,  1.0f }
+            };
+            DB_Step1 = new float[,] {
+                {  0.8f,  0.0f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.8f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.8f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  0.0f,  1.0f }
+            };
+            DB_Step2 = new float[,] {
+                {  0.6f,  0.0f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.6f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.6f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  0.0f,  1.0f }
+            };
+            DB_Step3 = new float[,] {
+                {  0.4f,  0.0f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.4f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.4f,  0.0f,  0.0f },
                 {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
                 {  0.0f,  0.0f,  0.0f,  0.0f,  1.0f }
             };
@@ -56,6 +88,20 @@ namespace Magnifier
                 {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
                 {  0.0f,  0.0f,  0.0f,  0.0f,  1.0f }
             };
+            Blue = new float[,] {
+                {  0.0f,  0.0f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  1.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  0.0f,  1.0f }
+            };
+            Green = new float[,] {
+                {  0.0f,  0.0f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  1.0f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  0.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  1.0f,  0.0f },
+                {  0.0f,  0.0f,  0.0f,  0.0f,  1.0f }
+            };
             Red = Multiply(GrayScale, Red);
             NegativeRed = Multiply(NegativeGrayScale, Red);
             Sepia = new float[,] {
@@ -74,34 +120,53 @@ namespace Magnifier
                 {  0.0f,              0.0f,        0.0f, 0.0f, 1.0f }
             };
             NegativeHueShift180 = Multiply(Negative, HueShift180);
-            NegativeHueShift180Variation1 = new float[,] {
-				{  1.0f, -1.0f, -1.0f, 0.0f, 0.0f },
-                { -1.0f,  1.0f, -1.0f, 0.0f, 0.0f },
-                { -1.0f, -1.0f,  1.0f, 0.0f, 0.0f },
-                {  0.0f,  0.0f,  0.0f, 1.0f, 0.0f },
-                {  1.0f,  1.0f,  1.0f, 0.0f, 1.0f }
+            Polaroid = new float[,]
+            {
+                { 1.438f, -0.062f, -0.062f, 0.0f, 0.0f},
+                { -0.122f, 1.378f, -0.122f, 0.0f, 0.0f},
+                { -0.016f, -0.016f, 1.483f, 0.0f, 0.0f},
+                {  -0.03f,  0.05f,  -0.02f, 0f, 1.0f},
+                {  0.0f,  0.0f,  0.0f, 0.0f, 1.0f}
             };
-            NegativeHueShift180Variation2 = new float[,] {
-				{  0.39f, -0.62f, -0.62f, 0.0f, 0.0f },
-                { -1.21f, -0.22f, -1.22f, 0.0f, 0.0f },
-                { -0.16f, -0.16f,  0.84f, 0.0f, 0.0f },
-                {   0.0f,   0.0f,   0.0f, 1.0f, 0.0f },
-                {   1.0f,   1.0f,   1.0f, 0.0f, 1.0f }
-            };
-            NegativeHueShift180Variation3 = new float[,] {
-                {     1.089508f,   -0.9326327f, -0.932633042f,  0.0f,  0.0f },
-                {  -1.81771779f,    0.1683074f,  -1.84169245f,  0.0f,  0.0f },
-                { -0.244589478f, -0.247815639f,    1.7621845f,  0.0f,  0.0f },
-                {          0.0f,          0.0f,          0.0f,  1.0f,  0.0f },
-                {          1.0f,          1.0f,          1.0f,  0.0f,  1.0f }
-            };
-            NegativeHueShift180Variation4 = new float[,] {
-                {  0.50f, -0.78f, -0.78f, 0.0f, 0.0f },
-                { -0.56f,  0.72f, -0.56f, 0.0f, 0.0f },
-                { -0.94f, -0.94f,  0.34f, 0.0f, 0.0f },
-                {   0.0f,   0.0f,   0.0f, 1.0f, 0.0f },
-                {   1.0f,   1.0f,   1.0f, 0.0f, 1.0f }
-            };
+        }
+
+        public static float[,] StringToMatrix(string MatrixString)
+        {
+            float[,] matrix = new float[5,5];
+            int r = 0;
+            foreach (string s in ExtractFromString(MatrixString, "{", "}"))
+            {
+                int c = 0;
+                foreach (string n in s.Split(','))
+                {
+                    float f;
+                    if(!float.TryParse(n, out f))
+                        f = 0;
+                    matrix[r, c] = f;
+                    c++;
+                }
+                r++;
+            }
+            return matrix;
+        }
+
+        //https://stackoverflow.com/questions/13780654/extract-all-strings-between-two-strings/13780976
+        private static List<string> ExtractFromString(string source, string start, string end)
+        {
+            var results = new List<string>();
+
+            string pattern = string.Format(
+                "{0}({1}){2}",
+                Regex.Escape(start),
+                ".+?",
+                 Regex.Escape(end));
+
+            foreach (Match m in Regex.Matches(source, pattern))
+            {
+                results.Add(m.Groups[1].Value);
+            }
+
+            return results;
         }
 
         public static string MatrixToString(float[,] matrix)
@@ -162,10 +227,10 @@ namespace Magnifier
 
         public static bool ChangeColorEffect(float[,] matrix, bool FilterUsed = false)
         {
-            NativeMethods.MagInitialize();
+            bool initalized = NativeMethods.MagInitialize();
             ColorEffect colorEffect = new ColorEffect(matrix);
             NativeMethods.MagSetFullscreenColorEffect(ref colorEffect);
-            return true;
+            return initalized;
         }
 
         public static void InterpolateColorEffect(float[,] fromMatrix, float[,] toMatrix, int timeBetweenFrames = 15)
@@ -202,9 +267,7 @@ namespace Magnifier
                 {
                     for (int y = 0; y < SIZE; y++)
                     {
-                        // f(x)=ya+(x-xa)*(yb-ya)/(xb-xa)
-                        // calculate 10 steps, from 1 to 10 (we don't need 0, as we start from there)
-                        result[i][x, y] = A[x, y] + (i + 1/*-0*/) * (B[x, y] - A[x, y]) / (STEPS/*-0*/);
+                        result[i][x, y] = A[x, y] + (i + 1) * (B[x, y] - A[x, y]) / (STEPS);
                     }
                 }
             }
@@ -214,7 +277,6 @@ namespace Magnifier
 
         public static System.Drawing.Bitmap Transform(System.Drawing.Bitmap source, float[,] Matrix)
         {
-            Console.WriteLine(MatrixToString(Matrix));
             System.Drawing.Bitmap newBitmap = new System.Drawing.Bitmap(source.Width, source.Height);
             System.Drawing.Graphics g = System.Drawing.Graphics.FromImage(newBitmap);
             System.Drawing.Imaging.ColorMatrix colorMatrix = new System.Drawing.Imaging.ColorMatrix(Matrix.ToJaggedArray());
@@ -283,6 +345,7 @@ namespace Magnifier
         public static extern bool MagSetWindowTransform(IntPtr hwnd, ref Transformation pTransform);
 
         public const string WC_MAGNIFIER = "Magnifier";
+        public const string WC_WINDOW = "MDICLIENT";
         public static IntPtr HWND_TOPMOST = new IntPtr(-1);
 
         public const int USER_TIMER_MINIMUM = 0x0000000A;

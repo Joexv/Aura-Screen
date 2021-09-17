@@ -61,7 +61,7 @@ namespace AuraScreen
             this.ControlBox = false;
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MouseBox";
             this.Opacity = 0.15D;
             this.ShowIcon = false;
@@ -74,6 +74,7 @@ namespace AuraScreen
             this.Shown += new System.EventHandler(this.MouseBox_Shown);
             this.LocationChanged += new System.EventHandler(this.Form2_LocationChanged);
             this.VisibleChanged += new System.EventHandler(this.MouseBox_VisibleChanged);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.MouseBox_Paint);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Form2_KeyPress);
             this.MouseLeave += new System.EventHandler(this.Form2_MouseLeave);
             this.Resize += new System.EventHandler(this.MouseBox_Resize);

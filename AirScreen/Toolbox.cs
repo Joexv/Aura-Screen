@@ -20,7 +20,6 @@ namespace AuraScreen
             InitializeComponent();
         }
 
-        private bool InversionToggle;
         void Form_LostFocus(object sender, EventArgs e)
         {
             this.MouseLeave -= new System.EventHandler(Form_LostFocus);
@@ -50,37 +49,7 @@ namespace AuraScreen
 
         private void Toolbox_Load(object sender, EventArgs e)
         {
-            /*
-            if (ps.Default.CF_DoInvert && !ps.Default.TB_AutoHide)
-            {
-                wasInverted = true;
-                MF.DisableInvert();
-                foreach (var button in this.Controls.OfType<Button>())
-                {
-                    if (button.BackColor == default)
-                        button.BackColor = Color.FromArgb(245, 105, 85);
-                    else
-                        button.BackColor = Color.FromArgb(201, 0, 222);
-                    button.ForeColor = Color.Black;
-                    button.FlatAppearance.MouseDownBackColor = Color.FromArgb(25, 18, 72);
-                }
-            }
-            else
-            {
-                
-            }
-            */
-
-            foreach (var button in this.Controls.OfType<Button>())
-            {
-                button.FlatAppearance.MouseDownBackColor = Color.FromArgb(230, 237, 183);
-                button.FlatAppearance.BorderColor = Color.FromArgb(41, 53, 65);
-            }
             ButtonPopulation();
-
-            //Adjust button locations
-            //FlowLayoutPanel p = flowLayoutPanel1;
-            //p.Controls.SetChildIndex(button3, 7);
         }
 
         private void cursorToggle_Click(object sender, EventArgs e)
@@ -93,7 +62,6 @@ namespace AuraScreen
         {
             if (!MF.FilterInUse(1))
             {
-                //MF.Invert();
                 MF.inversionBox.Checked = !MF.inversionBox.Checked;
                 ButtonPopulation();
             }             
@@ -108,7 +76,7 @@ namespace AuraScreen
 
         private void borderToggle_Click(object sender, EventArgs e)
         {
-            MF.checkBox2.Checked = true;
+            MF.checkBox2.Checked = !MF.checkBox2.Checked;
             ButtonPopulation();
         }
 
@@ -192,6 +160,7 @@ namespace AuraScreen
         private void SF_Program_Click(object sender, EventArgs e)
         {
             MF.Filter_OnActive.Checked = !MF.Filter_OnActive.Checked;
+            MF.StartSFActive();
             ButtonPopulation();
         }
 
@@ -250,8 +219,6 @@ namespace AuraScreen
         }
 
         private bool wasInverted = false;
-        private bool LockCursor;
-        private bool DoneOnce = false;
         private void flowLayoutPanel1_MouseEnter(object sender, EventArgs e)
         {
             if (ps.Default.TB_AutoHide)
@@ -265,7 +232,15 @@ namespace AuraScreen
 
         private void Toolbox_Shown(object sender, EventArgs e)
         {
-            
+            if (ps.Default.DarkMode)
+            {
+                Default = ColorTranslator.FromHtml("#B84600");
+            }
+               // Default = Color.FromArgb(0, 46, 44);
+
+            foreach (var button in flowLayoutPanel1.Controls.OfType<Button>())
+                button.BackColor = Default;
+
             if (ps.Default.doAdjust)
             {
                 foreach (var button in flowLayoutPanel1.Controls.OfType<Button>())
@@ -340,7 +315,12 @@ namespace AuraScreen
             else
                 cursorInvert.BackColor = Default;
 
-            if(MF.appO != null && MF.appO.Visible)
+            if (ps.Default.CF_DoBorder)
+                borderToggle.BackColor = Clicked;
+            else
+                borderToggle.BackColor = Default;
+
+            if (MF.appO != null && MF.appO.Visible)
                 AO_Toggle.BackColor = Clicked;
             else
                 AO_Toggle.BackColor = Default;
@@ -411,7 +391,8 @@ namespace AuraScreen
                 if (button.BackColor == Clicked)
                     button.ForeColor = Color.Black;
                 else
-                    button.ForeColor = Color.White;
+                    button.ForeColor = ColorTranslator.FromHtml("#dfe0e2");
+
             }
         }
 

@@ -117,15 +117,64 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="pictureBox1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="transparentLabel2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="label2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="transparentLabel1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="label1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Aura Screen is meant to reduce strain on your eyes and help reduce the impact caused by Eye Floaters.
+This is done by allowing the user to enable "Filters" that fit the user's needs.
+
+These filters can be setup to be as simple as an orange overlay following your mouse, to
+your whole screen inverting if a certain application is in use.
+
+Check out the example button below! Then hit next to learn about each of the different base filters!</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>What you just saw was the "Cursor Filter". It's what started the Aura Screen project. A simple semi-translucent color 
+that follows your mouse cursor in order to help reduce eye strain and eye floater side effects.
+
+The Cursor Filter can be customized in many different ways, the size, opacity, color, and even the shape!
+You can also toggle a special filter that will invert the colors behind your cursor instead of a color overlay!</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>The "Tile Filter" allows you to create a semi-permanent semi-translucent (or inverted)
+block or tile on your screen.
+There are various default locations such as the top or bottom of your screen,
+but you can also manually move and resize it!
+</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>The App Overlay allows you to do exactly as the name implies!
+It creates the color filter over your application window.
+Allowing you to be able to enjoy the content on a certain program while still
+allowing you to have your cursor clutter free.
+</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>The Screen Filter uses a "Color Matrix" to dynamically recolor your screen.
+Not just a simple overlay, this will directly change the colors.
+
+Sepia, inversion, greyscale. It's all possible.
+Currently we have a few of these Matricies built in, and in the future you the user
+will be able to manually create them!
+
+You can set the screen filter to only activate when a certain app is in focus, or active all the time!
+</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>And that's the essential filters that Aura Screen allows you the user
+to easily apply to your computer!
+
+You can adjust all the settings from within the Configurator which you can reopen by
+right clicking the Aura Screen icon in the bottom left corner of your screen, or you
+can left click it instead to open a Toolbox filled with common controls and settings!
+
+Now go enjoy relief!
+</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

@@ -3,6 +3,7 @@ using Magnifier;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -13,6 +14,10 @@ namespace AuraScreen
 
     public partial class Tiles : Form
     {
+        double V_Left = System.Windows.SystemParameters.VirtualScreenLeft;
+        double V_Top = System.Windows.SystemParameters.VirtualScreenTop;
+        double V_Width = System.Windows.SystemParameters.VirtualScreenWidth;
+        double V_Height = System.Windows.SystemParameters.VirtualScreenHeight;
         private int screenWidth = Screen.PrimaryScreen.Bounds.Width;
         private int screenHeight = Screen.PrimaryScreen.Bounds.Height;
         //public Configurator conf { get; set; }
@@ -150,6 +155,15 @@ namespace AuraScreen
                     break;
             }
 
+            if (ps.Default.BF_DoTexture && !String.IsNullOrWhiteSpace(ps.Default.BF_Texture))
+            {
+                if (File.Exists(Application.StartupPath + $"\\Textures\\{ps.Default.BF_Texture}"))
+                {
+                    Image image = Image.FromFile(Application.StartupPath + $"\\Textures\\{ps.Default.BF_Texture}");
+                    this.BackgroundImage = TextureFilter(image, (float)ps.Default.BF_Opacity);
+                }
+            }
+
             //Inversion Settings
             invert.Checked = ps.Default.BF_Invert;
             if (ps.Default.useAltInvert)
@@ -277,6 +291,7 @@ namespace AuraScreen
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            colorDialog1.Color = ps.Default.BF_Color;
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 ps.Default.BF_Color = colorDialog1.Color;
@@ -371,7 +386,6 @@ namespace AuraScreen
 
         public void EnterEditMode()
         {
-            this.Refresh();
             this.FormBorderStyle = FormBorderStyle.Sizable;
             this.PreviewButton.Visible = true;
             this.SaveButton.Visible = true;
@@ -381,6 +395,7 @@ namespace AuraScreen
             this.groupBox1.Visible = true;
             this.AllowTransparency = false;
             this.Opacity = 1;
+            this.Refresh();
         }
 
         public void ExitEditMode()
@@ -461,30 +476,27 @@ namespace AuraScreen
 
         private void invert_CheckedChanged(object sender, EventArgs e)
         {
-
-            ps.Default.BF_Invert = invert.Checked;
-            ps.Default.Save();
-            /*
-            if (invert.Checked)
+            invert.CheckedChanged -= invert_CheckedChanged;
+            if (!invert.Checked)
             {
-                if (ps.Default.useAltInvert)
-                {
-                    InvertKeyChecker.Start();
-                    InvertTimer.Start();
-                }
-                else
-                {
-                    StartMag();
-                }
-                
+                if (ps.Default.FilterNum == 2)
+                    ps.Default.FilterNum = 0;
             }
             else
             {
-                InvertKeyChecker.Stop();
-                InvertTimer.Stop();
-                RemoveMagnifier();
+                if (ps.Default.FilterNum == 1)
+                {
+                    invert.Checked = false;
+                    MessageBox.Show($"Sorry! But mixing the Cursor Filter Inversion and the Tile Filter Inversion causes insane slow down and freezing even on high end systems! Please disable one of them before continuing.");
+                    this.Close();
+                }
+                else
+                    ps.Default.FilterNum = 2;
             }
-            */
+
+            ps.Default.BF_Invert = invert.Checked;
+            ps.Default.Save();
+            invert.CheckedChanged += invert_CheckedChanged;
         }
 
         private void groupBox1_VisibleChanged(object sender, EventArgs e)
@@ -543,9 +555,9 @@ namespace AuraScreen
 
         public void StartMag()
         {
-            if (ps.Default.FilterInUse && ps.Default.FilterNum != 2)
+            if (ps.Default.FilterNum == 1)
             {
-                MessageBox.Show($"Another filter is currently using Aura Screen's Filterting. Please diable that before enabling another. Filter with the ID {ps.Default.FilterNum}");
+                MessageBox.Show($"Sorry! But mixing the Cursor Filter Inversion and the Tile Filter Inversion causes insane slow down and freezing even on high end systems! Please disable one of them before continuing.");
                 this.Close();
             }
             else if(!ps.Default.EnterEditMode)
@@ -660,7 +672,7 @@ namespace AuraScreen
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Location = new Point(Screen.PrimaryScreen.Bounds.Width - this.Width, this.Location.Y);
+            this.Location = new Point(screenWidth - this.Width, this.Location.Y);
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -670,17 +682,59 @@ namespace AuraScreen
 
         private void button5_Click(object sender, EventArgs e)
         {
-            this.Location = new Point(this.Location.X, Screen.PrimaryScreen.Bounds.Height - this.Height);
+            this.Location = new Point(this.Location.X, screenHeight - this.Height);
         }
-
+        
         private void button6_Click(object sender, EventArgs e)
         {
-            this.Width = Screen.PrimaryScreen.Bounds.Width;
+
+            this.Width = screenWidth;
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            this.Height = Screen.PrimaryScreen.Bounds.Height;
+            this.Height = screenHeight;
+        }
+
+        private Image TextureFilter(Image pImage, float pColorOpacity)
+        {
+            Image mResult = null;
+            Image tempImage = null; //we will set the opacity of pImage to pColorOpacity and copy
+                                    //it to tempImage 
+            if (pImage != null)
+            {
+                Graphics g;
+                ColorMatrix matrix = new ColorMatrix(new float[][]{
+                     new float[] {1F, 0, 0, 0, 0},
+                     new float[] {0, 1F, 0, 0, 0},
+                     new float[] {0, 0, 1F, 0, 0},
+                     new float[] {0, 0, 0, pColorOpacity, 0}, //opacity in rage [0 1]
+                     new float[] {0, 0, 0, 0, 1F}});
+
+                ImageAttributes imageAttributes = new ImageAttributes();
+                imageAttributes.SetColorMatrix(matrix);
+                imageAttributes.SetWrapMode(System.Drawing.Drawing2D.WrapMode.TileFlipXY);
+                tempImage = new Bitmap(this.Width, this.Height, PixelFormat.Format32bppArgb);
+
+                g = Graphics.FromImage(tempImage);
+                g.DrawImage(pImage, this.ClientRectangle, 0, 0, pImage.Width, pImage.Height, GraphicsUnit.Pixel, imageAttributes);
+
+                g.Dispose();
+                g = null;
+                TextureBrush texture = new TextureBrush(tempImage);
+                mResult = new Bitmap(this.Width, this.Height, PixelFormat.Format32bppArgb);
+
+                g = Graphics.FromImage(mResult);
+                g.Clear(ps.Default.CF_Color);
+                g.FillRectangle(texture, this.ClientRectangle);
+                g.Dispose();
+                g = null;
+
+                tempImage.Dispose();
+                tempImage = null;
+            }
+
+            return mResult;
         }
     }
 }

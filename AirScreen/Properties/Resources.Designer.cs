@@ -91,6 +91,16 @@ namespace AuraScreen.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Aura_Logo_2 {
+            get {
+                object obj = ResourceManager.GetObject("Aura_Logo_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon Aura_Logo1 {
@@ -183,6 +193,16 @@ namespace AuraScreen.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Color_Wheel_1 {
+            get {
+                object obj = ResourceManager.GetObject("Color_Wheel_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cursor_Lock_1 {
             get {
                 object obj = ResourceManager.GetObject("Cursor_Lock_1", resourceCulture);
@@ -196,6 +216,26 @@ namespace AuraScreen.Properties {
         internal static System.Drawing.Bitmap Cursor_UnLock_1 {
             get {
                 object obj = ResourceManager.GetObject("Cursor_UnLock_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HK_1 {
+            get {
+                object obj = ResourceManager.GetObject("HK_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Idle_Cursor_1 {
+            get {
+                object obj = ResourceManager.GetObject("Idle_Cursor_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -316,6 +356,26 @@ namespace AuraScreen.Properties {
         internal static System.Drawing.Bitmap ScreenFilter_Toggle_1 {
             get {
                 object obj = ResourceManager.GetObject("ScreenFilter_Toggle_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Settings_Gear_1 {
+            get {
+                object obj = ResourceManager.GetObject("Settings_Gear_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Spectrum_Example {
+            get {
+                object obj = ResourceManager.GetObject("Spectrum_Example", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

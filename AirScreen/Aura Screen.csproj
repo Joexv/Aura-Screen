@@ -80,6 +80,7 @@
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Console, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Console.4.3.0\lib\net46\System.Console.dll</HintPath>
       <Private>True</Private>
@@ -222,6 +223,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MatrixCreator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MatrixCreator.Designer.cs">
+      <DependentUpon>MatrixCreator.cs</DependentUpon>
+    </Compile>
     <Compile Include="Welcome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -272,6 +279,9 @@
     <EmbeddedResource Include="AppOverlay.resx">
       <DependentUpon>AppOverlay.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MatrixCreator.resx">
+      <DependentUpon>MatrixCreator.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Welcome.resx">
       <DependentUpon>Welcome.cs</DependentUpon>
     </EmbeddedResource>
@@ -293,6 +303,15 @@
       <DependentUpon>Tiles.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
+    <None Include="ColorMatricies\Cold_Negative.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ColorMatricies\Dark_Red_Hue.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="ColorMatricies\Terrible_Red_Hue.ini">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -311,18 +330,41 @@
     <EmbeddedResource Include="circle_rgb_color_mix.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Invisible_Cursor.cur">
+    <Content Include="ColorMatricies\Example Images\Example_ColorCubes.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Pink_Crosshair_Cursor.cur">
+    <Content Include="ColorMatricies\Example Images\Example_ColorSwirl.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\AdobeStock_215942165_Preview.png" />
-    <None Include="Resources\AdobeStock_249648058_Preview.jpeg" />
+    <Content Include="ColorMatricies\Example Images\Example_ColorVials.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ColorMatricies\Example Images\Example_Text.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ColorMatricies\Example Images\Example_Yahoo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cursors\Invisible_Cursor.cur">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Cursors\Pink_Crosshair_Cursor.cur">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Spectrum_Example.jpg" />
+    <Content Include="Textures\egg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\Texture_Test.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Aura_Logo_2.png" />
+    <None Include="Resources\Color_Wheel_1.png" />
+    <None Include="Resources\HK_1.png" />
+    <None Include="Resources\Settings_Gear_1.png" />
+    <None Include="Resources\Idle_Cursor_1.png" />
     <None Include="Resources\Aura_Logo.ico" />
     <None Include="Resources\Aura_Logo.png" />
-    <None Include="Resources\ezgif.com-gif-maker.gif" />
-    <None Include="Resources\VE Project 1.gif" />
     <None Include="Resources\Aura_Screen_Icon_1.ico" />
     <None Include="Resources\Mouse_Shape_1.png" />
     <None Include="Resources\BoxFilter_Edit_1.png" />
@@ -360,6 +402,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.6.5.2\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.2\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
