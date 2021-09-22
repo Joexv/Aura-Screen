@@ -18,8 +18,8 @@ namespace AuraScreen
         double V_Top = System.Windows.SystemParameters.VirtualScreenTop;
         double V_Width = System.Windows.SystemParameters.VirtualScreenWidth;
         double V_Height = System.Windows.SystemParameters.VirtualScreenHeight;
-        private int screenWidth = Screen.PrimaryScreen.Bounds.Width;
-        private int screenHeight = Screen.PrimaryScreen.Bounds.Height;
+        private int screenWidth = (int)System.Windows.SystemParameters.VirtualScreenWidth;
+        private int screenHeight = (int)System.Windows.SystemParameters.VirtualScreenHeight;
         //public Configurator conf { get; set; }
         public enum GWL
         {
@@ -487,7 +487,7 @@ namespace AuraScreen
                 if (ps.Default.FilterNum == 1)
                 {
                     invert.Checked = false;
-                    MessageBox.Show($"Sorry! But mixing the Cursor Filter Inversion and the Tile Filter Inversion causes insane slow down and freezing even on high end systems! Please disable one of them before continuing.");
+                    MessageBox.Show("Sorry! But mixing the Cursor Filter Inversion and the Tile Filter Inversion causes insane slow down and freezing even on high end systems! Please disable one of them before continuing.");
                     this.Close();
                 }
                 else
@@ -735,6 +735,15 @@ namespace AuraScreen
             }
 
             return mResult;
+        }
+
+        private void ChangesTimer_Tick(object sender, EventArgs e)
+        {
+            if (this.Opacity != (double)ps.Default.BF_Opacity)
+                this.Opacity = (double)ps.Default.BF_Opacity;
+
+            if (this.BackColor != ps.Default.BF_Color)
+                this.BackColor = ps.Default.BF_Color;
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace AuraScreen
 {
@@ -64,12 +65,12 @@ namespace AuraScreen
             {
                 MF.inversionBox.Checked = !MF.inversionBox.Checked;
                 ButtonPopulation();
-            }             
+            }
         }
 
         private void lockCursor_Click(object sender, EventArgs e)
         {
-            ps.Default.CF_Lock = !ps.Default.CF_Lock; 
+            ps.Default.CF_Lock = !ps.Default.CF_Lock;
             ps.Default.Save();
             ButtonPopulation();
         }
@@ -91,7 +92,7 @@ namespace AuraScreen
                 ps.Default.CF_Height = 30;
 
             ps.Default.Save();
-            if(ps.Default.CF_DoInvert)
+            if (ps.Default.CF_DoInvert)
                 MF.ReloadCF();
         }
 
@@ -112,7 +113,7 @@ namespace AuraScreen
 
         private void lowerOpacity_Click(object sender, EventArgs e)
         {
-            if(ps.Default.CF_Opacity > (decimal)0.10)
+            if (ps.Default.CF_Opacity > (decimal)0.10)
                 ps.Default.CF_Opacity -= (decimal)0.10;
             if (ps.Default.CF_Opacity < (decimal)0.10)
                 ps.Default.CF_Opacity = (decimal)0.10;
@@ -215,7 +216,7 @@ namespace AuraScreen
 
         private void Toolbox_MouseEnter(object sender, EventArgs e)
         {
-            
+
         }
 
         private bool wasInverted = false;
@@ -230,13 +231,46 @@ namespace AuraScreen
             MF.CycleTiles(5);
         }
 
+        //https://stackoverflow.com/a/1855903
+        private Color ContrastColor(Color color)
+        {
+            int d = 0;
+
+            // Counting the perceptive luminance - human eye favors green color... 
+            double luminance = (0.299 * color.R + 0.587 * color.G + 0.114 * color.B) / 255;
+
+            if (luminance > 0.5)
+                d = 0; // bright colors - black font
+            else
+                d = 255; // dark colors - white font
+
+            return Color.FromArgb(d, d, d);
+        }
+
         private void Toolbox_Shown(object sender, EventArgs e)
         {
             if (ps.Default.DarkMode)
             {
-                Default = ColorTranslator.FromHtml("#B84600");
+                Default = ColorTranslator.FromHtml($"#{MF.ReadColor(ps.Default.TB_Theme, "DM_BaseButton")}");
+                Clicked = ColorTranslator.FromHtml($"#{MF.ReadColor(ps.Default.TB_Theme, "DM_EnabledButton")}");
+                TextColor = ColorTranslator.FromHtml($"#{MF.ReadColor(ps.Default.TB_Theme, "DM_TextColor")}");
+                ClickedText = ColorTranslator.FromHtml($"#{MF.ReadColor(ps.Default.TB_Theme, "DM_EnabledTextColor")}");
+                BackColor = ColorTranslator.FromHtml($"#{MF.ReadColor(ps.Default.TB_Theme, "DM_BackgroundColor")}");
             }
-               // Default = Color.FromArgb(0, 46, 44);
+            else
+            {
+                Default = ColorTranslator.FromHtml($"#{MF.ReadColor(ps.Default.TB_Theme, "BaseButton")}");
+                Clicked = ColorTranslator.FromHtml($"#{MF.ReadColor(ps.Default.TB_Theme, "EnabledButton")}");
+                TextColor = ColorTranslator.FromHtml($"#{MF.ReadColor(ps.Default.TB_Theme, "TextColor")}");
+                ClickedText = ColorTranslator.FromHtml($"#{MF.ReadColor(ps.Default.TB_Theme, "EnabledTextColor")}");
+                BackColor = ColorTranslator.FromHtml($"#{MF.ReadColor(ps.Default.TB_Theme, "BackgroundColor")}");
+            }
+
+
+            //Attempts to generate a proper text color.
+            //Manually set if background color is known anyways.
+            //TextColor = ContrastColor(Default);
+            //ClickedText = ContrastColor(Clicked);
 
             foreach (var button in flowLayoutPanel1.Controls.OfType<Button>())
                 button.BackColor = Default;
@@ -282,7 +316,7 @@ namespace AuraScreen
                     if (button.Image != null)
                         button.Image = (Image)(new Bitmap(button.Image, newSize));
                     float FontSize = (float)(button.Font.Size - 0.5);
-                    button.Font = new Font(button.Font.FontFamily, FontSize);
+                    //button.Font = new Font(button.Font.FontFamily, FontSize);
                 }
             }
 
@@ -292,7 +326,7 @@ namespace AuraScreen
             if (ps.Default.TB_Cursor)
             {
                 this.Location = Cursor.Position;
-                if(this.Location.X > left || this.Location.Y > top)
+                if (this.Location.X > left || this.Location.Y > top)
                     this.Location = new Point(left, top);
             }
             else
@@ -303,14 +337,16 @@ namespace AuraScreen
 
         Color Clicked = Color.FromArgb(17, 209, 20);
         Color Default = Color.FromArgb(10, 150, 170);
+        Color TextColor = Color.Black;
+        Color ClickedText = Color.White;
         private void ButtonPopulation()
         {
-            if (MF.mousebox != null &&  MF.mousebox.Visible)
+            if (MF.mousebox != null && MF.mousebox.Visible)
                 cursorToggle.BackColor = Clicked;
             else
                 cursorToggle.BackColor = Default;
 
-            if(ps.Default.CF_DoInvert)
+            if (ps.Default.CF_DoInvert)
                 cursorInvert.BackColor = Clicked;
             else
                 cursorInvert.BackColor = Default;
@@ -325,17 +361,17 @@ namespace AuraScreen
             else
                 AO_Toggle.BackColor = Default;
 
-            if(ps.Default.AO_ByName)
+            if (ps.Default.AO_ByName)
                 AO_Active.BackColor = Clicked;
             else
                 AO_Active.BackColor = Default;
 
-            if(ps.Default.SF_OnActive)
+            if (ps.Default.SF_OnActive)
                 SF_Program.BackColor = Clicked;
             else
                 SF_Program.BackColor = Default;
 
-            if(MF.blockfilter != null && MF.blockfilter.Visible)
+            if (MF.blockfilter != null && MF.blockfilter.Visible)
                 BF_Toggle.BackColor = Clicked;
             else
                 BF_Toggle.BackColor = Default;
@@ -389,15 +425,17 @@ namespace AuraScreen
             foreach (var button in flowLayoutPanel1.Controls.OfType<Button>())
             {
                 if (button.BackColor == Clicked)
-                    button.ForeColor = Color.Black;
+                    button.ForeColor = TextColor;
                 else
-                    button.ForeColor = ColorTranslator.FromHtml("#dfe0e2");
+                    button.ForeColor = ClickedText;
+                    //button.ForeColor = ColorTranslator.FromHtml("#dfe0e2");
 
             }
         }
 
         private void BF_Edit_Click(object sender, EventArgs e)
         {
+            MF.CycleTiles(5);
             MF.EditTiles();
             ButtonPopulation();
         }
@@ -410,6 +448,11 @@ namespace AuraScreen
                 MF.styleBox.SelectedIndex = 0;
 
             MF.ReloadCF();
+        }
+
+        private void Toolbox_VisibleChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -58,6 +58,7 @@ namespace AuraScreen
             this.InvertTimer = new System.Windows.Forms.Timer(this.components);
             this.InvertKeyChecker = new System.Windows.Forms.Timer(this.components);
             this.ScrollingTimer = new System.Windows.Forms.Timer(this.components);
+            this.ChangesTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.time)).BeginInit();
@@ -437,6 +438,11 @@ namespace AuraScreen
             this.ScrollingTimer.Interval = 500;
             this.ScrollingTimer.Tick += new System.EventHandler(this.ScrollingTimer_Tick);
             // 
+            // ChangesTimer
+            // 
+            this.ChangesTimer.Enabled = true;
+            this.ChangesTimer.Tick += new System.EventHandler(this.ChangesTimer_Tick);
+            // 
             // Tiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -498,5 +504,6 @@ namespace AuraScreen
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Timer ChangesTimer;
     }
 }

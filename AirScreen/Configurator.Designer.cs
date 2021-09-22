@@ -79,6 +79,7 @@ namespace AuraScreen
             this.AO_Apply = new System.Windows.Forms.Button();
             this.filterTab = new System.Windows.Forms.TabPage();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.button33 = new System.Windows.Forms.Button();
             this.customMatrix = new System.Windows.Forms.ComboBox();
             this.customMatrixBox = new System.Windows.Forms.CheckBox();
@@ -228,7 +229,8 @@ namespace AuraScreen
             this.titleBar = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label39 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.aoTab.SuspendLayout();
             this.groupBox15.SuspendLayout();
@@ -393,6 +395,7 @@ namespace AuraScreen
             // 
             this.button5.BackColor = System.Drawing.Color.DarkRed;
             this.button5.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button5.FlatAppearance.BorderSize = 0;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.ForeColor = System.Drawing.Color.White;
@@ -411,6 +414,7 @@ namespace AuraScreen
             // 
             this.button6.BackColor = System.Drawing.Color.Green;
             this.button6.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button6.FlatAppearance.BorderSize = 0;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button6.ForeColor = System.Drawing.Color.White;
@@ -441,6 +445,7 @@ namespace AuraScreen
             // 
             this.button4.BackColor = System.Drawing.Color.DarkRed;
             this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.ForeColor = System.Drawing.Color.White;
@@ -459,6 +464,7 @@ namespace AuraScreen
             // 
             this.button3.BackColor = System.Drawing.Color.Green;
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
@@ -901,6 +907,18 @@ namespace AuraScreen
             this.groupBox13.TabIndex = 23;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Screen Filters";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Location = new System.Drawing.Point(9, 340);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(312, 13);
+            this.linkLabel1.TabIndex = 24;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Inspired by Negative Screen over on https://zerowidthjoiner.net/";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked_1);
             // 
             // button33
             // 
@@ -1454,7 +1472,7 @@ namespace AuraScreen
             this.groupBox19.Controls.Add(this.button29);
             this.groupBox19.Controls.Add(this.button19);
             this.groupBox19.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox19.Location = new System.Drawing.Point(9, 441);
+            this.groupBox19.Location = new System.Drawing.Point(9, 466);
             this.groupBox19.Name = "groupBox19";
             this.groupBox19.Size = new System.Drawing.Size(530, 146);
             this.groupBox19.TabIndex = 34;
@@ -1532,6 +1550,8 @@ namespace AuraScreen
             // 
             this.groupBox17.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox17.Controls.Add(this.label39);
+            this.groupBox17.Controls.Add(this.comboBox1);
             this.groupBox17.Controls.Add(this.darkmode);
             this.groupBox17.Controls.Add(this.toTray);
             this.groupBox17.Controls.Add(this.TB_AutoHide);
@@ -1541,7 +1561,7 @@ namespace AuraScreen
             this.groupBox17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox17.Location = new System.Drawing.Point(9, 3);
             this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(530, 188);
+            this.groupBox17.Size = new System.Drawing.Size(530, 215);
             this.groupBox17.TabIndex = 32;
             this.groupBox17.TabStop = false;
             // 
@@ -1595,7 +1615,7 @@ namespace AuraScreen
             this.groupBox16.Controls.Add(this.linkLabel4);
             this.groupBox16.Controls.Add(this.linkLabel3);
             this.groupBox16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox16.Location = new System.Drawing.Point(9, 307);
+            this.groupBox16.Location = new System.Drawing.Point(9, 334);
             this.groupBox16.Name = "groupBox16";
             this.groupBox16.Size = new System.Drawing.Size(530, 127);
             this.groupBox16.TabIndex = 31;
@@ -1665,7 +1685,7 @@ namespace AuraScreen
             this.groupBox10.Controls.Add(this.tbHeight);
             this.groupBox10.Controls.Add(this.button20);
             this.groupBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox10.Location = new System.Drawing.Point(9, 196);
+            this.groupBox10.Location = new System.Drawing.Point(9, 223);
             this.groupBox10.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Padding = new System.Windows.Forms.Padding(2);
@@ -2915,17 +2935,27 @@ namespace AuraScreen
             this.pictureBox3.TabIndex = 31;
             this.pictureBox3.TabStop = false;
             // 
-            // linkLabel1
+            // comboBox1
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(9, 340);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(312, 13);
-            this.linkLabel1.TabIndex = 24;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Inspired by Negative Screen over on https://zerowidthjoiner.net/";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked_1);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Default"});
+            this.comboBox1.Location = new System.Drawing.Point(134, 172);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(146, 26);
+            this.comboBox1.TabIndex = 31;
+            this.comboBox1.Text = "Default";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
+            this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(11, 175);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(114, 18);
+            this.label39.TabIndex = 32;
+            this.label39.Text = "ToolBox Theme";
             // 
             // Configurator
             // 
@@ -3216,6 +3246,8 @@ namespace AuraScreen
         private System.Windows.Forms.CheckBox customMatrixBox;
         private System.Windows.Forms.Button button33;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

@@ -68,10 +68,8 @@ namespace AuraScreen
 
         private void button8_Click(object sender, EventArgs e)
         {
-#if !DEBUG
             ps.Default.ShowWelcomeScreen = false;
             ps.Default.Save();
-#endif
             conf.Show();
             this.Close();
         }

@@ -979,5 +979,17 @@ namespace AuraScreen.Properties {
                 this["SF_Custom"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Default")]
+        public string TB_Theme {
+            get {
+                return ((string)(this["TB_Theme"]));
+            }
+            set {
+                this["TB_Theme"] = value;
+            }
+        }
     }
 }

@@ -12,6 +12,8 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Configuration;
+using IniParser;
+using IniParser.Model;
 
 namespace AuraScreen
 {
@@ -58,6 +60,7 @@ namespace AuraScreen
             File.WriteAllText("Error.txt", e.ToString());
             SystemCleanup();
             MessageBox.Show("You bafoon, you absolute ignoramous. You broke it. Now what? Gonna cry? Send that error.txt over to the devs and they will take a look.");
+            Process.Start("Error.txt");
         }
 
         private void CheckForConfigErrors()
@@ -90,6 +93,72 @@ namespace AuraScreen
                 ps.Default.CF_Height = 200;
         }
 
+        private void ReloadTB()
+        {
+            toolbox.Close();
+
+            toolbox = new Toolbox();
+            toolbox.MF = this;
+        }
+        private FileIniDataParser fileIniData = new FileIniDataParser();
+        private string colorINI = "Toolbox_Themes.ini";
+        public string ReadColor(string Theme, string color)
+        {
+            string results;
+            fileIniData.Parser.Configuration.CommentString = @"#";
+            fileIniData.Parser.Configuration.AllowDuplicateKeys = true;
+            var parser = new FileIniDataParser();
+            IniData data = parser.ReadFile(colorINI);
+            results = data[Theme][color];
+            switch (results)
+            {
+                case "%ACCENT%":
+                    return ColorToHex(Color.FromArgb(GetAccentColor().a, GetAccentColor().r, GetAccentColor().g, GetAccentColor().b));
+            }
+
+            if (results.Length != 6)
+                return "FFFFFF";
+
+            return results;
+        }
+
+        //https://stackoverflow.com/questions/50840395/c-sharp-console-get-windows-10-accent-color
+        public static (Byte r, Byte g, Byte b, Byte a) GetAccentColor()
+        {
+            const String DWM_KEY = @"Software\Microsoft\Windows\DWM";
+            using (Microsoft.Win32.RegistryKey dwmKey = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(DWM_KEY, Microsoft.Win32.RegistryKeyPermissionCheck.ReadSubTree))
+            {
+                const String KEY_EX_MSG = "The \"HKCU\\" + DWM_KEY + "\" registry key does not exist.";
+                if (dwmKey is null) throw new InvalidOperationException(KEY_EX_MSG);
+
+                Object accentColorObj = dwmKey.GetValue("AccentColor");
+                if (accentColorObj is Int32 accentColorDword)
+                {
+                    return ParseDWordColor(accentColorDword);
+                }
+                else
+                {
+                    const String VALUE_EX_MSG = "The \"HKCU\\" + DWM_KEY + "\\AccentColor\" registry key value could not be parsed as an ABGR color.";
+                    throw new InvalidOperationException(VALUE_EX_MSG);
+                }
+            }
+
+        }
+
+        private static (Byte r, Byte g, Byte b, Byte a) ParseDWordColor(Int32 color)
+        {
+            Byte
+                a = (byte)((color >> 24) & 0xFF),
+                b = (byte)((color >> 16) & 0xFF),
+                g = (byte)((color >> 8) & 0xFF),
+                r = (byte)((color >> 0) & 0xFF);
+
+            return (r, g, b, a);
+        }
+        private static String ColorToHex(Color c)
+        {
+            return c.R.ToString("X2") + c.G.ToString("X2") + c.B.ToString("X2");
+        }
         public void Form1_Load(object sender, EventArgs e)
         {
             Directory.CreateDirectory("Textures");
@@ -139,7 +208,48 @@ namespace AuraScreen
             ApplyColors();
             button22.BackColor = Selected;
 
+            if (!File.Exists(colorINI))
+                WriteDefaultColors();
+
+            //Gets theme names from INI file
+            var parser = new FileIniDataParser();
+            IniData data = parser.ReadFile(colorINI);
+            comboBox1.Items.Clear();
+            foreach (var section in data.Sections)
+                comboBox1.Items.Add(section.SectionName);
+
+            if (!comboBox1.Items.Contains("Default"))
+                WriteDefaultColors();
+
+            if (comboBox1.Items.Contains(ps.Default.TB_Theme))
+                comboBox1.SelectedItem = ps.Default.TB_Theme;
+            else
+                comboBox1.SelectedItem = "Default";
             //this.Width = this.Width - tabControl1.ItemSize.Width;
+        }
+
+        private void WriteDefaultColors()
+        {
+            Write("Default", "BaseButton", "0A96AA");
+            Write("Default", "EnabledButton", "11D114");
+            Write("Default", "TextColor", "000000");
+            Write("Default", "EnabledTextColor", "FFFFFF");
+            Write("Default", "BackgroundColor", "000000");
+            Write("Default", "DM_BaseButton", "B84600");
+            Write("Default", "DM_EnabledButton", "11D114");
+            Write("Default", "DM_TextColor", "FFFFFF");
+            Write("Default", "DM_EnabledTextColor", "000000");
+            Write("Default", "DM_BackgroundColor", "000000");
+        }
+
+        public void Write(string Theme, string Color, string Value)
+        {
+            fileIniData.Parser.Configuration.CommentString = @"#";
+            fileIniData.Parser.Configuration.AllowDuplicateKeys = true;
+            var parser = new FileIniDataParser();
+            IniData data = parser.ReadFile(colorINI);
+            data[Theme][Color] = Value;
+            parser.WriteFile(colorINI, data);
         }
 
         public IEnumerable<Control> GetAll(Control control, Type type)
@@ -338,7 +448,7 @@ namespace AuraScreen
             AO_TopMost.Checked = !ps.Default.AO_ByName;
             AO_TextBox.Text = ps.Default.AO_SavedName;
             AO_Opacity.Value = ps.Default.AO_Opacity;
-
+            AO_TextureBox.Checked = ps.Default.AO_DoTexture;
             ao_AS.Checked = ps.Default.AO_DontAttatchToAS;
 
             #endregion AppOverlay
@@ -533,6 +643,7 @@ namespace AuraScreen
             }
             ps.Default.Save();
 
+            tileSelect.SelectedIndex = Mode - 1;
             ReloadTiles();
         }
 
@@ -1607,6 +1718,8 @@ namespace AuraScreen
 
         private void tileEditButton_Click(object sender, EventArgs e)
         {
+            tileSelect.SelectedIndex = 4;
+            CycleTiles(5);
             EditTiles();
         }
 
@@ -1647,6 +1760,7 @@ namespace AuraScreen
             //this.Hide();
             ApplyColors();
             //this.Show();
+            ReloadTB();
         }
 
         private void groupBox9_Enter(object sender, EventArgs e)
@@ -1751,7 +1865,39 @@ namespace AuraScreen
             GraphPath.CloseFigure();
             return GraphPath;
         }
-        
+
+        public static System.Drawing.Drawing2D.GraphicsPath RoundedRect(Rectangle bounds, int radius)
+        {
+            int diameter = radius * 2;
+            Size size = new Size(diameter, diameter);
+            Rectangle arc = new Rectangle(bounds.Location, size);
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+
+            if (radius == 0)
+            {
+                path.AddRectangle(bounds);
+                return path;
+            }
+
+            // top left arc  
+            path.AddArc(arc, 180, 90);
+
+            // top right arc  
+            arc.X = bounds.Right - diameter;
+            path.AddArc(arc, 270, 90);
+
+            // bottom right arc  
+            arc.Y = bounds.Bottom - diameter;
+            path.AddArc(arc, 0, 90);
+
+            // bottom left arc 
+            arc.X = bounds.Left;
+            path.AddArc(arc, 90, 90);
+
+            path.CloseFigure();
+            return path;
+        }
+
 
         private void button31_Click(object sender, EventArgs e)
         {
@@ -1827,6 +1973,19 @@ namespace AuraScreen
         private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("https://zerowidthjoiner.net/");
+        }
+
+        private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            ps.Default.TB_Theme = comboBox1.Text;
+            ps.Default.Save();
+
+            ReloadTB();
+        }
+
+        private void comboBox1_TextChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }

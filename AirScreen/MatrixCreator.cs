@@ -170,8 +170,9 @@ namespace AuraScreen
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
+                openFileDialog.Title = "Choose image to manipulate. Smaller images will adjust faster. Recommended size is below 750x750";
                 openFileDialog.InitialDirectory = Application.StartupPath + "\\ColorMatricies\\Example Images\\";
-                openFileDialog.Filter = "Image files (*.BMP;*.JPG;*.GIF;*.PNG)|*.BMP;*.JPG;*.GIF;*.PNG";
+                openFileDialog.Filter = "Image files (*.BMP;*.JPG;*.PNG)|*.BMP;*.JPG;*.PNG";
                 openFileDialog.FilterIndex = 2;
                 openFileDialog.RestoreDirectory = false;
 
