@@ -161,6 +161,8 @@ namespace AuraScreen
         }
         public void Form1_Load(object sender, EventArgs e)
         {
+            fileIniData.Parser.Configuration.CommentString = @"#";
+            fileIniData.Parser.Configuration.AllowDuplicateKeys = true;
             Directory.CreateDirectory("Textures");
             Directory.CreateDirectory("Cursors");
             Directory.CreateDirectory("ColorMatricies");
@@ -244,8 +246,6 @@ namespace AuraScreen
 
         public void Write(string Theme, string Color, string Value)
         {
-            fileIniData.Parser.Configuration.CommentString = @"#";
-            fileIniData.Parser.Configuration.AllowDuplicateKeys = true;
             var parser = new FileIniDataParser();
             IniData data = parser.ReadFile(colorINI);
             data[Theme][Color] = Value;
@@ -315,11 +315,10 @@ namespace AuraScreen
                     button.FlatAppearance.BorderColor = Color.Black;
                     button.FlatAppearance.BorderSize = 0;
                     button.FlatStyle = FlatStyle.Flat;
+                    System.Drawing.Drawing2D.GraphicsPath GP = new System.Drawing.Drawing2D.GraphicsPath();
+                    GP = GetRoundPath(button.ClientRectangle, ps.Default.Button_Rounding);
+                    button.Region = new Region(GP);
                 }
-
-                System.Drawing.Drawing2D.GraphicsPath GP = new System.Drawing.Drawing2D.GraphicsPath();
-                GP = GetRoundPath(button.ClientRectangle, 25);
-                button.Region = new Region(GP);
             }
 
             foreach (GroupBox groupbox in GetAll(this, typeof(GroupBox)))
@@ -516,6 +515,36 @@ namespace AuraScreen
                         filesFound.Add(Path.GetFileName(file));
                     
             return filesFound.ToArray();
+        }
+        //https://stackoverflow.com/questions/5977445/how-to-get-windows-display-settings/14283331
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            //e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            //e.Graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+            base.OnPaint(e);
+        }
+
+        [DllImport("gdi32.dll")]
+        static extern int GetDeviceCaps(IntPtr hdc, int nIndex);
+        public enum DeviceCap
+        {
+            VERTRES = 10,
+            DESKTOPVERTRES = 117,
+
+            // http://pinvoke.net/default.aspx/gdi32/GetDeviceCaps.html
+        }
+
+
+        private float getScalingFactor()
+        {
+            Graphics g = Graphics.FromHwnd(IntPtr.Zero);
+            IntPtr desktop = g.GetHdc();
+            int LogicalScreenHeight = GetDeviceCaps(desktop, (int)DeviceCap.VERTRES);
+            int PhysicalScreenHeight = GetDeviceCaps(desktop, (int)DeviceCap.DESKTOPVERTRES);
+
+            float ScreenScalingFactor = (float)PhysicalScreenHeight / (float)LogicalScreenHeight;
+
+            return ScreenScalingFactor; // 1.25 = 125%
         }
         public void SaveHotkeys()
         {
@@ -1866,37 +1895,7 @@ namespace AuraScreen
             return GraphPath;
         }
 
-        public static System.Drawing.Drawing2D.GraphicsPath RoundedRect(Rectangle bounds, int radius)
-        {
-            int diameter = radius * 2;
-            Size size = new Size(diameter, diameter);
-            Rectangle arc = new Rectangle(bounds.Location, size);
-            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
-
-            if (radius == 0)
-            {
-                path.AddRectangle(bounds);
-                return path;
-            }
-
-            // top left arc  
-            path.AddArc(arc, 180, 90);
-
-            // top right arc  
-            arc.X = bounds.Right - diameter;
-            path.AddArc(arc, 270, 90);
-
-            // bottom right arc  
-            arc.Y = bounds.Bottom - diameter;
-            path.AddArc(arc, 0, 90);
-
-            // bottom left arc 
-            arc.X = bounds.Left;
-            path.AddArc(arc, 90, 90);
-
-            path.CloseFigure();
-            return path;
-        }
+        
 
 
         private void button31_Click(object sender, EventArgs e)

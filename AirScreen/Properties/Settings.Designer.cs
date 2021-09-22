@@ -991,5 +991,17 @@ namespace AuraScreen.Properties {
                 this["TB_Theme"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("25")]
+        public int Button_Rounding {
+            get {
+                return ((int)(this["Button_Rounding"]));
+            }
+            set {
+                this["Button_Rounding"] = value;
+            }
+        }
     }
 }
