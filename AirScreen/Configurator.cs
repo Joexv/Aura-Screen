@@ -1,19 +1,18 @@
-﻿using Magnifier;
+﻿using IniParser;
+using IniParser.Model;
+using Magnifier;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Management;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using System.Configuration;
-using IniParser;
-using IniParser.Model;
 
 namespace AuraScreen
 {
@@ -21,8 +20,8 @@ namespace AuraScreen
 
     public partial class Configurator : Form
     {
-        public static bool initialized { get; set; } = false;
         public MouseBox mousebox = new MouseBox();
+
         public Dictionary<string, float[,]> Matrix = new Dictionary<string, float[,]> {
             { "None", Matrices.Identity },
             { "Negative", Matrices.Negative },
@@ -74,7 +73,7 @@ namespace AuraScreen
             if (ps.Default.AO_Opacity > (decimal)0.99)
                 ps.Default.AO_Opacity = (decimal)0.99;
 
-            if(ps.Default.CF_DoInvert && ps.Default.BF_Invert)
+            if (ps.Default.CF_DoInvert && ps.Default.BF_Invert)
             {
                 ps.Default.CF_DoInvert = false;
                 ps.Default.BF_Invert = false;
@@ -100,8 +99,10 @@ namespace AuraScreen
             toolbox = new Toolbox();
             toolbox.MF = this;
         }
+
         private FileIniDataParser fileIniData = new FileIniDataParser();
         private string colorINI = "Toolbox_Themes.ini";
+
         public string ReadColor(string Theme, string color)
         {
             string results;
@@ -142,7 +143,6 @@ namespace AuraScreen
                     throw new InvalidOperationException(VALUE_EX_MSG);
                 }
             }
-
         }
 
         private static (Byte r, Byte g, Byte b, Byte a) ParseDWordColor(Int32 color)
@@ -155,10 +155,12 @@ namespace AuraScreen
 
             return (r, g, b, a);
         }
+
         private static String ColorToHex(Color c)
         {
             return c.R.ToString("X2") + c.G.ToString("X2") + c.B.ToString("X2");
         }
+
         public void Form1_Load(object sender, EventArgs e)
         {
             fileIniData.Parser.Configuration.CommentString = @"#";
@@ -261,18 +263,19 @@ namespace AuraScreen
                                       .Where(c => c.GetType() == type);
         }
 
-        Color Clicked = Color.FromArgb(230, 237, 183);
-        Color Default = Color.FromArgb(10, 150, 170);
+        private Color Clicked = Color.FromArgb(230, 237, 183);
+        private Color Default = Color.FromArgb(10, 150, 170);
 
-        Color Selected = Color.FromArgb(6, 84, 96);
-        Color Button = Color.FromArgb(10, 150, 170);
-        Color TextColor = Color.Black;
-        Color AltTextColor = Color.White;
-        Color ClickedColor = Color.FromArgb(119, 119, 119);
-        Color BackgroundColor = Color.White;
-        Color GroupBoxColor = Color.White;
-        Color TextBoxColor = Color.White;
-        Color BorderColor = Color.Black;
+        private Color Selected = Color.FromArgb(6, 84, 96);
+        private Color Button = Color.FromArgb(10, 150, 170);
+        private Color TextColor = Color.Black;
+        private Color AltTextColor = Color.White;
+        private Color ClickedColor = Color.FromArgb(119, 119, 119);
+        private Color BackgroundColor = Color.White;
+        private Color GroupBoxColor = Color.White;
+        private Color TextBoxColor = Color.White;
+        private Color BorderColor = Color.Black;
+
         private void ApplyColors()
         {
             if (ps.Default.DarkMode)
@@ -307,7 +310,7 @@ namespace AuraScreen
 
             foreach (Button button in GetAll(this, typeof(Button)))
             {
-                if(button.BackColor != Color.Green && button.BackColor != Color.DarkRed)
+                if (button.BackColor != Color.Green && button.BackColor != Color.DarkRed)
                 {
                     button.BackColor = Button;
                     button.ForeColor = AltTextColor;
@@ -352,7 +355,9 @@ namespace AuraScreen
             this.BackColor = BackgroundColor;
             panel1.BackColor = BackgroundColor;
         }
+
         public bool OnlyOnStart = false;
+
         public void PopulateControls()
         {
             if (!OnlyOnStart)
@@ -361,6 +366,7 @@ namespace AuraScreen
                 OnlyOnStart = true;
 
             #region MainPage
+
             Console.WriteLine("Cursor Controls");
             width.Text = ps.Default.CF_Width.ToString();
             height.Text = ps.Default.CF_Height.ToString();
@@ -372,7 +378,7 @@ namespace AuraScreen
             textureCombo.Items.Clear();
             textureCombo.Items.AddRange(GetFilesFrom(Application.StartupPath + "\\Textures", new String[] { "png", "jpg", "jpeg" }));
 
-            if(textureCombo.Items.Count == 0)
+            if (textureCombo.Items.Count == 0)
             {
                 textureBox.Enabled = false;
                 textureCombo.Enabled = false;
@@ -410,9 +416,11 @@ namespace AuraScreen
             tileY.Value = ps.Default.BF_Y;
 
             darkmode.Checked = ps.Default.DarkMode;
+
             #endregion MainPage
 
             #region hotKeys
+
             Console.WriteLine("Hotkeys");
             enableHotKey.Text = ps.Default.HK_ToggleCF;
             invertHotKey.Text = ps.Default.HK_InvertCF;
@@ -420,7 +428,7 @@ namespace AuraScreen
             shrinkHotKey.Text = ps.Default.HK_ShrinkCF;
             cylceHotKey.Text = ps.Default.HK_CycleBF;
             cursorLock.Text = ps.Default.HK_LockCF;
-            
+
             numericUpDown1.Value = ps.Default.CF_SizeIncrement;
 
             SF_CycleHK.Text = ps.Default.HK_CycleSF;
@@ -461,7 +469,7 @@ namespace AuraScreen
 
             customMatrixBox.Checked = ps.Default.SF_DoCustom;
             customMatrix.Enabled = ps.Default.SF_DoCustom;
-            
+
             customMatrix.Items.Clear();
             customMatrix.Items.AddRange(GetFilesFrom(Application.StartupPath + "\\ColorMatricies", new String[] { "ini" }));
 
@@ -503,6 +511,7 @@ namespace AuraScreen
 
             #endregion Other
         }
+
         public static String[] GetFilesFrom(String searchFolder, String[] filters)
         {
             List<String> filesFound = new List<String>();
@@ -511,11 +520,12 @@ namespace AuraScreen
 
             foreach (var filter in filters)
                 foreach (string file in Directory.GetFiles(searchFolder, String.Format("*.{0}", filter), SearchOption.TopDirectoryOnly))
-                    if(!filesFound.Contains(Path.GetFileName(file)))
+                    if (!filesFound.Contains(Path.GetFileName(file)))
                         filesFound.Add(Path.GetFileName(file));
-                    
+
             return filesFound.ToArray();
         }
+
         //https://stackoverflow.com/questions/5977445/how-to-get-windows-display-settings/14283331
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -525,7 +535,8 @@ namespace AuraScreen
         }
 
         [DllImport("gdi32.dll")]
-        static extern int GetDeviceCaps(IntPtr hdc, int nIndex);
+        private static extern int GetDeviceCaps(IntPtr hdc, int nIndex);
+
         public enum DeviceCap
         {
             VERTRES = 10,
@@ -533,7 +544,6 @@ namespace AuraScreen
 
             // http://pinvoke.net/default.aspx/gdi32/GetDeviceCaps.html
         }
-
 
         private float getScalingFactor()
         {
@@ -546,6 +556,7 @@ namespace AuraScreen
 
             return ScreenScalingFactor; // 1.25 = 125%
         }
+
         public void SaveHotkeys()
         {
             ps.Default.HK_ToggleCF = enableHotKey.Text;
@@ -575,7 +586,8 @@ namespace AuraScreen
         public void ReloadHotKeys()
         {
             GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.HK_ToggleCF, () => ToggleCF());
-            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.HK_InvertCF, () => {
+            GlobalHotKey.RegisterHotKey("Control + Shift + " + ps.Default.HK_InvertCF, () =>
+            {
                 inversionBox.Checked = !inversionBox.Checked;
                 ReloadCF();
             });
@@ -705,7 +717,7 @@ namespace AuraScreen
                 ReloadCF();
                 return;
             }
-                
+
             if (mousebox.Visible)
                 mousebox.Hide();
             else
@@ -804,7 +816,7 @@ namespace AuraScreen
         {
             try
             {
-                if(!mousebox.IsDisposed)
+                if (!mousebox.IsDisposed)
                     mousebox.Dispose();
                 Application.DoEvents();
 
@@ -894,7 +906,6 @@ namespace AuraScreen
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -1011,7 +1022,7 @@ namespace AuraScreen
                 ReloadTiles();
                 return;
             }
-                
+
             if (blockfilter.Visible)
                 blockfilter.Hide();
             else
@@ -1082,7 +1093,7 @@ namespace AuraScreen
                     else
                         SF_FilterInUse = Matrices.ChangeColorEffect(Matrices.StringToMatrix(File.ReadAllText(Application.StartupPath + "\\ColorMatricies\\" + customMatrix.Text)));
                 }
-                else if(!File.Exists(Application.StartupPath + "\\ColorMatricies\\" + customMatrix.Text))
+                else if (!File.Exists(Application.StartupPath + "\\ColorMatricies\\" + customMatrix.Text))
                 {
                     MessageBox.Show($"The matrix file {customMatrix.Text}\ndoes not exist. Please make sure it wasn't deleted or renamed.");
                 }
@@ -1106,7 +1117,6 @@ namespace AuraScreen
                 else
                     SF_FilterInUse = Matrices.ChangeColorEffect(Matrix[ps.Default.SF_LastUsed]);
             }
-            
 
             /*
             else if(!CheckFilter(3))
@@ -1332,6 +1342,7 @@ namespace AuraScreen
         }
 
         private Cursor IdleCursor;
+
         public void LoadCursor(string filePath)
         {
             using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read))
@@ -1433,7 +1444,7 @@ namespace AuraScreen
                 if (ps.Default.FilterNum == 1)
                     ps.Default.FilterNum = 0;
             }
-            else 
+            else
             {
                 if (ps.Default.FilterNum == 2)
                 {
@@ -1459,12 +1470,15 @@ namespace AuraScreen
                 case 0:
                     Filter = "Hol up. There isn't currently a filter using it. Try applying it again.";
                     break;
+
                 case 1:
                     Filter = "Currently being used by the Cursor Filter";
                     break;
+
                 case 2:
                     Filter = "Currently being used by the Block/Tile Filter";
                     break;
+
                 case 3:
                     Filter = "Currently being usd by the Screen Filter";
                     break;
@@ -1563,11 +1577,11 @@ namespace AuraScreen
             tileInvert.CheckedChanged -= tileInvert_CheckedChanged;
             if (!tileInvert.Checked)
             {
-                if(ps.Default.FilterNum == 2)
+                if (ps.Default.FilterNum == 2)
                     ps.Default.FilterNum = 0;
                 if (blockfilter.Visible)
                     ReloadTiles();
-            } 
+            }
             else
             {
                 if (ps.Default.FilterNum == 1)
@@ -1613,7 +1627,6 @@ namespace AuraScreen
 
         private void tileSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
 
         private void button20_Click(object sender, EventArgs e)
@@ -1667,17 +1680,14 @@ namespace AuraScreen
 
         private void button21_Click_1(object sender, EventArgs e)
         {
-            
         }
 
         private void groupBox4_Enter(object sender, EventArgs e)
         {
-
         }
 
         private void button21_Click_2(object sender, EventArgs e)
         {
-
         }
 
         private void button22_Click(object sender, EventArgs e)
@@ -1778,7 +1788,6 @@ namespace AuraScreen
 
         private void ao_AS_CheckedChanged(object sender, EventArgs e)
         {
-
         }
 
         private void checkBox9_CheckedChanged(object sender, EventArgs e)
@@ -1794,7 +1803,6 @@ namespace AuraScreen
 
         private void groupBox9_Enter(object sender, EventArgs e)
         {
-
         }
 
         private void button29_Click(object sender, EventArgs e)
@@ -1808,7 +1816,6 @@ namespace AuraScreen
 
         private void button30_Click(object sender, EventArgs e)
         {
-            
         }
 
         private void AO_ByName_CheckedChanged(object sender, EventArgs e)
@@ -1824,7 +1831,6 @@ namespace AuraScreen
 
         private void label30_Click(object sender, EventArgs e)
         {
-
         }
 
         private void flipBox_CheckedChanged(object sender, EventArgs e)
@@ -1878,7 +1884,7 @@ namespace AuraScreen
             ps.Default.Save();
         }
 
-        System.Drawing.Drawing2D.GraphicsPath GetRoundPath(RectangleF Rect, int radius)
+        private System.Drawing.Drawing2D.GraphicsPath GetRoundPath(RectangleF Rect, int radius)
         {
             float r2 = radius / 2f;
             System.Drawing.Drawing2D.GraphicsPath GraphPath = new System.Drawing.Drawing2D.GraphicsPath();
@@ -1894,9 +1900,6 @@ namespace AuraScreen
             GraphPath.CloseFigure();
             return GraphPath;
         }
-
-        
-
 
         private void button31_Click(object sender, EventArgs e)
         {
@@ -1933,7 +1936,7 @@ namespace AuraScreen
                 }
 
                 MessageBox.Show(fileContent, "Settings have been restored!");
-            } 
+            }
         }
 
         private void customMatrixBox_CheckedChanged(object sender, EventArgs e)
@@ -1946,12 +1949,13 @@ namespace AuraScreen
 
         private void customMatrix_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
-        MatrixCreator mc = new MatrixCreator();
+
+        private MatrixCreator mc = new MatrixCreator();
+
         private void button33_Click(object sender, EventArgs e)
         {
-            if(mc == null || mc.IsDisposed)
+            if (mc == null || mc.IsDisposed)
                 mc = new MatrixCreator();
 
             if (!mc.Visible)
@@ -1961,7 +1965,6 @@ namespace AuraScreen
                 mc.FormClosed += mcClosed;
                 mc.Show();
             }
-                
         }
 
         private void mcClosed(object sender, EventArgs e)
@@ -1984,7 +1987,6 @@ namespace AuraScreen
 
         private void comboBox1_TextChanged(object sender, EventArgs e)
         {
-           
         }
     }
 }

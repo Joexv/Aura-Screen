@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -14,6 +13,7 @@ namespace Magnifier
      * I know its just a wrapper for an existing C++ API in windows, but holy fucking shit
      * they did good
      */
+
     public static class Matrices
     {
         public static float[,] Identity { get; }
@@ -132,7 +132,7 @@ namespace Magnifier
 
         public static float[,] StringToMatrix(string MatrixString)
         {
-            float[,] matrix = new float[5,5];
+            float[,] matrix = new float[5, 5];
             int r = 0;
             foreach (string s in ExtractFromString(MatrixString, "{", "}"))
             {
@@ -140,7 +140,7 @@ namespace Magnifier
                 foreach (string n in s.Split(','))
                 {
                     float f;
-                    if(!float.TryParse(n, out f))
+                    if (!float.TryParse(n, out f))
                         f = 0;
                     matrix[r, c] = f;
                     c++;
@@ -290,7 +290,6 @@ namespace Magnifier
 
     public static class NativeMethods
     {
-
         [DllImport("Magnification.dll", ExactSpelling = true, SetLastError = true)]
         public static extern bool MagInitialize();
 
@@ -315,6 +314,7 @@ namespace Magnifier
         [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int x, int y, int cx, int cy, int flags);
+
         [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool DestroyWindow(IntPtr hWnd);

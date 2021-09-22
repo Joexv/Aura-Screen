@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AuraScreen
 {
     using ps = AuraScreen.Properties.Settings;
+
     public partial class Welcome : Form
     {
         public Welcome()
@@ -18,7 +13,9 @@ namespace AuraScreen
             InitializeComponent();
             button1.Parent = pictureBox1;
         }
+
         public Configurator conf { get; set; }
+
         private void Welcome_Load(object sender, EventArgs e)
         {
             tabControl1.Appearance = TabAppearance.FlatButtons;
@@ -39,12 +36,10 @@ namespace AuraScreen
 
         private void Welcome_Shown(object sender, EventArgs e)
         {
-            
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -52,7 +47,7 @@ namespace AuraScreen
             ps.Default.CF_Color = Color.Orange;
             ps.Default.CF_Style = "Rectangle";
             ps.Default.Save();
-            if(!conf.mousebox.Visible)
+            if (!conf.mousebox.Visible)
                 conf.ToggleCF();
             button2.Visible = false;
 
@@ -171,6 +166,7 @@ namespace AuraScreen
                     case ContentAlignment.MiddleRight:
                         top = (Height - size.Height) / 2;
                         break;
+
                     case ContentAlignment.BottomLeft:
                     case ContentAlignment.BottomCenter:
                     case ContentAlignment.BottomRight:
@@ -189,11 +185,13 @@ namespace AuraScreen
                         else
                             left = -1;
                         break;
+
                     case ContentAlignment.TopCenter:
                     case ContentAlignment.MiddleCenter:
                     case ContentAlignment.BottomCenter:
                         left = (Width - size.Width) / 2;
                         break;
+
                     case ContentAlignment.TopRight:
                     case ContentAlignment.MiddleRight:
                     case ContentAlignment.BottomRight:
@@ -270,6 +268,7 @@ namespace AuraScreen
         }
 
         private ContentAlignment textAlign = ContentAlignment.TopLeft;
+
         /// <summary>
         /// Gets or sets the text alignment.
         /// </summary>
@@ -284,6 +283,7 @@ namespace AuraScreen
         }
 
         private int opacity;
+
         public int Opacity
         {
             get { return opacity; }
@@ -295,6 +295,7 @@ namespace AuraScreen
         }
 
         public Color transparentBackColor;
+
         public Color TransparentBackColor
         {
             get { return transparentBackColor; }

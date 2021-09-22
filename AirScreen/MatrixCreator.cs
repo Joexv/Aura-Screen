@@ -1,22 +1,21 @@
-﻿using System;
+﻿using Magnifier;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Magnifier;
 
 namespace AuraScreen
 {
     using ps = AuraScreen.Properties.Settings;
+
     public partial class MatrixCreator : Form
     {
         public Dictionary<string, float[,]> Matrix { get; set; }
+
         public MatrixCreator()
         {
             InitializeComponent();
@@ -57,7 +56,7 @@ namespace AuraScreen
 
         private float[,] numericFloat()
         {
-            return new float[,] { 
+            return new float[,] {
                 { (float)rr.Value, (float)rg.Value, (float)rb.Value, (float)ra.Value, (float)rw.Value,},
                 { (float)gr.Value, (float)gg.Value, (float)gb.Value, (float)ga.Value, (float)gw.Value,},
                 { (float)br.Value, (float)bg.Value, (float)bb.Value, (float)ba.Value, (float)bw.Value,},
@@ -78,7 +77,7 @@ namespace AuraScreen
         private void button2_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.InitialDirectory = Application.StartupPath + "\\ColorMatricies";      
+            saveFileDialog1.InitialDirectory = Application.StartupPath + "\\ColorMatricies";
             saveFileDialog1.DefaultExt = "ini";
             saveFileDialog1.Filter = "Matrix files (*.ini)|*.ini";
             saveFileDialog1.FilterIndex = 2;
@@ -114,7 +113,6 @@ namespace AuraScreen
                     ReloadExample(sender, e);
                 }
             }
-
         }
 
         private void LoadValues(float[,] matrix)
@@ -196,18 +194,19 @@ namespace AuraScreen
             ReloadExample(sender, e);
         }
 
-        Color Clicked = Color.FromArgb(230, 237, 183);
-        Color Default = Color.FromArgb(10, 150, 170);
+        private Color Clicked = Color.FromArgb(230, 237, 183);
+        private Color Default = Color.FromArgb(10, 150, 170);
 
-        Color Selected = Color.FromArgb(6, 84, 96);
-        Color Button = Color.FromArgb(10, 150, 170);
-        Color TextColor = Color.Black;
-        Color AltTextColor = Color.White;
-        Color ClickedColor = Color.FromArgb(119, 119, 119);
-        Color BackgroundColor = Color.White;
-        Color GroupBoxColor = Color.White;
-        Color TextBoxColor = Color.White;
-        Color BorderColor = Color.Black;
+        private Color Selected = Color.FromArgb(6, 84, 96);
+        private Color Button = Color.FromArgb(10, 150, 170);
+        private Color TextColor = Color.Black;
+        private Color AltTextColor = Color.White;
+        private Color ClickedColor = Color.FromArgb(119, 119, 119);
+        private Color BackgroundColor = Color.White;
+        private Color GroupBoxColor = Color.White;
+        private Color TextBoxColor = Color.White;
+        private Color BorderColor = Color.Black;
+
         private void ApplyColors()
         {
             if (ps.Default.DarkMode)

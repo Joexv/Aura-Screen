@@ -14,12 +14,13 @@ namespace AuraScreen
 
     public partial class Tiles : Form
     {
-        double V_Left = System.Windows.SystemParameters.VirtualScreenLeft;
-        double V_Top = System.Windows.SystemParameters.VirtualScreenTop;
-        double V_Width = System.Windows.SystemParameters.VirtualScreenWidth;
-        double V_Height = System.Windows.SystemParameters.VirtualScreenHeight;
+        private double V_Left = System.Windows.SystemParameters.VirtualScreenLeft;
+        private double V_Top = System.Windows.SystemParameters.VirtualScreenTop;
+        private double V_Width = System.Windows.SystemParameters.VirtualScreenWidth;
+        private double V_Height = System.Windows.SystemParameters.VirtualScreenHeight;
         private int screenWidth = (int)System.Windows.SystemParameters.VirtualScreenWidth;
         private int screenHeight = (int)System.Windows.SystemParameters.VirtualScreenHeight;
+
         //public Configurator conf { get; set; }
         public enum GWL
         {
@@ -54,7 +55,7 @@ namespace AuraScreen
             base.OnShown(e);
             if (ps.Default.BF_Invert)
             { StartMag(); }
-            else if(!ps.Default.EnterEditMode)
+            else if (!ps.Default.EnterEditMode)
             {
                 int wl = GetWindowLong(this.Handle, GWL.ExStyle);
                 wl = wl | 0x80000 | 0x20;
@@ -62,8 +63,8 @@ namespace AuraScreen
                 SetLayeredWindowAttributes(this.Handle, 0, 128, LWA.Alpha);
                 this.Opacity = (double)ps.Default.BF_Opacity;
             }
-            
         }
+
         protected override System.Windows.Forms.CreateParams CreateParams
         {
             get
@@ -73,6 +74,7 @@ namespace AuraScreen
                 return cp;
             }
         }
+
         public Tiles()
         {
             InitializeComponent();
@@ -216,9 +218,9 @@ namespace AuraScreen
             }
             else
             {
-               if (ps.Default.BF_Invert && !SaveButton.Visible && ps.Default.BF_Scroll && ps.Default.useAltInvert)
+                if (ps.Default.BF_Invert && !SaveButton.Visible && ps.Default.BF_Scroll && ps.Default.useAltInvert)
                     mouseWatcher.Start();
-               else if(ps.Default.useAltInvert)
+                else if (ps.Default.useAltInvert)
                     mouseWatcher.Stop();
 
                 if (ps.Default.BF_Invert && !ps.Default.EnterEditMode)
@@ -323,13 +325,13 @@ namespace AuraScreen
             //Cheap way of checking if in edit mode
             if (!SaveButton.Visible && this.Visible && ps.Default.useAltInvert)
             {
-                if(this.BackgroundImage != null)
+                if (this.BackgroundImage != null)
                     this.BackgroundImage.Dispose();
                 InvertTimer.Stop();
                 this.Opacity = 0.99;
                 this.Hide();
                 Application.DoEvents();
-                this.BackgroundImage = 
+                this.BackgroundImage =
                     (CaptureScreen());
                 Application.DoEvents();
                 this.Show();
@@ -415,9 +417,9 @@ namespace AuraScreen
 
         private void InvertTimer_Tick(object sender, EventArgs e)
         {
-            if(ps.Default.useAltInvert)
+            if (ps.Default.useAltInvert)
                 DoInvert();
-            else if(ps.Default.BF_Invert && !SaveButton.Visible)
+            else if (ps.Default.BF_Invert && !SaveButton.Visible)
                 UpdateMag();
         }
 
@@ -540,7 +542,7 @@ namespace AuraScreen
 
         private void Tiles_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if(eventHookFactory != null)
+            if (eventHookFactory != null)
                 eventHookFactory.Dispose();
             InvertTimer.Enabled = false;
 
@@ -550,8 +552,8 @@ namespace AuraScreen
 
         private IntPtr hwndMag;
         private bool initialized;
-        RECT magWindowRect = new RECT();
-        RECT source = new RECT();
+        private RECT magWindowRect = new RECT();
+        private RECT source = new RECT();
 
         public void StartMag()
         {
@@ -560,7 +562,7 @@ namespace AuraScreen
                 MessageBox.Show($"Sorry! But mixing the Cursor Filter Inversion and the Tile Filter Inversion causes insane slow down and freezing even on high end systems! Please disable one of them before continuing.");
                 this.Close();
             }
-            else if(!ps.Default.EnterEditMode)
+            else if (!ps.Default.EnterEditMode)
             {
                 Console.WriteLine("Starting Magnification API");
                 initialized = NativeMethods.MagInitialize();
@@ -576,6 +578,7 @@ namespace AuraScreen
                 }
             }
         }
+
         protected virtual void ResizeMagnifier()
         {
             if (initialized && (hwndMag != IntPtr.Zero))
@@ -586,6 +589,7 @@ namespace AuraScreen
                     magWindowRect.left, magWindowRect.top, magWindowRect.right, magWindowRect.bottom, 0);
             }
         }
+
         public void UpdateMag()
         {
             //AdjustLocation();
@@ -662,7 +666,6 @@ namespace AuraScreen
 
         private void Tiles_Resize(object sender, EventArgs e)
         {
-
         }
 
         private void button2_Click_1(object sender, EventArgs e)
@@ -684,10 +687,9 @@ namespace AuraScreen
         {
             this.Location = new Point(this.Location.X, screenHeight - this.Height);
         }
-        
+
         private void button6_Click(object sender, EventArgs e)
         {
-
             this.Width = screenWidth;
         }
 
@@ -700,7 +702,7 @@ namespace AuraScreen
         {
             Image mResult = null;
             Image tempImage = null; //we will set the opacity of pImage to pColorOpacity and copy
-                                    //it to tempImage 
+                                    //it to tempImage
             if (pImage != null)
             {
                 Graphics g;

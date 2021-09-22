@@ -1,12 +1,10 @@
-﻿using Microsoft.Win32;
-using Magnifier;
+﻿using Magnifier;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Runtime.InteropServices;
-using System.Threading;
-using System.Windows.Forms;
 using System.IO;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace AuraScreen
 {
@@ -27,6 +25,7 @@ namespace AuraScreen
             MagTimer.Interval = NativeMethods.USER_TIMER_MINIMUM;
             LocationTimer.Interval = NativeMethods.USER_TIMER_MINIMUM;
         }
+
         protected override System.Windows.Forms.CreateParams CreateParams
         {
             get
@@ -36,7 +35,6 @@ namespace AuraScreen
                 return cp;
             }
         }
-
 
         public Bitmap CaptureScreen()
         {
@@ -70,7 +68,6 @@ namespace AuraScreen
             this.BackgroundImage = Matrices.Transform(CaptureScreen(AppPosition, Height, Width), Matrices.Negative);
             this.Show();
         }
-
 
         public enum GWL
         {
@@ -137,15 +134,18 @@ namespace AuraScreen
                 case "Rectangle":
                     GP.AddRectangle(this.ClientRectangle);
                     break;
+
                 case "Ellipse":
                     GP.AddEllipse(this.ClientRectangle);
                     break;
+
                 case "Circle":
                     ps.Default.CF_Width = ps.Default.CF_Height;
                     ps.Default.Save();
                     this.Width = this.Height;
                     GP.AddEllipse(this.ClientRectangle);
                     break;
+
                 case "Circle - Hollow":
                     ps.Default.CF_Width = ps.Default.CF_Height;
                     ps.Default.Save();
@@ -158,12 +158,15 @@ namespace AuraScreen
                 case "Triangle":
                     DrawTriangle();
                     break;
+
                 case "Triangle - Hollow":
                     DrawTriangleHollow(true);
                     break;
+
                 case "Triangle - Filled":
                     DrawTriangleHollow(false);
                     break;
+
                 case "Triangle - Flipped":
                     DrawTriangleFlipped();
                     break;
@@ -171,9 +174,11 @@ namespace AuraScreen
                 case "Pentagon":
                     DrawPolygon(5);
                     break;
+
                 case "Hexagon":
                     DrawPolygon(6);
                     break;
+
                 case "Octagon":
                     DrawPolygon(8);
                     break;
@@ -185,7 +190,7 @@ namespace AuraScreen
 
             if (ps.Default.CF_DoTexture && !String.IsNullOrWhiteSpace(ps.Default.CF_Texture))
             {
-                if(File.Exists(Application.StartupPath + $"\\Textures\\{ps.Default.CF_Texture}"))
+                if (File.Exists(Application.StartupPath + $"\\Textures\\{ps.Default.CF_Texture}"))
                 {
                     Image image = Image.FromFile(Application.StartupPath + $"\\Textures\\{ps.Default.CF_Texture}");
                     this.BackgroundImage = TextureFilter(image, (float)ps.Default.CF_Opacity);
@@ -194,13 +199,14 @@ namespace AuraScreen
         }
 
         private Point[] Polygon;
+
         private void DrawPolygon(int Sides = 5)
         {
             switch (Sides)
             {
                 case 8:
-                    Polygon = new Point[] 
-                    { 
+                    Polygon = new Point[]
+                    {
                         //Top Left Corners
                         new Point(this.Width / 5, 0),
                         new Point(0, this.Height / 5),
@@ -212,9 +218,10 @@ namespace AuraScreen
                         new Point(this.Width, this.Height - this.Height / 5),
                          //Top Right Corners
                         new Point(this.Width, this.Height / 5),
-                        new Point(this.Width - this.Width / 5, 0), 
+                        new Point(this.Width - this.Width / 5, 0),
                     };
                     break;
+
                 case 6:
                     Polygon = new Point[]
                     {
@@ -226,6 +233,7 @@ namespace AuraScreen
                         new Point(this.Width - this.Width / 5, 0)
                     };
                     break;
+
                 case 5:
                 default:
                     Polygon = new Point[]
@@ -247,10 +255,10 @@ namespace AuraScreen
             GP.AddPolygon(Polygon);
         }
 
-
         private Region NewRegion;
         private Point[] Triangle;
         private Point[] InnerTriangle;
+
         public void DrawTriangle()
         {
             Console.WriteLine("Drawing triangle");
@@ -267,7 +275,9 @@ namespace AuraScreen
             Triangle = new Point[] { top, right, left };
             GP.AddPolygon(Triangle);
         }
-        System.Drawing.Drawing2D.GraphicsPath GP = new System.Drawing.Drawing2D.GraphicsPath();
+
+        private System.Drawing.Drawing2D.GraphicsPath GP = new System.Drawing.Drawing2D.GraphicsPath();
+
         public void DrawTriangleHollow(bool isHollow)
         {
             Console.WriteLine("Drawing triangle");
@@ -281,9 +291,9 @@ namespace AuraScreen
                 left = new Point(0, 0);
             }
 
-            Triangle = new Point[] { 
-                top, 
-                right, 
+            Triangle = new Point[] {
+                top,
+                right,
                 left,
             };
 
@@ -300,7 +310,7 @@ namespace AuraScreen
                 InnerTriangle[1] = new Point(this.Width - this.Width / 5, this.Height / 10);
                 InnerTriangle[2] = new Point(this.Width / 5, this.Height / 10);
             }
-            
+
             if (isHollow)
             {
                 GP.AddPolygon(InnerTriangle);
@@ -326,7 +336,7 @@ namespace AuraScreen
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            this.Location = new Point(Cursor.Position.X - this.Width  / 2, Cursor.Position.Y - this.Height / 2);
+            this.Location = new Point(Cursor.Position.X - this.Width / 2, Cursor.Position.Y - this.Height / 2);
 
             if (!ps.Default.CF_DoInvert)
                 CreateView();
@@ -378,14 +388,13 @@ namespace AuraScreen
 
         private void MouseBox_Shown(object sender, EventArgs e)
         {
-
         }
 
         private void timer1_Tick_1(object sender, EventArgs e)
         {
-            if(!ps.Default.CF_DoInvert)
+            if (!ps.Default.CF_DoInvert)
             {
-                if(!ps.Default.CF_Lock)
+                if (!ps.Default.CF_Lock)
                     AdjustLocation();
                 if (this.Width != ps.Default.CF_Width && !ps.Default.CF_Style.Contains("Circle") || this.Height != ps.Default.CF_Height)
                     CreateView();
@@ -393,6 +402,7 @@ namespace AuraScreen
                     CreateView();
             }
         }
+
         private void InvertTimer_Tick(object sender, EventArgs e)
         {
             if (this.Visible)
@@ -402,7 +412,7 @@ namespace AuraScreen
                     if (System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftShift))
                         ShiftHeld = true;
 
-                    if(!ShiftHeld && !ps.Default.CF_Lock)
+                    if (!ShiftHeld && !ps.Default.CF_Lock)
                         ShiftHeld = false;
 
                     if (ShiftHeld && !System.Windows.Input.Keyboard.IsKeyDown(System.Windows.Input.Key.LeftShift))
@@ -436,6 +446,7 @@ namespace AuraScreen
                 }
             }
         }
+
         private void timer3_Tick(object sender, EventArgs e)
         {
             UpdateMag();
@@ -448,8 +459,8 @@ namespace AuraScreen
 
         private IntPtr hwndMag;
         private bool initialized;
-        RECT magWindowRect = new RECT();
-        RECT source = new RECT();
+        private RECT magWindowRect = new RECT();
+        private RECT source = new RECT();
 
         public void StartMag()
         {
@@ -473,6 +484,7 @@ namespace AuraScreen
                 }
             }
         }
+
         protected virtual void ResizeMagnifier()
         {
             if (initialized && (hwndMag != IntPtr.Zero))
@@ -483,6 +495,7 @@ namespace AuraScreen
                     magWindowRect.left, magWindowRect.top, magWindowRect.right, magWindowRect.bottom, 0);
             }
         }
+
         public void UpdateMag()
         {
             //AdjustLocation();
@@ -502,7 +515,6 @@ namespace AuraScreen
                 source.left = this.Location.X;
                 source.top = this.Location.Y;
             }
-            
 
             if (source.left < 0)
                 source.left = 0;
@@ -516,7 +528,7 @@ namespace AuraScreen
                 source.top = Screen.PrimaryScreen.Bounds.Height - height;
 
             source.bottom = source.top + height;
-            
+
             NativeMethods.MagSetWindowSource(hwndMag, source);
             NativeMethods.SetWindowPos(this.Handle,
                 NativeMethods.HWND_TOPMOST, magWindowRect.left, magWindowRect.top, magWindowRect.right, magWindowRect.bottom,
@@ -556,10 +568,10 @@ namespace AuraScreen
             hwndMag = NativeMethods.CreateWindow((int)ExtendedWindowStyles.WS_EX_TRANSPARENT, NativeMethods.WC_MAGNIFIER,
                         "MouseBox", (int)WindowStyles.WS_CHILD |
                         (int)WindowStyles.WS_VISIBLE,
-                        magWindowRect.left, 
-                        magWindowRect.top, 
-                        magWindowRect.right, 
-                        magWindowRect.bottom, 
+                        magWindowRect.left,
+                        magWindowRect.top,
+                        magWindowRect.right,
+                        magWindowRect.bottom,
                         this.Handle, IntPtr.Zero, hInst, IntPtr.Zero);
             if (hwndMag == IntPtr.Zero)
             {
@@ -598,7 +610,7 @@ namespace AuraScreen
             if (initialized)
             {
                 NativeMethods.MagUninitialize();
-            }  
+            }
         }
 
         private void MouseBox_FormClosing(object sender, FormClosingEventArgs e)
@@ -614,7 +626,9 @@ namespace AuraScreen
                 MagTimer.Enabled = false;
             }
         }
-        Rectangle innerCircle;
+
+        private Rectangle innerCircle;
+
         private void MouseBox_Paint(object sender, PaintEventArgs e)
         {
             //SolidBrush brush = new SolidBrush(ps.Default.CF_Color);
@@ -623,7 +637,7 @@ namespace AuraScreen
             if (ps.Default.CF_Style == "Triangle - Filled")
                 e.Graphics.FillPolygon(brush2, InnerTriangle);
 
-            if(ps.Default.CF_Style == "Circle - Hollow")
+            if (ps.Default.CF_Style == "Circle - Hollow")
                 e.Graphics.FillEllipse(brush2, innerCircle);
 
             PaintBorder(e.Graphics);
@@ -641,11 +655,13 @@ namespace AuraScreen
                     case "Rectangle":
                         g.DrawRectangle(pen, rect);
                         break;
+
                     case "Circle":
                     case "Circle - Hollow":
                         this.Width = this.Height;
                         g.DrawEllipse(pen, rect);
                         break;
+
                     case "Triangle":
                     case "Triangle - Flipped":
                     case "Triangle - Hollow":
@@ -654,11 +670,13 @@ namespace AuraScreen
                             CreateView();
                         g.DrawPolygon(pen, Triangle);
                         break;
+
                     case "Pentagon":
                     case "Octagon":
                     case "Hexagon":
                         g.DrawPolygon(pen, Polygon);
                         break;
+
                     default:
                         g.DrawEllipse(pen, rect);
                         break;
@@ -670,7 +688,7 @@ namespace AuraScreen
         {
             Image mResult = null;
             Image tempImage = null; //we will set the opacity of pImage to pColorOpacity and copy
-                                    //it to tempImage 
+                                    //it to tempImage
             if (pImage != null)
             {
                 Graphics g;

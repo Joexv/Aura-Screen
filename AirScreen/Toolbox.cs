@@ -1,27 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Win32;
 
 namespace AuraScreen
 {
     using ps = Properties.Settings;
+
     public partial class Toolbox : Form
     {
         public Configurator MF { get; set; }
         public Tiles tiles { get; set; }
+
         public Toolbox()
         {
             InitializeComponent();
         }
 
-        void Form_LostFocus(object sender, EventArgs e)
+        private void Form_LostFocus(object sender, EventArgs e)
         {
             this.MouseLeave -= new System.EventHandler(Form_LostFocus);
             this.Hide();
@@ -34,10 +30,10 @@ namespace AuraScreen
 
         private void Toolbox_Leave(object sender, EventArgs e)
         {
-
         }
 
         private const int CP_NOCLOSE_BUTTON = 0x200;
+
         protected override CreateParams CreateParams
         {
             get
@@ -216,10 +212,10 @@ namespace AuraScreen
 
         private void Toolbox_MouseEnter(object sender, EventArgs e)
         {
-
         }
 
         private bool wasInverted = false;
+
         private void flowLayoutPanel1_MouseEnter(object sender, EventArgs e)
         {
             if (ps.Default.TB_AutoHide)
@@ -236,7 +232,7 @@ namespace AuraScreen
         {
             int d = 0;
 
-            // Counting the perceptive luminance - human eye favors green color... 
+            // Counting the perceptive luminance - human eye favors green color...
             double luminance = (0.299 * color.R + 0.587 * color.G + 0.114 * color.B) / 255;
 
             if (luminance > 0.5)
@@ -265,7 +261,6 @@ namespace AuraScreen
                 ClickedText = ColorTranslator.FromHtml($"#{MF.ReadColor(ps.Default.TB_Theme, "EnabledTextColor")}");
                 BackColor = ColorTranslator.FromHtml($"#{MF.ReadColor(ps.Default.TB_Theme, "BackgroundColor")}");
             }
-
 
             //Attempts to generate a proper text color.
             //Manually set if background color is known anyways.
@@ -335,10 +330,11 @@ namespace AuraScreen
             ButtonPopulation();
         }
 
-        Color Clicked = Color.FromArgb(17, 209, 20);
-        Color Default = Color.FromArgb(10, 150, 170);
-        Color TextColor = Color.Black;
-        Color ClickedText = Color.White;
+        private Color Clicked = Color.FromArgb(17, 209, 20);
+        private Color Default = Color.FromArgb(10, 150, 170);
+        private Color TextColor = Color.Black;
+        private Color ClickedText = Color.White;
+
         private void ButtonPopulation()
         {
             if (MF.mousebox != null && MF.mousebox.Visible)
@@ -428,8 +424,7 @@ namespace AuraScreen
                     button.ForeColor = TextColor;
                 else
                     button.ForeColor = ClickedText;
-                    //button.ForeColor = ColorTranslator.FromHtml("#dfe0e2");
-
+                //button.ForeColor = ColorTranslator.FromHtml("#dfe0e2");
             }
         }
 
@@ -452,7 +447,6 @@ namespace AuraScreen
 
         private void Toolbox_VisibleChanged(object sender, EventArgs e)
         {
-
         }
     }
 }

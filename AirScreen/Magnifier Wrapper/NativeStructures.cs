@@ -11,6 +11,7 @@ namespace Magnifier
         MS_CLIPAROUNDCURSOR = 0x0002,
         MS_INVERTCOLORS = 0x0004
     }
+
     [StructLayout(LayoutKind.Sequential)]
     public struct Transformation
     {
@@ -32,6 +33,7 @@ namespace Magnifier
             m22 = 1.0f;
         }
     }
+
     [StructLayout(LayoutKind.Sequential)]
     public struct ColorEffect
     {
@@ -89,6 +91,7 @@ namespace Magnifier
             transform34 = matrix[3, 4];
             transform44 = matrix[4, 4];
         }
+
         public void SetMatrix(float[,] matrix)
         {
             this.transform00 = matrix[0, 0];
@@ -156,10 +159,13 @@ namespace Magnifier
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1051:DoNotDeclareVisibleInstanceFields")]
         public int left;
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1051:DoNotDeclareVisibleInstanceFields")]
         public int top;
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1051:DoNotDeclareVisibleInstanceFields")]
         public int right;
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1051:DoNotDeclareVisibleInstanceFields")]
         public int bottom;
 
@@ -542,9 +548,11 @@ namespace Magnifier
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "X")]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1051:DoNotDeclareVisibleInstanceFields")]
         public int x;
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Y")]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1051:DoNotDeclareVisibleInstanceFields")]
         public int y;
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "y"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "x")]
         public POINT(int x, int y)
         {
