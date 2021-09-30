@@ -130,6 +130,8 @@ namespace AuraScreen
             this.button19 = new System.Windows.Forms.Button();
             this.button30 = new System.Windows.Forms.Button();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.label39 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.darkmode = new System.Windows.Forms.CheckBox();
             this.toTray = new System.Windows.Forms.CheckBox();
             this.overrideTB = new System.Windows.Forms.CheckBox();
@@ -229,8 +231,7 @@ namespace AuraScreen
             this.titleBar = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label39 = new System.Windows.Forms.Label();
+            this.linkLabel5 = new System.Windows.Forms.LinkLabel();
             this.contextMenuStrip1.SuspendLayout();
             this.aoTab.SuspendLayout();
             this.groupBox15.SuspendLayout();
@@ -1565,6 +1566,28 @@ namespace AuraScreen
             this.groupBox17.TabIndex = 32;
             this.groupBox17.TabStop = false;
             // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(11, 175);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(114, 18);
+            this.label39.TabIndex = 32;
+            this.label39.Text = "ToolBox Theme";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Default"});
+            this.comboBox1.Location = new System.Drawing.Point(134, 172);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(146, 26);
+            this.comboBox1.TabIndex = 31;
+            this.comboBox1.Text = "Default";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
+            this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
+            // 
             // darkmode
             // 
             this.darkmode.AutoSize = true;
@@ -1610,6 +1633,7 @@ namespace AuraScreen
             // 
             this.groupBox16.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox16.Controls.Add(this.linkLabel5);
             this.groupBox16.Controls.Add(this.button21);
             this.groupBox16.Controls.Add(this.linkLabel2);
             this.groupBox16.Controls.Add(this.linkLabel4);
@@ -1650,13 +1674,13 @@ namespace AuraScreen
             // 
             this.linkLabel4.AutoSize = true;
             this.linkLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel4.Location = new System.Drawing.Point(337, 34);
+            this.linkLabel4.Location = new System.Drawing.Point(217, 34);
             this.linkLabel4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.linkLabel4.Name = "linkLabel4";
-            this.linkLabel4.Size = new System.Drawing.Size(139, 18);
+            this.linkLabel4.Size = new System.Drawing.Size(116, 18);
             this.linkLabel4.TabIndex = 28;
             this.linkLabel4.TabStop = true;
-            this.linkLabel4.Text = "Donation Campaign";
+            this.linkLabel4.Text = "Paypal Donation";
             this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
             // 
             // linkLabel3
@@ -2935,27 +2959,18 @@ namespace AuraScreen
             this.pictureBox3.TabIndex = 31;
             this.pictureBox3.TabStop = false;
             // 
-            // comboBox1
+            // linkLabel5
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Default"});
-            this.comboBox1.Location = new System.Drawing.Point(134, 172);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(146, 26);
-            this.comboBox1.TabIndex = 31;
-            this.comboBox1.Text = "Default";
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
-            this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(11, 175);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(114, 18);
-            this.label39.TabIndex = 32;
-            this.label39.Text = "ToolBox Theme";
+            this.linkLabel5.AutoSize = true;
+            this.linkLabel5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel5.Location = new System.Drawing.Point(337, 34);
+            this.linkLabel5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.linkLabel5.Name = "linkLabel5";
+            this.linkLabel5.Size = new System.Drawing.Size(143, 18);
+            this.linkLabel5.TabIndex = 31;
+            this.linkLabel5.TabStop = true;
+            this.linkLabel5.Text = "Indiegogo Campaign";
+            this.linkLabel5.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel5_LinkClicked);
             // 
             // Configurator
             // 
@@ -3248,6 +3263,7 @@ namespace AuraScreen
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.LinkLabel linkLabel5;
     }
 }
 

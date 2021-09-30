@@ -1664,12 +1664,12 @@ namespace AuraScreen
 
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start(@"https://aurascreen.com");
+            Process.Start(@"https://www.paypal.com/donate?business=5HEK4JZDW3N4J&no_recurring=0&item_name=Development&currency_code=USD");
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start(@"https://youtube.com");
+            Process.Start(@"https://www.youtube.com/playlist?list=PLxCKcP-3CxH6kO4KybTCbfKxf7tYsvpyk");
         }
 
         private void checkBox8_CheckedChanged(object sender, EventArgs e)
@@ -1987,6 +1987,11 @@ namespace AuraScreen
 
         private void comboBox1_TextChanged(object sender, EventArgs e)
         {
+        }
+
+        private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(@"https://igg.me/at/aurascreen/");
         }
     }
 }
